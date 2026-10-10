@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="DefTech Daily">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Демо застосунку DefTech Daily — щоденні новини оборонних технологій.">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>DefTech Daily</title>
+<style>
+:root { color-scheme: light; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; font-size: 14px; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+
+<style>
+/* Layout: one-screen iPhone app — large-title screens scroll above a fixed tab bar; article opens as a pushed card over the current tab. */
+:root {
+  --bg: #FFFFFF;
+  --bg-grouped: #F2F2F7;
+  --surface: #FFFFFF;
+  --fill: #EFEFF4;
+  --fg: #111114;
+  --fg-2: #5F5F66;
+  --sep: #E3E3E8;
+  --bar: #F7F7F9;
+  --accent: #2F6B2B;
+  --on-accent: #FFFFFF;
+  --c-air: #1D5FBF;
+  --c-naval: #0F6E6E;
+  --c-land: #2F6B2B;
+  --c-unmanned: #A14E00;
+  --c-missiles: #B42318;
+  --c-space: #4338CA;
+  --c-electronic: #7E22CE;
+  --c-ai: #A3195B;
+  --c-industry: #7A5230;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --bg-grouped: #000000; --surface: #1C1C1E; --fill: #1F1F22; --fg: #F2F2F7; --fg-2: #A1A1A8;
+    --sep: #2C2C2F; --bar: #121214; --accent: #7CC46A; --on-accent: #0B1A0A;
+    --c-air: #6EA8FF; --c-naval: #4FC7C7; --c-land: #7CC46A; --c-unmanned: #FFA552; --c-missiles: #FF7A6E;
+    --c-space: #9B97FF; --c-electronic: #C98BFF; --c-ai: #FF7DB8; --c-industry: #D9A877;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --bg-grouped: #000000; --surface: #1C1C1E; --fill: #1F1F22; --fg: #F2F2F7; --fg-2: #A1A1A8;
+  --sep: #2C2C2F; --bar: #121214; --accent: #7CC46A; --on-accent: #0B1A0A;
+  --c-air: #6EA8FF; --c-naval: #4FC7C7; --c-land: #7CC46A; --c-unmanned: #FFA552; --c-missiles: #FF7A6E;
+  --c-space: #9B97FF; --c-electronic: #C98BFF; --c-ai: #FF7DB8; --c-industry: #D9A877;
+  color-scheme: dark;
+}
+
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-ui); overflow: hidden; -webkit-text-size-adjust: 100%; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.app { height: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; background: var(--bg); }
+.stage { position: relative; flex: 1; min-height: 0; }
+.screen { position: absolute; inset: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.screen.grouped { background: var(--bg-grouped); }
+
+.hdr { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px 6px; }
+.hdr h1 { margin: 0; font-family: var(--font-display); font-size: 34px; line-height: 41px; font-weight: 700; letter-spacing: 0.2px; text-wrap: balance; }
+.date { font-size: 15px; font-weight: 600; color: var(--accent); }
+.stat { font-size: 15px; line-height: 20px; }
+.muted { font-size: 12px; color: var(--fg-2); }
+.demo { align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: var(--fg-2); background: var(--fill); padding: 3px 8px; border-radius: 6px; }
+
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 16px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { --cc: var(--accent); flex-shrink: 0; display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid transparent; background: var(--fill); font-size: 14px; font-weight: 600; }
+.chip .n { color: var(--fg-2); font-variant-numeric: tabular-nums; font-weight: 500; }
+.chip[aria-pressed="true"] { color: var(--cc); border-color: var(--cc); background: color-mix(in srgb, var(--cc) 13%, var(--bg)); }
+
+.list { border-top: 1px solid var(--sep); }
+.row { --cc: var(--accent); display: flex; gap: 12px; width: 100%; padding: 12px 16px; border: 0; border-bottom: 1px solid var(--sep); background: var(--bg); text-align: left; }
+.row:active { background: var(--fill); }
+.row-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.row-meta { font-size: 12px; color: var(--fg-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row-meta b { font-weight: 600; }
+.row-title { font-size: 16px; line-height: 21px; font-weight: 600; }
+.row.read .row-title { color: var(--fg-2); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { --cc: var(--accent); font-size: 11px; line-height: 14px; font-weight: 600; padding: 3px 8px; border-radius: 10px; color: var(--cc); background: color-mix(in srgb, var(--cc) 12%, var(--bg)); }
+.thumb { flex-shrink: 0; width: 76px; height: 76px; border-radius: 12px; display: grid; place-items: center; color: var(--cc); background: color-mix(in srgb, var(--cc) 13%, var(--bg)); }
+.sponsor { font-size: 11px; font-weight: 600; color: var(--c-unmanned); }
+
+.section-h { padding: 16px 16px 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: var(--fg-2); }
+.search { display: flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 10px; border-radius: 10px; background: var(--fill); color: var(--fg-2); }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; font-size: 16px; color: var(--fg); outline: none; }
+
+.empty { padding: 56px 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; color: var(--fg-2); }
+.empty strong { font-size: 20px; color: var(--fg); }
+
+/* Grouped settings */
+.group-h { padding: 18px 32px 6px; font-size: 13px; letter-spacing: 0.4px; text-transform: uppercase; color: var(--fg-2); }
+.group { margin: 0 16px; background: var(--surface); border-radius: 12px; overflow: hidden; }
+.cell { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 6px 16px; }
+.cell + .cell { border-top: 1px solid var(--sep); }
+.cell-label { display: flex; flex-direction: column; gap: 1px; min-width: 0; font-size: 17px; }
+.cell-label small { font-size: 12px; color: var(--fg-2); }
+.group-f { padding: 6px 32px 0; font-size: 13px; line-height: 18px; color: var(--fg-2); }
+.switch { position: relative; flex-shrink: 0; width: 51px; height: 31px; border: 0; border-radius: 16px; padding: 0; background: var(--sep); transition: background .2s; }
+.switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 4px rgba(0,0,0,.25); transition: transform .2s; }
+.switch[aria-checked="true"] { background: var(--accent); }
+.switch[aria-checked="true"]::after { transform: translateX(20px); }
+.time { border: 0; background: var(--fill); border-radius: 8px; padding: 6px 10px; font-size: 17px; font-variant-numeric: tabular-nums; }
+.notif { margin: 10px 16px 0; padding: 12px 14px; border-radius: 18px; background: var(--fill); display: flex; flex-direction: column; gap: 4px; }
+.notif-top { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--fg-2); }
+.notif-ico { width: 22px; height: 22px; border-radius: 6px; background: #0E2234; color: #7CC46A; display: grid; place-items: center; }
+.notif-top .when { margin-left: auto; }
+.notif b { font-size: 15px; }
+.notif p { margin: 0; font-size: 15px; line-height: 20px; }
+
+/* Article card */
+.detail { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; background: var(--bg); transform: translateX(0); transition: transform .28s ease; }
+.detail.entering { transform: translateX(100%); }
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 4px 4px 0; border-bottom: 1px solid var(--sep); background: var(--bar); }
+.icon-btn { min-width: 44px; height: 44px; border: 0; background: transparent; color: var(--accent); display: flex; align-items: center; justify-content: center; gap: 2px; padding: 0 8px; font-size: 17px; }
+.detail-body { flex: 1; min-height: 0; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.hero { --cc: var(--accent); height: 200px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--cc); background: color-mix(in srgb, var(--cc) 12%, var(--bg)); font-size: 13px; font-weight: 500; }
+.detail h2 { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; text-wrap: balance; }
+.byline { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--fg-2); }
+.byline b { color: var(--fg); font-weight: 600; }
+.summary { margin: 0; font-size: 17px; line-height: 25px; max-width: 65ch; }
+.tr { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 14px; background: var(--fill); }
+.tr small { font-size: 12px; font-weight: 600; color: var(--fg-2); }
+.tr h3 { margin: 0; font-size: 18px; line-height: 24px; }
+.actions { display: flex; flex-direction: column; gap: 10px; }
+.btn { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; border-radius: 14px; border: 0; font-size: 17px; font-weight: 600; text-decoration: none; }
+.btn.primary { background: var(--accent); color: var(--on-accent); }
+.btn.secondary { background: color-mix(in srgb, var(--accent) 14%, var(--bg)); color: var(--accent); }
+.foot { margin: 0; font-size: 13px; line-height: 18px; color: var(--fg-2); }
+
+.tabbar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
+.tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 48px; border: 0; background: transparent; color: var(--fg-2); font-size: 10px; font-weight: 500; }
+.tab[aria-current="page"] { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .detail, .switch, .switch::after { transition: none; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="app">
+  <div class="stage">
+    <main class="screen" id="screen-today" aria-labelledby="h-today">
+      <div class="hdr">
+        <span class="demo" id="asof-badge">Демо · новини на 10 жовтня 2026</span>
+        <h1 id="h-today">Сьогодні</h1>
+        <div class="date" id="asof-date">Субота, 10 жовтня</div>
+        <div class="stat" id="today-stat"></div>
+        <div class="muted" id="asof-updated">Оновлено 4 хв тому</div>
+      </div>
+      <div class="chips" id="today-chips" role="toolbar" aria-label="Фільтр за темами"></div>
+      <div class="list" id="today-list"></div>
+    </main>
+
+    <main class="screen" id="screen-feed" aria-labelledby="h-feed" hidden>
+      <div class="hdr">
+        <h1 id="h-feed">Стрічка</h1>
+        <label class="search" for="feed-q">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="feed-q" type="search" placeholder="Пошук англійською: drone, F-35…" autocomplete="off" aria-label="Пошук у новинах">
+        </label>
+      </div>
+      <div id="feed-list"></div>
+    </main>
+
+    <main class="screen" id="screen-saved" aria-labelledby="h-saved" hidden>
+      <div class="hdr"><h1 id="h-saved">Закладки</h1></div>
+      <div id="saved-list"></div>
+    </main>
+
+    <main class="screen grouped" id="screen-settings" aria-labelledby="h-settings" hidden>
+      <div class="hdr"><h1 id="h-settings">Налаштування</h1></div>
+      <div id="settings-body"></div>
+    </main>
+
+    <section class="detail" id="detail" aria-label="Новина" hidden></section>
+  </div>
+
+  <nav class="tabbar" aria-label="Розділи">
+    <button class="tab" data-tab="today" aria-current="page">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/></svg>
+      <span>Сьогодні</span>
+    </button>
+    <button class="tab" data-tab="feed">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+      <span>Стрічка</span>
+    </button>
+    <button class="tab" data-tab="saved">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+      <span>Закладки</span>
+    </button>
+    <button class="tab" data-tab="settings">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+      <span>Налаштування</span>
+    </button>
+  </nav>
+</div>
+
+<script>
+(function () {
+  var CATS = {
+    air: 'Авіація', naval: 'Флот', land: 'Сухопутні', unmanned: 'БПЛА', missiles: 'Ракети/ППО',
+    space: 'Космос', electronic: 'РЕБ/зв’язок', ai: 'ШІ', industry: 'Індустрія'
+  };
+  var ORDER = ['air', 'naval', 'land', 'unmanned', 'missiles', 'space', 'electronic', 'ai', 'industry'];
+
+  var SOURCES = [
+    ['defensenews', 'Defense News', 'США · світ'],
+    ['breakingdefense', 'Breaking Defense', 'США · світ'],
+    ['navalnews', 'Naval News', 'Флот · світ'],
+    ['twz', 'The War Zone', 'США · світ'],
+    ['defensescoop', 'DefenseScoop', 'США · технології'],
+    ['defenseone', 'Defense One', 'США'],
+    ['c4isrnet', 'C4ISRNET', 'Зв’язок · РЕБ · ШІ'],
+    ['armytech', 'Army Technology', 'Велика Британія · світ'],
+    ['airforcetech', 'Airforce Technology', 'Велика Британія · світ'],
+    ['navaltech', 'Naval Technology', 'Велика Британія · світ'],
+    ['ukdj', 'UK Defence Journal', 'Велика Британія · Європа'],
+    ['militarnyi', 'Militarnyi', 'Україна']
+  ];
+  var SOURCE_NAME = {};
+  SOURCES.forEach(function (s) { SOURCE_NAME[s[0]] = s[1]; });
+
+  // === NEWS DATA START ===
+  // Заголовки й посилання — з RSS-стрічок видань; анонси й переклади — стислий переказ для демо.
+  // fresh: вийшло за останні 24 години (вкладка «Сьогодні»); day: розділ у «Стрічці» (0 — сьогодні, 1 — вчора, 2 — позавчора).
+  var NEWS_AS_OF = {
+    badge: 'Демо · новини на 10 жовтня 2026',
+    date: 'Субота, 10 жовтня',
+    updated: 'Оновлено 4 хв тому',
+    dayTitles: ['Сьогодні', 'Вчора', 'Четвер, 8 жовтня']
+  };
+  var ARTICLES = [
+    { id: 'c1', src: 'defensenews', day: 1, fresh: true, ago: '22 год тому', date: '9 жовтня 2026 р., 23:17', author: 'Zita Fletcher', cats: ['missiles', 'naval', 'industry'],
+      t: 'Pentagon, Raytheon sign $6.3B deal to replenish US missile interceptor supply',
+      s: 'A five-year, $6.3 billion contract with two option years will keep Raytheon producing SM-3 Block IB interceptors to restock missile defense inventories used in combat.',
+      tr: 'Пентагон і Raytheon уклали угоду на $6,3 млрд, щоб поповнити запаси ракет-перехоплювачів',
+      sr: 'П’ятирічний контракт на $6,3 млрд із двома додатковими роками забезпечить виробництво перехоплювачів SM-3 Block IB, щоб відновити запаси протиракетної оборони, витрачені в бою.',
+      link: 'https://www.defensenews.com/missile-defense/2026/10/09/pentagon-raytheon-sign-63b-deal-to-replenish-us-missile-interceptor-supply/' },
+    { id: 'c2', src: 'breakingdefense', day: 1, fresh: true, ago: '22 год тому', date: '9 жовтня 2026 р., 23:10', author: 'Diana Stancy', cats: ['unmanned', 'naval', 'industry'],
+      t: 'Coast Guard places $248 million order for first MQ-9B drones',
+      s: 'The US Coast Guard ordered its first MQ-9B drones for $248 million to give crews a longer-range view of the maritime domain.',
+      tr: 'Берегова охорона США замовила перші дрони MQ-9B на $248 млн',
+      sr: 'Берегова охорона США замовила перші безпілотники MQ-9B на $248 млн, щоб екіпажі бачили морський простір на більшій відстані.',
+      link: 'https://breakingdefense.com/2026/10/coast-guard-places-248-million-order-for-first-mq-9b-drones/' },
+    { id: 'c3', src: 'breakingdefense', day: 1, fresh: true, ago: '22 год тому', date: '9 жовтня 2026 р., 23:00', author: 'Carley Welch', cats: ['land', 'industry'],
+      t: 'One year in, Army’s FUZE leader eyes ‘bigger’ acquisition challenges',
+      s: 'A year after launch, the head of the Army’s FUZE program says the hard part is making sure promising technologies don’t stop at the prototype stage.',
+      tr: 'Рік роботи: керівник армійської програми FUZE готується до «більших» викликів у закупівлях',
+      sr: 'Через рік після запуску керівник армійської програми FUZE каже: найскладніше — не дати перспективним технологіям застрягти на етапі прототипу.',
+      link: 'https://breakingdefense.com/2026/10/one-year-in-armys-fuze-leader-eyes-bigger-acquisition-challenges/' },
+    { id: 'c4', src: 'breakingdefense', day: 1, fresh: true, ago: '22 год тому', date: '9 жовтня 2026 р., 22:45', author: 'Valerie Insinna', cats: ['missiles', 'industry'],
+      t: 'Lockheed unveils PAC-3 Edge, its next-gen Patriot interceptor',
+      s: 'Lockheed Martin unveiled PAC-3 Edge, a next-generation Patriot interceptor, and plans to invest hundreds of millions of dollars of its own money in the missile.',
+      tr: 'Lockheed представила PAC-3 Edge — перехоплювач Patriot нового покоління',
+      sr: 'Lockheed Martin показала PAC-3 Edge, перехоплювач Patriot нового покоління, і планує вкласти в ракету сотні мільйонів доларів власних коштів.',
+      link: 'https://breakingdefense.com/2026/10/lockheed-unveils-pac-3-edge-its-next-gen-patriot-interceptor/' },
+    { id: 'c5', src: 'breakingdefense', day: 1, fresh: true, ago: '23 год тому', date: '9 жовтня 2026 р., 22:19', author: 'Breaking Defense', cats: ['unmanned', 'ai'], sponsored: true,
+      t: 'Drones and autonomous warfare: ‘One-way attack’ and reshaping ISR',
+      s: 'Sponsored post: systems that can work independently while staying part of a unit are critical to multi-domain operations.',
+      tr: 'Дрони й автономна війна: дрони-камікадзе та нова розвідка',
+      sr: 'Спонсорський матеріал: системи, що діють самостійно, але залишаються частиною підрозділу, критично важливі для багатодоменних операцій.',
+      link: 'https://breakingdefense.com/2026/10/drones-and-autonomous-warfare-one-way-attack-and-reshaping-isr/' },
+    { id: 'c6', src: 'twz', day: 1, fresh: true, ago: '23 год тому', date: '9 жовтня 2026 р., 21:12', author: 'Joseph Trevithick', cats: ['missiles'],
+      t: 'First Look At Hypersonic Boost-Glide Vehicle Just Tested By South Korea',
+      s: 'South Korea released images of the first successful test of its domestically developed hypersonic boost-glide vehicle, including its impact with the water.',
+      tr: 'Перший погляд на гіперзвуковий планерний блок, який щойно випробувала Південна Корея',
+      sr: 'Південна Корея оприлюднила кадри першого успішного випробування власного гіперзвукового планерного блока, зокрема момент його падіння у воду.',
+      link: 'https://www.twz.com/land/first-look-at-hypersonic-boost-glide-vehicle-just-tested-by-south-korea' },
+    { id: 'c7', src: 'breakingdefense', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 21:02', author: 'Michael Marrow', cats: ['unmanned', 'missiles'],
+      t: 'Ideal Aerosmith debuts ‘Troublemaker’ for one-way attack',
+      s: 'Ideal Aerosmith unveiled the Group 3 Troublemaker one-way attack drone, aimed at a “sweet spot” in the strike market, with the US Navy as a sponsor.',
+      tr: 'Ideal Aerosmith представила ударний дрон-камікадзе Troublemaker',
+      sr: 'Ideal Aerosmith показала дрон-камікадзе Troublemaker групи 3, розрахований на «золоту середину» ринку ударних засобів; його підтримують ВМС США.',
+      link: 'https://breakingdefense.com/2026/10/ideal-aerosmith-debuts-troublemaker-for-one-way-attack/' },
+    { id: 'c8', src: 'twz', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 20:59', author: 'Thomas Newdick', cats: ['air', 'missiles'],
+      t: 'B-52 To Get Stealthy AGM-158C Long-Range Anti-Ship Missiles',
+      s: 'A Navy notice shows plans to contract Lockheed Martin to integrate the LRASM stealthy anti-ship missile onto the B-52. No schedule or quantity is given.',
+      tr: 'B-52 отримає малопомітні протикорабельні ракети великої дальності AGM-158C',
+      sr: 'Згідно з повідомленням ВМС, Lockheed Martin інтегрує малопомітну протикорабельну ракету LRASM у B-52. Терміни й кількість не вказано.',
+      link: 'https://www.twz.com/air/b-52-to-get-stealthy-agm-158c-long-range-anti-ship-missiles' },
+    { id: 'c9', src: 'defensenews', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 20:15', author: 'Nikki Wentling', cats: ['land', 'missiles'],
+      t: 'US Army activates new multi-domain task force to ‘deny, disrupt’ enemies in Indo-Pacific',
+      s: 'The Army activated the 4th Multi-Domain Task Force at Fort Carson, Colorado. It will focus on long-range precision fires in the Indo-Pacific and grow to 2,100 soldiers.',
+      tr: 'Армія США створила нову багатодоменну оперативну групу для Індо-Тихоокеанського регіону',
+      sr: 'У Форт-Карсоні (Колорадо) активовано 4-ту багатодоменну оперативну групу. Вона зосередиться на високоточних ударах великої дальності в Індо-Тихоокеанському регіоні й зросте до 2100 військових.',
+      link: 'https://www.defensenews.com/news/your-military/2026/10/09/us-army-activates-new-multi-domain-task-force-to-deny-disrupt-enemies-in-indo-pacific/' },
+    { id: 'c10', src: 'breakingdefense', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 20:13', author: 'Agnes Helou', cats: ['electronic', 'industry'],
+      t: 'Thales looks to export new C2 platform to Gulf nations, says executive',
+      s: 'Thales wants to export its new command-and-control platform, built on an open standard, to Gulf countries, citing an operational need there.',
+      tr: 'Thales планує експортувати нову платформу управління військами до країн Перської затоки',
+      sr: 'Thales хоче постачати свою нову платформу управління військами на відкритому стандарті до країн Перської затоки, де, за словами компанії, є операційна потреба.',
+      link: 'https://breakingdefense.com/2026/10/thales-looks-to-export-new-c2-platform-to-gulf-nations-says-executive/' },
+    { id: 'c11', src: 'breakingdefense', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 19:35', author: 'Carley Welch', cats: ['unmanned', 'land', 'missiles'],
+      t: 'GDLS exec: New loitering munitions platform to be delivered to Army by end of month',
+      s: 'General Dynamics Land Systems will deliver four PERCH 2.0 loitering munition prototypes to the Army’s 1st Brigade, 1st Cavalry Division by late October.',
+      tr: 'GDLS до кінця місяця передасть армії США нову платформу баражувальних боєприпасів',
+      sr: 'General Dynamics Land Systems до кінця жовтня передасть чотири прототипи баражувальних боєприпасів PERCH 2.0 до 1-ї бригади 1-ї кавалерійської дивізії.',
+      link: 'https://breakingdefense.com/2026/10/gdls-exec-new-loitering-munitions-platform-to-be-delivered-to-army-by-end-of-month/' },
+    { id: 'c12', src: 'breakingdefense', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 17:45', author: 'Jonas Olsson', cats: ['missiles'],
+      t: 'Swedish government launches first Patriot mission to Poland',
+      s: 'Sweden is sending its first Patriot air defense mission to Poland, a NATO-linked move that comes as a new government takes power in Stockholm.',
+      tr: 'Уряд Швеції вперше відправляє Patriot до Польщі',
+      sr: 'Швеція направляє до Польщі першу місію ППО Patriot у межах НАТО; рішення ухвалено в час зміни уряду в Стокгольмі.',
+      link: 'https://breakingdefense.com/2026/10/swedish-government-launches-first-patriot-mission-to-poland/' },
+    { id: 'c13', src: 'breakingdefense', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 17:09', author: 'Carley Welch', cats: ['land', 'industry'],
+      t: 'Hanwha sets sights on Army’s tracked howitzer program after victory in wheeled competition',
+      s: 'After winning the Army’s wheeled howitzer competition, Hanwha plans to offer its K9A1 or K9A2 tracked howitzers for the tracked program.',
+      tr: 'Після перемоги в конкурсі колісних гаубиць Hanwha націлилася на програму гусеничних',
+      sr: 'Вигравши армійський конкурс колісних гаубиць, Hanwha планує запропонувати свої гусеничні гаубиці K9A1 або K9A2 для наступної програми.',
+      link: 'https://breakingdefense.com/2026/10/hanwha-sets-sights-on-armys-tracked-howitzer-program-after-victory-in-wheeled-competition/' },
+    { id: 'c14', src: 'defensenews', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 13:11', author: 'Jaroslaw Adamowski', cats: ['unmanned', 'missiles'],
+      t: 'Estonia’s KrattWorks crafting Shahed-like dummy drone for target practice',
+      s: 'Estonian drone maker KrattWorks is developing a jet-powered aerial target that mimics Shahed-type drones for air defense training, due by the end of 2027.',
+      tr: 'Естонська KrattWorks створює дрон-мішень, схожий на «Шахед»',
+      sr: 'Естонський виробник дронів KrattWorks розробляє реактивну повітряну мішень, що імітує дрони типу «Шахед», для тренування ППО; показати її планують до кінця 2027 року.',
+      link: 'https://www.defensenews.com/global/europe/2026/10/09/estonias-krattworks-crafting-shahed-like-dummy-drone-for-target-practice/' },
+    { id: 'c15', src: 'navalnews', day: 1, ago: '1 день тому', date: '9 жовтня 2026 р., 09:57', author: 'Tayfun Ozberk', cats: ['naval', 'unmanned'],
+      t: 'Exail Introduces Neptis Uncrewed Maritime Surveillance System',
+      s: 'Exail unveiled Neptis, which pairs Oryx uncrewed surface vessels with sensors and command software for surveillance, anti-submarine warfare and subsea infrastructure protection.',
+      tr: 'Exail представила безекіпажну систему морського спостереження Neptis',
+      sr: 'Exail показала систему Neptis: безекіпажні катери Oryx із сенсорами та програмою керування для спостереження, протичовнової боротьби й захисту підводної інфраструктури.',
+      link: 'https://www.navalnews.com/event-news/euronaval-2026/2026/10/exail-introduces-neptis-uncrewed-maritime-surveillance-system/' },
+    { id: 'b1', src: 'breakingdefense', day: 2, ago: '2 дні тому', date: '8 жовтня 2026 р., 18:26', author: 'Diana Stancy', cats: ['unmanned', 'ai', 'naval', 'industry'],
+      t: 'Navy, Shield AI pour big bucks into X-BAT drone development',
+      s: 'Shield AI and the US Navy are investing a combined $400 million in development of the X-BAT drone.',
+      tr: 'ВМС США і Shield AI вкладають великі кошти в розробку дрона X-BAT',
+      sr: 'Shield AI і ВМС США разом інвестують $400 млн у розробку безпілотника X-BAT.',
+      link: 'https://breakingdefense.com/2026/10/navy-shield-ai-pour-big-bucks-into-x-bat-drone-development/' },
+    { id: 'c16', src: 'defensenews', day: 2, ago: '2 дні тому', date: '8 жовтня 2026 р., 22:23', author: 'Hope Hodge Seck', cats: ['land'],
+      t: 'Sig Sauer develops 25-round mag for Army’s next-gen rifle',
+      s: 'Sig Sauer is developing a 25-round magazine to replace the 20-round one shipped with the M7, which soldiers criticized for limiting ammunition.',
+      tr: 'Sig Sauer розробляє магазин на 25 набоїв для армійської гвинтівки нового покоління',
+      sr: 'Sig Sauer створює магазин на 25 набоїв замість 20-зарядного, який постачають із M7 і який солдати критикували за малий запас набоїв.',
+      link: 'https://www.defensenews.com/news/your-army/2026/10/08/sig-sauer-develops-25-round-mag-for-armys-next-gen-rifle/' },
+    { id: 'c17', src: 'navalnews', day: 2, ago: '2 дні тому', date: '8 жовтня 2026 р., 19:33', author: 'Naval News Staff', cats: ['naval', 'industry'],
+      t: 'German Budget Committee approves procurement of four additional MEKO A-200 DEU-class frigates',
+      s: 'The Bundestag budget committee approved four more MEKO A-200 frigates from TKMS, bringing the total to eight, mainly for anti-submarine warfare.',
+      tr: 'Бюджетний комітет Бундестагу схвалив закупівлю ще чотирьох фрегатів MEKO A-200',
+      sr: 'Бюджетний комітет Бундестагу схвалив ще чотири фрегати MEKO A-200 від TKMS — загалом їх буде вісім, переважно для протичовнової боротьби.',
+      link: 'https://www.navalnews.com/naval-news/2026/10/german-budget-committee-approves-procurement-of-four-additional-meko-a-200-deu-class-frigates/' },
+    { id: 'b2', src: 'breakingdefense', day: 2, ago: '2 дні тому', date: '8 жовтня 2026 р., 17:30', author: 'Diana Stancy', cats: ['naval', 'ai', 'industry'],
+      t: 'Gecko Robotics, Anduril team up for new Baltimore County shipyard',
+      s: 'Gecko Robotics will use its inspection technology and AI-powered software for non-destructive testing of submarine components at Anduril’s new Arsenal-2 shipyard.',
+      tr: 'Gecko Robotics і Anduril об’єднуються заради нової верфі в окрузі Балтимор',
+      sr: 'Gecko Robotics використовуватиме свої технології інспекції та програмне забезпечення на основі ШІ для неруйнівного контролю вузлів підводних човнів на новій верфі Anduril Arsenal-2.',
+      link: 'https://breakingdefense.com/2026/10/gecko-robotics-anduril-team-up-for-new-baltimore-county-shipyard/' },
+    { id: 'c18', src: 'navalnews', day: 2, ago: '2 дні тому', date: '8 жовтня 2026 р., 09:38', author: 'Kosuke Takahashi', cats: ['naval'],
+      t: 'Japan Launches Seventh Taigei-Class Submarine as Nuclear Propulsion Debate Grows',
+      s: 'MHI launched Shogei, the seventh Taigei-class diesel-electric submarine, due for delivery in 2028, as Japan weighs nuclear propulsion for future boats.',
+      tr: 'Японія спустила на воду сьомий підводний човен типу Taigei на тлі дискусії про атомні силові установки',
+      sr: 'MHI спустила на воду Shogei — сьомий дизель-електричний підводний човен типу Taigei, який передадуть флоту 2028 року; Японія тим часом обговорює атомні установки для майбутніх човнів.',
+      link: 'https://www.navalnews.com/naval-news/2026/10/japan-launches-seventh-taigei-class-submarine-as-nuclear-propulsion-debate-grows/' }
+  ];
+  // === NEWS DATA END ===
+  var BY_ID = {};
+  ARTICLES.forEach(function (a) { BY_ID[a.id] = a; });
+  var DAY_TITLES = NEWS_AS_OF.dayTitles;
+
+  var state = {
+    tab: 'today', cat: null, query: '', open: null, translated: false,
+    saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}
+  };
+
+  try {
+    var stored = JSON.parse(localStorage.getItem('deftech-demo') || '{}');
+    if (stored.saved) stored.saved = stored.saved.filter(function (id) { return BY_ID[id]; });
+    if (stored.read) stored.read = stored.read.filter(function (id) { return BY_ID[id]; });
+    ['saved', 'read', 'digest', 'time', 'hideSponsored', 'off'].forEach(function (k) {
+      if (stored[k] !== undefined) state[k] = stored[k];
+    });
+  } catch (e) { /* сховище недоступне — працюємо без нього */ }
+
+  function save() {
+    try {
+      localStorage.setItem('deftech-demo', JSON.stringify({
+        saved: state.saved, read: state.read, digest: state.digest, time: state.time,
+        hideSponsored: state.hideSponsored, off: state.off
+      }));
+    } catch (e) { /* ignore */ }
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function plural(n, one, few, many) {
+    var n10 = n % 10, n100 = n % 100;
+    if (n10 === 1 && n100 !== 11) return one;
+    if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return few;
+    return many;
+  }
+  function $(id) { return document.getElementById(id); }
+
+  function visible() {
+    return ARTICLES.filter(function (a) {
+      return !state.off[a.src] && !(state.hideSponsored && a.sponsored);
+    });
+  }
+  function todays() { return visible().filter(function (a) { return a.fresh; }); }
+
+  var PHOTO = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>';
+
+  function tagHTML(key) {
+    return '<span class="tag" style="--cc: var(--c-' + key + ')">' + CATS[key] + '</span>';
+  }
+
+  function rowHTML(a) {
+    var isRead = state.read.indexOf(a.id) >= 0;
+    var isSaved = state.saved.indexOf(a.id) >= 0;
+    return '<button class="row' + (isRead ? ' read' : '') + '" data-open="' + a.id + '" style="--cc: var(--c-' + a.cats[0] + ')">' +
+      '<span class="row-body">' +
+        '<span class="row-meta"><b>' + esc(SOURCE_NAME[a.src]) + '</b> · ' + esc(a.ago) + (isSaved ? ' · у закладках' : '') + '</span>' +
+        '<span class="row-title">' + esc(a.t) + '</span>' +
+        (a.sponsored ? '<span class="sponsor">Спонсорський матеріал</span>' : '') +
+        '<span class="tags">' + a.cats.slice(0, 2).map(tagHTML).join('') + '</span>' +
+      '</span>' +
+      '<span class="thumb" aria-hidden="true">' + PHOTO + '</span>' +
+    '</button>';
+  }
+
+  function renderToday() {
+    $('asof-badge').textContent = NEWS_AS_OF.badge;
+    $('asof-date').textContent = NEWS_AS_OF.date;
+    $('asof-updated').textContent = NEWS_AS_OF.updated;
+    var list = todays();
+    var n = list.length;
+    var srcCount = Object.keys(list.reduce(function (m, a) { m[a.src] = 1; return m; }, {})).length;
+    $('today-stat').textContent = 'За останні 24 години: ' + n + ' ' + plural(n, 'новина', 'новини', 'новин') +
+      ' з ' + srcCount + ' ' + plural(srcCount, 'джерела', 'джерел', 'джерел');
+
+    if (state.cat && !list.some(function (a) { return a.cats.indexOf(state.cat) >= 0; })) state.cat = null;
+
+    var chips = '<button class="chip" data-cat="" aria-pressed="' + (state.cat === null) + '">Усі <span class="n">' + n + '</span></button>';
+    ORDER.forEach(function (k) {
+      var c = list.filter(function (a) { return a.cats.indexOf(k) >= 0; }).length;
+      if (!c) return;
+      chips += '<button class="chip" data-cat="' + k + '" style="--cc: var(--c-' + k + ')" aria-pressed="' + (state.cat === k) + '">' +
+        CATS[k] + ' <span class="n">' + c + '</span></button>';
+    });
+    $('today-chips').innerHTML = chips;
+
+    var rows = list.filter(function (a) { return !state.cat || a.cats.indexOf(state.cat) >= 0; });
+    $('today-list').innerHTML = rows.length
+      ? rows.map(rowHTML).join('')
+      : '<div class="empty"><strong>Поки немає свіжих новин</strong><span>Увімкніть джерела в Налаштуваннях.</span></div>';
+  }
+
+  function renderFeed() {
+    var q = state.query.trim().toLowerCase();
+    var list = visible().filter(function (a) {
+      return !q || a.t.toLowerCase().indexOf(q) >= 0 || a.s.toLowerCase().indexOf(q) >= 0 ||
+        SOURCE_NAME[a.src].toLowerCase().indexOf(q) >= 0;
+    });
+    var html = '';
+    DAY_TITLES.forEach(function (title, d) {
+      var rows = list.filter(function (a) { return a.day === d; });
+      if (!rows.length) return;
+      html += '<div class="section-h">' + title + '</div><div class="list">' + rows.map(rowHTML).join('') + '</div>';
+    });
+    $('feed-list').innerHTML = html ||
+      '<div class="empty"><strong>Нічого не знайдено</strong><span>Новини англійською — спробуйте, наприклад, «drone» або «missile».</span></div>';
+  }
+
+  function renderSaved() {
+    var list = state.saved.map(function (id) { return BY_ID[id]; }).filter(Boolean);
+    $('saved-list').innerHTML = list.length
+      ? '<div class="list">' + list.map(rowHTML).join('') + '</div>'
+      : '<div class="empty"><strong>Закладок поки немає</strong><span>Відкрийте новину й натисніть значок закладки вгорі праворуч — вона з’явиться тут.</span></div>';
+  }
+
+  function switchHTML(attr, on, label) {
+    return '<button class="switch" role="switch" ' + attr + ' aria-checked="' + on + '" aria-label="' + esc(label) + '"></button>';
+  }
+
+  function renderSettings() {
+    var list = todays();
+    var top = list[0];
+    var preview = top
+      ? list.length + ' ' + plural(list.length, 'новина', 'новини', 'новин') + ' за добу. Головне: ' + top.t
+      : 'Свіжі новини зі світу оборонних технологій уже чекають на вас.';
+
+    var html = '<div class="group-h">Сповіщення</div><div class="group">' +
+      '<div class="cell"><span class="cell-label">Щоденна добірка</span>' + switchHTML('data-toggle="digest"', state.digest, 'Щоденна добірка') + '</div>' +
+      (state.digest ? '<div class="cell"><label class="cell-label" for="digest-time">Час</label><input class="time" id="digest-time" type="time" value="' + esc(state.time) + '"></div>' : '') +
+      '</div>';
+    if (state.digest) {
+      html += '<div class="notif" aria-label="Так виглядатиме сповіщення">' +
+        '<div class="notif-top"><span class="notif-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12V3"/></svg></span>DEFTECH DAILY<span class="when">' + esc(state.time) + '</span></div>' +
+        '<b>Оборонні технології: добірка дня</b><p>' + esc(preview) + '</p></div>';
+    }
+    html += '<div class="group-f">Раз на день надходитиме таке сповіщення з кількістю свіжих новин і головним заголовком.</div>';
+
+    html += '<div class="group-h">Джерела</div><div class="group">' +
+      SOURCES.map(function (s) {
+        return '<div class="cell"><span class="cell-label">' + esc(s[1]) + '<small>' + esc(s[2]) + '</small></span>' +
+          switchHTML('data-source="' + s[0] + '"', !state.off[s[0]], s[1]) + '</div>';
+      }).join('') + '</div>' +
+      '<div class="group-f">У демо є новини Defense News, Breaking Defense, Naval News і The War Zone. Вимкніть будь-яке з них — воно зникне з усіх розділів.</div>';
+
+    html += '<div class="group-h">Фільтри</div><div class="group">' +
+      '<div class="cell"><span class="cell-label">Приховувати спонсорські матеріали</span>' + switchHTML('data-toggle="hideSponsored"', state.hideSponsored, 'Приховувати спонсорські матеріали') + '</div></div>';
+
+    html += '<div class="group-h">Про застосунок</div><div class="group">' +
+      '<div class="cell"><span class="cell-label"><small>DefTech Daily збирає заголовки й короткі анонси з відкритих RSS-стрічок профільних видань. Повний текст відкривається на сайті джерела. Це демо інтерфейсу: у застосунку новини завантажуються зі стрічок автоматично.</small></span></div>' +
+      '<div class="cell"><span class="cell-label">Версія</span><span style="color: var(--fg-2)">1.0.0 (демо)</span></div></div>' +
+      '<div style="height: 24px"></div>';
+
+    $('settings-body').innerHTML = html;
+  }
+
+  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', saved: 'Закладки', settings: 'Налаштування' };
+
+  function renderDetail() {
+    var box = $('detail');
+    var a = state.open && BY_ID[state.open];
+    if (!a) { box.hidden = true; box.innerHTML = ''; return; }
+    var isSaved = state.saved.indexOf(a.id) >= 0;
+    box.innerHTML =
+      '<div class="navbar">' +
+        '<button class="icon-btn" data-back><svg width="13" height="22" viewBox="0 0 13 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2L2 11l9 9"/></svg>' + TAB_TITLES[state.tab] + '</button>' +
+        '<button class="icon-btn" data-save aria-pressed="' + isSaved + '" aria-label="' + (isSaved ? 'Прибрати із закладок' : 'Додати в закладки') + '">' +
+          '<svg width="22" height="22" viewBox="0 0 24 24" fill="' + (isSaved ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>' +
+        '</button>' +
+      '</div>' +
+      '<div class="detail-body">' +
+        '<div class="hero" style="--cc: var(--c-' + a.cats[0] + ')">' + PHOTO.replace(/26/g, '40') + '<span>Тут буде фото зі стрічки видання</span></div>' +
+        '<div class="tags">' + a.cats.map(tagHTML).join('') + '</div>' +
+        '<h2>' + esc(a.t) + '</h2>' +
+        '<div class="byline"><b>' + esc(SOURCE_NAME[a.src]) + '</b>' + (a.author ? '<span>' + esc(a.author) + '</span>' : '') + '<span>' + esc(a.date) + '</span></div>' +
+        (a.sponsored ? '<span class="sponsor">Спонсорський матеріал</span>' : '') +
+        (state.translated
+          ? '<div class="tr"><small>Переклад українською</small><h3>' + esc(a.tr) + '</h3><p class="summary">' + esc(a.sr) + '</p></div>'
+          : '<p class="summary">' + esc(a.s) + '</p>') +
+        '<div class="actions">' +
+          '<a class="btn primary" href="' + esc(a.link) + '" target="_blank" rel="noopener">' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>' +
+            'Читати на ' + esc(SOURCE_NAME[a.src]) + '</a>' +
+          '<button class="btn secondary" data-translate aria-pressed="' + state.translated + '">' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c1 3 3 5.5 6 7M11 5c-1 3.5-3.5 6.5-7 8"/><path d="M13 21l4-9 4 9M14.5 18h5"/></svg>' +
+            (state.translated ? 'Показати оригінал' : 'Перекласти анонс') + '</button>' +
+        '</div>' +
+        '<p class="foot">Матеріал належить виданню ' + esc(SOURCE_NAME[a.src]) + '. У застосунку показано лише заголовок і короткий анонс із відкритої RSS-стрічки.</p>' +
+      '</div>';
+    box.hidden = false;
+  }
+
+  function renderAll() {
+    renderToday(); renderFeed(); renderSaved(); renderSettings(); renderDetail();
+  }
+
+  function setTab(tab) {
+    state.tab = tab; state.open = null;
+    ['today', 'feed', 'saved', 'settings'].forEach(function (t) {
+      $('screen-' + t).hidden = t !== tab;
+    });
+    document.querySelectorAll('.tab').forEach(function (b) {
+      if (b.dataset.tab === tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
+    renderAll();
+  }
+
+  function openArticle(id) {
+    state.open = id; state.translated = false;
+    if (state.read.indexOf(id) < 0) { state.read.push(id); save(); }
+    renderDetail();
+    var box = $('detail');
+    box.classList.add('entering');
+    box.getBoundingClientRect();
+    box.classList.remove('entering');
+    box.querySelector('[data-back]').focus({ preventScroll: true });
+  }
+
+  document.addEventListener('click', function (e) {
+    var el;
+    if ((el = e.target.closest('.tab'))) { setTab(el.dataset.tab); return; }
+    if ((el = e.target.closest('[data-open]'))) { openArticle(el.dataset.open); return; }
+    if ((el = e.target.closest('[data-cat]'))) {
+      var k = el.dataset.cat || null;
+      state.cat = state.cat === k ? null : k;
+      renderToday(); return;
+    }
+    if (e.target.closest('[data-back]')) { state.open = null; renderAll(); return; }
+    if (e.target.closest('[data-save]')) {
+      var i = state.saved.indexOf(state.open);
+      if (i >= 0) state.saved.splice(i, 1); else state.saved.unshift(state.open);
+      save(); renderAll(); return;
+    }
+    if (e.target.closest('[data-translate]')) { state.translated = !state.translated; renderDetail(); return; }
+    if ((el = e.target.closest('[data-toggle]'))) {
+      state[el.dataset.toggle] = !state[el.dataset.toggle];
+      save(); renderAll(); return;
+    }
+    if ((el = e.target.closest('[data-source]'))) {
+      var id = el.dataset.source;
+      if (state.off[id]) delete state.off[id]; else state.off[id] = true;
+      save(); renderAll(); return;
+    }
+  });
+
+  document.addEventListener('change', function (e) {
+    if (e.target.id === 'digest-time' && e.target.value) {
+      state.time = e.target.value; save(); renderSettings();
+    }
+  });
+
+  $('feed-q').addEventListener('input', function (e) {
+    state.query = e.target.value; renderFeed();
+  });
+
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
