@@ -97,7 +97,14 @@ button { cursor: pointer; }
 .row.read .row-title { color: var(--fg-2); }
 .tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .tag { --cc: var(--accent); font-size: 11px; line-height: 14px; font-weight: 600; padding: 3px 8px; border-radius: 10px; color: var(--cc); background: color-mix(in srgb, var(--cc) 12%, var(--bg)); }
-.thumb { flex-shrink: 0; width: 76px; height: 76px; border-radius: 12px; display: grid; place-items: center; color: var(--cc); background: color-mix(in srgb, var(--cc) 13%, var(--bg)); }
+.thumb { position: relative; overflow: hidden; flex-shrink: 0; width: 76px; height: 76px; border-radius: 12px; display: grid; place-items: center; color: var(--cc); }
+/* Обкладинка-заглушка: колір рубрики, легкий діагональний візерунок, іконка теми */
+.cover { background:
+  repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--cc) 7%, transparent) 10px 11px),
+  linear-gradient(135deg, color-mix(in srgb, var(--cc) 24%, var(--bg)), color-mix(in srgb, var(--cc) 9%, var(--bg))); }
+.ph { position: absolute; inset: 0; }
+.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.credit { position: absolute; left: 8px; bottom: 8px; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 500; color: #FFFFFF; background: rgba(0,0,0,.55); }
 .sponsor { font-size: 11px; font-weight: 600; color: var(--c-unmanned); }
 
 .section-h { padding: 16px 16px 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: var(--fg-2); }
@@ -133,7 +140,9 @@ button { cursor: pointer; }
 .navbar { display: flex; align-items: center; justify-content: space-between; padding: 4px 4px 0; border-bottom: 1px solid var(--sep); background: var(--bar); }
 .icon-btn { min-width: 44px; height: 44px; border: 0; background: transparent; color: var(--accent); display: flex; align-items: center; justify-content: center; gap: 2px; padding: 0 8px; font-size: 17px; }
 .detail-body { flex: 1; min-height: 0; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
-.hero { --cc: var(--accent); height: 200px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--cc); background: color-mix(in srgb, var(--cc) 12%, var(--bg)); font-size: 13px; font-weight: 500; }
+.hero { --cc: var(--accent); position: relative; overflow: hidden; flex-shrink: 0; height: 210px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--cc); text-align: center; padding: 0 16px; }
+.hero-cat { font-size: 17px; font-weight: 700; }
+.hero-src { font-size: 13px; color: var(--fg-2); }
 .detail h2 { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; text-wrap: balance; }
 .byline { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--fg-2); }
 .byline b { color: var(--fg); font-weight: 600; }
@@ -277,7 +286,8 @@ button { cursor: pointer; }
       s: 'Anduril’s new family of surface-to-air interceptors shares a common architecture, so a single production line can build variants tailored to different threats.',
       tr: 'Anduril представила Steelfin — сімейство модульних зенітних ракет',
       sr: 'Нові зенітні перехоплювачі Anduril мають спільну архітектуру, тож одна виробнича лінія зможе випускати варіанти під різні загрози.',
-      link: 'https://www.twz.com/land/anduril-unveils-steelfin-family-of-modular-surface-to-air-missiles' },
+      link: 'https://www.twz.com/land/anduril-unveils-steelfin-family-of-modular-surface-to-air-missiles',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85' },
     { id: 'n5', src: 'ukdj', day: 1, fresh: true, ago: '20 год тому', date: '11 жовтня 2026 р., 20:00', author: 'George Allison', cats: ['land', 'industry'],
       t: 'Light Gun spares hit by obsolescence and supply issues',
       s: 'A parliamentary answer says the British Army finds spares for the L118 Light Gun strained by obsolescence and supply-chain limits, without giving figures or a timeline.',
@@ -307,109 +317,127 @@ button { cursor: pointer; }
       s: 'The Navy issued a sources-sought notice asking industry about manufacturing capacity for the Virginia-class successor, pointing to Electric Boat and Newport News Shipbuilding as the likely builders.',
       tr: 'ВМС США збирають інформацію щодо підводного човна нового покоління SSN(X)',
       sr: 'ВМС опублікували запит до промисловості про виробничі потужності для наступника класу Virginia; найімовірніші виконавці — Electric Boat і Newport News Shipbuilding.',
-      link: 'https://www.navalnews.com/naval-news/2026/10/u-s-navy-seeks-information-on-ssnx-next-gen-submarine/' },
+      link: 'https://www.navalnews.com/naval-news/2026/10/u-s-navy-seeks-information-on-ssnx-next-gen-submarine/',
+      img: 'https://www.navalnews.com/wp-content/uploads/2021/05/SSNX-next-generation-US-Navy-Submarine-1024x576.jpg' },
     { id: 'n10', src: 'defensenews', day: 1, ago: '1 день тому', date: '11 жовтня 2026 р., 01:47', author: 'Riley Ceder', cats: ['electronic', 'land', 'industry'],
       t: 'US Army, Kaizen Laboratories to establish common software platform for classified material',
       s: 'The Army awarded Kaizen Laboratories $43 million to build application software for highly sensitive material, under a $49 million enterprise IDIQ contract.',
       tr: 'Армія США та Kaizen Laboratories створять спільну програмну платформу для секретних матеріалів',
       sr: 'Армія виділила Kaizen Laboratories $43 млн на розробку прикладного ПЗ для роботи з особливо чутливими даними в межах рамкового контракту на $49 млн.',
-      link: 'https://www.defensenews.com/industry/techwatch/2026/10/10/us-army-kaizen-laboratories-to-establish-common-software-platform-for-classified-material/' },
+      link: 'https://www.defensenews.com/industry/techwatch/2026/10/10/us-army-kaizen-laboratories-to-establish-common-software-platform-for-classified-material/',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/GTP3R4RA6RBDVL4MCFWY3Z2NJ4.jpg' },
     { id: 'n11', src: 'defenceexpress', day: 1, ago: '1 день тому', date: '11 жовтня 2026 р.', author: '', cats: ['unmanned', 'electronic'],
       t: 'Ukrainian FP-1 Drones Strike Yet Another Yandex Data Center in russia',
       s: 'Ukrainian FP-1 drones reportedly hit a Yandex data center in Vladimir, knocking out the last of the company’s three supercomputers, according to manufacturer Fire Point.',
       tr: 'Українські дрони FP-1 уразили ще один дата-центр «Яндекса» в росії',
       sr: 'За даними виробника Fire Point, дрони FP-1 влучили в дата-центр «Яндекса» у Владимирі й вивели з ладу останній із трьох суперкомп’ютерів компанії.',
-      link: 'https://en.defence-ua.com/news/ukrainian_fp_1_drones_strike_yet_another_yandex_data_center_in_russia-20067.html' },
+      link: 'https://en.defence-ua.com/news/ukrainian_fp_1_drones_strike_yet_another_yandex_data_center_in_russia-20067.html',
+      img: 'https://en.defence-ua.com/media/illustration/articles/f386acb7b19cba2a.jpg' },
     { id: 'n12', src: 'defenceexpress', day: 1, ago: '1 день тому', date: '11 жовтня 2026 р.', author: '', cats: ['land', 'industry'],
       t: 'Singapore Fields Israeli SIGMA 155 SPH and Mystery Precision Land Shooter, Preparing Even for Tank-Backed Amphibious Assault on 746 sq km',
       s: 'The Singapore Army has fielded Elbit’s SIGMA 155 wheeled howitzer, replacing 54 tracked SSPH-1 Primus guns, alongside a new Precision Land Shooter strike system.',
       tr: 'Сингапур отримав ізраїльські САУ SIGMA 155 і загадковий Precision Land Shooter',
       sr: 'Армія Сингапуру прийняла колісні гаубиці SIGMA 155 від Elbit на заміну 54 гусеничним SSPH-1 Primus, а також нову ударну систему Precision Land Shooter.',
-      link: 'https://en.defence-ua.com/weapon_and_tech/singapore_fields_israeli_sigma_155_sph_and_mystery_precision_land_shooter_preparing_even_for_tank_backed_amphibious_assault_on_746_sq_km-20064.html' },
+      link: 'https://en.defence-ua.com/weapon_and_tech/singapore_fields_israeli_sigma_155_sph_and_mystery_precision_land_shooter_preparing_even_for_tank_backed_amphibious_assault_on_746_sq_km-20064.html',
+      img: 'https://en.defence-ua.com/media/illustration/articles/cfa6acb708df4121.jpg' },
     { id: 'n13', src: 'defenceexpress', day: 1, ago: '1 день тому', date: '11 жовтня 2026 р.', author: '', cats: ['land', 'unmanned'],
       t: 'russia Develops Turret Equipped with Arena APS to Protect Against Ukrainian Drones, Blurring the Line Between T-90M and T-80BVM2 Tanks',
       s: 'A Rostec subsidiary has developed a common turret module for the T-80BVM2 and T-90M that integrates the Arena active protection system against Ukrainian drones.',
       tr: 'росія розробила башту з КАЗ «Арена» для захисту від українських дронів',
       sr: 'Дочірня структура «Ростеху» створила уніфікований баштовий модуль для T-80БВМ2 і T-90М із комплексом активного захисту «Арена» проти українських дронів.',
-      link: 'https://en.defence-ua.com/news/russia_develops_turret_equipped_with_arena_aps_to_protect_against_ukrainian_drones_blurring_the_line_between_t_90m_and_t_80bvm2_tank-20061.html' },
+      link: 'https://en.defence-ua.com/news/russia_develops_turret_equipped_with_arena_aps_to_protect_against_ukrainian_drones_blurring_the_line_between_t_90m_and_t_80bvm2_tank-20061.html',
+      img: 'https://en.defence-ua.com/media/illustration/articles/a066acb48e220bbc.jpg' },
     { id: 'n14', src: 'defenceexpress', day: 1, ago: '1 день тому', date: '11 жовтня 2026 р.', author: 'Nikita Pohorilyi', cats: ['unmanned', 'air'],
       t: 'Why Does russia Need DF-3 Gadyuka Jet-Powered Interceptor Drone With 800 km Range, How Could It Actually Be Used?',
       s: 'Russian firm DOFA-Tek has announced jet-powered interceptor drones, including the DF-3 Gadyuka concept with an 800 km range; the article asks what it would really be used for.',
       tr: 'Навіщо росії реактивний дрон-перехоплювач DF-3 «Гадюка» з дальністю 800 км',
       sr: 'Російська DOFA-Tek анонсувала реактивні дрони-перехоплювачі, зокрема концепт DF-3 «Гадюка» з дальністю 800 км; автори розбираються, для чого його насправді можуть застосовувати.',
-      link: 'https://en.defence-ua.com/weapon_and_tech/why_does_russia_need_df_3_viper_jet_powered_interceptor_drone_with_800_km_range_how_could_it_actually_be_used-20058.html' },
+      link: 'https://en.defence-ua.com/weapon_and_tech/why_does_russia_need_df_3_viper_jet_powered_interceptor_drone_with_800_km_range_how_could_it_actually_be_used-20058.html',
+      img: 'https://en.defence-ua.com/media/illustration/articles/75b6aca5d28c0231.jpg' },
     { id: 'n15', src: 'defensenews', day: 2, ago: '2 дні тому', date: '10 жовтня 2026 р., 16:18', author: 'Reuters', cats: ['missiles', 'industry'],
       t: 'Lockheed Martin unveils PAC-3 Edge interceptor designed to counter hypersonic threats',
       s: 'Lockheed Martin introduced the PAC-3 Edge, built to defeat hypersonic and advanced missiles, with a new seeker, upgraded flight controls and a Northrop Grumman rocket motor.',
       tr: 'Lockheed Martin представила перехоплювач PAC-3 Edge для протидії гіперзвуковим загрозам',
       sr: 'PAC-3 Edge створено для ураження гіперзвукових і новітніх ракет: він отримав нову головку самонаведення, оновлене керування польотом і ракетний двигун Northrop Grumman.',
-      link: 'https://www.defensenews.com/industry/techwatch/2026/10/10/lockheed-martin-unveils-pac-3-edge-interceptor-designed-to-counter-hypersonic-threats/' },
+      link: 'https://www.defensenews.com/industry/techwatch/2026/10/10/lockheed-martin-unveils-pac-3-edge-interceptor-designed-to-counter-hypersonic-threats/',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/D7DKDVVDJJCZLMN5N3NHFODBII.jpg' },
     { id: 'n16', src: 'defensenews', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 23:17', author: 'Zita Fletcher', cats: ['missiles', 'naval', 'industry'],
       t: 'Pentagon, Raytheon sign $6.3B deal to replenish US missile interceptor supply',
       s: 'The Pentagon signed a five-year contract with Raytheon for continued production of SM-3 Block IB interceptors to restock inventories used in combat.',
       tr: 'Пентагон і Raytheon уклали угоду на $6,3 млрд, щоб поповнити запаси ракет-перехоплювачів',
       sr: 'Пентагон підписав із Raytheon п’ятирічний контракт на подальше виробництво перехоплювачів SM-3 Block IB, щоб відновити запаси, витрачені в боях.',
-      link: 'https://www.defensenews.com/missile-defense/2026/10/09/pentagon-raytheon-sign-63b-deal-to-replenish-us-missile-interceptor-supply/' },
+      link: 'https://www.defensenews.com/missile-defense/2026/10/09/pentagon-raytheon-sign-63b-deal-to-replenish-us-missile-interceptor-supply/',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/GHYPRGNK2BG43N4WT6CGFTLIFE.jpg' },
     { id: 'n17', src: 'breakingdefense', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 23:10', author: 'Diana Stancy', cats: ['unmanned', 'naval', 'industry'],
       t: 'Coast Guard places $248 million order for first MQ-9B drones',
       s: 'The unarmed drones are meant to give Coast Guard crews a longer-range view of the maritime domain, a senior official said.',
       tr: 'Берегова охорона США замовила перші дрони MQ-9B на $248 млн',
       sr: 'За словами високопосадовця, неозброєні дрони дадуть екіпажам Берегової охорони змогу бачити морську обстановку на значно більшій відстані.',
-      link: 'https://breakingdefense.com/2026/10/coast-guard-places-248-million-order-for-first-mq-9b-drones/' },
+      link: 'https://breakingdefense.com/2026/10/coast-guard-places-248-million-order-for-first-mq-9b-drones/',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/10/261009-G-M0101-3001-scaled-e1791574788736-1024x577.jpeg' },
     { id: 'n18', src: 'breakingdefense', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 22:19', author: 'Breaking Defense', cats: ['unmanned', 'ai'], sponsored: true,
       t: 'Drones and autonomous warfare: ‘One-way attack’ and reshaping ISR',
       s: 'A sponsored piece argues that autonomous systems able to act independently while staying part of a unit are essential to multi-domain operations.',
       tr: 'Дрони й автономна війна: удари «в один бік» і нова розвідка',
       sr: 'Спонсорський матеріал доводить, що автономні системи, здатні діяти самостійно, залишаючись частиною підрозділу, — ключ до багатодоменних операцій.',
-      link: 'https://breakingdefense.com/2026/10/drones-and-autonomous-warfare-one-way-attack-and-reshaping-isr/' },
+      link: 'https://breakingdefense.com/2026/10/drones-and-autonomous-warfare-one-way-attack-and-reshaping-isr/',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/10/AEVEX-1-rzd-1024x657.jpg' },
     { id: 'n19', src: 'twz', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 21:12', author: 'Joseph Trevithick', cats: ['missiles', 'land'],
       t: 'First Look At Hypersonic Boost-Glide Vehicle Just Tested By South Korea',
       s: 'South Korea released images of the first successful test of its domestically built hypersonic boost-glide vehicle, which stayed intact all the way to impact.',
       tr: 'Перші кадри гіперзвукового планувального блока, який щойно випробувала Південна Корея',
       sr: 'Південна Корея оприлюднила знімки першого успішного випробування власного гіперзвукового планувального блока, що зберіг цілісність аж до влучання.',
-      link: 'https://www.twz.com/land/first-look-at-hypersonic-boost-glide-vehicle-just-tested-by-south-korea' },
+      link: 'https://www.twz.com/land/first-look-at-hypersonic-boost-glide-vehicle-just-tested-by-south-korea',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/south-korean-hypersonic-boost-glide-vehicle-tested.jpg?quality=85' },
     { id: 'n20', src: 'breakingdefense', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 21:02', author: 'Michael Marrow', cats: ['unmanned', 'missiles', 'industry'],
       t: 'Ideal Aerosmith debuts ‘Troublemaker’ for one-way attack',
       s: 'The company is targeting a “sweet spot” in the strike market with the Group 3 Troublemaker and says it has a sponsor in the US Navy.',
       tr: 'Ideal Aerosmith представила ударний дрон Troublemaker',
       sr: 'Компанія цілить у «золоту середину» ринку ударних засобів із дроном групи 3 Troublemaker і каже, що має покровителя у ВМС США.',
-      link: 'https://breakingdefense.com/2026/10/ideal-aerosmith-debuts-troublemaker-for-one-way-attack/' },
+      link: 'https://breakingdefense.com/2026/10/ideal-aerosmith-debuts-troublemaker-for-one-way-attack/',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/10/TM-with-sky-1-1024x493.png' },
     { id: 'n21', src: 'twz', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 20:59', author: 'Thomas Newdick', cats: ['air', 'missiles', 'naval'],
       t: 'B-52 To Get Stealthy AGM-158C Long-Range Anti-Ship Missiles',
       s: 'The Navy plans a sole-source contract with Lockheed Martin to integrate the LRASM anti-ship missile onto the B-52 bomber.',
       tr: 'B-52 отримає малопомітні далекобійні протикорабельні ракети AGM-158C',
       sr: 'ВМС планують без конкурсу доручити Lockheed Martin інтеграцію протикорабельної ракети LRASM на бомбардувальник B-52.',
-      link: 'https://www.twz.com/air/b-52-to-get-stealthy-agm-158c-long-range-anti-ship-missiles' },
+      link: 'https://www.twz.com/air/b-52-to-get-stealthy-agm-158c-long-range-anti-ship-missiles',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/B52-LRASM.jpg?quality=85' },
     { id: 'n22', src: 'breakingdefense', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 20:13', author: 'Agnes Helou', cats: ['electronic', 'ai', 'industry'],
       t: 'Thales looks to export new C2 platform to Gulf nations, says executive',
       s: 'Thales says its open-standard command-and-control platform already fits the sovereignty requirements of Gulf countries.',
       tr: 'Thales хоче експортувати нову платформу управління військами до країн Перської затоки',
       sr: 'У Thales кажуть, що їхня платформа управління на відкритих стандартах уже відповідає вимогам країн Затоки щодо суверенітету.',
-      link: 'https://breakingdefense.com/2026/10/thales-looks-to-export-new-c2-platform-to-gulf-nations-says-executive/' },
+      link: 'https://breakingdefense.com/2026/10/thales-looks-to-export-new-c2-platform-to-gulf-nations-says-executive/',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/10/HexaForce_2026%C2%A9Thales-e1791558814824-1024x577.jpg' },
     { id: 'n23', src: 'breakingdefense', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 19:35', author: 'Carley Welch', cats: ['unmanned', 'land', 'industry'],
       t: 'GDLS exec: New loitering munitions platform to be delivered to Army by end of month',
       s: 'General Dynamics Land Systems is under contract to deliver four PERCH 2.0 prototypes to the 1st Brigade, 1st Cavalry Division by the end of October.',
       tr: 'GDLS: нову платформу для баражувальних боєприпасів передадуть армії до кінця місяця',
       sr: 'General Dynamics Land Systems має до кінця жовтня поставити 1-й бригаді 1-ї кавалерійської дивізії чотири прототипи PERCH 2.0.',
-      link: 'https://breakingdefense.com/2026/10/gdls-exec-new-loitering-munitions-platform-to-be-delivered-to-army-by-end-of-month/' },
+      link: 'https://breakingdefense.com/2026/10/gdls-exec-new-loitering-munitions-platform-to-be-delivered-to-army-by-end-of-month/',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/04/8605042-scaled-e1777487412386-1024x577.jpg' },
     { id: 'n24', src: 'breakingdefense', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 17:09', author: 'Carley Welch', cats: ['land', 'industry'],
       t: 'Hanwha sets sights on Army’s tracked howitzer program after victory in wheeled competition',
       s: 'After winning the wheeled competition, Hanwha plans to offer its K9A1 or K9A2 in the Army’s tracked howitzer program.',
       tr: 'Після перемоги в конкурсі колісних гаубиць Hanwha націлилася на програму гусеничних',
       sr: 'Виборовши конкурс колісних гаубиць, Hanwha планує запропонувати армії США гусеничні K9A1 або K9A2.',
-      link: 'https://breakingdefense.com/2026/10/hanwha-sets-sights-on-armys-tracked-howitzer-program-after-victory-in-wheeled-competition/' },
+      link: 'https://breakingdefense.com/2026/10/hanwha-sets-sights-on-armys-tracked-howitzer-program-after-victory-in-wheeled-competition/',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2023/09/230915_Hanwa_tracked_FERRAN-scaled-e1694777608716-1024x576.jpeg' },
     { id: 'n25', src: 'defensenews', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 13:11', author: 'Jaroslaw Adamowski', cats: ['unmanned', 'industry'],
       t: 'Estonia’s KrattWorks crafting Shahed-like dummy drone for target practice',
       s: 'KrattWorks is developing a target drone that mimics jet-powered Shahed-type drones so militaries can practise intercepting them, with a debut expected by the end of 2027.',
       tr: 'Естонська KrattWorks створює дрон-мішень, схожий на «Шахед»',
       sr: 'KrattWorks розробляє мішень, що імітує реактивні дрони типу «Шахед», аби військові тренувалися їх перехоплювати; представити її обіцяють до кінця 2027 року.',
-      link: 'https://www.defensenews.com/global/europe/2026/10/09/estonias-krattworks-crafting-shahed-like-dummy-drone-for-target-practice/' },
+      link: 'https://www.defensenews.com/global/europe/2026/10/09/estonias-krattworks-crafting-shahed-like-dummy-drone-for-target-practice/',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/SFTM367OFVDKZPNKLOWMUXMJRE.JPG' },
     { id: 'n26', src: 'navalnews', day: 3, ago: '3 дні тому', date: '9 жовтня 2026 р., 09:57', author: 'Tayfun Ozberk', cats: ['unmanned', 'naval'],
       t: 'Exail Introduces Neptis Uncrewed Maritime Surveillance System',
       s: 'Exail unveiled Neptis, pairing Oryx uncrewed surface vessels with sensors and command software for surveillance, anti-submarine warfare and protection of undersea infrastructure.',
       tr: 'Exail представила безекіпажну систему морського спостереження Neptis',
       sr: 'Neptis поєднує безекіпажні катери Oryx із сенсорами та ПЗ управління для патрулювання, протичовнової боротьби й захисту підводної інфраструктури.',
-      link: 'https://www.navalnews.com/event-news/euronaval-2026/2026/10/exail-introduces-neptis-uncrewed-maritime-surveillance-system/' },
+      link: 'https://www.navalnews.com/event-news/euronaval-2026/2026/10/exail-introduces-neptis-uncrewed-maritime-surveillance-system/',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/exail-neptis-c2-software-interface_2224x1254-1024x577.png' },
     { id: 'n27', src: 'navalnews', day: 4, ago: '4 дні тому', date: '8 жовтня 2026 р., 23:02', author: 'Naval News Staff', cats: ['air', 'unmanned', 'ai'],
       t: 'Shield AI and U.S. government investment in X-BAT reaches $400 million',
       s: 'The Navy added a $150 million modification to Shield AI’s agreement for the X-BAT VTOL fighter, matched by $150 million of company capital; flight tests are planned for later this year.',
@@ -421,7 +449,8 @@ button { cursor: pointer; }
       s: 'Sig Sauer is refining the M8 carbine based on soldier feedback, including a 25-round magazine that still has to pass Army evaluation.',
       tr: 'Sig Sauer розробила 25-зарядний магазин для гвинтівки нового покоління армії США',
       sr: 'Sig Sauer доопрацьовує карабін M8 з урахуванням відгуків солдатів; новий магазин на 25 набоїв ще має пройти армійську оцінку.',
-      link: 'https://www.defensenews.com/news/your-army/2026/10/08/sig-sauer-develops-25-round-mag-for-armys-next-gen-rifle/' },
+      link: 'https://www.defensenews.com/news/your-army/2026/10/08/sig-sauer-develops-25-round-mag-for-armys-next-gen-rifle/',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/QZK3ROXYO5EKVK6VY2E6Q5EIPI.jpg' },
     { id: 'n29', src: 'navalnews', day: 4, ago: '4 дні тому', date: '8 жовтня 2026 р., 19:33', author: 'Naval News Staff', cats: ['naval', 'industry'],
       t: 'German Budget Committee approves procurement of four additional MEKO A-200 DEU-class frigates',
       s: 'The Bundestag Budget Committee approved four more MEKO A-200 DEU frigates from TKMS, bringing the total to eight, mainly for anti-submarine warfare.',
@@ -433,7 +462,8 @@ button { cursor: pointer; }
       s: 'Mitsubishi Heavy Industries launched Shogei, the seventh Taigei-class submarine, due for delivery in March 2028, as Japan debates nuclear propulsion for future boats.',
       tr: 'Японія спустила на воду сьомий підводний човен класу Taigei на тлі дискусії про атомні силові установки',
       sr: 'Mitsubishi Heavy Industries спустила на воду «Сьоґей» — сьомий човен класу Taigei з передачею флоту в березні 2028 року; тим часом у Японії сперечаються про атомні човни.',
-      link: 'https://www.navalnews.com/naval-news/2026/10/japan-launches-seventh-taigei-class-submarine-as-nuclear-propulsion-debate-grows/' }
+      link: 'https://www.navalnews.com/naval-news/2026/10/japan-launches-seventh-taigei-class-submarine-as-nuclear-propulsion-debate-grows/',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/2610080202_dl-1024x683.jpg' }
   ];
   // === NEWS DATA END ===
   var BY_ID = {};
@@ -483,6 +513,31 @@ button { cursor: pointer; }
   }
   function todays() { return visible().filter(function (a) { return a.fresh; }); }
 
+  var ICON_PATHS = {
+    air: '<path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>',
+    naval: '<path d="M3 15h18l-2.5 4.5h-13z"/><path d="M7 15v-4h8v4M10 11V7h3v4M11.5 7V3.5"/><path d="M2 21.5c2 0 2-.8 4-.8s2 .8 4 .8 2-.8 4-.8 2 .8 4 .8 2-.8 4-.8"/>',
+    land: '<rect x="3" y="14" width="18" height="5" rx="2.5"/><path d="M5 14l1.5-3h11l1.5 3M9 11V8.5h6V11M15 9.5h7"/><circle cx="7" cy="16.5" r=".8"/><circle cx="12" cy="16.5" r=".8"/><circle cx="17" cy="16.5" r=".8"/>',
+    unmanned: '<rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9.5 9.5L7.3 7.3M14.5 9.5l2.2-2.2M9.5 14.5l-2.2 2.2M14.5 14.5l2.2 2.2"/><circle cx="5.5" cy="5.5" r="2.5"/><circle cx="18.5" cy="5.5" r="2.5"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+    missiles: '<path d="M12 2c1.8 1.6 3 3.8 3 6.5V17H9V8.5C9 5.8 10.2 3.6 12 2z"/><path d="M9 12.5l-3 3V19l3-1.5M15 12.5l3 3V19l-3-1.5M10.5 17v3.5M13.5 17v3.5"/>',
+    space: '<rect x="9" y="9" width="6" height="6" rx="1"/><rect x="2" y="10" width="5" height="4"/><rect x="17" y="10" width="5" height="4"/><path d="M7 12h2M15 12h2M12 9V6M10 4.5a2.5 2.5 0 0 1 4 0"/>',
+    electronic: '<circle cx="12" cy="10" r="1.6"/><path d="M12 11.6V21M9 21h6"/><path d="M8.5 6.5a5 5 0 0 0 0 7M15.5 6.5a5 5 0 0 1 0 7M5.6 3.6a9 9 0 0 0 0 12.8M18.4 3.6a9 9 0 0 1 0 12.8"/>',
+    ai: '<rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M10 2.5V6M14 2.5V6M10 18v3.5M14 18v3.5M2.5 10H6M2.5 14H6M18 10h3.5M18 14h3.5"/>',
+    industry: '<path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/><path d="M7 18h2M12 18h2M17 18h1"/>'
+  };
+  function icon(key, size) {
+    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      (ICON_PATHS[key] || ICON_PATHS.industry) + '</svg>';
+  }
+  // Фото зі стрічки лежить поверх обкладинки; якщо його немає або воно не завантажилось — видно обкладинку.
+  function photoHTML(a, credit) {
+    if (!a.img) return '';
+    return '<span class="ph"><img src="' + esc(a.img) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">' +
+      (credit ? '<span class="credit">Фото: ' + esc(SOURCE_NAME[a.src]) + '</span>' : '') + '</span>';
+  }
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (img && img.tagName === 'IMG' && img.parentNode && img.parentNode.classList.contains('ph')) img.parentNode.remove();
+  }, true);
   var PHOTO = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>';
 
   function tagHTML(key) {
@@ -499,7 +554,7 @@ button { cursor: pointer; }
         (a.sponsored ? '<span class="sponsor">Спонсорський матеріал</span>' : '') +
         '<span class="tags">' + a.cats.slice(0, 2).map(tagHTML).join('') + '</span>' +
       '</span>' +
-      '<span class="thumb" aria-hidden="true">' + PHOTO + '</span>' +
+      '<span class="thumb cover" aria-hidden="true">' + icon(a.cats[0], 30) + photoHTML(a, false) + '</span>' +
     '</button>';
   }
 
@@ -608,7 +663,9 @@ button { cursor: pointer; }
         '</button>' +
       '</div>' +
       '<div class="detail-body">' +
-        '<div class="hero" style="--cc: var(--c-' + a.cats[0] + ')">' + PHOTO.replace(/26/g, '40') + '<span>Тут буде фото зі стрічки видання</span></div>' +
+        '<div class="hero cover" style="--cc: var(--c-' + a.cats[0] + ')">' + icon(a.cats[0], 56) +
+          '<span class="hero-cat">' + CATS[a.cats[0]] + '</span><span class="hero-src">' + esc(SOURCE_NAME[a.src]) + ' · ' + esc(a.date) + '</span>' +
+          photoHTML(a, true) + '</div>' +
         '<div class="tags">' + a.cats.map(tagHTML).join('') + '</div>' +
         '<h2>' + esc(a.t) + '</h2>' +
         '<div class="byline"><b>' + esc(SOURCE_NAME[a.src]) + '</b>' + (a.author ? '<span>' + esc(a.author) + '</span>' : '') + '<span>' + esc(a.date) + '</span></div>' +
