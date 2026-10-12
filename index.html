@@ -7,8 +7,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="DefTech Daily">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6F7F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#10120E" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Демо застосунку DefTech Daily — щоденні новини оборонних технологій.">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -24,14 +24,14 @@ img { max-width: 100%; }
 <style>
 /* Layout: one-screen iPhone app — large-title screens scroll above a fixed tab bar; article opens as a pushed card over the current tab. */
 :root {
-  --bg: #FFFFFF;
-  --bg-grouped: #F2F2F7;
-  --surface: #FFFFFF;
-  --fill: #EFEFF4;
+  --bg: #F6F7F2;
+  --bg-grouped: #EDEFE6;
+  --surface: #FCFCF9;
+  --fill: #EAECE3;
   --fg: #111114;
   --fg-2: #5F5F66;
-  --sep: #E3E3E8;
-  --bar: #F7F7F9;
+  --sep: #DFE2D6;
+  --bar: #EFF1E9;
   --accent: #2F6B2B;
   --on-accent: #FFFFFF;
   --c-air: #1D5FBF;
@@ -48,16 +48,16 @@ img { max-width: 100%; }
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #000000; --bg-grouped: #000000; --surface: #1C1C1E; --fill: #1F1F22; --fg: #F2F2F7; --fg-2: #A1A1A8;
-    --sep: #2C2C2F; --bar: #121214; --accent: #7CC46A; --on-accent: #0B1A0A;
+    --bg: #10120E; --bg-grouped: #10120E; --surface: #191C16; --fill: #1C1F19; --fg: #F2F2F7; --fg-2: #A1A1A8;
+    --sep: #2A2E25; --bar: #151713; --accent: #7CC46A; --on-accent: #0B1A0A;
     --c-air: #6EA8FF; --c-naval: #4FC7C7; --c-land: #7CC46A; --c-unmanned: #FFA552; --c-missiles: #FF7A6E;
     --c-space: #9B97FF; --c-electronic: #C98BFF; --c-ai: #FF7DB8; --c-industry: #D9A877;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #000000; --bg-grouped: #000000; --surface: #1C1C1E; --fill: #1F1F22; --fg: #F2F2F7; --fg-2: #A1A1A8;
-  --sep: #2C2C2F; --bar: #121214; --accent: #7CC46A; --on-accent: #0B1A0A;
+  --bg: #10120E; --bg-grouped: #10120E; --surface: #191C16; --fill: #1C1F19; --fg: #F2F2F7; --fg-2: #A1A1A8;
+  --sep: #2A2E25; --bar: #151713; --accent: #7CC46A; --on-accent: #0B1A0A;
   --c-air: #6EA8FF; --c-naval: #4FC7C7; --c-land: #7CC46A; --c-unmanned: #FFA552; --c-missiles: #FF7A6E;
   --c-space: #9B97FF; --c-electronic: #C98BFF; --c-ai: #FF7DB8; --c-industry: #D9A877;
   color-scheme: dark;
