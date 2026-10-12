@@ -127,6 +127,12 @@ button { cursor: pointer; }
 .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 4px rgba(0,0,0,.25); transition: transform .2s; }
 .switch[aria-checked="true"] { background: var(--accent); }
 .switch[aria-checked="true"]::after { transform: translateX(20px); }
+.seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; padding: 2px; border-radius: 9px; background: var(--fill); }
+.seg button { min-height: 32px; border: 0; border-radius: 7px; background: transparent; font-size: 14px; font-weight: 500; color: var(--fg); }
+.seg button[aria-checked="true"] { background: var(--surface); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.14); }
+:root[data-theme="dark"] .seg button[aria-checked="true"] { background: #3A3F33; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .seg button[aria-checked="true"] { background: #3A3F33; } }
+.cell.stack { flex-direction: column; align-items: stretch; gap: 8px; padding: 10px 16px 12px; }
 .time { border: 0; background: var(--fill); border-radius: 8px; padding: 6px 10px; font-size: 17px; font-variant-numeric: tabular-nums; }
 .notif { margin: 10px 16px 0; padding: 12px 14px; border-radius: 18px; background: var(--fill); display: flex; flex-direction: column; gap: 4px; }
 .notif-top { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--fg-2); }
@@ -473,23 +479,31 @@ button { cursor: pointer; }
 
   var state = {
     tab: 'today', cat: null, query: '', open: null, translated: false,
-    saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}
+    saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}, theme: 'auto'
   };
 
   try {
     var stored = JSON.parse(localStorage.getItem('deftech-demo') || '{}');
     if (stored.saved) stored.saved = stored.saved.filter(function (id) { return BY_ID[id]; });
     if (stored.read) stored.read = stored.read.filter(function (id) { return BY_ID[id]; });
-    ['saved', 'read', 'digest', 'time', 'hideSponsored', 'off'].forEach(function (k) {
+    ['saved', 'read', 'digest', 'time', 'hideSponsored', 'off', 'theme'].forEach(function (k) {
       if (stored[k] !== undefined) state[k] = stored[k];
     });
   } catch (e) { /* сховище недоступне — працюємо без нього */ }
+
+  // Вигляд: 'auto' — як у системі, 'light' — світлий, 'dark' — темний.
+  function applyTheme() {
+    var root = document.documentElement;
+    if (state.theme === 'light' || state.theme === 'dark') root.setAttribute('data-theme', state.theme);
+    else root.removeAttribute('data-theme');
+  }
+  applyTheme();
 
   function save() {
     try {
       localStorage.setItem('deftech-demo', JSON.stringify({
         saved: state.saved, read: state.read, digest: state.digest, time: state.time,
-        hideSponsored: state.hideSponsored, off: state.off
+        hideSponsored: state.hideSponsored, off: state.off, theme: state.theme
       }));
     } catch (e) { /* ignore */ }
   }
@@ -631,6 +645,13 @@ button { cursor: pointer; }
     }
     html += '<div class="group-f">Раз на день надходитиме таке сповіщення з кількістю свіжих новин і головним заголовком.</div>';
 
+    var THEMES = [['auto', 'Авто'], ['light', 'Світлий'], ['dark', 'Темний']];
+    html += '<div class="group-h">Вигляд</div><div class="group"><div class="cell stack">' +
+      '<div class="seg" role="radiogroup" aria-label="Вигляд">' + THEMES.map(function (o) {
+        return '<button role="radio" data-theme-set="' + o[0] + '" aria-checked="' + (state.theme === o[0]) + '">' + o[1] + '</button>';
+      }).join('') + '</div></div></div>' +
+      '<div class="group-f">«Авто» — так само, як налаштовано на телефоні.</div>';
+
     html += '<div class="group-h">Джерела</div><div class="group">' +
       SOURCES.map(function (s) {
         return '<div class="cell"><span class="cell-label">' + esc(s[1]) + '<small>' + esc(s[2]) + '</small></span>' +
@@ -729,6 +750,9 @@ button { cursor: pointer; }
       save(); renderAll(); return;
     }
     if (e.target.closest('[data-translate]')) { state.translated = !state.translated; renderDetail(); return; }
+    if ((el = e.target.closest('[data-theme-set]'))) {
+      state.theme = el.dataset.themeSet; applyTheme(); save(); renderSettings(); return;
+    }
     if ((el = e.target.closest('[data-toggle]'))) {
       state[el.dataset.toggle] = !state[el.dataset.toggle];
       save(); renderAll(); return;
