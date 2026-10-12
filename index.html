@@ -163,7 +163,80 @@ button { cursor: pointer; }
 .btn.secondary { background: color-mix(in srgb, var(--accent) 14%, var(--bg)); color: var(--accent); }
 .foot { margin: 0; font-size: 13px; line-height: 18px; color: var(--fg-2); }
 
-.tabbar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
+/* === CONFLICT MAP CSS START === */
+/* Карта конфліктів: точкова мапа світу, маркери поверх неї (розмір — масштаб, пульсація — нове загострення). */
+.cm { --cm-hot: var(--c-missiles); --cm-old: color-mix(in srgb, var(--c-missiles) 70%, var(--bg)); --cm-land: color-mix(in srgb, var(--fg) 24%, transparent); display: flex; flex-direction: column; gap: 12px; }
+.cm-regions { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.cm-regions::-webkit-scrollbar { display: none; }
+.cm-regions button { flex-shrink: 0; min-height: 32px; padding: 0 13px; border-radius: 16px; border: 1px solid transparent; background: var(--fill); font-size: 13px; font-weight: 600; color: var(--fg); }
+.cm-regions button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--bg)); }
+.cm-stage { position: relative; overflow: hidden; border-radius: 16px; aspect-ratio: 1.3; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none;
+  background: radial-gradient(130% 100% at 50% 0%, color-mix(in srgb, var(--accent) 6%, var(--surface, var(--bg))), var(--surface, var(--bg))); border: 1px solid var(--sep); }
+.cm-stage.dragging { cursor: grabbing; }
+.cm-stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cm-land { fill: var(--cm-land); }
+.cm-grid { fill: none; stroke: color-mix(in srgb, var(--fg) 7%, transparent); stroke-width: .25; vector-effect: non-scaling-stroke; }
+.cm-stage stop { stop-color: var(--cm-hot); }
+.cm-pins { position: absolute; inset: 0; pointer-events: none; }
+.cm-pin { position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px; pointer-events: auto; border: 0; padding: 0; background: none; border-radius: 50%; }
+.cm-pin i { position: absolute; left: 50%; top: 50%; width: var(--d); height: var(--d); transform: translate(-50%, -50%); border-radius: 50%; background: var(--cm-old);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--bg) 85%, transparent), 0 1px 6px rgba(0,0,0,.25); transition: transform .2s; }
+.cm-pin.l3 { --d: 20px; } .cm-pin.l2 { --d: 14px; } .cm-pin.l1 { --d: 9px; }
+.cm-pin.hot i { background: var(--cm-hot); }
+.cm-pin.hot b { position: absolute; left: 50%; top: 50%; width: var(--d); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2); border-radius: 50%; border: 2px solid var(--cm-hot); animation: cm-pulse 1.8s ease-out infinite; pointer-events: none; }
+.cm-pin.hot b + b { animation-delay: .9s; }
+.cm-pin:hover i, .cm-pin:focus-visible i { transform: translate(-50%, -50%) scale(1.18); }
+.cm-pin.sel i { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--fg); }
+@keyframes cm-pulse { from { transform: scale(1); opacity: .85; } to { transform: scale(3.1); opacity: 0; } }
+.cm-tip { position: absolute; z-index: 2; max-width: 240px; padding: 8px 10px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: 12px; line-height: 1.35; pointer-events: none; transform: translate(-50%, calc(-100% - 16px)); box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.cm-tip strong { display: block; font-size: 13px; }
+.cm-zoom { position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; background: var(--surface, var(--bg)); border: 1px solid var(--sep); }
+.cm-zoom button { width: 34px; height: 32px; border: 0; background: transparent; font-size: 18px; font-weight: 600; color: var(--fg); }
+.cm-zoom button + button { border-top: 1px solid var(--sep); }
+.cm-asof { position: absolute; left: 10px; bottom: 10px; padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; color: var(--fg-2); background: color-mix(in srgb, var(--bg) 80%, transparent); }
+.cm-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 12px; color: var(--fg-2); }
+.cm-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.cm-legend i { display: inline-block; border-radius: 50%; background: var(--cm-old); }
+.cm-legend .hot { background: var(--cm-hot); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cm-hot) 25%, transparent); }
+.cm-card { position: relative; padding: 16px; border-radius: 16px; background: var(--surface, var(--bg)); border: 1px solid var(--sep); display: flex; flex-direction: column; gap: 8px; animation: cm-in .25s ease; }
+@keyframes cm-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.cm-card h3 { margin: 0; padding-right: 36px; font-family: var(--font-display); font-size: 20px; line-height: 1.2; font-weight: 800; }
+.cm-parties { font-size: 15px; font-weight: 600; }
+.cm-badge { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; color: var(--fg-2); background: var(--fill); }
+.cm-badge.hot { color: #FFFFFF; background: var(--cm-hot); }
+.cm-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 2px 0; font-size: 13px; }
+.cm-facts dt { color: var(--fg-2); }
+.cm-facts dd { margin: 0; font-weight: 600; }
+.cm-card p { margin: 0; font-size: 14px; line-height: 1.5; }
+.cm-card .cm-note { font-size: 12px; color: var(--fg-2); }
+.cm-close { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--fill); font-size: 16px; color: var(--fg); }
+.cm-news { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 14px; margin-top: 4px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 650; }
+.cm-list h4 { margin: 8px 0 6px; font-size: 13px; font-weight: 650; letter-spacing: .4px; text-transform: uppercase; color: var(--fg-2); }
+.cm-row { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 10px; width: 100%; padding: 10px 2px; border: 0; border-top: 1px solid var(--sep); background: transparent; text-align: left; }
+.cm-row .dot { justify-self: center; border-radius: 50%; background: var(--cm-old); }
+.cm-row.hot .dot { background: var(--cm-hot); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cm-hot) 22%, transparent); }
+.cm-row b { display: block; font-size: 15px; font-weight: 650; }
+.cm-row small { display: block; font-size: 12px; color: var(--fg-2); }
+.cm-row em { font-style: normal; font-size: 12px; color: var(--fg-2); white-space: nowrap; }
+.cm-row.sel { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.cm-src { font-size: 11px; line-height: 1.45; color: var(--fg-2); }
+/* Широкий режим (веб): карта ліворуч, картка та список праворуч */
+.cm.wide { display: grid; grid-template-rows: auto auto auto 1fr; grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: "regions regions" "stage side" "legend side" "src side"; gap: 12px 28px; align-items: start; }
+.cm.wide .cm-regions { grid-area: regions; }
+.cm.wide .cm-stage { grid-area: stage; aspect-ratio: 1.9; }
+.cm.wide .cm-legend { grid-area: legend; }
+.cm.wide .cm-src { grid-area: src; }
+.cm.wide .cm-side { grid-area: side; display: flex; flex-direction: column; gap: 12px; max-height: calc(100vh - 150px); overflow-y: auto; position: sticky; top: 130px; }
+.cm:not(.wide) .cm-side { display: contents; }
+@media (max-width: 1000px) {
+  .cm.wide { display: flex; }
+  .cm.wide .cm-side { display: contents; }
+  .cm.wide .cm-stage { aspect-ratio: 1.5; }
+}
+@media (prefers-reduced-motion: reduce) { .cm-pin.hot b { animation: none; display: none; } .cm-card { animation: none; } }
+/* === CONFLICT MAP CSS END === */
+#map-root { padding: 4px 16px 28px; }
+.tabbar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
 .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 48px; border: 0; background: transparent; color: var(--fg-2); font-size: 10px; font-weight: 500; }
 .tab[aria-current="page"] { color: var(--accent); }
 
@@ -200,6 +273,11 @@ button { cursor: pointer; }
       <div id="feed-list"></div>
     </main>
 
+    <main class="screen" id="screen-map" aria-labelledby="h-map" hidden>
+      <div class="hdr"><h1 id="h-map">Карта конфліктів</h1><div class="date" id="map-date"></div><div class="stat" id="map-stat"></div></div>
+      <div id="map-root"></div>
+    </main>
+
     <main class="screen" id="screen-saved" aria-labelledby="h-saved" hidden>
       <div class="hdr"><h1 id="h-saved">Закладки</h1></div>
       <div id="saved-list"></div>
@@ -221,6 +299,10 @@ button { cursor: pointer; }
     <button class="tab" data-tab="feed">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
       <span>Стрічка</span>
+    </button>
+    <button class="tab" data-tab="map">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>
+      <span>Карта</span>
     </button>
     <button class="tab" data-tab="saved">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
@@ -477,6 +559,305 @@ button { cursor: pointer; }
   ARTICLES.forEach(function (a) { BY_ID[a.id] = a; });
   var DAY_TITLES = NEWS_AS_OF.dayTitles;
 
+  // === CONFLICTS DATA START ===
+  // Карта конфліктів. level — масштаб (3 — понад 10 000 загиблих за рік, 2 — 1 000–10 000, 1 — до 1 000).
+  // hot: 'new' — новий конфлікт, 'escalating' — різке загострення за останні місяці (точка пульсує); без hot — затяжний конфлікт.
+  // start: 'РРРР', 'РРРР-ММ' або 'РРРР-ММ-ДД'. q — англійське слово для пошуку пов’язаних новин у стрічці.
+  var CONFLICTS_AS_OF = {
+    date: '2026-10-12',
+    label: '12 жовтня 2026',
+    sources: 'International Crisis Group (CrisisWatch, вересень–жовтень 2026), перелік збройних конфліктів Вікіпедії (дані ACLED/UCDP, серпень 2026), ООН, Al Jazeera, The National, Long War Journal'
+  };
+  var CONFLICTS = [
+    { id: 'ua', name: 'Війна Росії проти України', parties: 'Росія — Україна', start: '2022-02-24', level: 3, region: 'europe', lat: 48.3, lon: 36.6, q: 'Ukrain',
+      note: 'Бойові дії на сході України — з 2014 року.',
+      cause: 'Повномасштабне вторгнення Росії в Україну. Найбільша війна в Європі з 1945 року.' },
+    { id: 'ir', name: 'Війна навколо Ірану', parties: 'США та Ізраїль — Іран', start: '2026-02-28', level: 3, hot: 'escalating', region: 'mideast', lat: 32.6, lon: 53.8, q: 'Iran',
+      cause: 'Почалася з ударів США та Ізраїлю по Ірану під час ядерних переговорів. Іран відповів ударами ракет і дронів та перекрив Ормузьку протоку. Перемир’я зривалися, на початку вересня — нові обміни ударами.' },
+    { id: 'lb', name: 'Ізраїль — «Хезболла»', parties: 'Ізраїль — «Хезболла» (Ліван)', start: '2026-03-02', level: 2, region: 'mideast', lat: 33.9, lon: 36.2, q: 'Lebanon',
+      cause: 'Нова війна на тлі конфлікту з Іраном: обстріли з Лівану та ізраїльська наземна операція на півдні країни. Перемир’я з квітня 2026 року часто порушується.' },
+    { id: 'gz', name: 'Війна в Газі', parties: 'Ізраїль — ХАМАС', start: '2023-10-07', level: 2, region: 'mideast', lat: 31.4, lon: 34.4, q: 'Gaza',
+      cause: 'Почалася з нападу ХАМАС на Ізраїль. З жовтня 2025 року діє крихке перемир’я, але удари й жертви тривають.' },
+    { id: 'ye', name: 'Війна в Ємені', parties: 'Хусити — уряд Ємену та Саудівська Аравія', start: '2014-09', level: 2, hot: 'escalating', region: 'mideast', lat: 14.6, lon: 44.0, q: 'Yemen',
+      cause: 'Громадянська війна різко загострилася з серпня 2026 року: хусити наступають на узбережжі Червоного моря та атакують Саудівську Аравію. ООН попереджає про повернення до повномасштабної війни.' },
+    { id: 'sd', name: 'Війна в Судані', parties: 'Армія Судану — Сили швидкого реагування (RSF)', start: '2023-04-15', level: 3, region: 'africa', lat: 13.2, lon: 30.2, q: 'Sudan',
+      cause: 'Боротьба двох військових угруповань за владу. Одна з найбільших гуманітарних катастроф у світі.' },
+    { id: 'et', name: 'Війна в Ефіопії', parties: 'Уряд Ефіопії — сили Тиграю (ТНФВТ) та союзні угруповання', start: '2026-09-23', level: 2, hot: 'new', region: 'africa', lat: 12.4, lon: 39.6, q: 'Ethiopia',
+      cause: 'Тиграйські сили й союзні угруповання почали наступ, щоб усунути уряд Абія Ахмеда. Бої в регіонах Амгара та Афар.' },
+    { id: 'pk', name: 'Пакистан — Афганістан', parties: 'Пакистан — уряд талібів в Афганістані', start: '2026-09-18', level: 2, hot: 'new', region: 'asia', lat: 33.8, lon: 70.2, q: 'Pakistan',
+      cause: 'Після теракту угруповання, пов’язаного з «Техрік-е-Талібан Пакистан», Пакистан завдає авіаударів по Афганістану. Тривають сутички на кордоні.' },
+    { id: 'mm', name: 'Громадянська війна в М’янмі', parties: 'Військова хунта — етнічні збройні угруповання та опозиція', start: '2021-02-01', level: 3, region: 'asia', lat: 21.5, lon: 96.0, q: 'Myanmar',
+      cause: 'Почалася після військового перевороту 2021 року.' },
+    { id: 'cd', name: 'Схід ДР Конго', parties: 'Армія ДР Конго — повстанці M23 та інші угруповання', start: '2021-11', level: 2, region: 'africa', lat: -1.7, lon: 29.2, q: 'Congo',
+      cause: 'Наступ угруповання M23, яке, за даними ООН, підтримує Руанда. Боротьба за територію та корисні копалини.' },
+    { id: 'sh', name: 'Сахель', parties: 'Уряди Малі, Буркіна-Фасо та Нігеру — джихадистські угруповання', start: '2012-01', level: 3, region: 'africa', lat: 14.5, lon: -1.5, q: 'Mali',
+      cause: 'Угруповання, пов’язані з «Аль-Каїдою» та ІДІЛ, воюють проти урядів регіону.' },
+    { id: 'ng', name: 'Північний схід Нігерії', parties: 'Уряд Нігерії — «Боко Харам» та ISWAP', start: '2009-07', level: 2, region: 'africa', lat: 11.8, lon: 13.2, q: 'Nigeria',
+      cause: 'Ісламістське повстання в регіоні озера Чад.' },
+    { id: 'so', name: 'Сомалі', parties: 'Уряд Сомалі та Африканський союз — «Аш-Шабаб»', start: '2006', level: 2, region: 'africa', lat: 3.6, lon: 45.3, q: 'Somalia',
+      cause: 'Повстання ісламістського угруповання «Аш-Шабаб».' },
+    { id: 'sy', name: 'Сирія', parties: 'Нова влада Сирії — ІДІЛ та місцеві угруповання; удари Ізраїлю', start: '2011-03', level: 2, region: 'mideast', lat: 35.2, lon: 38.8, q: 'Syria',
+      cause: 'Після падіння режиму Асада в грудні 2024 року тривають сутички та іноземні удари.' },
+    { id: 'mx', name: 'Мексика', parties: 'Силові структури Мексики — наркокартелі', start: '2006-12', level: 2, region: 'americas', lat: 24.0, lon: -104.5, q: 'Mexico',
+      cause: 'Боротьба держави з картелями та війни картелів між собою.' },
+    { id: 'ht', name: 'Гаїті', parties: 'Уряд Гаїті та міжнародні сили — збройні банди', start: '2020', level: 2, region: 'americas', lat: 18.9, lon: -72.4, q: 'Haiti',
+      cause: 'Банди контролюють більшу частину столиці Порт-о-Пренса.' },
+    { id: 'co', name: 'Колумбія', parties: 'Уряд Колумбії — ELN, угруповання колишніх FARC та інші', start: '1964', level: 2, region: 'americas', lat: 6.5, lon: -74.5, q: 'Colombia',
+      cause: 'Найтриваліший збройний конфлікт Латинської Америки; боротьба за маршрути наркотрафіку.' },
+    { id: 've', name: 'Кариби й Венесуела', parties: 'США — наркоугруповання; удари по Венесуелі', start: '2025-09-01', level: 1, region: 'americas', lat: 11.6, lon: -66.0, q: 'Venezuela',
+      cause: 'США завдають ударів по суднах імовірних наркоторговців. У січні 2026 року — удари по Каракасу та захоплення Ніколаса Мадуро.' }
+  ];
+  // === CONFLICTS DATA END ===
+  // === CONFLICT MAP JS START ===
+  // Точкова мапа світу (сітка 2°) + маркери конфліктів. Координати мапи: x = довгота + 180, y = LAND.top − широта.
+  var ConflictMap = (function () {
+    var LAND = {"step": 2.0, "top": 79.0, "cols": 180, "rows": 68, "mask": "AAAAAAAf9////4AA+AAAAAAAAAAAAAAAAAAAAHwA///wAAAAAA4AA/wAAAAAAAAAHAAAAAf//gAAAAADAAf/wAAAAAAAAAHvwAPAP//gAAAAAODc///4AwAAAH+AAf4AfwH//gAAD4AADf//////gAwf////B8B4H/8AAAf/yf//////////+///////D+D/A+AA//////////////AH/////8D8D8AcAB8////////////+Af/////wGAB4AAAH5////////////4AP8f///gHEAAAAAH4H//////////vgABgD///gH+AAAAGA4/////////8AYAAEAA///8H/AAAAGCx/////////4A4AAAAAf///P/gAAAbCf/////////xAwAAAAAP/////wAAAfv//////////+AgAAAAAH/////gAAAAf//////////9AAAAAAAD////8AAAAD///////////9AAAAAAAD////+AAAAB//5/H//////4AAAAAAAD////4AAAAB9PwfP//////xAAAAAAAD////gAAAAPwjwHP/////+DAAAAAAAD///+AAAAAfALf/n/////8CAAAAAAAB///8AAAAAPABf/H////+MEAAAAAAAB///8AAAAAA+AA///////GMAAAAAAAAf//4AAAAAH+AA///////BAAAAAAAAAP//wAAAAAf/zB///////hAAAAAAAAAP/4wAAAAAf//9///////gAAAAAAAAAD/AQAAAAA///+/P/////gAAAAAAAAAB+AAAAAAB///+/h/////AAAAAAAAAAA+AAAAAAD////f+D///+gAAAAAAAAAAeA4AAAAD////f/B/7/4AAAAAAAAAAAPEEAAAAD////v+A/j+AAAAAAAAAAAAH8AgAAAD////n8AfB+AgAAAAAAAAAABcAAAAAD////3wAeAfAgAAAAAAAAAAAPAAAAAH/////AAcAfgAAAAAAAAAAAABAgAAAD////8AAMAXgAAAAAAAAAAAABj+AAAB/////gAMASAQAAAAAAAAAAAAX/AAAA/////gACAQAYAAAAAAAAAAAAH/gAAAfv///gAAAICIAAAAAAAAAAAAH/8AAAAB///AAAAsGAAAAAAAAAAAAAH/+AAAAB//+AAAAUeAAAAAAAAAAAAAP/+AAAAB//8AAAAIeAAAAAAAAAAAAAP//gAAAB//4AAAAMcgkAAAAAAAAAAAP//+AAAB//wAAAAGAAfAAAAAAAAAAAP///AAAA//wAAAAAAAHwAAAAAAAAAAP///AAAA//wAAAAAYAHwAAAAAAAAAAH///AAAAf/wAAAAAAAAIAAAAAAAAAAH//+AAAAf/wAAAAAAAwAAAAAAAAAAAD//+AAAA//wgAAAAABxAAAAAAAAAAAB//+AAAA//xgAAAAAP5gAAAAAAAAAAAf/8AAAA//DgAAAAAf/gAAAAAAAAAAAf/8AAAA//DAAAAAA//wAAAAAAAAAAAf/4AAAAf/DAAAAAH//4AAAAAAAAAAAf/gAAAAf/DAAAAAH//8AAAAAAAAAAA//AAAAAf8AAAAAAH//+AAAAAAAAAAA//AAAAAP8AAAAAAH//+AAAAAAAAAAA/+AAAAAH8AAAAAAD//+AAAAAAAAAAA/8AAAAAH4AAAAAAD8/8AAAAAAAAAAA/4AAAAAHAAAAAAADAH8AAAAAAAAAAA/gAAAAAAAAAAAAAAAD4AAAAAAAAAAB/gAAAAAAAAAAAAAAADwAGAAAAAAAAB+AAAAAAAAAAAAAAAAAAAEAAAAAAAAB8AAAAAAAAAAAAAAAAAQAIAAAAAAAAB8AAAAAAAAAAAAAAAAAAAwAAAAAAAAB4AAAAAAAAAAAAAAAAAABgAAAAAAAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"};
+    var W = 360, H = LAND.rows * LAND.step;
+    var MONTHS = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+    var LEVEL = { 3: 'Висока', 2: 'Середня', 1: 'Низька' };
+    var REGIONS = [
+      ['world', 'Світ', [-180, 79, 180, -57]],
+      ['europe', 'Європа', [-12, 70, 50, 34]],
+      ['mideast', 'Близький Схід', [24, 42, 66, 8]],
+      ['africa', 'Африка', [-20, 37, 55, -36]],
+      ['asia', 'Азія', [58, 50, 140, -2]],
+      ['americas', 'Америка', [-120, 34, -55, -6]]
+    ];
+
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+    }
+    function plural(n, one, few, many) {
+      var a = n % 10, b = n % 100;
+      if (a === 1 && b !== 11) return one;
+      if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+      return many;
+    }
+    function parse(s) { var p = String(s).split('-').map(Number); return { y: p[0], m: p[1] || 0, d: p[2] || 0 }; }
+    function since(c) {
+      var p = parse(c.start);
+      if (p.d) return p.d + ' ' + MONTHS[p.m - 1] + ' ' + p.y + ' р.';
+      if (p.m) return MONTHS[p.m - 1] + ' ' + p.y + ' р.';
+      return p.y + ' р.';
+    }
+    function duration(c) {
+      var a = parse(c.start), now = parse(CONFLICTS_AS_OF.date);
+      if (!a.m) { var yy = now.y - a.y; return 'близько ' + yy + ' ' + plural(yy, 'року', 'років', 'років'); }
+      var d0 = new Date(a.y, a.m - 1, a.d || 1), d1 = new Date(now.y, now.m - 1, now.d);
+      var days = Math.round((d1 - d0) / 864e5);
+      if (days < 31) {
+        if (days < 14) return days + ' ' + plural(days, 'день', 'дні', 'днів');
+        var w = Math.floor(days / 7); return w + ' ' + plural(w, 'тиждень', 'тижні', 'тижнів');
+      }
+      var months = (now.y - a.y) * 12 + (now.m - a.m) - ((a.d && now.d < a.d) ? 1 : 0);
+      var y = Math.floor(months / 12), m = months % 12, out = [];
+      if (y) out.push(y + ' ' + plural(y, 'рік', 'роки', 'років'));
+      if (m) out.push(m + ' міс.');
+      return out.join(' ') || 'менше місяця';
+    }
+    function hotLabel(c) { return c.hot === 'new' ? 'Новий конфлікт' : c.hot === 'escalating' ? 'Загострення' : 'Триває'; }
+    function xy(c) { return [c.lon + 180, LAND.top - c.lat]; }
+    function sorted() {
+      return CONFLICTS.slice().sort(function (a, b) {
+        if (!!a.hot !== !!b.hot) return a.hot ? -1 : 1;
+        if (a.level !== b.level) return b.level - a.level;
+        return a.start < b.start ? 1 : -1;
+      });
+    }
+    function stats() {
+      return { total: CONFLICTS.length, hot: CONFLICTS.filter(function (c) { return c.hot; }).length, high: CONFLICTS.filter(function (c) { return c.level === 3; }).length };
+    }
+
+    var dotsPath = null;
+    function landPath() {
+      if (dotsPath) return dotsPath;
+      var raw = atob(LAND.mask), r = LAND.step * 0.31, s = LAND.step, out = [], i = 0;
+      for (var row = 0; row < LAND.rows; row++) {
+        for (var col = 0; col < LAND.cols; col++, i++) {
+          if (raw.charCodeAt(i >> 3) & (128 >> (i & 7))) {
+            var cx = col * s + s / 2, cy = row * s + s / 2;
+            out.push('M' + (cx - r).toFixed(2) + ' ' + cy.toFixed(2) + 'a' + r.toFixed(2) + ' ' + r.toFixed(2) + ' 0 1 0 ' + (2 * r).toFixed(2) + ' 0a' + r.toFixed(2) + ' ' + r.toFixed(2) + ' 0 1 0 ' + (-2 * r).toFixed(2) + ' 0');
+          }
+        }
+      }
+      return (dotsPath = out.join(''));
+    }
+
+    function mount(root, opts) {
+      opts = opts || {};
+      var wide = !!opts.wide;
+      var view = { cx: W / 2, cy: H / 2, w: W };
+      var region = 'world', selected = null, anim = null;
+
+      var grid = '';
+      for (var lo = -150; lo <= 150; lo += 30) grid += 'M' + (lo + 180) + ' 0V' + H;
+      for (var la = 60; la >= -40; la -= 30) grid += 'M0 ' + (LAND.top - la) + 'H' + W;
+
+      root.innerHTML =
+        '<div class="cm' + (wide ? ' wide' : '') + '">' +
+          '<div class="cm-regions" role="toolbar" aria-label="Регіон">' + REGIONS.map(function (r) {
+            return '<button data-cm-region="' + r[0] + '" aria-pressed="' + (r[0] === 'world') + '">' + r[1] + '</button>';
+          }).join('') + '</div>' +
+          '<div class="cm-stage" aria-label="Карта конфліктів">' +
+            '<svg aria-hidden="true" preserveAspectRatio="none"><defs><radialGradient id="cmGlow"><stop offset="0" stop-opacity=".45"/><stop offset="1" stop-opacity="0"/></radialGradient></defs>' +
+              '<path class="cm-grid" d="' + grid + '"/>' +
+              '<g>' + CONFLICTS.map(function (c) {
+                var p = xy(c), rr = { 3: 9, 2: 6, 1: 4 }[c.level];
+                return '<circle class="cm-glow" cx="' + p[0] + '" cy="' + p[1] + '" r="' + rr + '" fill="url(#cmGlow)" opacity="' + (c.hot ? .9 : .55) + '"/>';
+              }).join('') + '</g>' +
+              '<path class="cm-land" d="' + landPath() + '"/>' +
+            '</svg>' +
+            '<div class="cm-pins">' + CONFLICTS.map(function (c) {
+              return '<button class="cm-pin l' + c.level + (c.hot ? ' hot' : '') + '" data-cm-id="' + c.id + '" aria-label="' + esc(c.name + ': ' + c.parties) + '">' +
+                (c.hot ? '<b></b><b></b>' : '') + '<i></i></button>';
+            }).join('') + '</div>' +
+            '<div class="cm-tip" hidden></div>' +
+            '<span class="cm-asof">Станом на ' + esc(CONFLICTS_AS_OF.label) + '</span>' +
+            '<div class="cm-zoom"><button data-cm-zoom="1" aria-label="Наблизити">+</button><button data-cm-zoom="-1" aria-label="Віддалити">−</button></div>' +
+          '</div>' +
+          '<div class="cm-legend"><span>Масштаб:</span>' +
+            '<span><i style="width:18px;height:18px"></i>високий</span><span><i style="width:13px;height:13px"></i>середній</span><span><i style="width:9px;height:9px"></i>низький</span>' +
+            '<span><i class="hot" style="width:12px;height:12px"></i>пульсує — нове загострення</span></div>' +
+          '<div class="cm-side"><div class="cm-card-slot"></div><div class="cm-list"></div></div>' +
+          '<div class="cm-src">Масштаб — оцінка за кількістю загиблих за рік (високий — понад 10 000, середній — 1 000–10 000, низький — до 1 000). Джерела: ' + esc(CONFLICTS_AS_OF.sources) + '. Короткі описи — стислий нейтральний переказ.</div>' +
+        '</div>';
+
+      var stage = root.querySelector('.cm-stage'), svg = stage.querySelector('svg'), tip = stage.querySelector('.cm-tip');
+      var pins = Array.prototype.slice.call(stage.querySelectorAll('.cm-pin'));
+      var BY = {}; CONFLICTS.forEach(function (c) { BY[c.id] = c; });
+
+      function aspect() { var r = stage.getBoundingClientRect(); return r.width && r.height ? r.width / r.height : 1.3; }
+      function vbox() { var h = view.w / aspect(); return [view.cx - view.w / 2, view.cy - h / 2, view.w, h]; }
+      function clamp() {
+        view.w = Math.max(28, Math.min(W, view.w));
+        var h = view.w / aspect();
+        view.cx = Math.max(view.w / 2, Math.min(W - view.w / 2, view.cx));
+        view.cy = h >= H ? H / 2 : Math.max(h / 2, Math.min(H - h / 2, view.cy));
+      }
+      function draw() {
+        var b = vbox();
+        svg.setAttribute('viewBox', b.map(function (v) { return v.toFixed(2); }).join(' '));
+        pins.forEach(function (el) {
+          var p = xy(BY[el.dataset.cmId]);
+          el.style.left = ((p[0] - b[0]) / b[2] * 100) + '%';
+          el.style.top = ((p[1] - b[1]) / b[3] * 100) + '%';
+        });
+        tip.hidden = true;
+      }
+      function fit(bb) {
+        var x1 = bb[0] + 180, x2 = bb[2] + 180, y1 = LAND.top - bb[1], y2 = LAND.top - bb[3], a = aspect();
+        var w = x2 - x1, h = y2 - y1;
+        return { cx: (x1 + x2) / 2, cy: (y1 + y2) / 2, w: Math.max(w, h * a) };
+      }
+      function go(target, instant) {
+        if (anim) cancelAnimationFrame(anim);
+        var from = { cx: view.cx, cy: view.cy, w: view.w }, t0 = performance.now(), dur = instant ? 0 : 450;
+        (function step(t) {
+          var k = dur ? Math.min(1, (t - t0) / dur) : 1, e = 1 - Math.pow(1 - k, 3);
+          view.cx = from.cx + (target.cx - from.cx) * e;
+          view.cy = from.cy + (target.cy - from.cy) * e;
+          view.w = from.w + (target.w - from.w) * e;
+          clamp(); draw();
+          if (k < 1) anim = requestAnimationFrame(step);
+        })(t0);
+      }
+      function setRegion(id, instant) {
+        region = id;
+        root.querySelectorAll('[data-cm-region]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cmRegion === id)); });
+        var r = REGIONS.filter(function (x) { return x[0] === id; })[0];
+        go(fit(r[2]), instant);
+      }
+
+      function cardHTML(c) {
+        var n = opts.countNews ? opts.countNews(c) : 0;
+        return '<div class="cm-card"><button class="cm-close" data-cm-close aria-label="Закрити">✕</button>' +
+          '<span class="cm-badge' + (c.hot ? ' hot' : '') + '">' + hotLabel(c) + '</span>' +
+          '<h3>' + esc(c.name) + '</h3><div class="cm-parties">' + esc(c.parties) + '</div>' +
+          '<dl class="cm-facts"><dt>Початок</dt><dd>' + esc(since(c)) + '</dd><dt>Триває</dt><dd>' + esc(duration(c)) + '</dd><dt>Масштаб</dt><dd>' + LEVEL[c.level] + '</dd></dl>' +
+          '<p>' + esc(c.cause) + '</p>' + (c.note ? '<p class="cm-note">' + esc(c.note) + '</p>' : '') +
+          (n && opts.onNews ? '<button class="cm-news" data-cm-news="' + c.id + '">Новини DefTech · ' + n + ' →</button>' : '') +
+          '</div>';
+      }
+      function renderList() {
+        var hot = sorted().filter(function (c) { return c.hot; }), rest = sorted().filter(function (c) { return !c.hot; });
+        function row(c) {
+          var d = { 3: 16, 2: 12, 1: 8 }[c.level];
+          return '<button class="cm-row' + (c.hot ? ' hot' : '') + (selected === c.id ? ' sel' : '') + '" data-cm-pick="' + c.id + '">' +
+            '<span class="dot" style="width:' + d + 'px;height:' + d + 'px"></span>' +
+            '<span><b>' + esc(c.name) + '</b><small>' + esc(c.parties) + '</small></span><em>з ' + esc(String(c.start).slice(0, 4)) + '</em></button>';
+        }
+        root.querySelector('.cm-list').innerHTML =
+          (hot.length ? '<h4>Загострення та нові конфлікти</h4>' + hot.map(row).join('') : '') +
+          '<h4>Затяжні конфлікти</h4>' + rest.map(row).join('');
+      }
+      function select(id, zoom) {
+        selected = id;
+        pins.forEach(function (el) { el.classList.toggle('sel', el.dataset.cmId === id); });
+        var slot = root.querySelector('.cm-card-slot');
+        slot.innerHTML = id ? cardHTML(BY[id]) : '';
+        renderList();
+        if (id && zoom) {
+          var c = BY[id], p = xy(c), r = REGIONS.filter(function (x) { return x[0] === c.region; })[0];
+          var t = fit(r[2]); t.cx = p[0]; t.cy = p[1]; go(t);
+          root.querySelectorAll('[data-cm-region]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cmRegion === c.region)); });
+        }
+        if (id && !wide && opts.scrollTo) opts.scrollTo(slot);
+      }
+
+      // Перетягування мапи
+      var drag = null;
+      stage.addEventListener('pointerdown', function (e) {
+        if (e.target.closest('.cm-pin, .cm-zoom')) return;
+        drag = { x: e.clientX, y: e.clientY, cx: view.cx, cy: view.cy, moved: false };
+        stage.setPointerCapture(e.pointerId);
+      });
+      stage.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        var r = stage.getBoundingClientRect(), k = view.w / r.width;
+        if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 3) { drag.moved = true; stage.classList.add('dragging'); }
+        view.cx = drag.cx - (e.clientX - drag.x) * k; view.cy = drag.cy - (e.clientY - drag.y) * k;
+        clamp(); draw();
+      });
+      function endDrag() { drag = null; stage.classList.remove('dragging'); }
+      stage.addEventListener('pointerup', endDrag);
+      stage.addEventListener('pointercancel', endDrag);
+      stage.addEventListener('dblclick', function (e) {
+        if (e.target.closest('.cm-pin, .cm-zoom')) return;
+        var r = stage.getBoundingClientRect(), b = vbox();
+        go({ cx: b[0] + (e.clientX - r.left) / r.width * b[2], cy: b[1] + (e.clientY - r.top) / r.height * b[3], w: view.w / 1.8 });
+      });
+      // Підказка при наведенні (миша)
+      stage.addEventListener('pointerover', function (e) {
+        var el = e.target.closest('.cm-pin');
+        if (!el || e.pointerType !== 'mouse') return;
+        var c = BY[el.dataset.cmId];
+        tip.innerHTML = '<strong>' + esc(c.name) + '</strong>' + esc(c.parties) + '<br>з ' + esc(since(c)) + ' · ' + esc(duration(c));
+        tip.style.left = el.style.left; tip.style.top = el.style.top; tip.hidden = false;
+      });
+      stage.addEventListener('pointerout', function (e) { if (e.target.closest('.cm-pin')) tip.hidden = true; });
+
+      root.addEventListener('click', function (e) {
+        var el;
+        if ((el = e.target.closest('[data-cm-region]'))) { setRegion(el.dataset.cmRegion); return; }
+        if ((el = e.target.closest('[data-cm-zoom]'))) { go({ cx: view.cx, cy: view.cy, w: view.w / (el.dataset.cmZoom === '1' ? 1.6 : 1 / 1.6) }); return; }
+        if ((el = e.target.closest('.cm-pin'))) { select(el.dataset.cmId, false); return; }
+        if ((el = e.target.closest('[data-cm-pick]'))) { select(el.dataset.cmPick, true); return; }
+        if (e.target.closest('[data-cm-close]')) { select(null); return; }
+        if ((el = e.target.closest('[data-cm-news]')) && opts.onNews) { opts.onNews(BY[el.dataset.cmNews]); return; }
+      });
+      var ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(function () { clamp(); draw(); }) : null;
+      if (ro) ro.observe(stage); else window.addEventListener('resize', function () { clamp(); draw(); });
+
+      renderList();
+      setRegion('world', true);
+      return { refresh: function () { clamp(); draw(); if (selected) select(selected); else renderList(); }, select: select };
+    }
+
+    return { mount: mount, stats: stats };
+  })();
+  // === CONFLICT MAP JS END ===
+
+
   var state = {
     tab: 'today', cat: null, query: '', open: null, translated: false,
     saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}, theme: 'auto'
@@ -671,7 +1052,20 @@ button { cursor: pointer; }
     $('settings-body').innerHTML = html;
   }
 
-  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', saved: 'Закладки', settings: 'Налаштування' };
+  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', map: 'Карта', saved: 'Закладки', settings: 'Налаштування' };
+
+  var cmap = null;
+  function mountMap() {
+    var st = ConflictMap.stats();
+    $('map-date').textContent = 'Станом на ' + CONFLICTS_AS_OF.label;
+    $('map-stat').textContent = st.total + ' гарячих точок · ' + st.hot + ' — загострення та нові конфлікти';
+    if (cmap) { cmap.refresh(); return; }
+    cmap = ConflictMap.mount($('map-root'), {
+      countNews: function (c) { var q = c.q.toLowerCase(); return visible().filter(function (a) { return (a.t + ' ' + a.s).toLowerCase().indexOf(q) >= 0; }).length; },
+      onNews: function (c) { state.query = c.q; $('feed-q').value = c.q; setTab('feed'); },
+      scrollTo: function (el) { if (el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    });
+  }
 
   function renderDetail() {
     var box = $('detail');
@@ -715,13 +1109,14 @@ button { cursor: pointer; }
 
   function setTab(tab) {
     state.tab = tab; state.open = null;
-    ['today', 'feed', 'saved', 'settings'].forEach(function (t) {
+    ['today', 'feed', 'map', 'saved', 'settings'].forEach(function (t) {
       $('screen-' + t).hidden = t !== tab;
     });
     document.querySelectorAll('.tab').forEach(function (b) {
       if (b.dataset.tab === tab) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
     renderAll();
+    if (tab === 'map') mountMap();
   }
 
   function openArticle(id) {
