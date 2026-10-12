@@ -241,7 +241,61 @@ button { cursor: pointer; }
 .hdr.hdr-hero > * { position: relative; }
 .hdr.hdr-hero > canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; opacity: .9;
   -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.9) 70%, rgba(0,0,0,.4)); mask-image: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.9) 70%, rgba(0,0,0,.4)); }
-.tabbar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
+/* === INNOVATIONS CSS START === */
+.iv { --s-dev: #6B6F66; --s-test: #A15C00; --s-prod: #1D5FBF; --s-service: #2F6B2B; display: flex; flex-direction: column; gap: 12px; }
+:root[data-theme="dark"] .iv { --s-dev: #A1A1A8; --s-test: #FFA552; --s-prod: #6EA8FF; --s-service: #7CC46A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .iv { --s-dev: #A1A1A8; --s-test: #FFA552; --s-prod: #6EA8FF; --s-service: #7CC46A; } }
+.iv-filters { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.iv-filters::-webkit-scrollbar { display: none; }
+.iv-filters button { --cc: var(--accent); flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 12px; border-radius: 16px; border: 1px solid transparent; background: var(--fill); font-size: 13px; font-weight: 600; color: var(--fg); }
+.iv-filters button span { color: var(--fg-2); font-weight: 500; }
+.iv-filters button[aria-pressed="true"] { color: var(--cc); border-color: var(--cc); background: color-mix(in srgb, var(--cc) 12%, var(--bg)); }
+.iv-st button i { width: 8px; height: 8px; border-radius: 50%; background: var(--fg-2); }
+.iv-st .s-dev i { background: var(--s-dev); } .iv-st .s-test i { background: var(--s-test); } .iv-st .s-prod i { background: var(--s-prod); } .iv-st .s-service i { background: var(--s-service); }
+.iv-h { margin: 8px 0 0; font-size: 13px; font-weight: 650; letter-spacing: .4px; text-transform: uppercase; color: var(--fg-2); }
+.iv-strip { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.iv-mini { flex: 0 0 172px; display: flex; flex-direction: column; gap: 6px; padding: 0; border: 0; background: transparent; text-align: left; }
+.iv-mini .iv-media { aspect-ratio: 16 / 10; border-radius: 12px; }
+.iv-mini b { font-size: 14px; line-height: 1.25; }
+.iv-mini small { font-size: 12px; color: var(--fg-2); }
+.iv-media { --cc: var(--accent); position: relative; overflow: hidden; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: 14px; color: var(--cc);
+  background: radial-gradient(120% 120% at 100% 0%, color-mix(in srgb, var(--cc) 14%, transparent), transparent 65%), color-mix(in srgb, var(--cc) 5%, var(--bg)); }
+.iv-media > svg { opacity: .75; }
+.iv-ph { position: absolute; inset: 0; }
+.iv-ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.iv-stage { position: absolute; left: 8px; top: 8px; z-index: 1; padding: 3px 8px; border-radius: 7px; font-size: 11px; font-weight: 700; color: #FFFFFF; background: var(--s-dev); box-shadow: 0 1px 4px rgba(0,0,0,.25); }
+.iv-stage.s-test { background: #A15C00; } .iv-stage.s-prod { background: #1D5FBF; } .iv-stage.s-service { background: #2F6B2B; } .iv-stage.s-dev { background: #55594F; }
+.iv-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.iv-card { display: flex; flex-direction: column; gap: 10px; cursor: pointer; }
+.iv-body { display: flex; flex-direction: column; gap: 6px; }
+.iv-meta { font-size: 12px; color: var(--fg-2); }
+.iv-meta b { color: var(--fg); font-weight: 650; }
+.iv-new { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 5px; font-size: 10px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: var(--on-accent); background: var(--accent); }
+.iv-card h3 { margin: 0; font-size: 18px; line-height: 1.25; font-weight: 750; }
+.iv-blurb { margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.iv-card.open .iv-blurb { -webkit-line-clamp: unset; display: block; color: var(--fg); }
+.iv-more { align-self: flex-start; border: 0; background: none; padding: 0; font-size: 13px; font-weight: 650; color: var(--accent); }
+.iv-specs { display: grid; grid-template-columns: auto 1fr; gap: 5px 14px; margin: 4px 0; padding: 12px 14px; border-radius: 12px; background: var(--fill); font-size: 13px; }
+.iv-specs dt { color: var(--fg-2); }
+.iv-specs dd { margin: 0; font-weight: 650; }
+.iv-stagebar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; font-size: 10.5px; color: var(--fg-2); text-align: center; }
+.iv-stagebar span { padding-top: 6px; border-top: 4px solid var(--sep); }
+.iv-stagebar span.on { border-top-color: var(--accent); color: var(--fg); font-weight: 650; }
+.iv-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.iv-links a { display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; border-radius: 9px; background: var(--fill); color: var(--fg); font-size: 13px; font-weight: 600; text-decoration: none; }
+.iv-links a:hover { background: color-mix(in srgb, var(--accent) 14%, var(--fill)); }
+.iv-news { min-height: 34px; padding: 0 12px; border: 0; border-radius: 9px; background: var(--accent); color: var(--on-accent); font-size: 13px; font-weight: 650; }
+.iv-empty, .iv-note { font-size: 12px; color: var(--fg-2); }
+.iv.wide .iv-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 22px; }
+.iv.wide .iv-card.open { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 26px; align-items: start; padding: 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--sep); cursor: default; }
+.iv.wide .iv-card.open h3 { font-size: 26px; }
+.iv.wide .iv-card:not(.open):hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+@media (max-width: 1080px) { .iv.wide .iv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .iv.wide .iv-grid { grid-template-columns: minmax(0, 1fr); } .iv.wide .iv-card.open { display: flex; padding: 12px; } }
+/* === INNOVATIONS CSS END === */
+#iv-root { padding: 4px 16px 28px; }
+.tabbar .tab span { font-size: 9.5px; letter-spacing: -.1px; }
+.tabbar { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
 .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 48px; border: 0; background: transparent; color: var(--fg-2); font-size: 10px; font-weight: 500; }
 .tab[aria-current="page"] { color: var(--accent); }
 
@@ -283,6 +337,11 @@ button { cursor: pointer; }
       <div id="map-root"></div>
     </main>
 
+    <main class="screen" id="screen-innov" aria-labelledby="h-innov" hidden>
+      <div class="hdr"><h1 id="h-innov">Інновації</h1><div class="date" id="iv-date"></div><div class="stat" id="iv-stat"></div></div>
+      <div id="iv-root"></div>
+    </main>
+
     <main class="screen" id="screen-saved" aria-labelledby="h-saved" hidden>
       <div class="hdr"><h1 id="h-saved">Закладки</h1></div>
       <div id="saved-list"></div>
@@ -309,13 +368,17 @@ button { cursor: pointer; }
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>
       <span>Карта</span>
     </button>
+    <button class="tab" data-tab="innov">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2.2h5c.1-1 .5-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>
+      <span>Інновації</span>
+    </button>
     <button class="tab" data-tab="saved">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
       <span>Закладки</span>
     </button>
     <button class="tab" data-tab="settings">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
-      <span>Налаштування</span>
+      <span>Параметри</span>
     </button>
   </nav>
 </div>
@@ -1123,7 +1186,7 @@ button { cursor: pointer; }
     $('settings-body').innerHTML = html;
   }
 
-  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', map: 'Карта', saved: 'Закладки', settings: 'Налаштування' };
+  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', map: 'Карта', innov: 'Інновації', saved: 'Закладки', settings: 'Налаштування' };
 
   // === HERO JS START ===
   // Анімовані заставки (Canvas 2D, без зовнішніх ресурсів): мікросхеми, рельєф, радар, орбіти.
@@ -1319,6 +1382,223 @@ return mountHero; })()
     if (HEROES[state.hero]) { try { heroKill = HEROES[state.hero]($('today-hero'), { fps: 24 }); } catch (e) { heroKill = null; } }
   }
 
+  // === INNOVATIONS DATA START ===
+  // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
+  // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
+  var INNOV_AS_OF = { date: '2026-10-12', label: '12 жовтня 2026' };
+  var INNOVATIONS = [
+    { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
+      blurb: 'Сімейство модульних зенітних ракет зі спільною архітектурою: одна виробнича лінія може випускати варіанти під різні загрози. Ставка — на масове й дешевше виробництво перехоплювачів.',
+      specs: [['Тип', 'зенітні ракети-перехоплювачі'], ['Принцип', 'модульна архітектура, спільна виробнича лінія']],
+      links: [['Сайт виробника', 'https://www.anduril.com/'], ['Джерело: The War Zone', 'https://www.twz.com/land/anduril-unveils-steelfin-family-of-modular-surface-to-air-missiles']] },
+    { id: 'pac3edge', name: 'PAC-3 Edge', maker: 'Lockheed Martin', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-10', q: 'PAC-3',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/D7DKDVVDJJCZLMN5N3NHFODBII.jpg',
+      blurb: 'Перехоплювач нового покоління для комплексу Patriot, створений проти гіперзвукових і новітніх ракет. Lockheed планує вкласти в розробку сотні мільйонів власних коштів.',
+      specs: [['Ціль', 'гіперзвукові та маневрові ракети'], ['Новинки', 'нова ГСН, оновлене керування, двигун Northrop Grumman']],
+      links: [['Сайт виробника', 'https://www.lockheedmartin.com/'], ['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/10/10/lockheed-martin-unveils-pac-3-edge-interceptor-designed-to-counter-hypersonic-threats/'], ['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/10/lockheed-unveils-pac-3-edge-its-next-gen-patriot-interceptor/']] },
+    { id: 'xbat', name: 'X-BAT', maker: 'Shield AI', country: 'США', type: 'air', stage: 'dev', upd: '2026-10-08', q: 'X-BAT',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/2026_OCT_RIMES_Hero_V4-scaled.jpg-scaled.webp',
+      blurb: 'Безпілотний винищувач вертикального злету й посадки з автономним керуванням на базі ШІ. ВМС США додали фінансування, і загальні державні й приватні вкладення сягнули $400 млн; льотні випробування заплановані до кінця року.',
+      specs: [['Зліт', 'вертикальний (VTOL)'], ['Фінансування', '$400 млн (уряд США + компанія)']],
+      links: [['Сайт виробника', 'https://shield.ai/'], ['Джерело: Naval News', 'https://www.navalnews.com/naval-news/2026/10/shield-ai-and-u-s-government-investment-in-x-bat-reaches-400-million/']] },
+    { id: 'bladehaul', name: 'BladeHAUL', maker: 'Thales Australia та 3ME Technology', country: 'Австралія', type: 'unmanned', stage: 'dev', upd: '2026-10-10', q: 'BladeHAUL',
+      img: 'https://en.defence-ua.com/media/illustration/articles/cfd6aca383b8be5a.jpg',
+      blurb: 'Надважкий наземний роботизований комплекс на шасі бронемашини Bushmaster для доставки вантажів без екіпажу. Перша така машина в лінійці розробників.',
+      specs: [['Вантажопідйомність', 'до 10 т'], ['Шасі', 'Bushmaster']],
+      links: [['Сайт виробника', 'https://www.thalesgroup.com/'], ['Джерело: Defense Express', 'https://en.defence-ua.com/weapon_and_tech/australia_unveils_bladehaul_ugv_with_a_10_ton_payload_capacity_while_ukraine_actively_uses_15_ton_capable_protector_ugv_for_combat_logistic_supply-20054.html']] },
+    { id: 'neptis', name: 'Neptis', maker: 'Exail', country: 'Франція', type: 'naval', stage: 'dev', upd: '2026-10-09', q: 'Neptis',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/exail-neptis-c2-software-interface_2224x1254-1024x577.png',
+      blurb: 'Система морського спостереження, що поєднує безекіпажні катери Oryx, сенсори та програмне забезпечення управління. Призначена для патрулювання, протичовнової боротьби й захисту підводної інфраструктури.',
+      specs: [['Носії', 'безекіпажні катери Oryx'], ['Завдання', 'спостереження, ПЧО, захист кабелів і трубопроводів']],
+      links: [['Сайт виробника', 'https://www.exail.com/'], ['Джерело: Naval News', 'https://www.navalnews.com/event-news/euronaval-2026/2026/10/exail-introduces-neptis-uncrewed-maritime-surveillance-system/']] },
+    { id: 'kratt', name: 'Реактивна дрон-мішень типу «Шахед»', maker: 'KrattWorks', country: 'Естонія', type: 'unmanned', stage: 'dev', upd: '2026-10-09', q: 'KrattWorks',
+      img: 'https://cloudfront-us-east-1.images.arcpublishing.com/archetype/SFTM367OFVDKZPNKLOWMUXMJRE.JPG',
+      blurb: 'Мішень, що імітує реактивні ударні дрони типу «Шахед», щоб військові могли тренувати їх перехоплення в реалістичних умовах.',
+      specs: [['Призначення', 'тренування ППО'], ['Презентація', 'до кінця 2027 року']],
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/global/europe/2026/10/09/estonias-krattworks-crafting-shahed-like-dummy-drone-for-target-practice/']] },
+    { id: 'troublemaker', name: 'Troublemaker', maker: 'Ideal Aerosmith', country: 'США', type: 'unmanned', stage: 'dev', upd: '2026-10-09', q: 'Troublemaker',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/10/TM-with-sky-1-1024x493.png',
+      blurb: 'Ударний безпілотник одноразового застосування групи 3, який займає нішу між малими дронами-камікадзе та дорогими крилатими ракетами. За словами компанії, проєкт має покровителя у ВМС США.',
+      specs: [['Клас', 'група 3, ударний одноразовий']],
+      links: [['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/10/ideal-aerosmith-debuts-troublemaker-for-one-way-attack/']] },
+    { id: 'perch', name: 'PERCH 2.0', maker: 'General Dynamics Land Systems', country: 'США', type: 'unmanned', stage: 'test', upd: '2026-10-09', q: 'PERCH',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/04/8605042-scaled-e1777487412386-1024x577.jpg',
+      blurb: 'Платформа для запуску баражувальних боєприпасів із бойових машин. До кінця жовтня армія США отримає чотири прототипи для випробувань у військах.',
+      specs: [['Прототипи', '4 — для 1-ї бригади 1-ї кавалерійської дивізії']],
+      links: [['Сайт виробника', 'https://www.gdls.com/'], ['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/10/gdls-exec-new-loitering-munitions-platform-to-be-delivered-to-army-by-end-of-month/']] },
+    { id: 'brimstone3', name: 'Brimstone 3', maker: 'MBDA', country: 'Велика Британія', type: 'missiles', stage: 'test', upd: '2026-10-11', q: 'Brimstone',
+      img: 'https://ukdj.ams3.digitaloceanspaces.com/2026/10/brimstone3.jpg',
+      blurb: 'Нова версія високоточної ракети класу «повітря — земля» для британських ВПС. За оновленим планом, початкову оперативну готовність очікують у листопаді 2026 року.',
+      specs: [['Початкова готовність', 'листопад 2026 (прогноз)'], ['Носії', 'зокрема дрон Protector (допуск очікується)']],
+      links: [['Сайт виробника', 'https://www.mbda-systems.com/'], ['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/britains-brimstone-3-to-reach-initial-capability-next-month/']] },
+    { id: 'bowline', name: 'Project Bowline', maker: 'Міністерство оборони Великої Британії', country: 'Велика Британія', type: 'missiles', stage: 'dev', upd: '2026-10-11', q: 'Bowline',
+      img: 'https://ukdj.ams3.digitaloceanspaces.com/2025/02/MISSILEGENERICps.jpg',
+      blurb: 'Гіперзвукова мішень, що імітує загрози на швидкостях понад 5 Махів, — для випробувань і тренування протиракетної оборони.',
+      specs: [['Швидкість', 'понад 5 Махів'], ['Льотна демонстрація', '2027, полігон Hebrides']],
+      links: [['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/britain-to-fly-hypersonic-target-from-hebrides-range/']] },
+    { id: 'kor-hgv', name: 'Гіперзвуковий планувальний блок', maker: 'Південна Корея', country: 'Південна Корея', type: 'missiles', stage: 'test', upd: '2026-10-09', q: 'hypersonic',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/south-korean-hypersonic-boost-glide-vehicle-tested.jpg?quality=85',
+      blurb: 'Перший успішно випробуваний гіперзвуковий планувальний блок власної розробки Південної Кореї. Блок зберіг цілісність аж до влучання в ціль.',
+      specs: [['Етап', 'перше успішне випробування (жовтень 2026)']],
+      links: [['Джерело: The War Zone', 'https://www.twz.com/land/first-look-at-hypersonic-boost-glide-vehicle-just-tested-by-south-korea']] },
+    { id: 'ssnx', name: 'SSN(X)', maker: 'ВМС США', country: 'США', type: 'naval', stage: 'dev', upd: '2026-10-11', q: 'SSN(X)',
+      img: 'https://www.navalnews.com/wp-content/uploads/2021/05/SSNX-next-generation-US-Navy-Submarine-1024x576.jpg',
+      blurb: 'Багатоцільовий атомний підводний човен нового покоління — наступник класу Virginia. ВМС уже збирають у промисловості дані про виробничі потужності.',
+      specs: [['Замінить', 'підводні човни класу Virginia'], ['Ймовірні верфі', 'Electric Boat, Newport News']],
+      links: [['Джерело: Naval News', 'https://www.navalnews.com/naval-news/2026/10/u-s-navy-seeks-information-on-ssnx-next-gen-submarine/']] },
+    { id: 'lrasm-b52', name: 'LRASM для B-52', maker: 'Lockheed Martin', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-09', q: 'LRASM',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/B52-LRASM.jpg?quality=85',
+      blurb: 'Інтеграція малопомітної далекобійної протикорабельної ракети AGM-158C LRASM на стратегічний бомбардувальник B-52 — новий засіб ураження кораблів для ВПС США.',
+      specs: [['Ракета', 'AGM-158C LRASM'], ['Носій', 'B-52']],
+      links: [['Сайт виробника', 'https://www.lockheedmartin.com/'], ['Джерело: The War Zone', 'https://www.twz.com/air/b-52-to-get-stealthy-agm-158c-long-range-anti-ship-missiles']] },
+    { id: 'meko', name: 'Фрегати MEKO A-200 DEU', maker: 'TKMS', country: 'Німеччина', type: 'naval', stage: 'prod', upd: '2026-10-08', q: 'MEKO',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/F128-MEKO-A-200-DEU_Bild_TKMS.jpg.webp',
+      blurb: 'Фрегати для ВМС Німеччини, орієнтовані передусім на протичовнову боротьбу. Бюджетний комітет Бундестагу схвалив ще чотири кораблі.',
+      specs: [['Кількість', '8 фрегатів'], ['Призначення', 'протичовнова боротьба']],
+      links: [['Джерело: Naval News', 'https://www.navalnews.com/naval-news/2026/10/german-budget-committee-approves-procurement-of-four-additional-meko-a-200-deu-class-frigates/']] },
+    { id: 'taigei', name: 'Підводні човни класу Taigei', maker: 'Mitsubishi Heavy Industries', country: 'Японія', type: 'naval', stage: 'prod', upd: '2026-10-08', q: 'Taigei',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/2610080202_dl-1024x683.jpg',
+      blurb: 'Дизель-електричні підводні човни Морських сил самооборони Японії. Спущено на воду сьомий човен серії; тим часом у Японії обговорюють атомні силові установки для майбутніх човнів.',
+      specs: [['Сьомий човен', '«Сьоґей», передача — березень 2028']],
+      links: [['Сайт виробника', 'https://www.mhi.com/'], ['Джерело: Naval News', 'https://www.navalnews.com/naval-news/2026/10/japan-launches-seventh-taigei-class-submarine-as-nuclear-propulsion-debate-grows/']] },
+    { id: 'mq9b-cg', name: 'MQ-9B для Берегової охорони США', maker: 'General Atomics', country: 'США', type: 'unmanned', stage: 'prod', upd: '2026-10-09', q: 'MQ-9B',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/10/261009-G-M0101-3001-scaled-e1791574788736-1024x577.jpeg',
+      blurb: 'Перші неозброєні дрони великої тривалості польоту для Берегової охорони США — щоб бачити морську обстановку на значно більшій відстані.',
+      specs: [['Замовлення', '$248 млн']],
+      links: [['Сайт виробника', 'https://www.ga-asi.com/'], ['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/10/coast-guard-places-248-million-order-for-first-mq-9b-drones/']] },
+    { id: 'mitr', name: 'Система захисту дихання MITR', maker: 'Avon Protection', country: 'Велика Британія', type: 'land', stage: 'prod', upd: '2026-10-10', q: 'Avon',
+      img: 'https://ukdj.ams3.digitaloceanspaces.com/2026/10/avon12.jpg',
+      blurb: 'Модульний захист для сил спецоперацій: окремо захищає очі, ніс і рот, тож оператор може брати мінімум спорядження й нарощувати захист за потреби. США стали другою країною «П’яти очей» після Канади, що замовила систему.',
+      specs: [['Склад', 'напівмаска MITR-M1 + окуляри MITR-PG1']],
+      links: [['Сайт виробника', 'https://www.avon-protection.com/'], ['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/us-buys-avon-protection-half-mask-for-special-forces/']] },
+    { id: 'fp5', name: 'FP-5 «Фламінго»', maker: 'Fire Point', country: 'Україна', type: 'missiles', stage: 'service', q: 'Flamingo',
+      img: 'https://en.defence-ua.com/media/illustration/articles/0d768a6fde06a75b.jpg',
+      blurb: 'Наземна крилата ракета великої дальності з дуже важкою бойовою частиною. Показана в серпні 2025 року; у 2026-му нею озброєна ракетна бригада ЗСУ.',
+      specs: [['Дальність', 'до 3 000 км'], ['Бойова частина', '1 150 кг']],
+      links: [['Джерело: Defense Express', 'https://en.defence-ua.com/analysis/ukrainian_fire_point_fp_5_flamingo_in_detail_warhead_from_the_us_possibly_bunker_buster_and_ballistic_missile_body-15552.html'], ['Джерело: Defense Express (2026)', 'https://en.defence-ua.com/news/ukrainian_fp_5_flamingo_equipped_brigade_identified_following_strike_on_russian_vniir_progress_plant-18391.html']] },
+    { id: 'sting', name: 'Дрон-перехоплювач «Стінг»', maker: 'Wild Hornets', country: 'Україна', type: 'air', stage: 'service', q: 'Sting',
+      img: 'https://en.defence-ua.com/media/illustration/articles/3df68de771d0650c.jpg',
+      blurb: 'Швидкісний дрон-перехоплювач проти ударних безпілотників типу «Шахед», який коштує в рази менше за зенітну ракету. За даними виробника, у першому півріччі 2026 року ним збили понад 9 000 дронів.',
+      specs: [['Швидкість', 'понад 315 км/год'], ['Вартість', 'близько $2 100 (за даними виробника)']],
+      links: [['Джерело: Defense Express', 'https://en.defence-ua.com/news/ukrainian_wild_hornets_workshop_reveals_how_many_russian_drones_downed_by_sting_interceptors_in_five_months-16013.html']] },
+    { id: 'magura', name: 'Морські дрони Magura (V5 / V7)', maker: 'ГУР МО України', country: 'Україна', type: 'naval', stage: 'service', q: 'Magura',
+      img: 'https://en.defence-ua.com/media/illustration/articles/e716825fe5ce649d.jpg',
+      blurb: 'Родина безекіпажних катерів. Magura V5 уразили низку кораблів Чорноморського флоту РФ, а V7 несе ракети AIM-9 Sidewinder для морської ППО: у травні 2025 року морський дрон Magura вперше у світі збив винищувач.',
+      specs: [['Дальність (V7)', '870 км'], ['Корисне навантаження (V7)', 'до 650 кг']],
+      links: [['Джерело: Defense Express', 'https://en.defence-ua.com/news/ukrainian_intelligence_unveils_magura_v7_sea_drone_with_air_defense_capabilities-14522.html']] },
+    { id: 'protector', name: 'НРК Protector', maker: 'Українська бронетехніка', country: 'Україна', type: 'land', stage: 'service', q: 'Protector',
+      img: 'https://en.defence-ua.com/media/illustration/articles/042693936ba8ba4b.jpg',
+      blurb: 'Важкий наземний роботизований комплекс для логістики, евакуації поранених і бойових завдань. Кодифікований Міноборони України у 2025 році.',
+      specs: [['Вантажопідйомність', 'до 700 кг'], ['Запас ходу', 'близько 400 км']],
+      links: [['Джерело: Defense Express', 'https://en.defence-ua.com/industries/ukrainian_protector_combat_robot_ready_for_front_with_50_units_monthly_production_rate-16771.html'], ['Джерело: Українська правда', 'https://www.pravda.com.ua/eng/news/2025/06/27/7519069']] }
+  ];
+  // === INNOVATIONS DATA END ===
+  // === INNOVATIONS JS START ===
+  var Innov = (function () {
+    var STAGES = { dev: ['Розробка', 1], test: ['Випробування', 2], prod: ['Серійне виробництво', 3], service: ['На озброєнні', 4] };
+    var TYPES = { unmanned: 'Дрони й роботи', missiles: 'Ракети та ППО', air: 'Авіація', naval: 'Флот', land: 'Сухопутні', electronic: 'РЕБ і зв’язок', ai: 'ШІ', space: 'Космос', industry: 'Індустрія' };
+    var ORDER = ['unmanned', 'missiles', 'air', 'naval', 'land', 'electronic', 'ai', 'space', 'industry'];
+    var ICONS = {
+      air: '<path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>',
+      naval: '<path d="M3 15h18l-2.5 4.5h-13z"/><path d="M7 15v-4h8v4M10 11V7h3v4M11.5 7V3.5"/>',
+      land: '<rect x="3" y="14" width="18" height="5" rx="2.5"/><path d="M5 14l1.5-3h11l1.5 3M9 11V8.5h6V11M15 9.5h7"/>',
+      unmanned: '<rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9.5 9.5L7.3 7.3M14.5 9.5l2.2-2.2M9.5 14.5l-2.2 2.2M14.5 14.5l2.2 2.2"/><circle cx="5.5" cy="5.5" r="2.5"/><circle cx="18.5" cy="5.5" r="2.5"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+      missiles: '<path d="M12 2c1.8 1.6 3 3.8 3 6.5V17H9V8.5C9 5.8 10.2 3.6 12 2z"/><path d="M9 12.5l-3 3V19l3-1.5M15 12.5l3 3V19l-3-1.5M10.5 17v3.5M13.5 17v3.5"/>',
+      space: '<rect x="9" y="9" width="6" height="6" rx="1"/><rect x="2" y="10" width="5" height="4"/><rect x="17" y="10" width="5" height="4"/><path d="M7 12h2M15 12h2"/>',
+      electronic: '<circle cx="12" cy="10" r="1.6"/><path d="M12 11.6V21M9 21h6M8.5 6.5a5 5 0 0 0 0 7M15.5 6.5a5 5 0 0 1 0 7"/>',
+      ai: '<rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M10 2.5V6M14 2.5V6M10 18v3.5M14 18v3.5M2.5 10H6M2.5 14H6M18 10h3.5M18 14h3.5"/>',
+      industry: '<path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/>'
+    };
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function icon(k, s) { return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[k] || ICONS.industry) + '</svg>'; }
+    function days(a, b) { return Math.round((new Date(b) - new Date(a)) / 864e5); }
+    function isNew(p) { return p.upd && days(p.upd, INNOV_AS_OF.date) <= 7; }
+    function stats() { return { total: INNOVATIONS.length, fresh: INNOVATIONS.filter(isNew).length, countries: Object.keys(INNOVATIONS.reduce(function (m, p) { m[p.country] = 1; return m; }, {})).length }; }
+
+    function mount(root, opts) {
+      opts = opts || {};
+      var st = { type: null, stage: null, open: null };
+      function media(p, big) {
+        return '<div class="iv-media" style="--cc: var(--c-' + p.type + ')">' + icon(p.type, big ? 64 : 40) +
+          (p.img ? '<span class="iv-ph"><img src="' + esc(p.img) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>' : '') +
+          '<span class="iv-stage s-' + p.stage + '">' + STAGES[p.stage][0] + '</span></div>';
+      }
+      function card(p) {
+        var open = st.open === p.id, n = opts.countNews ? opts.countNews(p) : 0;
+        return '<article class="iv-card' + (open ? ' open' : '') + '" data-iv="' + p.id + '">' + media(p, open) +
+          '<div class="iv-body">' +
+            '<div class="iv-meta"><b>' + esc(p.maker) + '</b> · ' + esc(p.country) + (isNew(p) ? ' <span class="iv-new">Нове</span>' : '') + '</div>' +
+            '<h3>' + esc(p.name) + '</h3>' +
+            '<p class="iv-blurb">' + esc(p.blurb) + '</p>' +
+            (open ?
+              (p.specs && p.specs.length ? '<dl class="iv-specs">' + p.specs.map(function (s) { return '<dt>' + esc(s[0]) + '</dt><dd>' + esc(s[1]) + '</dd>'; }).join('') + '</dl>' : '') +
+              '<div class="iv-stagebar" aria-label="Стадія: ' + STAGES[p.stage][0] + '">' + ['dev', 'test', 'prod', 'service'].map(function (k) {
+                return '<span class="' + (STAGES[k][1] <= STAGES[p.stage][1] ? 'on' : '') + '">' + STAGES[k][0] + '</span>';
+              }).join('') + '</div>' +
+              '<div class="iv-links">' + p.links.map(function (l) { return '<a href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + ' ↗</a>'; }).join('') +
+              (n && opts.onNews ? '<button class="iv-news" data-iv-news="' + p.id + '">Новини DefTech · ' + n + '</button>' : '') + '</div>' +
+              '<button class="iv-more" data-iv-close>Згорнути</button>'
+            : '<span class="iv-more">Детальніше</span>') +
+          '</div></article>';
+      }
+      function render() {
+        var list = INNOVATIONS.filter(function (p) { return (!st.type || p.type === st.type) && (!st.stage || p.stage === st.stage); });
+        var fresh = INNOVATIONS.filter(isNew).sort(function (a, b) { return a.upd < b.upd ? 1 : -1; }).slice(0, 8);
+        var types = ORDER.filter(function (k) { return INNOVATIONS.some(function (p) { return p.type === k; }); });
+        var html =
+          '<div class="iv-filters" role="toolbar" aria-label="Тип">' +
+            '<button data-iv-type="" aria-pressed="' + (!st.type) + '">Усі <span>' + INNOVATIONS.length + '</span></button>' +
+            types.map(function (k) { var c = INNOVATIONS.filter(function (p) { return p.type === k; }).length;
+              return '<button data-iv-type="' + k + '" style="--cc: var(--c-' + k + ')" aria-pressed="' + (st.type === k) + '">' + TYPES[k] + ' <span>' + c + '</span></button>'; }).join('') +
+          '</div>' +
+          '<div class="iv-filters iv-st" role="toolbar" aria-label="Стадія">' +
+            '<button data-iv-stage="" aria-pressed="' + (!st.stage) + '">Усі стадії</button>' +
+            ['dev', 'test', 'prod', 'service'].map(function (k) { return '<button data-iv-stage="' + k + '" class="s-' + k + '" aria-pressed="' + (st.stage === k) + '"><i></i>' + STAGES[k][0] + '</button>'; }).join('') +
+          '</div>';
+        if (!st.type && !st.stage && fresh.length) {
+          html += '<h4 class="iv-h">Нове цього тижня</h4><div class="iv-strip">' + fresh.map(function (p) {
+            return '<button class="iv-mini" data-iv-jump="' + p.id + '">' + media(p, false) + '<b>' + esc(p.name) + '</b><small>' + esc(p.maker) + '</small></button>';
+          }).join('') + '</div><h4 class="iv-h">Усі проєкти</h4>';
+        }
+        html += list.length ? '<div class="iv-grid">' + list.map(card).join('') + '</div>' : '<p class="iv-empty">Немає проєктів за цим фільтром.</p>';
+        html += '<p class="iv-note">Каталог містить лише публічну інформацію з відкритих джерел; характеристики — за даними виробників і видань, посилання — на кожній картці. Станом на ' + esc(INNOV_AS_OF.label) + '.</p>';
+        root.innerHTML = '<div class="iv' + (opts.wide ? ' wide' : '') + '">' + html + '</div>';
+      }
+      root.addEventListener('click', function (e) {
+        var el;
+        if ((el = e.target.closest('a'))) return;
+        if ((el = e.target.closest('[data-iv-news]')) && opts.onNews) { opts.onNews(INNOVATIONS.filter(function (p) { return p.id === el.dataset.ivNews; })[0]); return; }
+        if ((el = e.target.closest('[data-iv-type]'))) { st.type = el.dataset.ivType || null; st.open = null; render(); return; }
+        if ((el = e.target.closest('[data-iv-stage]'))) { st.stage = el.dataset.ivStage || null; st.open = null; render(); return; }
+        if (e.target.closest('[data-iv-close]')) { st.open = null; render(); return; }
+        if ((el = e.target.closest('[data-iv-jump]')) || (el = e.target.closest('[data-iv]'))) {
+          var id = el.dataset.ivJump || el.dataset.iv; st.open = id; render();
+          var c = root.querySelector('[data-iv="' + id + '"]');
+          if (c && c.scrollIntoView) c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+      root.addEventListener('error', function (e) {
+        var t = e.target; if (t && t.tagName === 'IMG' && t.parentNode && t.parentNode.classList.contains('iv-ph')) t.parentNode.remove();
+      }, true);
+      render();
+      return { refresh: render };
+    }
+    return { mount: mount, stats: stats };
+  })();
+  // === INNOVATIONS JS END ===
+  var innov = null;
+  function mountInnov() {
+    var s = Innov.stats();
+    $('iv-date').textContent = 'Оборонні технології світу';
+    $('iv-stat').textContent = s.total + ' проєктів із ' + s.countries + ' країн · ' + s.fresh + ' з новинами цього тижня';
+    if (innov) return;
+    innov = Innov.mount($('iv-root'), {
+      countNews: function (p) { var q = p.q.toLowerCase(); return visible().filter(function (a) { return (a.t + ' ' + a.s).toLowerCase().indexOf(q) >= 0; }).length; },
+      onNews: function (p) { state.query = p.q; $('feed-q').value = p.q; setTab('feed'); }
+    });
+  }
+
   var cmap = null;
   function mountMap() {
     var st = ConflictMap.stats();
@@ -1374,7 +1654,7 @@ return mountHero; })()
 
   function setTab(tab) {
     state.tab = tab; state.open = null;
-    ['today', 'feed', 'map', 'saved', 'settings'].forEach(function (t) {
+    ['today', 'feed', 'map', 'innov', 'saved', 'settings'].forEach(function (t) {
       $('screen-' + t).hidden = t !== tab;
     });
     document.querySelectorAll('.tab').forEach(function (b) {
@@ -1382,6 +1662,7 @@ return mountHero; })()
     });
     renderAll();
     if (tab === 'map') mountMap();
+    if (tab === 'innov') mountInnov();
   }
 
   function openArticle(id) {
