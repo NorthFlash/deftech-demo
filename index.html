@@ -305,6 +305,13 @@ button { cursor: pointer; }
 .tabbar { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
 .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 48px; border: 0; background: transparent; color: var(--fg-2); font-size: 10px; font-weight: 500; }
 .tab[aria-current="page"] { color: var(--accent); }
+/* Перемикач мови на вкладці «Сьогодні» */
+.hdr-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.lang-pill { display: inline-flex; flex-shrink: 0; gap: 2px; padding: 2px; border-radius: 9px; background: color-mix(in srgb, var(--fill) 88%, transparent); }
+.lang-pill button { min-width: 40px; min-height: 30px; padding: 0 10px; border: 0; border-radius: 7px; background: transparent; font-size: 13px; font-weight: 600; color: var(--fg-2); }
+.lang-pill button[aria-checked="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 3px rgba(0,0,0,.14); }
+:root[data-theme="dark"] .lang-pill button[aria-checked="true"] { background: #3A3F33; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lang-pill button[aria-checked="true"] { background: #3A3F33; } }
 
 @media (prefers-reduced-motion: reduce) {
   .detail, .switch, .switch::after { transition: none; }
@@ -318,7 +325,7 @@ button { cursor: pointer; }
   <div class="stage">
     <main class="screen" id="screen-today" aria-labelledby="h-today">
       <div class="hdr hdr-hero" id="today-hero">
-        <span class="demo" id="asof-badge">Демо · новини на 10 жовтня 2026</span>
+        <div class="hdr-top"><span class="demo" id="asof-badge">Демо · новини на 10 жовтня 2026</span><div class="lang-pill" role="radiogroup" aria-label="Мова" id="today-lang" data-i18n-aria="langAria"></div></div>
         <h1 id="h-today" data-i18n="today">Сьогодні</h1>
         <div class="date" id="asof-date">Субота, 10 жовтня</div>
         <div class="stat" id="today-stat"></div>
@@ -433,7 +440,7 @@ button { cursor: pointer; }
   var I18N = {
     today: ['Сьогодні', 'Today'], feed: ['Стрічка', 'Feed'], mapH: ['Карта конфліктів', 'Conflict map'], innov: ['Інновації', 'Innovations'],
     saved: ['Закладки', 'Saved'], settings: ['Налаштування', 'Settings'], story: ['Новина', 'Story'], tabsAria: ['Розділи', 'Sections'],
-    chipsAria: ['Фільтр за темами', 'Filter by topic'], qPh: ['Пошук: drone, F-35…', 'Search: drone, F-35…'], qAria: ['Пошук у новинах', 'Search news'],
+    chipsAria: ['Фільтр за темами', 'Filter by topic'], langAria: ['Мова', 'Language'], qPh: ['Пошук: drone, F-35…', 'Search: drone, F-35…'], qAria: ['Пошук у новинах', 'Search news'],
     tab_today: ['Сьогодні', 'Today'], tab_feed: ['Стрічка', 'Feed'], tab_map: ['Карта', 'Map'], tab_innov: ['Інновації', 'Innovation'], tab_saved: ['Закладки', 'Saved'], tab_params: ['Параметри', 'Settings']
   };
   function applyStatic() {
@@ -1205,6 +1212,9 @@ button { cursor: pointer; }
     $('asof-badge').textContent = badge();
     $('asof-date').textContent = D(NEWS_AS_OF.date);
     $('asof-updated').textContent = updated();
+    $('today-lang').innerHTML = [['uk', 'UA', 'Українська'], ['en', 'EN', 'English']].map(function (o) {
+      return '<button role="radio" data-lang-set="' + o[0] + '" aria-checked="' + (state.lang === o[0]) + '" title="' + o[2] + '">' + o[1] + '</button>';
+    }).join('');
     var list = todays();
     var n = list.length;
     var srcCount = Object.keys(list.reduce(function (m, a) { m[a.src] = 1; return m; }, {})).length;
