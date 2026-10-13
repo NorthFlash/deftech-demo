@@ -1,0 +1,90 @@
+# Охоронець DefTech Daily.
+# 1) Після кожного оновлення main перевіряє, що змінено лише дані, і що дані безпечні.
+#    Якщо ні — повертає файли сайту до останньої перевіреної версії (тег guard-ok) і падає (лист власнику).
+# 2) Щодня перевіряє живий сайт на GitHub Pages: код сторінок має збігатися з еталоном.
+name: guard
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 4 * * *'   # щодня о 07:23 за Києвом (літній час)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: guard
+  cancel-in-progress: false
+
+jobs:
+  check-push:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Дозволені файли
+        id: files
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if git cat-file -e "$BEFORE" 2>/dev/null; then
+            CHANGED=$(git diff --name-only "$BEFORE" "$GITHUB_SHA")
+          else
+            CHANGED=$(git show --name-only --format= "$GITHUB_SHA")
+          fi
+          echo "$CHANGED"
+          BAD=$(echo "$CHANGED" | grep -v -E '^(index\.html|web/index\.html|\.github/guard/[^/]+|\.github/workflows/guard\.yml|[^/]+\.md)$' | grep -v '^$' || true)
+          if [ -n "$BAD" ]; then echo "::error::Змінено недозволені файли: $BAD"; echo "bad=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Перевірка сторінок
+        id: check
+        continue-on-error: true
+        run: node .github/guard/check.js
+      - name: Позначити як перевірене
+        if: steps.check.outcome == 'success' && steps.files.outputs.bad != '1'
+        run: |
+          git tag -f guard-ok "$GITHUB_SHA"
+          git push -f origin guard-ok
+      - name: Відкат до останньої перевіреної версії
+        if: steps.check.outcome != 'success' || steps.files.outputs.bad == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! git rev-parse -q --verify refs/tags/guard-ok >/dev/null; then echo "::error::Немає тегу guard-ok — відкат неможливий"; exit 1; fi
+          git config user.name "deftech-guard"
+          git config user.email "guard@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          git checkout guard-ok -- index.html web/index.html
+          if git diff --cached --quiet; then echo "Нічого відкочувати"; else
+            git commit -m "Охоронець: відкат index.html і web/index.html до guard-ok (перевірка не пройдена на ${GITHUB_SHA::7})"
+            git push origin main
+          fi
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" || true
+          echo "::error::Перевірка не пройдена — сайт повернуто до останньої перевіреної версії"
+          exit 1
+
+  check-live:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Перевірка репозиторію
+        run: node .github/guard/check.js
+      - name: Перевірка живого сайту
+        run: |
+          OWNER="${GITHUB_REPOSITORY%%/*}"; REPO="${GITHUB_REPOSITORY##*/}"
+          BASE="https://$(echo "$OWNER" | tr 'A-Z' 'a-z').github.io/$REPO"
+          curl -fsSL --retry 3 "$BASE/?nocache=$RANDOM" -o app.html
+          curl -fsSL --retry 3 "$BASE/web/?nocache=$RANDOM" -o web.html
+          node .github/guard/check.js --live app.html app
+          node .github/guard/check.js --live web.html web
