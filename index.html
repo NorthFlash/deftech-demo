@@ -319,73 +319,73 @@ button { cursor: pointer; }
     <main class="screen" id="screen-today" aria-labelledby="h-today">
       <div class="hdr hdr-hero" id="today-hero">
         <span class="demo" id="asof-badge">Демо · новини на 10 жовтня 2026</span>
-        <h1 id="h-today">Сьогодні</h1>
+        <h1 id="h-today" data-i18n="today">Сьогодні</h1>
         <div class="date" id="asof-date">Субота, 10 жовтня</div>
         <div class="stat" id="today-stat"></div>
         <div class="muted" id="asof-updated">Оновлено 4 хв тому</div>
       </div>
-      <div class="chips" id="today-chips" role="toolbar" aria-label="Фільтр за темами"></div>
+      <div class="chips" id="today-chips" role="toolbar" aria-label="Фільтр за темами" data-i18n-aria="chipsAria"></div>
       <div class="list" id="today-list"></div>
     </main>
 
     <main class="screen" id="screen-feed" aria-labelledby="h-feed" hidden>
       <div class="hdr">
-        <h1 id="h-feed">Стрічка</h1>
+        <h1 id="h-feed" data-i18n="feed">Стрічка</h1>
         <label class="search" for="feed-q">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="feed-q" type="search" placeholder="Пошук англійською: drone, F-35…" autocomplete="off" aria-label="Пошук у новинах">
+          <input id="feed-q" type="search" placeholder="Пошук: drone, F-35…" autocomplete="off" aria-label="Пошук у новинах" data-i18n-ph="qPh" data-i18n-aria="qAria">
         </label>
       </div>
       <div id="feed-list"></div>
     </main>
 
     <main class="screen" id="screen-map" aria-labelledby="h-map" hidden>
-      <div class="hdr"><h1 id="h-map">Карта конфліктів</h1><div class="date" id="map-date"></div><div class="stat" id="map-stat"></div></div>
+      <div class="hdr"><h1 id="h-map" data-i18n="mapH">Карта конфліктів</h1><div class="date" id="map-date"></div><div class="stat" id="map-stat"></div></div>
       <div id="map-root"></div>
     </main>
 
     <main class="screen" id="screen-innov" aria-labelledby="h-innov" hidden>
-      <div class="hdr"><h1 id="h-innov">Інновації</h1><div class="date" id="iv-date"></div><div class="stat" id="iv-stat"></div></div>
+      <div class="hdr"><h1 id="h-innov" data-i18n="innov">Інновації</h1><div class="date" id="iv-date"></div><div class="stat" id="iv-stat"></div></div>
       <div id="iv-root"></div>
     </main>
 
     <main class="screen" id="screen-saved" aria-labelledby="h-saved" hidden>
-      <div class="hdr"><h1 id="h-saved">Закладки</h1></div>
+      <div class="hdr"><h1 id="h-saved" data-i18n="saved">Закладки</h1></div>
       <div id="saved-list"></div>
     </main>
 
     <main class="screen grouped" id="screen-settings" aria-labelledby="h-settings" hidden>
-      <div class="hdr"><h1 id="h-settings">Налаштування</h1></div>
+      <div class="hdr"><h1 id="h-settings" data-i18n="settings">Налаштування</h1></div>
       <div id="settings-body"></div>
     </main>
 
-    <section class="detail" id="detail" aria-label="Новина" hidden></section>
+    <section class="detail" id="detail" aria-label="Новина" data-i18n-aria="story" hidden></section>
   </div>
 
-  <nav class="tabbar" aria-label="Розділи">
+  <nav class="tabbar" aria-label="Розділи" data-i18n-aria="tabsAria">
     <button class="tab" data-tab="today" aria-current="page">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/></svg>
-      <span>Сьогодні</span>
+      <span data-i18n="tab_today">Сьогодні</span>
     </button>
     <button class="tab" data-tab="feed">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
-      <span>Стрічка</span>
+      <span data-i18n="tab_feed">Стрічка</span>
     </button>
     <button class="tab" data-tab="map">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>
-      <span>Карта</span>
+      <span data-i18n="tab_map">Карта</span>
     </button>
     <button class="tab" data-tab="innov">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2.2h5c.1-1 .5-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>
-      <span>Інновації</span>
+      <span data-i18n="tab_innov">Інновації</span>
     </button>
     <button class="tab" data-tab="saved">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-      <span>Закладки</span>
+      <span data-i18n="tab_saved">Закладки</span>
     </button>
     <button class="tab" data-tab="settings">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
-      <span>Параметри</span>
+      <span data-i18n="tab_params">Параметри</span>
     </button>
   </nav>
 </div>
@@ -416,6 +416,53 @@ button { cursor: pointer; }
   ];
   var SOURCE_NAME = {};
   SOURCES.forEach(function (s) { SOURCE_NAME[s[0]] = s[1]; });
+
+  // Мова інтерфейсу (UA / EN). UI_LANG читають також модулі карти й інновацій.
+  var UI_LANG = 'uk';
+  function EN() { return UI_LANG === 'en'; }
+  function L(uk, en) { return EN() ? en : uk; }
+  var CATS_EN = { air: 'Air', naval: 'Naval', land: 'Land', unmanned: 'Drones', missiles: 'Missiles/AD', space: 'Space', electronic: 'EW/Comms', ai: 'AI', industry: 'Industry' };
+  function cat(k) { return EN() ? CATS_EN[k] : CATS[k]; }
+  var SOURCE_EN = { armyinform: 'ArmyInform' };
+  function src(k) { return (EN() && SOURCE_EN[k]) || SOURCE_NAME[k]; }
+  var DESC_EN = { 'США': 'USA', 'світ': 'world', 'Флот': 'Naval', 'технології': 'technology', 'Зв’язок': 'Comms', 'РЕБ': 'EW', 'ШІ': 'AI', 'Велика Британія': 'UK', 'Європа': 'Europe', 'Україна': 'Ukraine', 'Міноборони': 'Ministry of Defence', 'озброєння': 'weapons' };
+  function desc(s) { return EN() ? s.split(' · ').map(function (x) { return DESC_EN[x] || x; }).join(' · ') : s; }
+  function P(n, one, few, many, enOne, enMany) { return EN() ? (n === 1 ? enOne : enMany) : plural(n, one, few, many); }
+  function title(a) { return EN() ? a.t : (a.tr || a.t); }
+  function summary(a) { return EN() ? a.s : (a.sr || a.s); }
+  var I18N = {
+    today: ['Сьогодні', 'Today'], feed: ['Стрічка', 'Feed'], mapH: ['Карта конфліктів', 'Conflict map'], innov: ['Інновації', 'Innovations'],
+    saved: ['Закладки', 'Saved'], settings: ['Налаштування', 'Settings'], story: ['Новина', 'Story'], tabsAria: ['Розділи', 'Sections'],
+    chipsAria: ['Фільтр за темами', 'Filter by topic'], qPh: ['Пошук: drone, F-35…', 'Search: drone, F-35…'], qAria: ['Пошук у новинах', 'Search news'],
+    tab_today: ['Сьогодні', 'Today'], tab_feed: ['Стрічка', 'Feed'], tab_map: ['Карта', 'Map'], tab_innov: ['Інновації', 'Innovation'], tab_saved: ['Закладки', 'Saved'], tab_params: ['Параметри', 'Settings']
+  };
+  function applyStatic() {
+    document.documentElement.lang = EN() ? 'en' : 'uk';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { var v = I18N[el.dataset.i18n]; if (v) el.textContent = L(v[0], v[1]); });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { var v = I18N[el.dataset.i18nAria]; if (v) el.setAttribute('aria-label', L(v[0], v[1])); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { var v = I18N[el.dataset.i18nPh]; if (v) el.setAttribute('placeholder', L(v[0], v[1])); });
+  }
+  // Дати й мітки часу з даних (українською) → англійською.
+  var MONTHS_UA = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+  var MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var DAYS_UA = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П’ятниця', 'Субота', 'Неділя'];
+  var DAYS_EN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  function enText(s) {
+    s = String(s).replace(/ р\.(?=,|$)/, '');
+    MONTHS_UA.forEach(function (m, i) { s = s.replace(m, MONTHS_EN[i]); });
+    DAYS_UA.forEach(function (d, i) { s = s.replace(d, DAYS_EN[i]); });
+    return s.replace(/^Сьогодні$/, 'Today').replace(/^Вчора$/, 'Yesterday');
+  }
+  function D(s) { return EN() ? enText(s) : s; }
+  function ago(a) {
+    if (!EN()) return a.ago;
+    var m = /^(\d+)\s*(год|хв|д)/.exec(a.ago);
+    if (!m) return a.ago === 'сьогодні' ? 'today' : enText(a.ago);
+    var n = +m[1];
+    return m[2] === 'год' ? n + ' h ago' : m[2] === 'хв' ? n + ' min ago' : n + (n === 1 ? ' day ago' : ' days ago');
+  }
+  function badge() { return EN() ? 'Demo · news for ' + enText(NEWS_AS_OF.badge.replace(/^.*новини на /, '')) : NEWS_AS_OF.badge; }
+  function updated() { return EN() ? NEWS_AS_OF.updated.replace(/^Оновлено сьогодні о /, 'Updated today at ').replace(/^Оновлено /, 'Updated ') : NEWS_AS_OF.updated; }
 
   // === NEWS DATA START ===
   // Заголовки й посилання — з RSS-стрічок видань; анонси й переклади — стислий переказ для демо.
@@ -1055,17 +1102,18 @@ button { cursor: pointer; }
 
   var state = {
     tab: 'today', cat: null, query: '', open: null, translated: false,
-    saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}, theme: 'auto', hero: 'relief'
+    saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}, theme: 'auto', hero: 'relief', lang: 'uk'
   };
 
   try {
     var stored = JSON.parse(localStorage.getItem('deftech-demo') || '{}');
     if (stored.saved) stored.saved = stored.saved.filter(function (id) { return BY_ID[id]; });
     if (stored.read) stored.read = stored.read.filter(function (id) { return BY_ID[id]; });
-    ['saved', 'read', 'digest', 'time', 'hideSponsored', 'off', 'theme', 'hero'].forEach(function (k) {
+    ['saved', 'read', 'digest', 'time', 'hideSponsored', 'off', 'theme', 'hero', 'lang'].forEach(function (k) {
       if (stored[k] !== undefined) state[k] = stored[k];
     });
   } catch (e) { /* сховище недоступне — працюємо без нього */ }
+  UI_LANG = state.lang === 'en' ? 'en' : 'uk';
 
   // Вигляд: 'auto' — як у системі, 'light' — світлий, 'dark' — темний.
   var heroKill = null;
@@ -1081,7 +1129,7 @@ button { cursor: pointer; }
     try {
       localStorage.setItem('deftech-demo', JSON.stringify({
         saved: state.saved, read: state.read, digest: state.digest, time: state.time,
-        hideSponsored: state.hideSponsored, off: state.off, theme: state.theme, hero: state.hero
+        hideSponsored: state.hideSponsored, off: state.off, theme: state.theme, hero: state.hero, lang: state.lang
       }));
     } catch (e) { /* ignore */ }
   }
@@ -1127,7 +1175,7 @@ button { cursor: pointer; }
   function photoHTML(a, credit) {
     if (!a.img) return '';
     return '<span class="ph"><img src="' + esc(safeUrl(a.img)) + '" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">' +
-      (credit ? '<span class="credit">Фото: ' + esc(SOURCE_NAME[a.src]) + '</span>' : '') + '</span>';
+      (credit ? '<span class="credit">' + L('Фото: ', 'Photo: ') + esc(src(a.src)) + '</span>' : '') + '</span>';
   }
   document.addEventListener('error', function (e) {
     var img = e.target;
@@ -1136,7 +1184,7 @@ button { cursor: pointer; }
   var PHOTO = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>';
 
   function tagHTML(key) {
-    return '<span class="tag" style="--cc: var(--c-' + key + ')">' + CATS[key] + '</span>';
+    return '<span class="tag" style="--cc: var(--c-' + key + ')">' + cat(key) + '</span>';
   }
 
   function rowHTML(a) {
@@ -1144,9 +1192,9 @@ button { cursor: pointer; }
     var isSaved = state.saved.indexOf(a.id) >= 0;
     return '<button class="row' + (isRead ? ' read' : '') + '" data-open="' + a.id + '" style="--cc: var(--c-' + a.cats[0] + ')">' +
       '<span class="row-body">' +
-        '<span class="row-meta"><b>' + esc(SOURCE_NAME[a.src]) + '</b> · ' + esc(a.ago) + (isSaved ? ' · у закладках' : '') + '</span>' +
-        '<span class="row-title">' + esc(a.t) + '</span>' +
-        (a.sponsored ? '<span class="sponsor">Спонсорський матеріал</span>' : '') +
+        '<span class="row-meta"><b>' + esc(src(a.src)) + '</b> · ' + esc(ago(a)) + (isSaved ? L(' · у закладках', ' · saved') : '') + '</span>' +
+        '<span class="row-title">' + esc(title(a)) + '</span>' +
+        (a.sponsored ? '<span class="sponsor">' + L('Спонсорський матеріал', 'Sponsored') + '</span>' : '') +
         '<span class="tags">' + a.cats.slice(0, 2).map(tagHTML).join('') + '</span>' +
       '</span>' +
       '<span class="thumb cover" aria-hidden="true">' + icon(a.cats[0], 30) + photoHTML(a, false) + '</span>' +
@@ -1154,53 +1202,52 @@ button { cursor: pointer; }
   }
 
   function renderToday() {
-    $('asof-badge').textContent = NEWS_AS_OF.badge;
-    $('asof-date').textContent = NEWS_AS_OF.date;
-    $('asof-updated').textContent = NEWS_AS_OF.updated;
+    $('asof-badge').textContent = badge();
+    $('asof-date').textContent = D(NEWS_AS_OF.date);
+    $('asof-updated').textContent = updated();
     var list = todays();
     var n = list.length;
     var srcCount = Object.keys(list.reduce(function (m, a) { m[a.src] = 1; return m; }, {})).length;
-    $('today-stat').textContent = 'За останні 24 години: ' + n + ' ' + plural(n, 'новина', 'новини', 'новин') +
-      ' з ' + srcCount + ' ' + plural(srcCount, 'джерела', 'джерел', 'джерел');
+    $('today-stat').textContent = L('За останні 24 години: ', 'Last 24 hours: ') + n + ' ' + P(n, 'новина', 'новини', 'новин', 'story', 'stories') +
+      L(' з ', ' from ') + srcCount + ' ' + P(srcCount, 'джерела', 'джерел', 'джерел', 'source', 'sources');
 
     if (state.cat && !list.some(function (a) { return a.cats.indexOf(state.cat) >= 0; })) state.cat = null;
 
-    var chips = '<button class="chip" data-cat="" aria-pressed="' + (state.cat === null) + '">Усі <span class="n">' + n + '</span></button>';
+    var chips = '<button class="chip" data-cat="" aria-pressed="' + (state.cat === null) + '">' + L('Усі', 'All') + ' <span class="n">' + n + '</span></button>';
     ORDER.forEach(function (k) {
       var c = list.filter(function (a) { return a.cats.indexOf(k) >= 0; }).length;
       if (!c) return;
       chips += '<button class="chip" data-cat="' + k + '" style="--cc: var(--c-' + k + ')" aria-pressed="' + (state.cat === k) + '">' +
-        CATS[k] + ' <span class="n">' + c + '</span></button>';
+        cat(k) + ' <span class="n">' + c + '</span></button>';
     });
     $('today-chips').innerHTML = chips;
 
     var rows = list.filter(function (a) { return !state.cat || a.cats.indexOf(state.cat) >= 0; });
     $('today-list').innerHTML = rows.length
       ? rows.map(rowHTML).join('')
-      : '<div class="empty"><strong>Поки немає свіжих новин</strong><span>Увімкніть джерела в Налаштуваннях.</span></div>';
+      : '<div class="empty"><strong>' + L('Поки немає свіжих новин', 'No fresh stories yet') + '</strong><span>' + L('Увімкніть джерела в Налаштуваннях.', 'Turn on sources in Settings.') + '</span></div>';
   }
 
   function renderFeed() {
     var q = state.query.trim().toLowerCase();
     var list = visible().filter(function (a) {
-      return !q || a.t.toLowerCase().indexOf(q) >= 0 || a.s.toLowerCase().indexOf(q) >= 0 ||
-        SOURCE_NAME[a.src].toLowerCase().indexOf(q) >= 0;
+      return !q || (a.t + ' ' + a.s + ' ' + (a.tr || '') + ' ' + (a.sr || '') + ' ' + SOURCE_NAME[a.src]).toLowerCase().indexOf(q) >= 0;
     });
     var html = '';
     DAY_TITLES.forEach(function (title, d) {
       var rows = list.filter(function (a) { return a.day === d; });
       if (!rows.length) return;
-      html += '<div class="section-h">' + title + '</div><div class="list">' + rows.map(rowHTML).join('') + '</div>';
+      html += '<div class="section-h">' + esc(D(title)) + '</div><div class="list">' + rows.map(rowHTML).join('') + '</div>';
     });
     $('feed-list').innerHTML = html ||
-      '<div class="empty"><strong>Нічого не знайдено</strong><span>Новини англійською — спробуйте, наприклад, «drone» або «missile».</span></div>';
+      '<div class="empty"><strong>' + L('Нічого не знайдено', 'Nothing found') + '</strong><span>' + L('Спробуйте інше слово, наприклад «drone» або «ракета».', 'Try another word, for example “drone” or “missile”.') + '</span></div>';
   }
 
   function renderSaved() {
     var list = state.saved.map(function (id) { return BY_ID[id]; }).filter(Boolean);
     $('saved-list').innerHTML = list.length
       ? '<div class="list">' + list.map(rowHTML).join('') + '</div>'
-      : '<div class="empty"><strong>Закладок поки немає</strong><span>Відкрийте новину й натисніть значок закладки вгорі праворуч — вона з’явиться тут.</span></div>';
+      : '<div class="empty"><strong>' + L('Закладок поки немає', 'No saved stories yet') + '</strong><span>' + L('Відкрийте новину й натисніть значок закладки вгорі праворуч — вона з’явиться тут.', 'Open a story and tap the bookmark icon at the top right — it will appear here.') + '</span></div>';
   }
 
   function switchHTML(attr, on, label) {
@@ -1211,53 +1258,63 @@ button { cursor: pointer; }
     var list = todays();
     var top = list[0];
     var preview = top
-      ? list.length + ' ' + plural(list.length, 'новина', 'новини', 'новин') + ' за добу. Головне: ' + top.t
-      : 'Свіжі новини зі світу оборонних технологій уже чекають на вас.';
+      ? list.length + ' ' + P(list.length, 'новина', 'новини', 'новин', 'story', 'stories') + L(' за добу. Головне: ', ' today. Top story: ') + title(top)
+      : L('Свіжі новини зі світу оборонних технологій уже чекають на вас.', 'Fresh defense technology news is waiting for you.');
 
-    var html = '<div class="group-h">Сповіщення</div><div class="group">' +
-      '<div class="cell"><span class="cell-label">Щоденна добірка</span>' + switchHTML('data-toggle="digest"', state.digest, 'Щоденна добірка') + '</div>' +
-      (state.digest ? '<div class="cell"><label class="cell-label" for="digest-time">Час</label><input class="time" id="digest-time" type="time" value="' + esc(state.time) + '"></div>' : '') +
+    var html = '<div class="group-h">' + L('Мова', 'Language') + '</div><div class="group"><div class="cell stack">' +
+      '<div class="seg" style="grid-template-columns: repeat(2, minmax(0, 1fr))" role="radiogroup" aria-label="' + L('Мова', 'Language') + '">' +
+        [['uk', 'Українська'], ['en', 'English']].map(function (o) {
+          return '<button role="radio" data-lang-set="' + o[0] + '" aria-checked="' + (state.lang === o[0]) + '">' + o[1] + '</button>';
+        }).join('') + '</div></div></div>' +
+      '<div class="group-f">' + L('Мова всього застосунку: меню, новини, карта й інновації.', 'Language of the whole app: menus, news, map and innovations.') + '</div>';
+
+    html += '<div class="group-h">' + L('Сповіщення', 'Notifications') + '</div><div class="group">' +
+      '<div class="cell"><span class="cell-label">' + L('Щоденна добірка', 'Daily digest') + '</span>' + switchHTML('data-toggle="digest"', state.digest, L('Щоденна добірка', 'Daily digest')) + '</div>' +
+      (state.digest ? '<div class="cell"><label class="cell-label" for="digest-time">' + L('Час', 'Time') + '</label><input class="time" id="digest-time" type="time" value="' + esc(state.time) + '"></div>' : '') +
       '</div>';
     if (state.digest) {
-      html += '<div class="notif" aria-label="Так виглядатиме сповіщення">' +
+      html += '<div class="notif" aria-label="' + L('Так виглядатиме сповіщення', 'Notification preview') + '">' +
         '<div class="notif-top"><span class="notif-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12V3"/></svg></span>DEFTECH DAILY<span class="when">' + esc(state.time) + '</span></div>' +
-        '<b>Оборонні технології: добірка дня</b><p>' + esc(preview) + '</p></div>';
+        '<b>' + L('Оборонні технології: добірка дня', 'Defense technology: daily digest') + '</b><p>' + esc(preview) + '</p></div>';
     }
-    html += '<div class="group-f">Раз на день надходитиме таке сповіщення з кількістю свіжих новин і головним заголовком.</div>';
+    html += '<div class="group-f">' + L('Раз на день надходитиме таке сповіщення з кількістю свіжих новин і головним заголовком.', 'Once a day you’ll get a notification like this with the number of fresh stories and the top headline.') + '</div>';
 
-    var THEMES = [['auto', 'Авто'], ['light', 'Світлий'], ['dark', 'Темний']];
-    html += '<div class="group-h">Вигляд</div><div class="group"><div class="cell stack">' +
-      '<div class="seg" role="radiogroup" aria-label="Вигляд">' + THEMES.map(function (o) {
+    var THEMES = [['auto', L('Авто', 'Auto')], ['light', L('Світлий', 'Light')], ['dark', L('Темний', 'Dark')]];
+    html += '<div class="group-h">' + L('Вигляд', 'Appearance') + '</div><div class="group"><div class="cell stack">' +
+      '<div class="seg" role="radiogroup" aria-label="' + L('Вигляд', 'Appearance') + '">' + THEMES.map(function (o) {
         return '<button role="radio" data-theme-set="' + o[0] + '" aria-checked="' + (state.theme === o[0]) + '">' + o[1] + '</button>';
       }).join('') + '</div></div></div>' +
-      '<div class="group-f">«Авто» — так само, як налаштовано на телефоні.</div>';
+      '<div class="group-f">' + L('«Авто» — так само, як налаштовано на телефоні.', '“Auto” follows your phone’s setting.') + '</div>';
 
-    html += '<div class="group-h">Заставка</div><div class="group"><div class="cell stack">' +
-      '<div class="seg" style="grid-template-columns: repeat(5, minmax(0, 1fr))" role="radiogroup" aria-label="Заставка">' + HERO_KEYS.map(function (o) {
-        return '<button role="radio" data-hero-set="' + o[0] + '" aria-checked="' + (state.hero === o[0]) + '" title="' + o[1] + '">' + o[2] + '</button>';
+    var HERO_EN = { circuit: ['Circuits', 'Circuit'], relief: ['Terrain', 'Terrain'], radar: ['Radar', 'Radar'], orbits: ['Orbits', 'Orbits'], off: ['Off', 'Off'] };
+    html += '<div class="group-h">' + L('Заставка', 'Background') + '</div><div class="group"><div class="cell stack">' +
+      '<div class="seg" style="grid-template-columns: repeat(5, minmax(0, 1fr))" role="radiogroup" aria-label="' + L('Заставка', 'Background') + '">' + HERO_KEYS.map(function (o) {
+        return '<button role="radio" data-hero-set="' + o[0] + '" aria-checked="' + (state.hero === o[0]) + '" title="' + L(o[1], HERO_EN[o[0]][0]) + '">' + L(o[2], HERO_EN[o[0]][1]) + '</button>';
       }).join('') + '</div></div></div>' +
-      '<div class="group-f">Анімований фон за заголовком на вкладці «Сьогодні»: мікросхеми, рельєф, радар або орбіти.</div>';
+      '<div class="group-f">' + L('Анімований фон за заголовком на вкладці «Сьогодні»: мікросхеми, рельєф, радар або орбіти.', 'Animated background behind the “Today” header: circuits, terrain, radar or orbits.') + '</div>';
 
-    html += '<div class="group-h">Джерела</div><div class="group">' +
+    html += '<div class="group-h">' + L('Джерела', 'Sources') + '</div><div class="group">' +
       SOURCES.map(function (s) {
-        return '<div class="cell"><span class="cell-label">' + esc(s[1]) + '<small>' + esc(s[2]) + '</small></span>' +
-          switchHTML('data-source="' + s[0] + '"', !state.off[s[0]], s[1]) + '</div>';
+        return '<div class="cell"><span class="cell-label">' + esc(src(s[0])) + '<small>' + esc(desc(s[2])) + '</small></span>' +
+          switchHTML('data-source="' + s[0] + '"', !state.off[s[0]], src(s[0])) + '</div>';
       }).join('') + '</div>' +
-      '<div class="group-f">У демо є новини американських, британських і українських видань. Вимкніть будь-яке з них — воно зникне з усіх розділів.</div>';
+      '<div class="group-f">' + L('У демо є новини американських, британських і українських видань. Вимкніть будь-яке з них — воно зникне з усіх розділів.', 'The demo includes news from American, British and Ukrainian outlets. Turn any of them off and it disappears from every section.') + '</div>';
 
-    html += '<div class="group-h">Фільтри</div><div class="group">' +
-      '<div class="cell"><span class="cell-label">Приховувати спонсорські матеріали</span>' + switchHTML('data-toggle="hideSponsored"', state.hideSponsored, 'Приховувати спонсорські матеріали') + '</div></div>';
+    html += '<div class="group-h">' + L('Фільтри', 'Filters') + '</div><div class="group">' +
+      '<div class="cell"><span class="cell-label">' + L('Приховувати спонсорські матеріали', 'Hide sponsored content') + '</span>' + switchHTML('data-toggle="hideSponsored"', state.hideSponsored, L('Приховувати спонсорські матеріали', 'Hide sponsored content')) + '</div></div>';
 
-    html += '<div class="group-h">Про застосунок</div><div class="group">' +
-      '<div class="cell"><span class="cell-label"><small>DefTech Daily збирає заголовки й короткі анонси з відкритих RSS-стрічок профільних видань. Повний текст відкривається на сайті джерела. Це демо інтерфейсу: у застосунку новини завантажуються зі стрічок автоматично.</small></span></div>' +
-      '<div class="cell"><span class="cell-label">Веб-версія</span><a href="web/" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; text-decoration: none">Відкрити ↗</a></div>' +
-      '<div class="cell"><span class="cell-label">Версія</span><span style="color: var(--fg-2)">1.0.0 (демо)</span></div></div>' +
+    html += '<div class="group-h">' + L('Про застосунок', 'About') + '</div><div class="group">' +
+      '<div class="cell"><span class="cell-label"><small>' + L('DefTech Daily збирає заголовки й короткі анонси з відкритих RSS-стрічок профільних видань. Повний текст відкривається на сайті джерела. Це демо інтерфейсу: у застосунку новини завантажуються зі стрічок автоматично.', 'DefTech Daily collects headlines and short summaries from open RSS feeds of specialist outlets. The full article opens on the source site. This is an interface demo: in the app, news loads from the feeds automatically.') + '</small></span></div>' +
+      '<div class="cell"><span class="cell-label">' + L('Веб-версія', 'Web version') + '</span><a href="web/" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; text-decoration: none">' + L('Відкрити ↗', 'Open ↗') + '</a></div>' +
+      '<div class="cell"><span class="cell-label">' + L('Версія', 'Version') + '</span><span style="color: var(--fg-2)">' + L('1.0.0 (демо)', '1.0.0 (demo)') + '</span></div></div>' +
       '<div style="height: 24px"></div>';
 
     $('settings-body').innerHTML = html;
   }
 
   var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', map: 'Карта', innov: 'Інновації', saved: 'Закладки', settings: 'Налаштування' };
+  var TAB_TITLES_EN = { today: 'Today', feed: 'Feed', map: 'Map', innov: 'Innovations', saved: 'Saved', settings: 'Settings' };
+  function tabTitle(k) { return EN() ? TAB_TITLES_EN[k] : TAB_TITLES[k]; }
 
   // === HERO JS START ===
   // Анімовані заставки (Canvas 2D, без зовнішніх ресурсів): мікросхеми, рельєф, радар, орбіти.
@@ -2709,8 +2766,8 @@ return mountHero; })()
   var innov = null;
   function mountInnov() {
     var s = Innov.stats();
-    $('iv-date').textContent = 'Оборонні технології світу';
-    $('iv-stat').textContent = s.total + ' проєктів із ' + s.countries + ' країн · ' + s.fresh + ' з новинами цього тижня';
+    $('iv-date').textContent = L('Оборонні технології світу', 'Defense technology worldwide');
+    $('iv-stat').textContent = L(s.total + ' проєктів із ' + s.countries + ' країн · ' + s.fresh + ' з новинами цього тижня', s.total + ' projects from ' + s.countries + ' countries · ' + s.fresh + ' with news this week');
     if (innov) return;
     innov = Innov.mount($('iv-root'), {
       countNews: function (p) { var q = p.q.toLowerCase(); return visible().filter(function (a) { return (a.t + ' ' + a.s).toLowerCase().indexOf(q) >= 0; }).length; },
@@ -2721,8 +2778,8 @@ return mountHero; })()
   var cmap = null;
   function mountMap() {
     var st = ConflictMap.stats();
-    $('map-date').textContent = 'Станом на ' + CONFLICTS_AS_OF.label;
-    $('map-stat').textContent = st.total + ' гарячих точок · ' + st.hot + ' — загострення та нові конфлікти';
+    $('map-date').textContent = L('Станом на ' + CONFLICTS_AS_OF.label, 'As of ' + ConflictMap.enDate(CONFLICTS_AS_OF.label));
+    $('map-stat').textContent = L(st.total + ' гарячих точок · ' + st.hot + ' — загострення та нові конфлікти', st.total + ' hotspots · ' + st.hot + ' escalations and new conflicts');
     if (cmap) { cmap.refresh(); return; }
     cmap = ConflictMap.mount($('map-root'), {
       countNews: function (c) { var q = c.q.toLowerCase(); return visible().filter(function (a) { return (a.t + ' ' + a.s).toLowerCase().indexOf(q) >= 0; }).length; },
@@ -2738,31 +2795,32 @@ return mountHero; })()
     var isSaved = state.saved.indexOf(a.id) >= 0;
     box.innerHTML =
       '<div class="navbar">' +
-        '<button class="icon-btn" data-back><svg width="13" height="22" viewBox="0 0 13 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2L2 11l9 9"/></svg>' + TAB_TITLES[state.tab] + '</button>' +
-        '<button class="icon-btn" data-save aria-pressed="' + isSaved + '" aria-label="' + (isSaved ? 'Прибрати із закладок' : 'Додати в закладки') + '">' +
+        '<button class="icon-btn" data-back><svg width="13" height="22" viewBox="0 0 13 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2L2 11l9 9"/></svg>' + tabTitle(state.tab) + '</button>' +
+        '<button class="icon-btn" data-save aria-pressed="' + isSaved + '" aria-label="' + (isSaved ? L('Прибрати із закладок', 'Remove from saved') : L('Додати в закладки', 'Save')) + '">' +
           '<svg width="22" height="22" viewBox="0 0 24 24" fill="' + (isSaved ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>' +
         '</button>' +
       '</div>' +
       '<div class="detail-body">' +
         '<div class="hero cover" style="--cc: var(--c-' + a.cats[0] + ')">' + icon(a.cats[0], 56) +
-          '<span class="hero-cat">' + CATS[a.cats[0]] + '</span><span class="hero-src">' + esc(SOURCE_NAME[a.src]) + ' · ' + esc(a.date) + '</span>' +
+          '<span class="hero-cat">' + cat(a.cats[0]) + '</span><span class="hero-src">' + esc(src(a.src)) + ' · ' + esc(D(a.date)) + '</span>' +
           photoHTML(a, true) + '</div>' +
         '<div class="tags">' + a.cats.map(tagHTML).join('') + '</div>' +
-        '<h2>' + esc(a.t) + '</h2>' +
-        '<div class="byline"><b>' + esc(SOURCE_NAME[a.src]) + '</b>' + (a.author ? '<span>' + esc(a.author) + '</span>' : '') + '<span>' + esc(a.date) + '</span></div>' +
-        (a.sponsored ? '<span class="sponsor">Спонсорський матеріал</span>' : '') +
-        (state.translated
-          ? '<div class="tr"><small>Переклад українською</small><h3>' + esc(a.tr) + '</h3><p class="summary">' + esc(a.sr) + '</p></div>'
-          : '<p class="summary">' + esc(a.s) + '</p>') +
+        '<h2>' + esc(title(a)) + '</h2>' +
+        '<div class="byline"><b>' + esc(src(a.src)) + '</b>' + (a.author ? '<span>' + esc(a.author) + '</span>' : '') + '<span>' + esc(D(a.date)) + '</span></div>' +
+        (a.sponsored ? '<span class="sponsor">' + L('Спонсорський матеріал', 'Sponsored') + '</span>' : '') +
+        '<p class="summary">' + esc(summary(a)) + '</p>' +
+        (!EN() && state.translated
+          ? '<div class="tr"><small>Оригінал англійською</small><h3>' + esc(a.t) + '</h3><p class="summary">' + esc(a.s) + '</p></div>'
+          : '') +
         '<div class="actions">' +
           '<a class="btn primary" href="' + esc(safeUrl(a.link)) + '" target="_blank" rel="noopener noreferrer">' +
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>' +
-            'Читати на ' + esc(SOURCE_NAME[a.src]) + '</a>' +
-          '<button class="btn secondary" data-translate aria-pressed="' + state.translated + '">' +
+            L('Читати на ', 'Read on ') + esc(src(a.src)) + '</a>' +
+          (EN() ? '' : '<button class="btn secondary" data-translate aria-pressed="' + state.translated + '">' +
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c1 3 3 5.5 6 7M11 5c-1 3.5-3.5 6.5-7 8"/><path d="M13 21l4-9 4 9M14.5 18h5"/></svg>' +
-            (state.translated ? 'Показати оригінал' : 'Перекласти анонс') + '</button>' +
+            (state.translated ? 'Сховати оригінал' : 'Показати оригінал англійською') + '</button>') +
         '</div>' +
-        '<p class="foot">Матеріал належить виданню ' + esc(SOURCE_NAME[a.src]) + '. У застосунку показано лише заголовок і короткий анонс із відкритої RSS-стрічки.</p>' +
+        '<p class="foot">' + L('Матеріал належить виданню ' + esc(src(a.src)) + '. У застосунку показано лише заголовок і короткий анонс із відкритої RSS-стрічки.', 'The article belongs to ' + esc(src(a.src)) + '. The app shows only the headline and a short summary from the open RSS feed.') + '</p>' +
       '</div>';
     box.hidden = false;
   }
@@ -2814,6 +2872,9 @@ return mountHero; })()
     if ((el = e.target.closest('[data-hero-set]'))) {
       state.hero = el.dataset.heroSet; save(); mountHeroBg(); renderSettings(); return;
     }
+    if ((el = e.target.closest('[data-lang-set]'))) {
+      state.lang = el.dataset.langSet; UI_LANG = state.lang === 'en' ? 'en' : 'uk'; save(); relang(); return;
+    }
     if ((el = e.target.closest('[data-theme-set]'))) {
       state.theme = el.dataset.themeSet; applyTheme(); save(); renderSettings(); return;
     }
@@ -2838,6 +2899,18 @@ return mountHero; })()
     state.query = e.target.value; renderFeed();
   });
 
+  // Зміна мови: перемальовуємо все, карту й каталог монтуємо заново в чисті контейнери.
+  function freshRoot(id) { var r = $(id), n = r.cloneNode(false); r.parentNode.replaceChild(n, r); return n; }
+  function relang() {
+    applyStatic();
+    if (innov) { innov = null; freshRoot('iv-root'); }
+    if (cmap) { cmap = null; freshRoot('map-root'); }
+    renderAll();
+    if (state.tab === 'map') mountMap();
+    if (state.tab === 'innov') mountInnov();
+  }
+
+  applyStatic();
   renderAll();
   mountHeroBg();
 })();
