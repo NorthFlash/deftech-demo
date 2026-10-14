@@ -1581,7 +1581,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-10-13', label: '13 жовтня 2026' };
+  var INNOV_AS_OF = { date: '2026-10-14', label: '14 жовтня 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -2710,7 +2710,41 @@ return mountHero; })()
       blurb_en: 'A Boeing 737-based airborne early warning and control aircraft for the Royal Air Force, which will go to No. 8 Squadron after testing. On 8 October 2026 both delivered aircraft, WT001 and WT002, were airborne simultaneously for the first time; the test programme continues ahead of entry into service.',
       specs: [['Радар', 'MESA (Northrop Grumman), без рухомих частин'], ['Платформа', 'Boeing 737 Next Generation'], ['Літаків у польотах', '2 (WT001, WT002)']],
       specs_en: [['Radar', 'MESA (Northrop Grumman), no moving parts'], ['Platform', 'Boeing 737 Next Generation'], ['Aircraft flying', '2 (WT001, WT002)']],
-      links: [['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/two-of-britains-new-e-7-aircraft-airborne/']] }
+      links: [['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/two-of-britains-new-e-7-aircraft-airborne/']] },
+    { id: 'vampire', name: 'VAMPIRE', maker: 'L3Harris Technologies', country: 'США', type: 'missiles', stage: 'service', upd: '2026-10-14', q: 'VAMPIRE',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/10/U.S.-Army-receives-first-VAMPIRE-counter-drone-systems-from-L3Harris.jpg',
+      blurb: 'Модульний палетний комплекс розвідки й ураження дронів, що встановлюється на більшість машин з відкритим кузовом і запускає лазерно-керовані ракети APKWS. З 2023 р. застосовується в бойових умовах у Європі; у жовтні 2026 р. армія США отримала перші системи за терміновим замовленням — менш ніж через два місяці після контракту.',
+      blurb_en: 'A modular palletised kit for reconnaissance and strike against drones that fits most open-bed vehicles and fires APKWS laser-guided rockets. It has been used in combat in Europe since 2023; in October 2026 the US Army received its first systems under an urgent order, less than two months after the contract.',
+      specs: [['Боєприпаси', 'APKWS та інші лазерно-керовані ракети'], ['Контракт армії США', 'до $106 млн'], ['Бойовий наліт', 'понад 350 000 год (з 2023 р.)']],
+      specs_en: [['Munitions', 'APKWS and other laser-guided rockets'], ['US Army contract', 'up to $106 million'], ['Combat hours', 'over 350,000 h (since 2023)']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/u-s-army-receives-first-vampire-counter-drone-systems-from-l3harris/'], ['Сайт виробника', 'https://l3harris.com/newsroom/press-release/2026/06/l3harris-delivering-counter-drone-systems-us-army']] },
+    { id: 'irifi', name: 'IRIFI', maker: 'Harmattan AI', country: 'Франція', type: 'unmanned', stage: 'dev', upd: '2026-10-14', q: 'IRIFI',
+      img: 'https://cdn.dronexl.co/wp-content/uploads/2026/10/harmattan-ai-irifi-deep-strike-drone-desert.webp',
+      blurb: 'Одноразовий ударний дрон великої дальності на кшталт «Шахеда» з ШІ-автономією, навігацією без GNSS і візуальним наведенням на кінцевій ділянці; запускається з мобільного контейнера. Представлений у жовтні 2026 р. як перший продукт французького стартапу для глибоких ударів; на Marrakech Air Show підписано лист про наміри щодо виробництва ключових компонентів у Марокко.',
+      blurb_en: 'A long-range one-way attack drone in the Shahed mould with AI autonomy, GNSS-independent navigation and visual terminal guidance, launched from a mobile canister. Unveiled in October 2026 as the French start-up’s first deep-strike product; at the Marrakech Air Show a letter of intent was signed to produce key components in Morocco.',
+      specs: [['Дальність', 'до 2000 км'], ['Двигун', 'поршневий (ДВЗ)'], ['Наведення', 'без GNSS, візуальне на кінцевій ділянці']],
+      specs_en: [['Range', 'up to 2,000 km'], ['Engine', 'combustion engine'], ['Guidance', 'GNSS-independent, visual terminal']],
+      links: [['Джерело: DroneXL', 'https://dronexl.co/2026/10/12/harmattan-ai-irifi-strike-drone-morocco/'], ['Джерело: The Defense Post', 'https://thedefensepost.com/2026/10/13/harmattan-ai-shahed-style/']] },
+    { id: 'tyr', name: 'TYR', maker: 'Heaviside Industries', country: 'США', type: 'unmanned', stage: 'prod', upd: '2026-10-14', q: 'Heaviside',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/10/Heaviside-unveils-five-pound-TYR-loitering-munition-designed-to-defeat-main-battle-tanks.jpg',
+      blurb: 'Мініатюрний баражуючий боєприпас літакової схеми масою близько 2,3 кг зі змінними бойовими частинами Nammo — від кумулятивної протитанкової до осколкової. Представлений на AUSA у жовтні 2026 р.; за даними компанії, пройшов вогневі випробування й уже законтрактований замовниками Міноборони США.',
+      blurb_en: 'A miniature fixed-wing loitering munition weighing about 2.3 kg with interchangeable Nammo warheads, from a shaped-charge anti-tank to a fragmentation round. Unveiled at AUSA in October 2026; according to the company it has completed live-fire testing and is already under contract with US Department of War customers.',
+      specs: [['Маса', 'понад 2,3 кг (система ~6,8 кг)'], ['Дальність / час польоту', 'понад 40 км / понад 60 хв'], ['Швидкість', 'понад 240 км/год']],
+      specs_en: [['Weight', 'just over 5 lb (system ~15 lb)'], ['Range / endurance', 'over 25 miles / over 60 min'], ['Speed', 'over 150 mph']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/heaviside-unveils-five-pound-tyr-loitering-munition-designed-to-defeat-main-battle-tanks/'], ['Джерело: Mezha', 'https://mezha.net/eng/news/mezha-07e08f6b512a85741aae2946_defense_firms_unveil/']] },
+    { id: 'gokalp', name: 'GÖKALP E1', maker: 'ASELSAN', country: 'Туреччина', type: 'missiles', stage: 'test', upd: '2026-10-14', q: 'GOKALP',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/10/ASELSANs-GOKALP-interceptor-destroys-target-drone-in-demonstration-integrating-AURA-radar-and-DRONEDEF-command-and-control.jpeg',
+      blurb: 'Автономний перехоплювач дронів, що знищує ціль прямим влученням (hit-to-kill) і запускається з транспортного засобу. Входить до протидронового шару турецької ешелонованої ППО «Сталевий купол»; у жовтні 2026 р. на демонстрації в Анкарі збив дрон-мішень за даними радара AURA та системи керування DRONEDEF.',
+      blurb_en: 'An autonomous vehicle-launched drone interceptor that destroys targets by direct impact (hit-to-kill). It forms part of the counter-drone layer of Türkiye’s layered Steel Dome air defence; in October 2026, during a demonstration in Ankara, it downed a target drone cued by the AURA radar and the DRONEDEF command-and-control system.',
+      specs: [['Принцип ураження', 'пряме влучання (hit-to-kill)'], ['Цілевказання', 'радар AURA, C2 DRONEDEF'], ['Платформа', 'інтеграція на автомобіль']],
+      specs_en: [['Kill method', 'direct impact (hit-to-kill)'], ['Cueing', 'AURA radar, DRONEDEF C2'], ['Platform', 'vehicle-integrated']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/aselsans-gokalp-interceptor-destroys-target-drone-in-demonstration-integrating-aura-radar-and-dronedef-command-and-control/']] },
+    { id: 'cxmhr', name: 'cxMHR', maker: 'Leonardo DRS', country: 'США', type: 'electronic', stage: 'prod', upd: '2026-10-14', q: 'cxMHR',
+      blurb: 'Повністю цифровий програмно-визначуваний радар C-діапазону з АФАР для інтегрованої ППО/ПРО: чотири панелі, система «свій-чужий» і засоби керування в одному ISO-контейнері. Одночасно супроводжує балістичні й крилаті ракети, реактивні снаряди та дрони; представлений на AUSA у жовтні 2026 р., вже розпочато початкове виробництво.',
+      blurb_en: 'A fully digital, software-defined C-band AESA radar for integrated air and missile defence: four panels, IFF and command-and-control packed in a single ISO container. It tracks ballistic and cruise missiles, rockets and drones simultaneously; unveiled at AUSA in October 2026, it has already entered initial production.',
+      specs: [['Діапазон', 'C, АФАР, 4 панелі'], ['Огляд', '360°, напівсферичний'], ['Дальність виявлення', 'понад 90 км (БпЛА), понад 330 км (транспортні літаки)']],
+      specs_en: [['Band', 'C-band AESA, 4 panels'], ['Coverage', '360°, hemispheric'], ['Detection range', 'over 90 km (UAS), over 330 km (transport aircraft)']],
+      links: [['Джерело: Finviz', 'https://finviz.com/news/401224/leonardo-drs-launches-cxmhr-a-fully-digital-c-band-radar-for-integrated-air-and-missile-defense'], ['Джерело: Mezha', 'https://mezha.net/eng/news/mezha-07e08f6b512a85741aae2946_defense_firms_unveil/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
