@@ -1051,7 +1051,7 @@ button { cursor: pointer; }
     function mount(root, opts) {
       opts = opts || {};
       var wide = !!opts.wide, compact = !!opts.compact;
-      var view = { lon: -30, lat: 22, zoom: 1 }, selected = null, spin = !reduce, fly = null, tour = null, raf = 0, idleAt = 0;
+      var view = { lon: 0, lat: 15, zoom: 1 }, selected = null, spin = !reduce, fly = null, tour = null, raf = 0, idleAt = 0;
       var W = 0, H = 0, DPR = 1, scr = [], col = {}, colAt = 0, alive = true;
 
       root.innerHTML = compact
@@ -1066,7 +1066,7 @@ button { cursor: pointer; }
             '<div class="cm-cap" hidden><div class="bar"><span></span></div><small></small><b></b><span class="t"></span></div>' +
             '<div class="cm-ctrls"><button class="cm-btn primary" data-cm-tour>' + L('▶ Брифінг-тур', '▶ Briefing tour') + '</button>' +
               '<button class="cm-btn" data-cm-spin aria-pressed="' + spin + '" aria-label="' + L('Автообертання', 'Auto-rotate') + '" title="' + L('Автообертання', 'Auto-rotate') + '">⟳</button>' +
-              '<button class="cm-btn" data-cm-home>' + L('Україна', 'Ukraine') + '</button></div>' +
+              '</div>' +
             '<div class="cm-zoom"><button data-cm-zoom="1" aria-label="' + L('Наблизити', 'Zoom in') + '">+</button><button data-cm-zoom="-1" aria-label="' + L('Віддалити', 'Zoom out') + '">−</button></div>' +
           '</div>' +
           '<div class="cm-legend"><span>' + L('Масштаб:', 'Scale:') + '</span>' +
@@ -1227,13 +1227,13 @@ button { cursor: pointer; }
       function setRegion(id) {
         root.querySelectorAll('[data-cm-region]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cmRegion === id)); });
         var r = REGIONS.filter(function (x) { return x[0] === id; })[0];
-        if (r[3] == null) { flyTo(30, 22, 1, 900); setSpin(!reduce); } else { flyTo(r[3], r[4], r[5], 1000); setSpin(false); }
+        if (r[3] == null) { flyTo(0, 15, 1, 900); setSpin(!reduce); } else { flyTo(r[3], r[4], r[5], 1000); setSpin(false); }
         loop();
       }
 
-      // Брифінг-тур: нові конфлікти й загострення, потім Україна.
+      // Брифінг-тур світом: спершу нові конфлікти й загострення, далі найбільші затяжні — за однаковими правилами для всіх регіонів.
       var TOUR_MS = 6500;
-      function tourList() { return sorted().filter(function (c) { return c.hot; }).concat(CONFLICTS.filter(function (c) { return c.id === 'ua'; })); }
+      function tourList() { return sorted().filter(function (c) { return c.hot || c.level === 3; }); }
       function stopTour() {
         if (!tour) return; clearTimeout(tour.tm); tour = null; cap.hidden = true;
         var b = root.querySelector('[data-cm-tour]'); if (b) b.textContent = L('▶ Брифінг-тур', '▶ Briefing tour');
@@ -1302,7 +1302,6 @@ button { cursor: pointer; }
         if ((el = e.target.closest('[data-cm-zoom]'))) { var z = view.zoom * (el.dataset.cmZoom === '1' ? 1.4 : 1 / 1.4); flyTo(-view.lon, view.lat, Math.max(.8, Math.min(4, z)), 350); loop(); return; }
         if (e.target.closest('[data-cm-tour]')) { if (tour) stopTour(); else startTour(); return; }
         if (e.target.closest('[data-cm-spin]')) { setSpin(!spin); if (spin) { stopTour(); fly = null; } loop(); return; }
-        if (e.target.closest('[data-cm-home]')) { stopTour(); select('ua', true); return; }
         if ((el = e.target.closest('[data-cm-pick]'))) { stopTour(); select(el.dataset.cmPick, true); return; }
         if (e.target.closest('[data-cm-close]')) { stopTour(); select(null); return; }
         if ((el = e.target.closest('[data-cm-article]')) && opts.onArticle) { stopTour(); opts.onArticle(el.dataset.cmArticle); return; }
