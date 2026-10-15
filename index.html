@@ -166,36 +166,34 @@ button { cursor: pointer; }
 .foot { margin: 0; font-size: 13px; line-height: 18px; color: var(--fg-2); }
 
 /* === CONFLICT MAP CSS START === */
-/* Карта конфліктів: точкова мапа світу, маркери поверх неї (розмір — масштаб, пульсація — нове загострення). */
-.cm { --cm-hot: var(--c-missiles); --cm-old: color-mix(in srgb, var(--c-missiles) 70%, var(--bg)); --cm-land: color-mix(in srgb, var(--fg) 24%, transparent); display: flex; flex-direction: column; gap: 12px; }
+/* Карта конфліктів: 3D-глобус із точок суходолу, маркери поверх (розмір — масштаб, пульсація — нове загострення), брифінг-тур гарячими точками. */
+.cm { --cm-hot: var(--c-missiles); --cm-old: color-mix(in srgb, var(--c-missiles) 62%, var(--bg)); display: flex; flex-direction: column; gap: 12px; }
 .cm-regions { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
 .cm-regions::-webkit-scrollbar { display: none; }
 .cm-regions button { flex-shrink: 0; min-height: 32px; padding: 0 13px; border-radius: 16px; border: 1px solid transparent; background: var(--fill); font-size: 13px; font-weight: 600; color: var(--fg); }
 .cm-regions button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--bg)); }
-.cm-stage { position: relative; overflow: hidden; border-radius: 16px; aspect-ratio: 1.3; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none;
-  background: radial-gradient(130% 100% at 50% 0%, color-mix(in srgb, var(--accent) 6%, var(--surface, var(--bg))), var(--surface, var(--bg))); border: 1px solid var(--sep); }
+.cm-stage { position: relative; overflow: hidden; border-radius: 18px; aspect-ratio: 1 / 1.02; max-width: 100%; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none;
+  background: radial-gradient(90% 80% at 50% 45%, color-mix(in srgb, var(--accent) 7%, var(--surface, var(--bg))), var(--surface, var(--bg))); border: 1px solid var(--sep); }
 .cm-stage.dragging { cursor: grabbing; }
-.cm-stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.cm-land { fill: var(--cm-land); }
-.cm-grid { fill: none; stroke: color-mix(in srgb, var(--fg) 7%, transparent); stroke-width: .25; vector-effect: non-scaling-stroke; }
-.cm-stage stop { stop-color: var(--cm-hot); }
-.cm-pins { position: absolute; inset: 0; pointer-events: none; }
-.cm-pin { position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px; pointer-events: auto; border: 0; padding: 0; background: none; border-radius: 50%; }
-.cm-pin i { position: absolute; left: 50%; top: 50%; width: var(--d); height: var(--d); transform: translate(-50%, -50%); border-radius: 50%; background: var(--cm-old);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--bg) 85%, transparent), 0 1px 6px rgba(0,0,0,.25); transition: transform .2s; }
-.cm-pin.l3 { --d: 20px; } .cm-pin.l2 { --d: 14px; } .cm-pin.l1 { --d: 9px; }
-.cm-pin.hot i { background: var(--cm-hot); }
-.cm-pin.hot b { position: absolute; left: 50%; top: 50%; width: var(--d); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2); border-radius: 50%; border: 2px solid var(--cm-hot); animation: cm-pulse 1.8s ease-out infinite; pointer-events: none; }
-.cm-pin.hot b + b { animation-delay: .9s; }
-.cm-pin:hover i, .cm-pin:focus-visible i { transform: translate(-50%, -50%) scale(1.18); }
-.cm-pin.sel i { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--fg); }
-@keyframes cm-pulse { from { transform: scale(1); opacity: .85; } to { transform: scale(3.1); opacity: 0; } }
-.cm-tip { position: absolute; z-index: 2; max-width: 240px; padding: 8px 10px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: 12px; line-height: 1.35; pointer-events: none; transform: translate(-50%, calc(-100% - 16px)); box-shadow: 0 6px 18px rgba(0,0,0,.25); }
-.cm-tip strong { display: block; font-size: 13px; }
+.cm-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cm-hud { position: absolute; left: 12px; right: 12px; top: 10px; display: flex; justify-content: space-between; gap: 8px; pointer-events: none; font-size: 11px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.cm-hud b { color: var(--fg); }
+.cm-ctrls { position: absolute; left: 10px; right: 54px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+.cm-btn { min-height: 34px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--sep); background: color-mix(in srgb, var(--surface, var(--bg)) 86%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-size: 13px; font-weight: 650; color: var(--fg); }
+.cm-btn[data-cm-spin] { min-width: 38px; padding: 0; font-size: 17px; }
+.cm-btn.primary { background: var(--cm-hot); border-color: var(--cm-hot); color: #FFFFFF; }
+.cm-btn[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .cm-zoom { position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; background: var(--surface, var(--bg)); border: 1px solid var(--sep); }
-.cm-zoom button { width: 34px; height: 32px; border: 0; background: transparent; font-size: 18px; font-weight: 600; color: var(--fg); }
+.cm-zoom button { width: 36px; height: 34px; border: 0; background: transparent; font-size: 18px; font-weight: 600; color: var(--fg); }
 .cm-zoom button + button { border-top: 1px solid var(--sep); }
-.cm-asof { position: absolute; left: 10px; bottom: 10px; padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; color: var(--fg-2); background: color-mix(in srgb, var(--bg) 80%, transparent); }
+.cm-tip { position: absolute; z-index: 2; max-width: 240px; padding: 8px 10px; border-radius: 10px; background: var(--fg); color: var(--bg); font-size: 12px; line-height: 1.35; pointer-events: none; transform: translate(-50%, calc(-100% - 14px)); box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.cm-tip strong { display: block; font-size: 13px; }
+.cm-cap { position: absolute; left: 50%; top: 32px; transform: translateX(-50%); width: min(420px, calc(100% - 20px)); display: grid; gap: 5px; padding: 11px 13px; border-radius: 12px; background: color-mix(in srgb, var(--surface, var(--bg)) 92%, transparent); border: 1px solid var(--sep); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 6px 22px rgba(0,0,0,.14); }
+.cm-cap .bar { height: 3px; border-radius: 2px; background: var(--fill); overflow: hidden; }
+.cm-cap .bar span { display: block; height: 100%; width: 0; background: var(--cm-hot); }
+.cm-cap small { font-size: 11px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--fg-2); }
+.cm-cap b { font-family: var(--font-display); font-size: 16px; line-height: 1.25; }
+.cm-cap span.t { font-size: 13px; line-height: 1.4; color: var(--fg-2); }
 .cm-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 12px; color: var(--fg-2); }
 .cm-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .cm-legend i { display: inline-block; border-radius: 50%; background: var(--cm-old); }
@@ -208,11 +206,15 @@ button { cursor: pointer; }
 .cm-badge.hot { color: #FFFFFF; background: var(--cm-hot); }
 .cm-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 2px 0; font-size: 13px; }
 .cm-facts dt { color: var(--fg-2); }
-.cm-facts dd { margin: 0; font-weight: 600; }
+.cm-facts dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
 .cm-card p { margin: 0; font-size: 14px; line-height: 1.5; }
 .cm-card .cm-note { font-size: 12px; color: var(--fg-2); }
 .cm-close { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--fill); font-size: 16px; color: var(--fg); }
-.cm-news { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 14px; margin-top: 4px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 650; }
+.cm-card h4 { margin: 6px 0 0; font-size: 12px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; color: var(--fg-2); }
+.cm-art { display: grid; gap: 2px; width: 100%; padding: 8px 10px; border: 0; border-radius: 9px; background: var(--fill); text-align: left; font-size: 13.5px; line-height: 1.35; font-weight: 600; color: var(--fg); }
+.cm-art small { font-size: 11.5px; font-weight: 500; color: var(--fg-2); }
+.cm-art:hover { background: color-mix(in srgb, var(--accent) 12%, var(--fill)); }
+.cm-news { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; margin-top: 2px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 650; }
 .cm-list h4 { margin: 8px 0 6px; font-size: 13px; font-weight: 650; letter-spacing: .4px; text-transform: uppercase; color: var(--fg-2); }
 .cm-row { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 10px; width: 100%; padding: 10px 2px; border: 0; border-top: 1px solid var(--sep); background: transparent; text-align: left; }
 .cm-row .dot { justify-self: center; border-radius: 50%; background: var(--cm-old); }
@@ -222,10 +224,12 @@ button { cursor: pointer; }
 .cm-row em { font-style: normal; font-size: 12px; color: var(--fg-2); white-space: nowrap; }
 .cm-row.sel { background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .cm-src { font-size: 11px; line-height: 1.45; color: var(--fg-2); }
-/* Широкий режим (веб): карта ліворуч, картка та список праворуч */
+.cm.compact { display: block; height: 100%; }
+.cm.compact .cm-stage { position: absolute; inset: 0; aspect-ratio: auto; border: 0; border-radius: 0; pointer-events: none; }
+/* Широкий режим (веб): глобус ліворуч, картка та список праворуч */
 .cm.wide { display: grid; grid-template-rows: auto auto auto 1fr; grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: "regions regions" "stage side" "legend side" "src side"; gap: 12px 28px; align-items: start; }
 .cm.wide .cm-regions { grid-area: regions; }
-.cm.wide .cm-stage { grid-area: stage; aspect-ratio: 1.9; }
+.cm.wide .cm-stage { grid-area: stage; aspect-ratio: 1.45; }
 .cm.wide .cm-legend { grid-area: legend; }
 .cm.wide .cm-src { grid-area: src; }
 .cm.wide .cm-side { grid-area: side; display: flex; flex-direction: column; gap: 12px; max-height: calc(100vh - 150px); overflow-y: auto; position: sticky; top: 130px; }
@@ -233,9 +237,9 @@ button { cursor: pointer; }
 @media (max-width: 1000px) {
   .cm.wide { display: flex; }
   .cm.wide .cm-side { display: contents; }
-  .cm.wide .cm-stage { aspect-ratio: 1.5; }
+  .cm.wide .cm-stage { aspect-ratio: 1.1; }
 }
-@media (prefers-reduced-motion: reduce) { .cm-pin.hot b { animation: none; display: none; } .cm-card { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .cm-card { animation: none; } }
 /* === CONFLICT MAP CSS END === */
 #map-root { padding: 4px 16px 28px; }
 /* Заставка за заголовком «Сьогодні» */
@@ -302,7 +306,7 @@ button { cursor: pointer; }
 /* === INNOVATIONS CSS END === */
 #iv-root { padding: 4px 16px 28px; }
 .tabbar .tab span { font-size: 9.5px; letter-spacing: -.1px; }
-.tabbar { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
+.tabbar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--sep); background: var(--bar); padding: 4px 0 6px; }
 .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 48px; border: 0; background: transparent; color: var(--fg-2); font-size: 10px; font-weight: 500; }
 .tab[aria-current="page"] { color: var(--accent); }
 /* Перемикач мови на вкладці «Сьогодні» */
@@ -316,6 +320,57 @@ button { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   .detail, .switch, .switch::after { transition: none; }
 }
+/* === EXTRAS CSS START === */
+/* Брифінг за 60 секунд (сторіс), спливні повідомлення, статус джерел, перемикач мови на картці. */
+.bf { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: rgba(6, 8, 6, .82); padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+.bf-card { position: relative; width: min(440px, 100vw); height: min(100%, 860px); max-height: 100%; overflow: hidden; background: #0E1410; color: #FFFFFF; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+@media (min-width: 560px) { .bf-card { height: min(92vh, 820px); border-radius: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.5); } }
+.bf-img { position: absolute; inset: 0; background: radial-gradient(120% 90% at 80% 10%, rgba(124,196,106,.28), transparent 60%), #0E1410; }
+.bf-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bf-img svg { position: absolute; left: 50%; top: 38%; transform: translate(-50%, -50%); opacity: .35; color: #7CC46A; }
+.bf-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.6) 0, rgba(0,0,0,0) 26%, rgba(0,0,0,.1) 46%, rgba(0,0,0,.92) 100%); }
+.bf-bars { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; gap: 4px; z-index: 2; }
+.bf-bars span { flex: 1; height: 3px; border-radius: 2px; background: rgba(255,255,255,.32); overflow: hidden; }
+.bf-bars i { display: block; height: 100%; width: 0; background: #FFFFFF; }
+.bf-top { position: absolute; top: 24px; left: 14px; right: 8px; display: flex; align-items: center; gap: 10px; z-index: 3; font-size: 12px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; }
+.bf-top .bf-src { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+.bf-x { width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(0,0,0,.35); color: #FFFFFF; font-size: 18px; display: grid; place-items: center; }
+.bf-tap { position: absolute; top: 70px; bottom: 150px; z-index: 1; border: 0; background: transparent; padding: 0; }
+.bf-tap.prev { left: 0; width: 34%; } .bf-tap.next { right: 0; width: 66%; }
+.bf-txt { position: absolute; left: 18px; right: 18px; bottom: 20px; z-index: 2; display: grid; gap: 10px; }
+.bf-kick { justify-self: start; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,.16); }
+.bf-txt h2 { margin: 0; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 800; text-wrap: balance; }
+.bf-txt p { margin: 0; font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.86); }
+.bf-acts { display: flex; gap: 8px; flex-wrap: wrap; }
+.bf-btn { min-height: 44px; padding: 0 16px; border-radius: 12px; border: 0; background: #FFFFFF; color: #0E1410; font-size: 15px; font-weight: 700; }
+.bf-btn.ghost { background: rgba(255,255,255,.14); color: #FFFFFF; }
+.bf-end { position: absolute; inset: 0; z-index: 4; display: grid; place-content: center; gap: 14px; padding: 28px; text-align: center; background: radial-gradient(100% 70% at 50% 30%, rgba(124,196,106,.22), transparent 70%), #0E1410; }
+.bf-end h2 { margin: 0; font-family: var(--font-display); font-size: 26px; line-height: 1.2; }
+.bf-end p { margin: 0; color: rgba(255,255,255,.75); }
+.bf-end .bf-acts { justify-content: center; }
+.brief-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 14px 0 6px; border: 0; border-radius: 19px; background: var(--fg); color: var(--bg); font-size: 14px; font-weight: 700; }
+.brief-btn .ring { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--c-missiles) 0 72%, var(--accent) 72% 100%); }
+.brief-btn .ring::before { content: ""; width: 22px; height: 22px; border-radius: 50%; background: var(--fg); grid-area: 1 / 1; }
+.brief-btn .ring svg { grid-area: 1 / 1; z-index: 1; color: var(--bg); }
+.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 60; max-width: calc(100vw - 32px); padding: 10px 16px; border-radius: 12px; background: var(--fg); color: var(--bg); font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.srcdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; background: var(--fg-2); }
+.srcdot.ok { background: #2E9E4A; } .srcdot.slow { background: #D08A00; } .srcdot.off { background: var(--sep); }
+.lang-card { display: inline-grid; grid-auto-flow: column; gap: 2px; padding: 2px; border-radius: 9px; background: var(--fill); align-self: flex-start; }
+.lang-card button { min-height: 30px; min-width: 44px; padding: 0 10px; border: 0; border-radius: 7px; background: transparent; font-size: 13px; font-weight: 650; color: var(--fg-2); }
+.lang-card button[aria-checked="true"] { background: var(--surface, var(--bg)); color: var(--fg); box-shadow: 0 1px 3px rgba(0,0,0,.14); }
+.also { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px; background: var(--fill); font-size: 14px; }
+.also small { font-size: 12px; font-weight: 650; color: var(--fg-2); }
+.also a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.dup { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 6px; color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.region-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 12px; border: 1px solid var(--sep); border-radius: 16px; background: transparent; font-size: 13px; font-weight: 600; color: var(--fg); }
+.region-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--c-missiles); }
+.share-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 18px; border-radius: 12px; border: 1px solid var(--sep); background: transparent; font-size: 16px; font-weight: 650; color: var(--fg); }
+@media (prefers-reduced-motion: reduce) { .bf-bars i { transition: none !important; } }
+.hdr .brief-btn { align-self: flex-start; margin-top: 6px; }
+.detail-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.region-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 16px 10px; }
+.toast { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+/* === EXTRAS CSS END === */
 </style>
 </head>
 <body>
@@ -330,6 +385,7 @@ button { cursor: pointer; }
         <div class="date" id="asof-date">Субота, 10 жовтня</div>
         <div class="stat" id="today-stat"></div>
         <div class="muted" id="asof-updated">Оновлено 4 хв тому</div>
+        <button class="brief-btn" id="brief-open" type="button"><span class="ring"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></span><span data-i18n="brief">Брифінг за 60 секунд</span></button>
       </div>
       <div class="chips" id="today-chips" role="toolbar" aria-label="Фільтр за темами" data-i18n-aria="chipsAria"></div>
       <div class="list" id="today-list"></div>
@@ -356,13 +412,8 @@ button { cursor: pointer; }
       <div id="iv-root"></div>
     </main>
 
-    <main class="screen" id="screen-saved" aria-labelledby="h-saved" hidden>
-      <div class="hdr"><h1 id="h-saved" data-i18n="saved">Закладки</h1></div>
-      <div id="saved-list"></div>
-    </main>
-
     <main class="screen grouped" id="screen-settings" aria-labelledby="h-settings" hidden>
-      <div class="hdr"><h1 id="h-settings" data-i18n="settings">Налаштування</h1></div>
+      <div class="hdr"><h1 id="h-settings" data-i18n="settings">Профіль</h1></div>
       <div id="settings-body"></div>
     </main>
 
@@ -386,13 +437,9 @@ button { cursor: pointer; }
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2.2h5c.1-1 .5-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>
       <span data-i18n="tab_innov">Інновації</span>
     </button>
-    <button class="tab" data-tab="saved">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-      <span data-i18n="tab_saved">Закладки</span>
-    </button>
     <button class="tab" data-tab="settings">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
-      <span data-i18n="tab_params">Параметри</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.4-6 8-6s6.8 2 8 6"/></svg>
+      <span data-i18n="tab_params">Профіль</span>
     </button>
   </nav>
 </div>
@@ -439,9 +486,9 @@ button { cursor: pointer; }
   function summary(a) { return EN() ? a.s : (a.sr || a.s); }
   var I18N = {
     today: ['Сьогодні', 'Today'], feed: ['Стрічка', 'Feed'], mapH: ['Карта конфліктів', 'Conflict map'], innov: ['Інновації', 'Innovations'],
-    saved: ['Закладки', 'Saved'], settings: ['Налаштування', 'Settings'], story: ['Новина', 'Story'], tabsAria: ['Розділи', 'Sections'],
+    saved: ['Закладки', 'Saved'], settings: ['Профіль', 'Profile'], story: ['Новина', 'Story'], tabsAria: ['Розділи', 'Sections'],
     chipsAria: ['Фільтр за темами', 'Filter by topic'], langAria: ['Мова', 'Language'], qPh: ['Пошук: drone, F-35…', 'Search: drone, F-35…'], qAria: ['Пошук у новинах', 'Search news'],
-    tab_today: ['Сьогодні', 'Today'], tab_feed: ['Стрічка', 'Feed'], tab_map: ['Карта', 'Map'], tab_innov: ['Інновації', 'Innovation'], tab_saved: ['Закладки', 'Saved'], tab_params: ['Параметри', 'Settings']
+    tab_today: ['Сьогодні', 'Today'], tab_feed: ['Стрічка', 'Feed'], tab_map: ['Карта', 'Map'], tab_innov: ['Інновації', 'Innovation'], tab_params: ['Профіль', 'Profile'], brief: ['Брифінг за 60 секунд', '60-second briefing']
   };
   function applyStatic() {
     document.documentElement.lang = EN() ? 'en' : 'uk';
@@ -902,38 +949,60 @@ button { cursor: pointer; }
   ];
   // === CONFLICTS DATA END ===
   // === CONFLICT MAP JS START ===
-  // Точкова мапа світу (сітка 2°) + маркери конфліктів. Координати мапи: x = довгота + 180, y = LAND.top − широта.
+  // 3D-глобус із точок суходолу (сітка 2°) + маркери конфліктів + брифінг-тур. Ортографічна проєкція на Canvas, без зовнішніх ресурсів.
   var ConflictMap = (function () {
     var LAND = {"step": 2.0, "top": 79.0, "cols": 180, "rows": 68, "mask": "AAAAAAAf9////4AA+AAAAAAAAAAAAAAAAAAAAHwA///wAAAAAA4AA/wAAAAAAAAAHAAAAAf//gAAAAADAAf/wAAAAAAAAAHvwAPAP//gAAAAAODc///4AwAAAH+AAf4AfwH//gAAD4AADf//////gAwf////B8B4H/8AAAf/yf//////////+///////D+D/A+AA//////////////AH/////8D8D8AcAB8////////////+Af/////wGAB4AAAH5////////////4AP8f///gHEAAAAAH4H//////////vgABgD///gH+AAAAGA4/////////8AYAAEAA///8H/AAAAGCx/////////4A4AAAAAf///P/gAAAbCf/////////xAwAAAAAP/////wAAAfv//////////+AgAAAAAH/////gAAAAf//////////9AAAAAAAD////8AAAAD///////////9AAAAAAAD////+AAAAB//5/H//////4AAAAAAAD////4AAAAB9PwfP//////xAAAAAAAD////gAAAAPwjwHP/////+DAAAAAAAD///+AAAAAfALf/n/////8CAAAAAAAB///8AAAAAPABf/H////+MEAAAAAAAB///8AAAAAA+AA///////GMAAAAAAAAf//4AAAAAH+AA///////BAAAAAAAAAP//wAAAAAf/zB///////hAAAAAAAAAP/4wAAAAAf//9///////gAAAAAAAAAD/AQAAAAA///+/P/////gAAAAAAAAAB+AAAAAAB///+/h/////AAAAAAAAAAA+AAAAAAD////f+D///+gAAAAAAAAAAeA4AAAAD////f/B/7/4AAAAAAAAAAAPEEAAAAD////v+A/j+AAAAAAAAAAAAH8AgAAAD////n8AfB+AgAAAAAAAAAABcAAAAAD////3wAeAfAgAAAAAAAAAAAPAAAAAH/////AAcAfgAAAAAAAAAAAABAgAAAD////8AAMAXgAAAAAAAAAAAABj+AAAB/////gAMASAQAAAAAAAAAAAAX/AAAA/////gACAQAYAAAAAAAAAAAAH/gAAAfv///gAAAICIAAAAAAAAAAAAH/8AAAAB///AAAAsGAAAAAAAAAAAAAH/+AAAAB//+AAAAUeAAAAAAAAAAAAAP/+AAAAB//8AAAAIeAAAAAAAAAAAAAP//gAAAB//4AAAAMcgkAAAAAAAAAAAP//+AAAB//wAAAAGAAfAAAAAAAAAAAP///AAAA//wAAAAAAAHwAAAAAAAAAAP///AAAA//wAAAAAYAHwAAAAAAAAAAH///AAAAf/wAAAAAAAAIAAAAAAAAAAH//+AAAAf/wAAAAAAAwAAAAAAAAAAAD//+AAAA//wgAAAAABxAAAAAAAAAAAB//+AAAA//xgAAAAAP5gAAAAAAAAAAAf/8AAAA//DgAAAAAf/gAAAAAAAAAAAf/8AAAA//DAAAAAA//wAAAAAAAAAAAf/4AAAAf/DAAAAAH//4AAAAAAAAAAAf/gAAAAf/DAAAAAH//8AAAAAAAAAAA//AAAAAf8AAAAAAH//+AAAAAAAAAAA//AAAAAP8AAAAAAH//+AAAAAAAAAAA/+AAAAAH8AAAAAAD//+AAAAAAAAAAA/8AAAAAH4AAAAAAD8/8AAAAAAAAAAA/4AAAAAHAAAAAAADAH8AAAAAAAAAAA/gAAAAAAAAAAAAAAAD4AAAAAAAAAAB/gAAAAAAAAAAAAAAADwAGAAAAAAAAB+AAAAAAAAAAAAAAAAAAAEAAAAAAAAB8AAAAAAAAAAAAAAAAAQAIAAAAAAAAB8AAAAAAAAAAAAAAAAAAAwAAAAAAAAB4AAAAAAAAAAAAAAAAAABgAAAAAAAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"};
-    var W = 360, H = LAND.rows * LAND.step;
     var MONTHS = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
     var LEVEL = { 3: 'Висока', 2: 'Середня', 1: 'Низька' };
-    // Мова інтерфейсу: глобальна UI_LANG ('uk' | 'en'), якщо її задала сторінка; інакше українська.
     function en() { return typeof UI_LANG !== 'undefined' && UI_LANG === 'en'; }
     function L(uk, e) { return en() ? e : uk; }
     function F(o, k) { return en() && o[k + '_en'] ? o[k + '_en'] : o[k]; }
     var MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var LEVEL_EN = { 3: 'High', 2: 'Medium', 1: 'Low' };
-    var REGION_EN = { world: 'World', europe: 'Europe', mideast: 'Middle East', africa: 'Africa', asia: 'Asia', americas: 'Americas' };
-    function enDate(s) { var M = MONTHS.map(function (m, i) { return [m, MONTHS_EN[i]]; }); s = String(s).replace(/ р\.$/, ''); M.forEach(function (p) { s = s.replace(p[0], p[1]); }); return s; }
+    function enDate(s) { s = String(s).replace(/ р\.$/, ''); MONTHS.forEach(function (m, i) { s = s.replace(m, MONTHS_EN[i]); }); return s; }
+    // Регіони: [id, назва, назва EN, довгота центру, широта центру, масштаб]
     var REGIONS = [
-      ['world', 'Світ', [-180, 79, 180, -57]],
-      ['europe', 'Європа', [-12, 70, 50, 34]],
-      ['mideast', 'Близький Схід', [24, 42, 66, 8]],
-      ['africa', 'Африка', [-20, 37, 55, -36]],
-      ['asia', 'Азія', [58, 50, 140, -2]],
-      ['americas', 'Америка', [-120, 34, -55, -6]]
+      ['world', 'Світ', 'World', null, null, 1],
+      ['europe', 'Європа', 'Europe', 22, 48, 1.9],
+      ['mideast', 'Близький Схід', 'Middle East', 45, 26, 2.1],
+      ['africa', 'Африка', 'Africa', 20, 4, 1.5],
+      ['asia', 'Азія', 'Asia', 90, 24, 1.5],
+      ['americas', 'Америка', 'Americas', -80, 10, 1.4]
     ];
+    // Ключові слова для автоматичної прив’язки новин до конфліктів (поле region новини).
+    var KEYS = {
+      ua: /ukrain|україн|kyiv|київ|zelensk|зеленськ|зсу|crimea|крим|donbas|донбас|kharkiv|харків/i,
+      ir: /\biran|ірану|іран\b|irgc|tehran|тегеран|hormuz|ормуз/i,
+      lb: /hezbollah|хезбол|lebanon|ліван/i,
+      gz: /\bgaza|газ[аіи]\b|hamas|хамас/i,
+      ye: /yemen|ємен|houthi|хусит/i,
+      sd: /(^|[^h] )sudan|(^|[^н] )судан|\brsf\b/i,
+      et: /ethiopi|ефіоп|tigray|тигра|eritrea|еритре/i,
+      pk: /pakistan|пакистан|afghan|афган|taliban|таліб/i,
+      mm: /myanmar|м’янм|мʼянм|burma/i,
+      cd: /congo|конго|\bm23\b/i,
+      ss: /south sudan|південн\S* судан/i,
+      sh: /\bmali\b|\bмалі\b|burkina|буркіна|\bniger\b|\bнігер\b|sahel|сахел/i,
+      ng: /nigeria|нігері|boko haram|боко харам/i,
+      so: /somali|сомалі|shabaab|шабаб/i,
+      sy: /syria|сирі[яї]/i,
+      cm: /cameroon|камерун/i,
+      mx: /mexic|мексик|cartel|картел/i,
+      ht: /haiti|гаїті/i,
+      ec: /ecuador|еквадор/i,
+      co: /colombi|колумбі/i,
+      ve: /venezuel|венесуел|caribbean|кариб/i
+    };
+    function tag(a) {
+      var txt = [a.t, a.s, a.tr, a.sr].join(' '), out = [];
+      CONFLICTS.forEach(function (c) { var re = KEYS[c.id] || (c.q ? new RegExp(c.q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i') : null); if (re && re.test(txt)) out.push(c.id); });
+      return out;
+    }
+    function tagAll(list) { list.forEach(function (a) { a.region = tag(a); }); return list; }
+    function regionName(id) { var c = CONFLICTS.filter(function (x) { return x.id === id; })[0]; return c ? F(c, 'name') : ''; }
 
-    function esc(s) {
-      return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
-    }
-    function plural(n, one, few, many) {
-      var a = n % 10, b = n % 100;
-      if (a === 1 && b !== 11) return one;
-      if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
-      return many;
-    }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function plural(n, one, few, many) { var a = n % 10, b = n % 100; if (a === 1 && b !== 11) return one; if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few; return many; }
     function parse(s) { var p = String(s).split('-').map(Number); return { y: p[0], m: p[1] || 0, d: p[2] || 0 }; }
     function since(c) {
       var p = parse(c.start);
@@ -945,20 +1014,17 @@ button { cursor: pointer; }
     function duration(c) {
       var a = parse(c.start), now = parse(CONFLICTS_AS_OF.date);
       if (!a.m) { var yy = now.y - a.y; return en() ? 'about ' + yy + ' year' + (yy === 1 ? '' : 's') : 'близько ' + yy + ' ' + plural(yy, 'року', 'років', 'років'); }
-      var d0 = new Date(a.y, a.m - 1, a.d || 1), d1 = new Date(now.y, now.m - 1, now.d);
-      var days = Math.round((d1 - d0) / 864e5);
+      var d0 = new Date(a.y, a.m - 1, a.d || 1), d1 = new Date(now.y, now.m - 1, now.d), days = Math.round((d1 - d0) / 864e5);
       if (days < 31) {
         if (days < 14) return days + ' ' + (en() ? 'day' + (days === 1 ? '' : 's') : plural(days, 'день', 'дні', 'днів'));
         var w = Math.floor(days / 7); return w + ' ' + (en() ? 'week' + (w === 1 ? '' : 's') : plural(w, 'тиждень', 'тижні', 'тижнів'));
       }
-      var months = (now.y - a.y) * 12 + (now.m - a.m) - ((a.d && now.d < a.d) ? 1 : 0);
-      var y = Math.floor(months / 12), m = months % 12, out = [];
+      var months = (now.y - a.y) * 12 + (now.m - a.m) - ((a.d && now.d < a.d) ? 1 : 0), y = Math.floor(months / 12), m = months % 12, out = [];
       if (y) out.push(y + ' ' + (en() ? 'yr' : plural(y, 'рік', 'роки', 'років')));
       if (m) out.push(m + ' ' + L('міс.', 'mo'));
       return out.join(' ') || L('менше місяця', 'less than a month');
     }
     function hotLabel(c) { return c.hot === 'new' ? L('Новий конфлікт', 'New conflict') : c.hot === 'escalating' ? L('Загострення', 'Escalation') : L('Триває', 'Ongoing'); }
-    function xy(c) { return [c.lon + 180, LAND.top - c.lat]; }
     function sorted() {
       return CONFLICTS.slice().sort(function (a, b) {
         if (!!a.hot !== !!b.hot) return a.hot ? -1 : 1;
@@ -966,122 +1032,175 @@ button { cursor: pointer; }
         return a.start < b.start ? 1 : -1;
       });
     }
-    function stats() {
-      return { total: CONFLICTS.length, hot: CONFLICTS.filter(function (c) { return c.hot; }).length, high: CONFLICTS.filter(function (c) { return c.level === 3; }).length };
-    }
+    function stats() { return { total: CONFLICTS.length, hot: CONFLICTS.filter(function (c) { return c.hot; }).length, high: CONFLICTS.filter(function (c) { return c.level === 3; }).length }; }
 
-    var dotsPath = null;
-    function landPath() {
-      if (dotsPath) return dotsPath;
-      var raw = atob(LAND.mask), r = LAND.step * 0.31, s = LAND.step, out = [], i = 0;
-      for (var row = 0; row < LAND.rows; row++) {
-        for (var col = 0; col < LAND.cols; col++, i++) {
-          if (raw.charCodeAt(i >> 3) & (128 >> (i & 7))) {
-            var cx = col * s + s / 2, cy = row * s + s / 2;
-            out.push('M' + (cx - r).toFixed(2) + ' ' + cy.toFixed(2) + 'a' + r.toFixed(2) + ' ' + r.toFixed(2) + ' 0 1 0 ' + (2 * r).toFixed(2) + ' 0a' + r.toFixed(2) + ' ' + r.toFixed(2) + ' 0 1 0 ' + (-2 * r).toFixed(2) + ' 0');
-          }
-        }
-      }
-      return (dotsPath = out.join(''));
+    var PTS = null;
+    function points() {
+      if (PTS) return PTS;
+      var raw = atob(LAND.mask), i = 0; PTS = [];
+      for (var r = 0; r < LAND.rows; r++) for (var col = 0; col < LAND.cols; col++, i++)
+        if (raw.charCodeAt(i >> 3) & (128 >> (i & 7))) PTS.push([col * LAND.step - 180 + LAND.step / 2, LAND.top - r * LAND.step - LAND.step / 2]);
+      return PTS;
     }
+    function rgb(h) { h = String(h).trim().replace('#', ''); if (h.length < 6) h = h.replace(/./g, '$&$&'); var n = parseInt(h.slice(0, 6), 16); return isNaN(n) ? [128, 128, 128] : [n >> 16, n >> 8 & 255, n & 255]; }
+    function mix(a, b, t) { var x = rgb(a), y = rgb(b); return 'rgb(' + [0, 1, 2].map(function (i) { return Math.round(x[i] + (y[i] - x[i]) * t); }).join(',') + ')'; }
+    function rgba(h, a) { return 'rgba(' + rgb(h).join(',') + ',' + a + ')'; }
+    var RAD = Math.PI / 180;
+    var reduce = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function mount(root, opts) {
       opts = opts || {};
-      var wide = !!opts.wide;
-      var view = { cx: W / 2, cy: H / 2, w: W };
-      var region = 'world', selected = null, anim = null;
+      var wide = !!opts.wide, compact = !!opts.compact;
+      var view = { lon: -30, lat: 22, zoom: 1 }, selected = null, spin = !reduce, fly = null, tour = null, raf = 0, idleAt = 0;
+      var W = 0, H = 0, DPR = 1, scr = [], col = {}, colAt = 0, alive = true;
 
-      var grid = '';
-      for (var lo = -150; lo <= 150; lo += 30) grid += 'M' + (lo + 180) + ' 0V' + H;
-      for (var la = 60; la >= -40; la -= 30) grid += 'M0 ' + (LAND.top - la) + 'H' + W;
-
-      root.innerHTML =
-        '<div class="cm' + (wide ? ' wide' : '') + '">' +
+      root.innerHTML = compact
+        ? '<div class="cm compact"><div class="cm-stage"><canvas aria-hidden="true"></canvas></div></div>'
+        : '<div class="cm' + (wide ? ' wide' : '') + '">' +
           '<div class="cm-regions" role="toolbar" aria-label="' + L('Регіон', 'Region') + '">' + REGIONS.map(function (r) {
-            return '<button data-cm-region="' + r[0] + '" aria-pressed="' + (r[0] === 'world') + '">' + L(r[1], REGION_EN[r[0]]) + '</button>';
-          }).join('') + '</div>' +
-          '<div class="cm-stage" aria-label="' + L('Карта конфліктів', 'Conflict map') + '">' +
-            '<svg aria-hidden="true" preserveAspectRatio="none"><defs><radialGradient id="cmGlow"><stop offset="0" stop-opacity=".45"/><stop offset="1" stop-opacity="0"/></radialGradient></defs>' +
-              '<path class="cm-grid" d="' + grid + '"/>' +
-              '<g>' + CONFLICTS.map(function (c) {
-                var p = xy(c), rr = { 3: 9, 2: 6, 1: 4 }[c.level];
-                return '<circle class="cm-glow" cx="' + p[0] + '" cy="' + p[1] + '" r="' + rr + '" fill="url(#cmGlow)" opacity="' + (c.hot ? .9 : .55) + '"/>';
-              }).join('') + '</g>' +
-              '<path class="cm-land" d="' + landPath() + '"/>' +
-            '</svg>' +
-            '<div class="cm-pins">' + CONFLICTS.map(function (c) {
-              return '<button class="cm-pin l' + c.level + (c.hot ? ' hot' : '') + '" data-cm-id="' + c.id + '" aria-label="' + esc(F(c, 'name') + ': ' + F(c, 'parties')) + '">' +
-                (c.hot ? '<b></b><b></b>' : '') + '<i></i></button>';
-            }).join('') + '</div>' +
+            return '<button data-cm-region="' + r[0] + '" aria-pressed="' + (r[0] === 'world') + '">' + L(r[1], r[2]) + '</button>'; }).join('') + '</div>' +
+          '<div class="cm-stage" aria-label="' + L('Глобус конфліктів: перетягуйте, щоб обертати', 'Conflict globe: drag to rotate') + '">' +
+            '<canvas role="img" aria-label="' + L('Глобус із гарячими точками', 'Globe with hotspots') + '"></canvas>' +
+            '<div class="cm-hud"><span>' + L('Гарячих точок: ', 'Hotspots: ') + '<b>' + CONFLICTS.length + '</b></span><span class="cm-coord"></span></div>' +
             '<div class="cm-tip" hidden></div>' +
-            '<span class="cm-asof">' + L('Станом на ' + esc(CONFLICTS_AS_OF.label), 'As of ' + esc(enDate(CONFLICTS_AS_OF.label))) + '</span>' +
+            '<div class="cm-cap" hidden><div class="bar"><span></span></div><small></small><b></b><span class="t"></span></div>' +
+            '<div class="cm-ctrls"><button class="cm-btn primary" data-cm-tour>' + L('▶ Брифінг-тур', '▶ Briefing tour') + '</button>' +
+              '<button class="cm-btn" data-cm-spin aria-pressed="' + spin + '" aria-label="' + L('Автообертання', 'Auto-rotate') + '" title="' + L('Автообертання', 'Auto-rotate') + '">⟳</button>' +
+              '<button class="cm-btn" data-cm-home>' + L('Україна', 'Ukraine') + '</button></div>' +
             '<div class="cm-zoom"><button data-cm-zoom="1" aria-label="' + L('Наблизити', 'Zoom in') + '">+</button><button data-cm-zoom="-1" aria-label="' + L('Віддалити', 'Zoom out') + '">−</button></div>' +
           '</div>' +
           '<div class="cm-legend"><span>' + L('Масштаб:', 'Scale:') + '</span>' +
-            '<span><i style="width:18px;height:18px"></i>' + L('високий', 'high') + '</span><span><i style="width:13px;height:13px"></i>' + L('середній', 'medium') + '</span><span><i style="width:9px;height:9px"></i>' + L('низький', 'low') + '</span>' +
-            '<span><i class="hot" style="width:12px;height:12px"></i>' + L('пульсує — нове загострення', 'pulsing — new escalation') + '</span></div>' +
+            '<span><i style="width:16px;height:16px"></i>' + L('високий', 'high') + '</span><span><i style="width:12px;height:12px"></i>' + L('середній', 'medium') + '</span><span><i style="width:8px;height:8px"></i>' + L('низький', 'low') + '</span>' +
+            '<span><i class="hot" style="width:11px;height:11px"></i>' + L('пульсує — загострення або новий конфлікт', 'pulsing — escalation or new conflict') + '</span></div>' +
           '<div class="cm-side"><div class="cm-card-slot"></div><div class="cm-list"></div></div>' +
           '<div class="cm-src">' + L('Масштаб — оцінка за кількістю загиблих за рік (високий — понад 10 000, середній — 1 000–10 000, низький — до 1 000). Джерела: ' + esc(CONFLICTS_AS_OF.sources) + '. Короткі описи — стислий нейтральний переказ.', 'Scale is estimated from annual fatalities (high — over 10,000, medium — 1,000–10,000, low — under 1,000). Sources: ' + esc(F(CONFLICTS_AS_OF, 'sources')) + '. Descriptions are brief neutral summaries.') + '</div>' +
         '</div>';
 
-      var stage = root.querySelector('.cm-stage'), svg = stage.querySelector('svg'), tip = stage.querySelector('.cm-tip');
-      var pins = Array.prototype.slice.call(stage.querySelectorAll('.cm-pin'));
+      var wrap = root.firstChild, stage = root.querySelector('.cm-stage'), cv = stage.querySelector('canvas'), x = cv.getContext('2d');
+      var tip = stage.querySelector('.cm-tip'), cap = stage.querySelector('.cm-cap');
       var BY = {}; CONFLICTS.forEach(function (c) { BY[c.id] = c; });
 
-      function aspect() { var r = stage.getBoundingClientRect(); return r.width && r.height ? r.width / r.height : 1.3; }
-      function vbox() { var h = view.w / aspect(); return [view.cx - view.w / 2, view.cy - h / 2, view.w, h]; }
-      function clamp() {
-        view.w = Math.max(28, Math.min(W, view.w));
-        var h = view.w / aspect();
-        view.cx = Math.max(view.w / 2, Math.min(W - view.w / 2, view.cx));
-        view.cy = h >= H ? H / 2 : Math.max(h / 2, Math.min(H - h / 2, view.cy));
+      function colors() {
+        var s = getComputedStyle(root);
+        var g = function (k, d) { return s.getPropertyValue(k).trim() || d; };
+        var bg = g('--bg', '#F6F7F2'), fg = g('--fg', '#111114'), ac = g('--accent', '#2F6B2B'), hot = g('--c-missiles', '#B42318');
+        var dark = rgb(bg).reduce(function (a, b) { return a + b; }, 0) < 300;
+        col = { bg: bg, fg: fg, hot: hot, old: mix(hot, bg, .38), dark: dark,
+          sea0: mix(bg, ac, dark ? .10 : .07), sea1: mix(bg, fg, dark ? .02 : .06),
+          land: rgba(ac, dark ? .85 : .75), rim: rgba(fg, .14), grid: rgba(fg, dark ? .08 : .07), label: fg };
       }
-      function draw() {
-        var b = vbox();
-        svg.setAttribute('viewBox', b.map(function (v) { return v.toFixed(2); }).join(' '));
-        pins.forEach(function (el) {
-          var p = xy(BY[el.dataset.cmId]);
-          el.style.left = ((p[0] - b[0]) / b[2] * 100) + '%';
-          el.style.top = ((p[1] - b[1]) / b[3] * 100) + '%';
+      function size() {
+        var b = stage.getBoundingClientRect(); DPR = Math.min(window.devicePixelRatio || 1, 2);
+        W = b.width; H = b.height; cv.width = Math.max(1, Math.round(W * DPR)); cv.height = Math.max(1, Math.round(H * DPR));
+      }
+      function radius() { return Math.min(W, H) * (compact ? .44 : .4) * view.zoom; }
+      function proj(lon, lat) {
+        var l = (lon + view.lon) * RAD, p = lat * RAD, p0 = view.lat * RAD, R = radius();
+        var cosc = Math.sin(p0) * Math.sin(p) + Math.cos(p0) * Math.cos(p) * Math.cos(l);
+        return [W / 2 + R * Math.cos(p) * Math.sin(l), H / 2 + (compact ? 0 : 6) - R * (Math.cos(p0) * Math.sin(p) - Math.sin(p0) * Math.cos(p) * Math.cos(l)), cosc];
+      }
+      function draw(t) {
+        if (!W || !H) return;
+        if (t - colAt > 1000) { colors(); colAt = t; }
+        x.setTransform(DPR, 0, 0, DPR, 0, 0); x.clearRect(0, 0, W, H);
+        var R = radius(), cx = W / 2, cy = H / 2 + (compact ? 0 : 6);
+        var gr = x.createRadialGradient(cx - R * .35, cy - R * .4, R * .1, cx, cy, R * 1.05);
+        gr.addColorStop(0, col.sea0); gr.addColorStop(1, col.sea1);
+        x.fillStyle = gr; x.beginPath(); x.arc(cx, cy, R, 0, 7); x.fill();
+        x.strokeStyle = col.rim; x.lineWidth = 1; x.stroke();
+        // Сітка меридіанів і паралелей
+        x.strokeStyle = col.grid; x.lineWidth = 1;
+        var lo, la, q, on;
+        for (lo = -180; lo < 180; lo += 30) { x.beginPath(); on = false; for (la = -84; la <= 84; la += 4) { q = proj(lo, la); if (q[2] > 0) { if (on) x.lineTo(q[0], q[1]); else x.moveTo(q[0], q[1]); on = true; } else on = false; } x.stroke(); }
+        for (la = -60; la <= 60; la += 30) { x.beginPath(); on = false; for (lo = -180; lo <= 180; lo += 4) { q = proj(lo, la); if (q[2] > 0) { if (on) x.lineTo(q[0], q[1]); else x.moveTo(q[0], q[1]); on = true; } else on = false; } x.stroke(); }
+        // Суходіл
+        var P = points(), s = R / 160, k, p, rr;
+        x.fillStyle = col.land;
+        for (k = 0; k < P.length; k++) { p = proj(P[k][0], P[k][1]); if (p[2] > 0) { rr = (.55 + p[2] * .85) * Math.min(s, 1.5); x.globalAlpha = .3 + p[2] * .7; x.fillRect(p[0] - rr, p[1] - rr, rr * 2, rr * 2); } }
+        x.globalAlpha = 1; scr = [];
+        // Маркери
+        var labels = [];
+        CONFLICTS.forEach(function (c) {
+          var p = proj(c.lon, c.lat); if (p[2] < .04) return;
+          var base = ({ 3: 7, 2: 5.2, 1: 3.8 })[c.level] * (compact ? .75 : 1) * Math.max(.85, Math.min(1.5, Math.sqrt(view.zoom)));
+          if (c.hot && !reduce) for (var w = 0; w < 2; w++) {
+            var ph = ((t / 1700) + w * .5) % 1; x.strokeStyle = col.hot; x.globalAlpha = (1 - ph) * .75 * p[2]; x.lineWidth = 1.5;
+            x.beginPath(); x.arc(p[0], p[1], base + ph * base * 2.6, 0, 7); x.stroke();
+          }
+          x.globalAlpha = .35 + .65 * p[2]; x.fillStyle = c.hot ? col.hot : col.old;
+          x.beginPath(); x.arc(p[0], p[1], base, 0, 7); x.fill();
+          x.globalAlpha = 1;
+          if (!compact && selected === c.id) { x.strokeStyle = col.fg; x.lineWidth = 2; x.beginPath(); x.arc(p[0], p[1], base + 4, 0, 7); x.stroke(); labels.unshift([c, p, base]); }
+          else if (!compact && p[2] > .55 && (c.hot || view.zoom > 1.6)) labels.push([c, p, base]);
+          scr.push([c.id, p[0], p[1], base + 9]);
         });
-        tip.hidden = true;
+        if (!compact) {
+          x.font = '600 12px ' + (getComputedStyle(root).fontFamily || 'system-ui, sans-serif'); x.textBaseline = 'middle';
+          var boxes = [];
+          labels.forEach(function (o) {
+            var name = F(o[0], 'name'), tw = x.measureText(name).width, lx = o[1][0] + o[2] + 7, ly = o[1][1];
+            if (lx + tw > W - 8) lx = o[1][0] - o[2] - 7 - tw;
+            for (var i = 0; i < boxes.length; i++) { var b = boxes[i]; if (lx < b[0] + b[2] + 4 && lx + tw + 4 > b[0] && Math.abs(ly - b[1]) < 15) return; }
+            boxes.push([lx, ly, tw]);
+            x.lineWidth = 3; x.strokeStyle = rgba(col.bg, .85); x.strokeText(name, lx, ly);
+            x.fillStyle = col.label; x.fillText(name, lx, ly);
+          });
+        }
       }
-      function fit(bb) {
-        var x1 = bb[0] + 180, x2 = bb[2] + 180, y1 = LAND.top - bb[1], y2 = LAND.top - bb[3], a = aspect();
-        var w = x2 - x1, h = y2 - y1;
-        return { cx: (x1 + x2) / 2, cy: (y1 + y2) / 2, w: Math.max(w, h * a) };
+      function visible() { return alive && root.isConnected && root.offsetParent !== null && !document.hidden; }
+      var last = 0;
+      function frame(t) {
+        raf = 0;
+        if (!root.isConnected || root.firstChild !== wrap) { alive = false; return; }
+        if (!visible()) return;
+        var dt = Math.min(60, t - (last || t)); last = t;
+        if (fly) fly(t);
+        else if (spin && !drag) view.lon += dt * (compact ? .008 : .006);
+        if (!spin && !tour && !selected && !drag && idleAt && t - idleAt > 9000 && !reduce) setSpin(true);
+        draw(t);
+        loop();
       }
-      function go(target, instant) {
-        if (anim) cancelAnimationFrame(anim);
-        var from = { cx: view.cx, cy: view.cy, w: view.w }, t0 = performance.now(), dur = instant ? 0 : 450;
-        (function step(t) {
-          var k = dur ? Math.min(1, (t - t0) / dur) : 1, e = 1 - Math.pow(1 - k, 3);
-          view.cx = from.cx + (target.cx - from.cx) * e;
-          view.cy = from.cy + (target.cy - from.cy) * e;
-          view.w = from.w + (target.w - from.w) * e;
-          clamp(); draw();
-          if (k < 1) anim = requestAnimationFrame(step);
-        })(t0);
+      function loop() { if (!raf && alive) raf = requestAnimationFrame(frame); }
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) loop(); });
+      if (typeof IntersectionObserver !== 'undefined') new IntersectionObserver(function (en) { if (en.some(function (e) { return e.isIntersecting; })) loop(); }).observe(stage);
+
+      function flyTo(lon, lat, zoom, ms) {
+        var from = { lon: view.lon, lat: view.lat, zoom: view.zoom }, to = { lon: -lon, lat: Math.max(-55, Math.min(55, lat)), zoom: zoom || view.zoom }, t0 = performance.now();
+        var dl = ((to.lon - from.lon) % 360 + 540) % 360 - 180;
+        ms = reduce ? 1 : (ms || 1000);
+        fly = function (now) {
+          var k = Math.min(1, (now - t0) / ms), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+          view.lon = from.lon + dl * e; view.lat = from.lat + (to.lat - from.lat) * e; view.zoom = from.zoom + (to.zoom - from.zoom) * e;
+          if (k >= 1) fly = null;
+        };
       }
-      function setRegion(id, instant) {
-        region = id;
-        root.querySelectorAll('[data-cm-region]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cmRegion === id)); });
-        var r = REGIONS.filter(function (x) { return x[0] === id; })[0];
-        go(fit(r[2]), instant);
+      function setSpin(v) { spin = v; var b = root.querySelector('[data-cm-spin]'); if (b) b.setAttribute('aria-pressed', String(v)); }
+      function touch() { idleAt = performance.now(); }
+
+      if (compact) {
+        size(); colors(); loop();
+        var ro0 = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(function () { size(); }) : null;
+        if (ro0) ro0.observe(stage); else window.addEventListener('resize', size);
+        return { refresh: function () { size(); colors(); loop(); }, select: function () {}, destroy: function () { alive = false; } };
       }
 
+      function newsBlock(c) {
+        var list = opts.newsFor ? opts.newsFor(c) : [], n = opts.countNews ? opts.countNews(c) : list.length;
+        var html = '';
+        if (list.length) html += '<h4>' + L('Новини DefTech', 'DefTech news') + '</h4>' + list.slice(0, 4).map(function (a) {
+          return '<button class="cm-art" data-cm-article="' + esc(a.id) + '"><small>' + esc(a.src) + ' · ' + esc(a.ago) + '</small>' + esc(a.title) + '</button>'; }).join('');
+        if (n && opts.onNews) html += '<button class="cm-news" data-cm-news="' + c.id + '">' + L('Усі новини', 'All news') + ' · ' + n + ' →</button>';
+        return html;
+      }
       function cardHTML(c) {
-        var n = opts.countNews ? opts.countNews(c) : 0;
         return '<div class="cm-card"><button class="cm-close" data-cm-close aria-label="' + L('Закрити', 'Close') + '">✕</button>' +
           '<span class="cm-badge' + (c.hot ? ' hot' : '') + '">' + hotLabel(c) + '</span>' +
           '<h3>' + esc(F(c, 'name')) + '</h3><div class="cm-parties">' + esc(F(c, 'parties')) + '</div>' +
           '<dl class="cm-facts"><dt>' + L('Початок', 'Started') + '</dt><dd>' + esc(since(c)) + '</dd><dt>' + L('Триває', 'Duration') + '</dt><dd>' + esc(duration(c)) + '</dd><dt>' + L('Масштаб', 'Scale') + '</dt><dd>' + L(LEVEL[c.level], LEVEL_EN[c.level]) + '</dd></dl>' +
-          '<p>' + esc(F(c, 'cause')) + '</p>' + (c.note ? '<p class="cm-note">' + esc(F(c, 'note')) + '</p>' : '') +
-          (n && opts.onNews ? '<button class="cm-news" data-cm-news="' + c.id + '">' + L('Новини DefTech', 'DefTech news') + ' · ' + n + ' →</button>' : '') +
-          '</div>';
+          '<p>' + esc(F(c, 'cause')) + '</p>' + (c.note ? '<p class="cm-note">' + esc(F(c, 'note')) + '</p>' : '') + newsBlock(c) + '</div>';
       }
       function renderList() {
-        var hot = sorted().filter(function (c) { return c.hot; }), rest = sorted().filter(function (c) { return !c.hot; });
+        var all = sorted(), hot = all.filter(function (c) { return c.hot; }), rest = all.filter(function (c) { return !c.hot; });
         function row(c) {
           var d = { 3: 16, 2: 12, 1: 8 }[c.level];
           return '<button class="cm-row' + (c.hot ? ' hot' : '') + (selected === c.id ? ' sel' : '') + '" data-cm-pick="' + c.id + '">' +
@@ -1092,76 +1211,331 @@ button { cursor: pointer; }
           (hot.length ? '<h4>' + L('Загострення та нові конфлікти', 'Escalations and new conflicts') + '</h4>' + hot.map(row).join('') : '') +
           '<h4>' + L('Затяжні конфлікти', 'Protracted conflicts') + '</h4>' + rest.map(row).join('');
       }
-      function select(id, zoom) {
-        selected = id;
-        pins.forEach(function (el) { el.classList.toggle('sel', el.dataset.cmId === id); });
+      function coord(c) {
+        root.querySelector('.cm-coord').textContent = c ? Math.abs(c.lat).toFixed(1) + '° ' + (c.lat >= 0 ? 'N' : 'S') + ' · ' + Math.abs(c.lon).toFixed(1) + '° ' + (c.lon >= 0 ? 'E' : 'W') : '';
+      }
+      function select(id, zoom, noScroll) {
+        selected = id || null;
         var slot = root.querySelector('.cm-card-slot');
-        slot.innerHTML = id ? cardHTML(BY[id]) : '';
-        renderList();
-        if (id && zoom) {
-          var c = BY[id], p = xy(c), r = REGIONS.filter(function (x) { return x[0] === c.region; })[0];
-          var t = fit(r[2]); t.cx = p[0]; t.cy = p[1]; go(t);
-          root.querySelectorAll('[data-cm-region]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cmRegion === c.region)); });
-        }
-        if (id && !wide && opts.scrollTo) opts.scrollTo(slot);
+        slot.innerHTML = selected ? cardHTML(BY[selected]) : '';
+        renderList(); coord(BY[selected]);
+        if (selected && zoom) { var c = BY[selected]; flyTo(c.lon, c.lat, Math.max(view.zoom, wide ? 1.15 : 1.25), 1100); setSpin(false); }
+        if (!selected) touch();
+        if (selected && !wide && !noScroll && opts.scrollTo) opts.scrollTo(slot);
+        loop();
+      }
+      function setRegion(id) {
+        root.querySelectorAll('[data-cm-region]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cmRegion === id)); });
+        var r = REGIONS.filter(function (x) { return x[0] === id; })[0];
+        if (r[3] == null) { flyTo(30, 22, 1, 900); setSpin(!reduce); } else { flyTo(r[3], r[4], r[5], 1000); setSpin(false); }
+        loop();
       }
 
-      // Перетягування мапи
+      // Брифінг-тур: нові конфлікти й загострення, потім Україна.
+      var TOUR_MS = 6500;
+      function tourList() { return sorted().filter(function (c) { return c.hot; }).concat(CONFLICTS.filter(function (c) { return c.id === 'ua'; })); }
+      function stopTour() {
+        if (!tour) return; clearTimeout(tour.tm); tour = null; cap.hidden = true;
+        var b = root.querySelector('[data-cm-tour]'); if (b) b.textContent = L('▶ Брифінг-тур', '▶ Briefing tour');
+      }
+      function tourStep() {
+        if (!tour) return;
+        var list = tourList(); if (tour.i >= list.length) { stopTour(); select(null); setRegion('world'); return; }
+        var c = list[tour.i];
+        select(c.id, true, true);
+        cap.hidden = false;
+        cap.querySelector('small').textContent = (tour.i + 1) + ' / ' + list.length + ' · ' + hotLabel(c);
+        cap.querySelector('b').textContent = F(c, 'name');
+        var cz = String(F(c, 'cause')), ci = cz.indexOf('. '); cap.querySelector('.t').textContent = ci > 0 ? cz.slice(0, ci + 1) : cz;
+        var bar = cap.querySelector('.bar span'); bar.style.transition = 'none'; bar.style.width = '0'; bar.getBoundingClientRect();
+        bar.style.transition = 'width ' + (TOUR_MS - 300) + 'ms linear'; bar.style.width = '100%';
+        tour.tm = setTimeout(function () { if (tour) { tour.i++; tourStep(); } }, TOUR_MS);
+      }
+      function startTour() {
+        stopTour(); tour = { i: 0 };
+        root.querySelector('[data-cm-tour]').textContent = L('■ Зупинити тур', '■ Stop tour');
+        tourStep();
+      }
+
+      // Перетягування, наведення, натискання
       var drag = null;
+      function hit(e) {
+        var b = stage.getBoundingClientRect(), px = e.clientX - b.left, py = e.clientY - b.top, best = null, bd = 1e9;
+        scr.forEach(function (s) { var d = Math.hypot(s[1] - px, s[2] - py); if (d < s[3] && d < bd) { bd = d; best = s; } });
+        return best;
+      }
       stage.addEventListener('pointerdown', function (e) {
-        if (e.target.closest('.cm-pin, .cm-zoom')) return;
-        drag = { x: e.clientX, y: e.clientY, cx: view.cx, cy: view.cy, moved: false };
-        stage.setPointerCapture(e.pointerId);
+        if (e.target.closest('button')) return;
+        drag = { x: e.clientX, y: e.clientY, lon: view.lon, lat: view.lat, moved: false };
+        try { stage.setPointerCapture(e.pointerId); } catch (er) { /* ignore */ }
       });
       stage.addEventListener('pointermove', function (e) {
-        if (!drag) return;
-        var r = stage.getBoundingClientRect(), k = view.w / r.width;
-        if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 3) { drag.moved = true; stage.classList.add('dragging'); }
-        view.cx = drag.cx - (e.clientX - drag.x) * k; view.cy = drag.cy - (e.clientY - drag.y) * k;
-        clamp(); draw();
+        if (drag) {
+          var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+          if (!drag.moved && Math.abs(dx) + Math.abs(dy) > 4) { drag.moved = true; stage.classList.add('dragging'); stopTour(); setSpin(false); fly = null; tip.hidden = true; }
+          if (drag.moved) { var k = .32 / view.zoom; view.lon = drag.lon + dx * k; view.lat = Math.max(-70, Math.min(70, drag.lat + dy * k)); loop(); }
+          return;
+        }
+        if (e.pointerType !== 'mouse') return;
+        var h = hit(e);
+        if (h) {
+          var c = BY[h[0]];
+          tip.innerHTML = '<strong>' + esc(F(c, 'name')) + '</strong>' + esc(F(c, 'parties')) + '<br>' + L('з ', 'since ') + esc(since(c)) + ' · ' + esc(duration(c));
+          tip.style.left = h[1] + 'px'; tip.style.top = h[2] + 'px'; tip.hidden = false; stage.style.cursor = 'pointer';
+        } else { tip.hidden = true; stage.style.cursor = ''; }
       });
-      function endDrag() { drag = null; stage.classList.remove('dragging'); }
+      function endDrag(e) {
+        if (drag && !drag.moved && e && e.type === 'pointerup') { var h = hit(e); if (h) { stopTour(); select(h[0], false); } }
+        drag = null; stage.classList.remove('dragging'); touch();
+      }
       stage.addEventListener('pointerup', endDrag);
       stage.addEventListener('pointercancel', endDrag);
-      stage.addEventListener('dblclick', function (e) {
-        if (e.target.closest('.cm-pin, .cm-zoom')) return;
-        var r = stage.getBoundingClientRect(), b = vbox();
-        go({ cx: b[0] + (e.clientX - r.left) / r.width * b[2], cy: b[1] + (e.clientY - r.top) / r.height * b[3], w: view.w / 1.8 });
-      });
-      // Підказка при наведенні (миша)
-      stage.addEventListener('pointerover', function (e) {
-        var el = e.target.closest('.cm-pin');
-        if (!el || e.pointerType !== 'mouse') return;
-        var c = BY[el.dataset.cmId];
-        tip.innerHTML = '<strong>' + esc(F(c, 'name')) + '</strong>' + esc(F(c, 'parties')) + '<br>' + L('з ', 'since ') + esc(since(c)) + ' · ' + esc(duration(c));
-        tip.style.left = el.style.left; tip.style.top = el.style.top; tip.hidden = false;
-      });
-      stage.addEventListener('pointerout', function (e) { if (e.target.closest('.cm-pin')) tip.hidden = true; });
+      stage.addEventListener('pointerleave', function () { tip.hidden = true; });
+      stage.addEventListener('wheel', function (e) {
+        if (!e.ctrlKey && !e.metaKey) return; e.preventDefault();
+        view.zoom = Math.max(.8, Math.min(4, view.zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12))); fly = null; loop();
+      }, { passive: false });
 
       root.addEventListener('click', function (e) {
         var el;
-        if ((el = e.target.closest('[data-cm-region]'))) { setRegion(el.dataset.cmRegion); return; }
-        if ((el = e.target.closest('[data-cm-zoom]'))) { go({ cx: view.cx, cy: view.cy, w: view.w / (el.dataset.cmZoom === '1' ? 1.6 : 1 / 1.6) }); return; }
-        if ((el = e.target.closest('.cm-pin'))) { select(el.dataset.cmId, false); return; }
-        if ((el = e.target.closest('[data-cm-pick]'))) { select(el.dataset.cmPick, true); return; }
-        if (e.target.closest('[data-cm-close]')) { select(null); return; }
-        if ((el = e.target.closest('[data-cm-news]')) && opts.onNews) { opts.onNews(BY[el.dataset.cmNews]); return; }
+        if ((el = e.target.closest('[data-cm-region]'))) { stopTour(); setRegion(el.dataset.cmRegion); return; }
+        if ((el = e.target.closest('[data-cm-zoom]'))) { var z = view.zoom * (el.dataset.cmZoom === '1' ? 1.4 : 1 / 1.4); flyTo(-view.lon, view.lat, Math.max(.8, Math.min(4, z)), 350); loop(); return; }
+        if (e.target.closest('[data-cm-tour]')) { if (tour) stopTour(); else startTour(); return; }
+        if (e.target.closest('[data-cm-spin]')) { setSpin(!spin); if (spin) { stopTour(); fly = null; } loop(); return; }
+        if (e.target.closest('[data-cm-home]')) { stopTour(); select('ua', true); return; }
+        if ((el = e.target.closest('[data-cm-pick]'))) { stopTour(); select(el.dataset.cmPick, true); return; }
+        if (e.target.closest('[data-cm-close]')) { stopTour(); select(null); return; }
+        if ((el = e.target.closest('[data-cm-article]')) && opts.onArticle) { stopTour(); opts.onArticle(el.dataset.cmArticle); return; }
+        if ((el = e.target.closest('[data-cm-news]')) && opts.onNews) { stopTour(); opts.onNews(BY[el.dataset.cmNews]); return; }
       });
-      var ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(function () { clamp(); draw(); }) : null;
-      if (ro) ro.observe(stage); else window.addEventListener('resize', function () { clamp(); draw(); });
+      var ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(function () { size(); loop(); }) : null;
+      if (ro) ro.observe(stage); else window.addEventListener('resize', function () { size(); loop(); });
 
-      renderList();
-      setRegion('world', true);
-      return { refresh: function () { clamp(); draw(); if (selected) select(selected); else renderList(); }, select: select };
+      size(); colors(); renderList(); touch(); loop();
+      return {
+        refresh: function () { size(); colors(); colAt = 0; if (selected) select(selected, false, true); else renderList(); loop(); },
+        select: function (id) { stopTour(); select(id, true); },
+        tour: startTour,
+        destroy: function () { alive = false; stopTour(); }
+      };
     }
 
-    return { mount: mount, stats: stats, enDate: enDate };
+    return { mount: mount, stats: stats, enDate: enDate, tagAll: tagAll, regionName: regionName };
   })();
   // === CONFLICT MAP JS END ===
+  // === EXTRAS JS START ===
+  // Додатки: брифінг-сторіс, склеювання дублікатів, живий час оновлення, статус джерел, «Поділитися».
+  var Extras = (function () {
+    function en() { return typeof UI_LANG !== 'undefined' && UI_LANG === 'en'; }
+    function L(uk, e) { return en() ? e : uk; }
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+    function safe(u) { return /^https:\/\//i.test(String(u || '')) ? String(u) : ''; }
+    var reduce = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var MON = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+
+    // Час за Києвом як «псевдо-UTC» мілісекунди, щоб порівнювати з датами з даних.
+    function kyivNow() {
+      try {
+        var f = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Kyiv', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+        var p = {}; f.formatToParts(new Date()).forEach(function (o) { p[o.type] = o.value; });
+        return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+      } catch (e) { var d = new Date(); return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes()); }
+    }
+    function parseDate(s) {
+      var m = /(\d{1,2}) (\S+) (\d{4})(?: р\.)?(?:, (\d{1,2}):(\d{2}))?/.exec(String(s || '')); if (!m) return null;
+      var mo = MON.indexOf(m[2]); if (mo < 0) return null;
+      return { t: Date.UTC(+m[3], mo, +m[1], m[4] ? +m[4] : 12, m[5] ? +m[5] : 0), timed: !!m[4] };
+    }
+    function minutesAgo(s) { var d = parseDate(s); return d ? Math.round((kyivNow() - d.t) / 6e4) : null; }
+
+    // «Оновлено N хв тому» — живий таймер. Повертає null, якщо дані старші за добу (тоді показуємо звичайний текст).
+    function liveUpdated(asof) {
+      var m = /(\d{1,2}):(\d{2})/.exec(asof.updated || ''), day = /новини на (.+)$/.exec(asof.badge || '');
+      if (!m || !day) return null;
+      var mins = minutesAgo(day[1] + ', ' + m[1] + ':' + m[2]);
+      if (mins == null || mins > 24 * 60) return null;
+      if (mins < 1) return L('Оновлено щойно', 'Updated just now');
+      if (mins < 60) return L('Оновлено ' + mins + ' хв тому', 'Updated ' + mins + ' min ago');
+      var h = Math.floor(mins / 60);
+      return L('Оновлено ' + h + ' год тому (о ' + m[1] + ':' + m[2] + ')', 'Updated ' + h + ' h ago (at ' + m[1] + ':' + m[2] + ')');
+    }
+    var timers = [];
+    function every(ms, fn) { fn(); timers.push(setInterval(fn, ms)); }
+
+    // Статус джерела: остання новина у стрічці.
+    function sourceStatus(articles, key) {
+      var best = null;
+      articles.forEach(function (a) { if (a.src !== key) return; var m = minutesAgo(a.date); if (m != null && (best == null || m < best)) best = m; });
+      if (best == null) return { cls: 'off', text: L('немає в стрічці', 'not in the feed') };
+      var h = Math.max(0, Math.round(best / 60));
+      var t = h < 1 ? L('щойно', 'just now') : h < 24 ? L(h + ' год тому', h + ' h ago') : L(Math.round(h / 24) + ' дн. тому', Math.round(h / 24) + ' d ago');
+      return { cls: h < 24 ? 'ok' : h < 72 ? 'slow' : 'off', text: L('остання ', 'latest ') + t };
+    }
+
+    // Склеювання однієї історії з різних джерел: схожі слова в заголовку й анонсі, різні видання, різниця ≤ 2 дні.
+    var STOP = {};
+    'with from that this have their into after over under about says said will than more most what when were been also amid ahead first news report army navy force forces defense defence military officials official program contract system systems ukraine ukrainian russia russian'.split(' ').forEach(function (w) { STOP[w] = 1; });
+    function toks(a) { var o = {}; (a.t + ' ' + a.s).toLowerCase().replace(/[^a-z0-9Ѐ-ӿ ]+/g, ' ').split(/\s+/).forEach(function (w) { if (w.length >= 4 && !STOP[w]) o[w] = 1; }); return o; }
+    function dedupe(list) {
+      var T = list.map(toks);
+      list.forEach(function (a) { a.dupOf = null; a.also = []; });
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].dupOf) continue;
+        for (var j = i + 1; j < list.length; j++) {
+          var A = list[i], B = list[j];
+          if (B.dupOf || A.src === B.src || Math.abs(A.day - B.day) > 2) continue;
+          var n = 0, na = 0, nb = 0, w;
+          for (w in T[i]) { na++; if (T[j][w]) n++; }
+          for (w in T[j]) nb++;
+          if (n >= 6 && n / (na + nb - n) >= 0.34) { B.dupOf = A.id; A.also.push(B.id); }
+        }
+      }
+      return list;
+    }
+
+    var toastEl = null, toastT = 0;
+    function toast(msg) {
+      if (!toastEl) { toastEl = document.createElement('div'); toastEl.className = 'toast'; toastEl.setAttribute('role', 'status'); document.body.appendChild(toastEl); }
+      toastEl.textContent = msg; toastEl.hidden = false; clearTimeout(toastT);
+      toastT = setTimeout(function () { toastEl.hidden = true; }, 2600);
+    }
+
+    // Картка-прев’ю для «Поділитися»: малюється на Canvas (лише текст, без чужих зображень).
+    function cardImage(o, cb) {
+      try {
+        var c = document.createElement('canvas'); c.width = 1200; c.height = 630; var x = c.getContext('2d');
+        var g = x.createLinearGradient(0, 0, 1200, 630); g.addColorStop(0, '#0E2234'); g.addColorStop(1, '#10241A'); x.fillStyle = g; x.fillRect(0, 0, 1200, 630);
+        x.strokeStyle = 'rgba(124,196,106,.18)'; x.lineWidth = 1;
+        for (var i = 0; i < 12; i++) { x.beginPath(); x.arc(1080, 120, 60 + i * 46, 0, 7); x.stroke(); }
+        x.fillStyle = '#7CC46A'; x.font = '700 30px system-ui, -apple-system, Segoe UI, sans-serif'; x.fillText('DefTech Daily', 72, 92);
+        x.fillStyle = 'rgba(255,255,255,.7)'; x.font = '600 26px system-ui, -apple-system, Segoe UI, sans-serif'; x.fillText(String(o.source || '').toUpperCase() + (o.when ? '  ·  ' + o.when : ''), 72, 150);
+        x.fillStyle = '#FFFFFF'; x.font = '800 54px system-ui, -apple-system, Segoe UI, sans-serif';
+        var words = String(o.title).split(/\s+/), line = '', y = 240, lines = 0;
+        for (var k = 0; k < words.length; k++) {
+          var test = line ? line + ' ' + words[k] : words[k];
+          if (x.measureText(test).width > 1050 && line) { x.fillText(line, 72, y); y += 66; line = words[k]; if (++lines === 4) { line = line + '…'; break; } } else line = test;
+        }
+        if (lines < 5 && line) x.fillText(line, 72, y);
+        x.fillStyle = 'rgba(255,255,255,.55)'; x.font = '500 24px system-ui, -apple-system, Segoe UI, sans-serif'; x.fillText(L('Новини оборонних технологій', 'Defense technology news'), 72, 580);
+        c.toBlob(function (b) { cb(b); }, 'image/png');
+      } catch (e) { cb(null); }
+    }
+    function copy(text) {
+      function done() { toast(L('Посилання скопійовано', 'Link copied')); }
+      try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () { toast(text); }); return; } } catch (e) { /* ignore */ }
+      toast(text);
+    }
+    function share(o) {
+      var url = safe(o.url); if (!url) return;
+      cardImage(o, function (blob) {
+        var data = { title: o.title, text: o.title + ' — ' + (o.source || ''), url: url };
+        try {
+          if (blob && typeof File === 'function' && navigator.canShare) {
+            var f = new File([blob], 'deftech-daily.png', { type: 'image/png' });
+            if (navigator.canShare({ files: [f] })) { data.files = [f]; }
+          }
+          if (navigator.share) { navigator.share(data).catch(function (e) { if (!e || e.name !== 'AbortError') copy(url); }); return; }
+        } catch (e) { /* fall through */ }
+        copy(url);
+      });
+    }
+
+    // Брифінг за 60 секунд: до 6 головних новин по 10 секунд.
+    var SLIDE = 10000;
+    var bf = null;
+    function closeBrief() {
+      if (!bf) return; clearTimeout(bf.tm); document.removeEventListener('keydown', bf.key, true);
+      bf.el.remove(); var back = bf.back; bf = null; if (back && back.focus) back.focus();
+    }
+    function openBrief(o) {
+      closeBrief();
+      var items = (o.items || []).slice(0, 6); if (!items.length) { toast(L('Свіжих новин поки немає', 'No fresh stories yet')); return; }
+      var el = document.createElement('div'); el.className = 'bf'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', L('Брифінг за 60 секунд', '60-second briefing'));
+      el.innerHTML = '<div class="bf-card"><div class="bf-img"></div><div class="bf-shade"></div>' +
+        '<div class="bf-bars">' + items.map(function () { return '<span><i></i></span>'; }).join('') + '</div>' +
+        '<div class="bf-top"><span class="bf-src"></span><button class="bf-x" data-bf-close aria-label="' + L('Закрити', 'Close') + '">✕</button></div>' +
+        '<button class="bf-tap prev" data-bf-prev aria-label="' + L('Попередня', 'Previous') + '"></button><button class="bf-tap next" data-bf-next aria-label="' + L('Наступна', 'Next') + '"></button>' +
+        '<div class="bf-txt" aria-live="polite"><span class="bf-kick"></span><h2></h2><p></p><div class="bf-acts"><button class="bf-btn" data-bf-read>' + L('Читати повністю', 'Read story') + '</button><button class="bf-btn ghost" data-bf-next>' + L('Далі →', 'Next →') + '</button></div></div></div>';
+      document.body.appendChild(el);
+      bf = { el: el, i: 0, items: items, o: o, tm: 0, start: 0, left: SLIDE, paused: false, back: document.activeElement };
+      bf.key = function (e) {
+        if (!bf) return;
+        if (e.key === 'Escape') { e.preventDefault(); closeBrief(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); go(bf.i + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); go(bf.i - 1); }
+      };
+      document.addEventListener('keydown', bf.key, true);
+      el.addEventListener('click', function (e) {
+        if (e.target === el || e.target.closest('[data-bf-close]')) { closeBrief(); return; }
+        if (e.target.closest('[data-bf-prev]')) { go(bf.i - 1); return; }
+        if (e.target.closest('[data-bf-next]')) { go(bf.i + 1); return; }
+        if (e.target.closest('[data-bf-again]')) { go(0); return; }
+        if (e.target.closest('[data-bf-read]')) { var id = bf.items[bf.i].id, cb = bf.o.onRead; closeBrief(); if (cb) cb(id); }
+      });
+      // Утримання пальцем — пауза
+      var card = el.querySelector('.bf-card');
+      card.addEventListener('pointerdown', function (e) { if (e.target.closest('.bf-btn, .bf-x')) return; pause(true); });
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (t) { card.addEventListener(t, function () { pause(false); }); });
+      go(0);
+      el.querySelector('[data-bf-close]').focus();
+    }
+    function bars() {
+      var b = bf.el.querySelectorAll('.bf-bars i');
+      b.forEach(function (x, n) { x.style.transition = 'none'; x.style.width = n < bf.i ? '100%' : '0'; });
+      return b[bf.i];
+    }
+    function run() {
+      var cur = bars(); if (!cur) return;
+      var done = 1 - bf.left / SLIDE;
+      cur.style.width = (done * 100) + '%'; cur.getBoundingClientRect();
+      if (reduce) { cur.style.width = '100%'; return; }
+      cur.style.transition = 'width ' + bf.left + 'ms linear'; cur.style.width = '100%';
+      bf.start = performance.now(); clearTimeout(bf.tm);
+      bf.tm = setTimeout(function () { go(bf.i + 1); }, bf.left);
+    }
+    function pause(on) {
+      if (!bf || reduce || bf.end) return;
+      if (on && !bf.paused) {
+        bf.paused = true; clearTimeout(bf.tm); bf.left = Math.max(300, bf.left - (performance.now() - bf.start));
+        var cur = bf.el.querySelectorAll('.bf-bars i')[bf.i]; if (cur) { var w = getComputedStyle(cur).width; cur.style.transition = 'none'; cur.style.width = w; }
+      } else if (!on && bf.paused) { bf.paused = false; run(); }
+    }
+    function go(i) {
+      if (!bf) return;
+      var endEl = bf.el.querySelector('.bf-end'); if (endEl) endEl.remove(); bf.end = false;
+      if (i < 0) i = 0;
+      clearTimeout(bf.tm);
+      if (i >= bf.items.length) {
+        bf.end = true; bf.i = bf.items.length; bars();
+        var d = document.createElement('div'); d.className = 'bf-end';
+        d.innerHTML = '<h2>' + L('Ви в курсі', 'You’re up to date') + '</h2><p>' + L(bf.items.length + ' головних новин за хвилину. Решта — у стрічці.', bf.items.length + ' top stories in a minute. The rest is in the feed.') + '</p>' +
+          '<div class="bf-acts"><button class="bf-btn" data-bf-close>' + L('До стрічки', 'Back to feed') + '</button><button class="bf-btn ghost" data-bf-again>' + L('Ще раз', 'Replay') + '</button></div>';
+        bf.el.querySelector('.bf-card').appendChild(d); d.querySelector('button').focus();
+        return;
+      }
+      bf.i = i; bf.left = SLIDE; bf.paused = false;
+      var a = bf.items[i], img = bf.el.querySelector('.bf-img');
+      img.innerHTML = (a.icon || '') + (safe(a.img) ? '<img src="' + esc(safe(a.img)) + '" alt="" referrerpolicy="no-referrer" decoding="async">' : '');
+      var im = img.querySelector('img'); if (im) im.addEventListener('error', function () { im.remove(); });
+      bf.el.querySelector('.bf-src').textContent = a.src + ' · ' + a.ago;
+      bf.el.querySelector('.bf-kick').textContent = a.cat;
+      bf.el.querySelector('.bf-txt h2').textContent = a.title;
+      var s = String(a.summary || ''), k = s.indexOf('. ');
+      bf.el.querySelector('.bf-txt p').textContent = k > 40 ? s.slice(0, k + 1) : s;
+      run();
+      // Підвантажити наступне фото заздалегідь
+      var nx = bf.items[i + 1]; if (nx && safe(nx.img)) { var pre = new Image(); pre.referrerPolicy = 'no-referrer'; pre.src = safe(nx.img); }
+    }
+
+    return { dedupe: dedupe, liveUpdated: liveUpdated, every: every, sourceStatus: sourceStatus, share: share, toast: toast, openBrief: openBrief, closeBrief: closeBrief, minutesAgo: minutesAgo };
+  })();
+  // === EXTRAS JS END ===
+  Extras.dedupe(ARTICLES);
+  ConflictMap.tagAll(ARTICLES);
 
 
   var state = {
-    tab: 'today', cat: null, query: '', open: null, translated: false,
+    tab: 'today', cat: null, query: '', open: null, cardLang: null, region: null,
     saved: [], read: [], digest: true, time: '09:00', hideSponsored: true, off: {}, theme: 'auto', hero: 'relief', lang: 'uk'
   };
 
@@ -1174,6 +1548,7 @@ button { cursor: pointer; }
     });
   } catch (e) { /* сховище недоступне — працюємо без нього */ }
   UI_LANG = state.lang === 'en' ? 'en' : 'uk';
+  state.hero = 'relief';
 
   // Вигляд: 'auto' — як у системі, 'light' — світлий, 'dark' — темний.
   var heroKill = null;
@@ -1211,7 +1586,7 @@ button { cursor: pointer; }
 
   function visible() {
     return ARTICLES.filter(function (a) {
-      return !state.off[a.src] && !(state.hideSponsored && a.sponsored);
+      return !a.dupOf && !state.off[a.src] && !(state.hideSponsored && a.sponsored);
     });
   }
   function todays() { return visible().filter(function (a) { return a.fresh; }); }
@@ -1252,7 +1627,7 @@ button { cursor: pointer; }
     var isSaved = state.saved.indexOf(a.id) >= 0;
     return '<button class="row' + (isRead ? ' read' : '') + '" data-open="' + a.id + '" style="--cc: var(--c-' + a.cats[0] + ')">' +
       '<span class="row-body">' +
-        '<span class="row-meta"><b>' + esc(src(a.src)) + '</b> · ' + esc(ago(a)) + (isSaved ? L(' · у закладках', ' · saved') : '') + '</span>' +
+        '<span class="row-meta"><b>' + esc(src(a.src)) + '</b> · ' + esc(ago(a)) + (a.also && a.also.length ? ' · +' + a.also.length + ' ' + P(a.also.length, 'джерело', 'джерела', 'джерел', 'source', 'sources') : '') + (isSaved ? L(' · у закладках', ' · saved') : '') + '</span>' +
         '<span class="row-title">' + esc(title(a)) + '</span>' +
         (a.sponsored ? '<span class="sponsor">' + L('Спонсорський матеріал', 'Sponsored') + '</span>' : '') +
         '<span class="tags">' + a.cats.slice(0, 2).map(tagHTML).join('') + '</span>' +
@@ -1264,7 +1639,7 @@ button { cursor: pointer; }
   function renderToday() {
     $('asof-badge').textContent = badge();
     $('asof-date').textContent = D(NEWS_AS_OF.date);
-    $('asof-updated').textContent = updated();
+    $('asof-updated').textContent = Extras.liveUpdated(NEWS_AS_OF) || updated();
     $('today-lang').innerHTML = [['uk', 'UA', 'Українська'], ['en', 'EN', 'English']].map(function (o) {
       return '<button role="radio" data-lang-set="' + o[0] + '" aria-checked="' + (state.lang === o[0]) + '" title="' + o[2] + '">' + o[1] + '</button>';
     }).join('');
@@ -1294,21 +1669,23 @@ button { cursor: pointer; }
   function renderFeed() {
     var q = state.query.trim().toLowerCase();
     var list = visible().filter(function (a) {
+      if (state.region && (a.region || []).indexOf(state.region) < 0) return false;
       return !q || (a.t + ' ' + a.s + ' ' + (a.tr || '') + ' ' + (a.sr || '') + ' ' + SOURCE_NAME[a.src]).toLowerCase().indexOf(q) >= 0;
     });
-    var html = '';
+    var html = state.region ? '<div class="region-bar"><button class="region-chip" data-region-clear><i></i>' + esc(ConflictMap.regionName(state.region)) + ' ✕</button></div>' : '';
     DAY_TITLES.forEach(function (title, d) {
       var rows = list.filter(function (a) { return a.day === d; });
       if (!rows.length) return;
       html += '<div class="section-h">' + esc(D(title)) + '</div><div class="list">' + rows.map(rowHTML).join('') + '</div>';
     });
-    $('feed-list').innerHTML = html ||
+    $('feed-list').innerHTML = (list.length ? html : '') ||
       '<div class="empty"><strong>' + L('Нічого не знайдено', 'Nothing found') + '</strong><span>' + L('Спробуйте інше слово, наприклад «drone» або «ракета».', 'Try another word, for example “drone” or “missile”.') + '</span></div>';
   }
 
   function renderSaved() {
+    var box = $('saved-list'); if (!box) return;
     var list = state.saved.map(function (id) { return BY_ID[id]; }).filter(Boolean);
-    $('saved-list').innerHTML = list.length
+    box.innerHTML = list.length
       ? '<div class="list">' + list.map(rowHTML).join('') + '</div>'
       : '<div class="empty"><strong>' + L('Закладок поки немає', 'No saved stories yet') + '</strong><span>' + L('Відкрийте новину й натисніть значок закладки вгорі праворуч — вона з’явиться тут.', 'Open a story and tap the bookmark icon at the top right — it will appear here.') + '</span></div>';
   }
@@ -1324,7 +1701,8 @@ button { cursor: pointer; }
       ? list.length + ' ' + P(list.length, 'новина', 'новини', 'новин', 'story', 'stories') + L(' за добу. Головне: ', ' today. Top story: ') + title(top)
       : L('Свіжі новини зі світу оборонних технологій уже чекають на вас.', 'Fresh defense technology news is waiting for you.');
 
-    var html = '<div class="group-h">' + L('Мова', 'Language') + '</div><div class="group"><div class="cell stack">' +
+    var html = '<div class="group-h">' + L('Закладки', 'Saved') + (state.saved.length ? ' · ' + state.saved.length : '') + '</div><div class="group" id="saved-list"></div>' +
+      '<div class="group-h">' + L('Мова', 'Language') + '</div><div class="group"><div class="cell stack">' +
       '<div class="seg" style="grid-template-columns: repeat(2, minmax(0, 1fr))" role="radiogroup" aria-label="' + L('Мова', 'Language') + '">' +
         [['uk', 'Українська'], ['en', 'English']].map(function (o) {
           return '<button role="radio" data-lang-set="' + o[0] + '" aria-checked="' + (state.lang === o[0]) + '">' + o[1] + '</button>';
@@ -1349,19 +1727,13 @@ button { cursor: pointer; }
       }).join('') + '</div></div></div>' +
       '<div class="group-f">' + L('«Авто» — так само, як налаштовано на телефоні.', '“Auto” follows your phone’s setting.') + '</div>';
 
-    var HERO_EN = { circuit: ['Circuits', 'Circuit'], relief: ['Terrain', 'Terrain'], radar: ['Radar', 'Radar'], orbits: ['Orbits', 'Orbits'], off: ['Off', 'Off'] };
-    html += '<div class="group-h">' + L('Заставка', 'Background') + '</div><div class="group"><div class="cell stack">' +
-      '<div class="seg" style="grid-template-columns: repeat(5, minmax(0, 1fr))" role="radiogroup" aria-label="' + L('Заставка', 'Background') + '">' + HERO_KEYS.map(function (o) {
-        return '<button role="radio" data-hero-set="' + o[0] + '" aria-checked="' + (state.hero === o[0]) + '" title="' + L(o[1], HERO_EN[o[0]][0]) + '">' + L(o[2], HERO_EN[o[0]][1]) + '</button>';
-      }).join('') + '</div></div></div>' +
-      '<div class="group-f">' + L('Анімований фон за заголовком на вкладці «Сьогодні»: мікросхеми, рельєф, радар або орбіти.', 'Animated background behind the “Today” header: circuits, terrain, radar or orbits.') + '</div>';
-
     html += '<div class="group-h">' + L('Джерела', 'Sources') + '</div><div class="group">' +
       SOURCES.map(function (s) {
-        return '<div class="cell"><span class="cell-label">' + esc(src(s[0])) + '<small>' + esc(desc(s[2])) + '</small></span>' +
+        var st = Extras.sourceStatus(ARTICLES, s[0]);
+        return '<div class="cell"><span class="cell-label">' + esc(src(s[0])) + '<small>' + esc(desc(s[2])) + '</small><small><span class="srcdot ' + st.cls + '"></span>' + esc(st.text) + '</small></span>' +
           switchHTML('data-source="' + s[0] + '"', !state.off[s[0]], src(s[0])) + '</div>';
       }).join('') + '</div>' +
-      '<div class="group-f">' + L('У демо є новини американських, британських і українських видань. Вимкніть будь-яке з них — воно зникне з усіх розділів.', 'The demo includes news from American, British and Ukrainian outlets. Turn any of them off and it disappears from every section.') + '</div>';
+      '<div class="group-f">' + L('У демо є новини американських, британських і українських видань. Вимкніть будь-яке з них — воно зникне з усіх розділів.', 'The demo includes news from American, British and Ukrainian outlets. Turn any of them off and it disappears from every section.') + ' ' + L('Зелена точка — є новини за добу, жовта — лише за 3 дні, сіра — давно немає.', 'Green dot: stories in the last day; amber: only in the last 3 days; grey: nothing recent.') + '</div>';
 
     html += '<div class="group-h">' + L('Фільтри', 'Filters') + '</div><div class="group">' +
       '<div class="cell"><span class="cell-label">' + L('Приховувати спонсорські матеріали', 'Hide sponsored content') + '</span>' + switchHTML('data-toggle="hideSponsored"', state.hideSponsored, L('Приховувати спонсорські матеріали', 'Hide sponsored content')) + '</div></div>';
@@ -1373,73 +1745,16 @@ button { cursor: pointer; }
       '<div style="height: 24px"></div>';
 
     $('settings-body').innerHTML = html;
+    renderSaved();
   }
 
-  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', map: 'Карта', innov: 'Інновації', saved: 'Закладки', settings: 'Налаштування' };
-  var TAB_TITLES_EN = { today: 'Today', feed: 'Feed', map: 'Map', innov: 'Innovations', saved: 'Saved', settings: 'Settings' };
+  var TAB_TITLES = { today: 'Сьогодні', feed: 'Стрічка', map: 'Карта', innov: 'Інновації', settings: 'Профіль' };
+  var TAB_TITLES_EN = { today: 'Today', feed: 'Feed', map: 'Map', innov: 'Innovations', settings: 'Profile' };
   function tabTitle(k) { return EN() ? TAB_TITLES_EN[k] : TAB_TITLES[k]; }
 
   // === HERO JS START ===
   // Анімовані заставки (Canvas 2D, без зовнішніх ресурсів): мікросхеми, рельєф, радар, орбіти.
   var HEROES = {
-    circuit: (function () {
-// Circuit / мікросхеми — mountHero(containerOrCanvas, {fps, still, seed}) → destroy()
-function mountHero(root,o){
-o=Object.assign({fps:30,still:7,seed:9},o);
-var own=root.tagName!='CANVAS',c=root.tagName=='CANVAS'?root:root.insertBefore(document.createElement('canvas'),root.firstChild),x=c.getContext('2d'),
-W=0,H=0,D=1,raf=0,last=0,vis=1,C={},rm=matchMedia('(prefers-reduced-motion: reduce)'),dk=matchMedia('(prefers-color-scheme: dark)');
-if(c==root)root=c.parentNode;c.setAttribute('aria-hidden','true');
-function rgb(h){h=h.replace('#','');if(h.length<6)h=h.replace(/./g,'$&$&');var n=parseInt(h,16);return[n>>16,n>>8&255,n&255]}
-function rgba(h,a){return'rgba('+rgb(h)+','+a+')'}
-function rnd(s){return function(){s=s*16807%2147483647;return s/2147483647}}
-function css(){var s=getComputedStyle(root),g=function(k,d){return s.getPropertyValue(k).trim()||d};
-C.a=g('--accent','#2F6B2B');C.f=g('--fg','#111114');var f=rgb(C.f);C.d=f[0]+f[1]+f[2]>380}
-var g=12,T=[],S=[],off,ML=1,NP=12,SP=70;
-function at(p,s){for(var i=1;i<p.length;i++){var a=p[i-1],b=p[i],l=b[2]-a[2];if(s<=b[2]||i==p.length-1){var u=l?Math.min(1,Math.max(0,(s-a[2])/l)):0;return[a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u]}}}
-function init(){
-var r=rnd(o.seed),cw=Math.ceil(W/g)+2,ch=Math.ceil(H/g)+2,occ=new Uint8Array(cw*ch),ph=W<640,i,j,q,n;
-var chips=ph?[[.78,.7,7,6],[.3,1.02,5,4]]:[[.6,.3,8,6],[.83,.66,11,9],[1,.18,6,5],[.42,.92,7,4]];
-function fr(i,j){return i>=0&&j>=0&&i<cw&&j<ch&&!occ[j*cw+i]}
-function walk(i,j,dx,dy){var p=[[i*g,j*g]],h=!!dx,sg=0,ln=0,L,k;occ[j*cw+i]=1;
-for(;sg<7;sg++){L=2+r()*9|0;for(k=0;k<L&&fr(i+dx,j+dy);k++){i+=dx;j+=dy;occ[j*cw+i]=1;ln++}
-if(k)p.push([i*g,j*g]);if(k<L)break;
-if(dx&&dy){h?dy=0:dx=0}else if(r()<.65){h?dy=r()<.5?1:-1:dx=r()<.5?1:-1}}
-if(ln<4)return;for(k=0,L=0;k<p.length;k++){if(k)L+=Math.hypot(p[k][0]-p[k-1][0],p[k][1]-p[k-1][1]);p[k][2]=L}
-p.len=L;T.push(p);ML=Math.max(ML,L)}
-T=[];S=[];
-chips.forEach(function(q){var w=q[2],h=q[3],a=Math.round(q[0]*cw-w/2),b=Math.round(q[1]*ch-h/2);
-for(i=a;i<a+w;i++)for(j=b;j<b+h;j++)if(i>=0&&j>=0&&i<cw&&j<ch)occ[j*cw+i]=1;S.push([a*g,b*g,(w-1)*g,(h-1)*g])});
-chips.forEach(function(q,c){var w=q[2],h=q[3],a=Math.round(q[0]*cw-w/2),b=Math.round(q[1]*ch-h/2);
-for(i=a+1;i<a+w-1;i++){r()<.8&&walk(i,b,0,-1);r()<.8&&walk(i,b+h-1,0,1)}
-for(j=b+1;j<b+h-1;j++){r()<.8&&walk(a,j,-1,0);r()<.8&&walk(a+w-1,j,1,0)}});
-for(n=cw*ch/30|0;n--;){i=r()*cw|0;j=r()*ch|0;if(fr(i,j)){q=r()<.75;walk(i,j,q?(r()<.5?1:-1):0,q?0:(r()<.5?1:-1))}}
-NP=ph?6:16;
-off=document.createElement('canvas');off.width=W*D;off.height=H*D;var y=off.getContext('2d');y.setTransform(D,0,0,D,0,0);
-var A=C.d?.13:.16;y.lineJoin='round';y.lineWidth=1.1;y.strokeStyle=rgba(C.a,A);y.beginPath();
-T.forEach(function(p){p.forEach(function(v,k){k?y.lineTo(v[0],v[1]):y.moveTo(v[0],v[1])})});y.stroke();
-y.fillStyle=C.d?'#10120E':'#F6F7F2';y.strokeStyle=rgba(C.a,A*1.6);
-T.forEach(function(p){var e=p[p.length-1];y.beginPath();y.arc(e[0],e[1],2.3,0,7);y.fill();y.stroke()});
-S.forEach(function(s){y.fillStyle=rgba(C.f,C.d?.035:.03);y.strokeStyle=rgba(C.a,A*1.8);y.lineWidth=1.2;y.beginPath();
-y.roundRect(s[0]-3,s[1]-3,s[2]+6,s[3]+6,3);y.fill();y.stroke();y.beginPath();y.arc(s[0]+5,s[1]+5,1.6,0,7);y.fillStyle=rgba(C.a,A*2);y.fill()})}
-function draw(t){x.drawImage(off,0,0,W,H);if(!T.length)return;
-var iv=2.6/NP,k0=Math.floor((t-ML/SP-1)/iv),k1=Math.floor(t/iv),k,p,s,e,a,i,u,v;x.lineCap='round';
-for(k=k0;k<=k1;k++){p=T[(Math.imul(k+99,2654435761)>>>0)%T.length];s=(t-k*iv)*SP;
-if(s<p.len+30){x.strokeStyle=C.a;x.lineWidth=1.6;for(i=0;i<6;i++){u=at(p,s-34+i*6);v=at(p,s-28+i*6);
-x.globalAlpha=(C.d?.55:.6)*i/6*Math.min(1,(p.len+30-s)/30);x.beginPath();x.moveTo(u[0],u[1]);x.lineTo(v[0],v[1]);x.stroke()}}
-if(s<p.len){u=at(p,s);x.fillStyle=C.a;x.globalAlpha=.14;x.beginPath();x.arc(u[0],u[1],5,0,7);x.fill();x.globalAlpha=C.d?.8:.75;x.beginPath();x.arc(u[0],u[1],1.8,0,7);x.fill()}
-else if(s<p.len+60){e=p[p.length-1];a=1-(s-p.len)/60;x.globalAlpha=a*.5;x.strokeStyle=C.a;x.lineWidth=1.2;x.beginPath();x.arc(e[0],e[1],2.3+5*(1-a),0,7);x.stroke()}}
-x.globalAlpha=1}
-function paint(t){x.setTransform(D,0,0,D,0,0);x.clearRect(0,0,W,H);draw(t)}
-function tick(n){raf=0;if(n-last>=1e3/o.fps-3){last=n;paint(n/1e3)}go()}
-function go(){if(!raf&&vis&&W&&!document.hidden&&!rm.matches)raf=requestAnimationFrame(tick)}
-function now(){W&&paint(rm.matches?o.still:performance.now()/1e3)}
-function size(){var r=root.getBoundingClientRect();D=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*D|0;c.height=H*D|0;init();now();go()}
-function re(){css();init();now();go()}
-var ro=new ResizeObserver(size),io=new IntersectionObserver(function(e){vis=e[0].isIntersecting;go()});
-ro.observe(root);io.observe(root);document.addEventListener('visibilitychange',go);rm.addEventListener('change',re);dk.addEventListener('change',re);css();
-var k=function(){cancelAnimationFrame(raf);ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',go);rm.removeEventListener('change',re);dk.removeEventListener('change',re);own&&c.remove()};
-k.refresh=re;return k}
-return mountHero; })(),
     relief: (function () {
 // Relief / рельєф — mountHero(containerOrCanvas, {fps, still, seed}) → destroy()
 function mountHero(root,o){
@@ -1479,94 +1794,9 @@ var ro=new ResizeObserver(size),io=new IntersectionObserver(function(e){vis=e[0]
 ro.observe(root);io.observe(root);document.addEventListener('visibilitychange',go);rm.addEventListener('change',re);dk.addEventListener('change',re);css();
 var k=function(){cancelAnimationFrame(raf);ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',go);rm.removeEventListener('change',re);dk.removeEventListener('change',re);own&&c.remove()};
 k.refresh=re;return k}
-return mountHero; })(),
-    radar: (function () {
-// Radar / радар — mountHero(containerOrCanvas, {fps, still, seed}) → destroy()
-function mountHero(root,o){
-o=Object.assign({fps:30,still:7,seed:9},o);
-var own=root.tagName!='CANVAS',c=root.tagName=='CANVAS'?root:root.insertBefore(document.createElement('canvas'),root.firstChild),x=c.getContext('2d'),
-W=0,H=0,D=1,raf=0,last=0,vis=1,C={},rm=matchMedia('(prefers-reduced-motion: reduce)'),dk=matchMedia('(prefers-color-scheme: dark)');
-if(c==root)root=c.parentNode;c.setAttribute('aria-hidden','true');
-function rgb(h){h=h.replace('#','');if(h.length<6)h=h.replace(/./g,'$&$&');var n=parseInt(h,16);return[n>>16,n>>8&255,n&255]}
-function rgba(h,a){return'rgba('+rgb(h)+','+a+')'}
-function rnd(s){return function(){s=s*16807%2147483647;return s/2147483647}}
-function css(){var s=getComputedStyle(root),g=function(k,d){return s.getPropertyValue(k).trim()||d};
-C.a=g('--accent','#2F6B2B');C.f=g('--fg','#111114');var f=rgb(C.f);C.d=f[0]+f[1]+f[2]>380}
-var cx,cy,R,B=[],P2=6.2832;
-function init(){var ph=W<640,r=rnd(o.seed),i;cx=ph?W*.86:W*.77;cy=ph?H*.8:H*.56;R=ph?H*.92:Math.min(H*1.1,W*.32);B=[];
-for(i=0;i<(ph?8:15);i++)B.push([.18+r()*.78,r()*P2,(r()-.5)*.02,r()*9])}
-function draw(t){var i,a,b,d,I,rr,th,px,py,G=W<640?24:30,A=C.d?1:1.1,sw=t*P2/7-1.3;
-x.strokeStyle=rgba(C.f,W<640?.025:.035*A);x.lineWidth=1;x.beginPath();
-for(i=(cx%G)+.5;i<W;i+=G){x.moveTo(i,0);x.lineTo(i,H)}for(i=(cy%G)+.5;i<H;i+=G){x.moveTo(0,i);x.lineTo(W,i)}x.stroke();
-x.strokeStyle=rgba(C.a,.2*A);x.beginPath();for(i=1;i<=4;i++){x.moveTo(cx+R*i/4,cy);x.arc(cx,cy,R*i/4,0,P2)}
-for(i=0;i<12;i++){a=i*P2/12;x.moveTo(cx+Math.cos(a)*R*.08,cy+Math.sin(a)*R*.08);x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R)}x.stroke();
-x.beginPath();for(i=0;i<72;i++){a=i*P2/72;b=i%6?5:10;x.moveTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.lineTo(cx+Math.cos(a)*(R+b),cy+Math.sin(a)*(R+b))}
-x.strokeStyle=rgba(C.a,.28*A);x.stroke();
-x.font='10px -apple-system,"Segoe UI",system-ui,sans-serif';x.fillStyle=rgba(C.a,.4*A);for(i=1;i<4;i++)x.fillText(i*10+'',cx+4,cy-R*i/4-4);
-if(x.createConicGradient){var gr=x.createConicGradient(sw,cx,cy);gr.addColorStop(0,rgba(C.a,0));gr.addColorStop(.82,rgba(C.a,0));gr.addColorStop(1,rgba(C.a,C.d?.18:.12));
-x.fillStyle=gr;x.beginPath();x.arc(cx,cy,R,0,P2);x.fill()}
-x.strokeStyle=rgba(C.a,C.d?.55:.5);x.lineWidth=1.2;x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(sw)*R,cy+Math.sin(sw)*R);x.stroke();
-for(i=0;i<B.length;i++){b=B[i];th=b[1]+b[2]*t;rr=R*(b[0]+.04*Math.sin(t*.15+b[3]));px=cx+Math.cos(th)*rr;py=cy+Math.sin(th)*rr;
-d=((sw-th)%P2+P2)%P2;I=Math.exp(-d/2.6);x.fillStyle=C.a;x.globalAlpha=.12+.8*I;x.beginPath();x.arc(px,py,2.2,0,P2);x.fill();
-if(d<1.2){x.globalAlpha=(1-d/1.2)*.5;x.strokeStyle=C.a;x.lineWidth=1;x.beginPath();x.arc(px,py,3+d*9,0,P2);x.stroke()}
-if(i<3){x.globalAlpha=.2+.5*I;x.strokeStyle=C.a;x.lineWidth=1;x.beginPath();for(a=0;a<4;a++){var sx=a&1?1:-1,sy=a&2?1:-1;
-x.moveTo(px+sx*8,py+sy*4);x.lineTo(px+sx*8,py+sy*8);x.lineTo(px+sx*4,py+sy*8)}x.stroke();px<W-50&&x.fillText(['ID 041','ID 058','ID 112'][i],px+11,py-6)}}
-x.globalAlpha=1;x.fillStyle=C.a;x.beginPath();x.arc(cx,cy,2.5,0,P2);x.fill()}
-function paint(t){x.setTransform(D,0,0,D,0,0);x.clearRect(0,0,W,H);draw(t)}
-function tick(n){raf=0;if(n-last>=1e3/o.fps-3){last=n;paint(n/1e3)}go()}
-function go(){if(!raf&&vis&&W&&!document.hidden&&!rm.matches)raf=requestAnimationFrame(tick)}
-function now(){W&&paint(rm.matches?o.still:performance.now()/1e3)}
-function size(){var r=root.getBoundingClientRect();D=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*D|0;c.height=H*D|0;init();now();go()}
-function re(){css();init();now();go()}
-var ro=new ResizeObserver(size),io=new IntersectionObserver(function(e){vis=e[0].isIntersecting;go()});
-ro.observe(root);io.observe(root);document.addEventListener('visibilitychange',go);rm.addEventListener('change',re);dk.addEventListener('change',re);css();
-var k=function(){cancelAnimationFrame(raf);ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',go);rm.removeEventListener('change',re);dk.removeEventListener('change',re);own&&c.remove()};
-k.refresh=re;return k}
-return mountHero; })(),
-    orbits: (function () {
-// Orbits / орбіти — mountHero(containerOrCanvas, {fps, still, seed}) → destroy()
-function mountHero(root,o){
-o=Object.assign({fps:30,still:7,seed:9},o);
-var own=root.tagName!='CANVAS',c=root.tagName=='CANVAS'?root:root.insertBefore(document.createElement('canvas'),root.firstChild),x=c.getContext('2d'),
-W=0,H=0,D=1,raf=0,last=0,vis=1,C={},rm=matchMedia('(prefers-reduced-motion: reduce)'),dk=matchMedia('(prefers-color-scheme: dark)');
-if(c==root)root=c.parentNode;c.setAttribute('aria-hidden','true');
-function rgb(h){h=h.replace('#','');if(h.length<6)h=h.replace(/./g,'$&$&');var n=parseInt(h,16);return[n>>16,n>>8&255,n&255]}
-function rgba(h,a){return'rgba('+rgb(h)+','+a+')'}
-function rnd(s){return function(){s=s*16807%2147483647;return s/2147483647}}
-function css(){var s=getComputedStyle(root),g=function(k,d){return s.getPropertyValue(k).trim()||d};
-C.a=g('--accent','#2F6B2B');C.f=g('--fg','#111114');var f=rgb(C.f);C.d=f[0]+f[1]+f[2]>380}
-var cx,cy,R,Pt=[],O=[],Gs=[[.5,.3],[.2,-.6]],TL=.38,ct=Math.cos(TL),st=Math.sin(TL),P2=6.2832;
-function init(){var ph=W<640,n=ph?700:1100,i,y,r;cx=ph?W*.88:W*.77;cy=ph?H*.86:H*.6;R=ph?H*.42:Math.min(H*.5,W*.14);Pt=[];
-for(i=0;i<n;i++){y=1-2*(i+.5)/n;r=Math.sqrt(1-y*y);Pt.push([Math.cos(i*2.39996)*r,y,Math.sin(i*2.39996)*r])}
-O=[[1.28,.9,.3,.22,0],[1.5,-.5,1.9,.15,2],[1.78,.25,-.8,.1,4]]}
-function V(p,w){var c=Math.cos(w),s=Math.sin(w),X=p[0]*c+p[2]*s,Z=-p[0]*s+p[2]*c;return[cx+X*R,cy-(p[1]*ct-Z*st)*R,p[1]*st+Z*ct]}
-function op(o,u){var c=Math.cos(u),s=Math.sin(u),p=[c,s*Math.sin(o[1]),s*Math.cos(o[1])],k=o[0];return V([p[0]*k,p[1]*k,p[2]*k],o[2])}
-function hid(q){var dx=q[0]-cx,dy=q[1]-cy;return q[2]<0&&dx*dx+dy*dy<R*R}
-function draw(t){var w=t*.06,i,p,q,u,k,o,S=[],a=C.d?1:1.15;
-var gr=x.createRadialGradient(cx,cy,R*.6,cx,cy,R*1.3);gr.addColorStop(0,rgba(C.a,.06*a));gr.addColorStop(1,rgba(C.a,0));x.fillStyle=gr;x.beginPath();x.arc(cx,cy,R*1.25,0,P2);x.fill();
-x.strokeStyle=rgba(C.a,.22*a);x.lineWidth=1;x.beginPath();x.arc(cx,cy,R,0,P2);x.stroke();
-x.fillStyle=C.a;for(i=0;i<Pt.length;i++){q=V(Pt[i],w);if(q[2]>0){x.globalAlpha=(.1+.55*q[2]*q[2])*a;k=.8+1.2*q[2];x.fillRect(q[0]-k/2,q[1]-k/2,k,k)}}
-for(i=0;i<O.length;i++){o=O[i];x.strokeStyle=C.a;x.lineWidth=1;for(k=0;k<120;k++){p=op(o,k*P2/120);q=op(o,(k+1)*P2/120);if(hid(p)||hid(q))continue;
-x.globalAlpha=(p[2]>0?.26:.1)*a;x.beginPath();x.moveTo(p[0],p[1]);x.lineTo(q[0],q[1]);x.stroke()}
-u=o[4]+t*o[3];for(k=0;k<14;k++){p=op(o,u-k*.025-.025);q=op(o,u-k*.025);if(!hid(p)&&!hid(q)){x.globalAlpha=(1-k/14)*.6*a;x.lineWidth=1.6;x.beginPath();x.moveTo(p[0],p[1]);x.lineTo(q[0],q[1]);x.stroke()}}
-q=op(o,u);if(!hid(q)){S.push(q);x.globalAlpha=.85;x.fillStyle=C.a;x.fillRect(q[0]-2.5,q[1]-2.5,5,5);x.globalAlpha=.5;x.fillRect(q[0]-9,q[1]-.75,4,1.5);x.fillRect(q[0]+5,q[1]-.75,4,1.5)}}
-x.setLineDash([3,4]);x.lineDashOffset=-t*14;x.lineWidth=1;Gs.forEach(function(g){var c=Math.cos(g[1]),z=[Math.cos(g[0])*c,Math.sin(g[1]),Math.sin(g[0])*c];q=V(z,w);if(q[2]<.15)return;
-x.globalAlpha=.75*a;x.fillStyle=C.a;x.beginPath();x.arc(q[0],q[1],2.4,0,P2);x.fill();x.globalAlpha=.4*(1-t%2/2);x.strokeStyle=C.a;x.beginPath();x.arc(q[0],q[1],3+t%2*5,0,P2);x.stroke();
-S.forEach(function(s){var d=Math.hypot(s[0]-q[0],s[1]-q[1]);if(d<R*1.3){x.globalAlpha=.35*a*Math.min(1,(q[2]-.15)*4);x.beginPath();x.moveTo(q[0],q[1]);x.lineTo(s[0],s[1]);x.stroke()}})});
-x.setLineDash([]);x.globalAlpha=1}
-function paint(t){x.setTransform(D,0,0,D,0,0);x.clearRect(0,0,W,H);draw(t)}
-function tick(n){raf=0;if(n-last>=1e3/o.fps-3){last=n;paint(n/1e3)}go()}
-function go(){if(!raf&&vis&&W&&!document.hidden&&!rm.matches)raf=requestAnimationFrame(tick)}
-function now(){W&&paint(rm.matches?o.still:performance.now()/1e3)}
-function size(){var r=root.getBoundingClientRect();D=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*D|0;c.height=H*D|0;init();now();go()}
-function re(){css();init();now();go()}
-var ro=new ResizeObserver(size),io=new IntersectionObserver(function(e){vis=e[0].isIntersecting;go()});
-ro.observe(root);io.observe(root);document.addEventListener('visibilitychange',go);rm.addEventListener('change',re);dk.addEventListener('change',re);css();
-var k=function(){cancelAnimationFrame(raf);ro.disconnect();io.disconnect();document.removeEventListener('visibilitychange',go);rm.removeEventListener('change',re);dk.removeEventListener('change',re);own&&c.remove()};
-k.refresh=re;return k}
 return mountHero; })()
   };
-  var HERO_KEYS = [['circuit', 'Мікросхеми', 'Плата'], ['relief', 'Рельєф', 'Рельєф'], ['radar', 'Радар', 'Радар'], ['orbits', 'Орбіти', 'Орбіти'], ['off', 'Вимкнено', 'Вимк.']];
+  var HERO_KEYS = [['relief', 'Рельєф', 'Рельєф']];
   // === HERO JS END ===
   function mountHeroBg() {
     if (heroKill) { heroKill(); heroKill = null; }
@@ -2873,14 +3103,17 @@ return mountHero; })()
   }
 
   var cmap = null;
+  function regionNews(id) { return visible().filter(function (a) { return (a.region || []).indexOf(id) >= 0; }); }
   function mountMap() {
     var st = ConflictMap.stats();
     $('map-date').textContent = L('Станом на ' + CONFLICTS_AS_OF.label, 'As of ' + ConflictMap.enDate(CONFLICTS_AS_OF.label));
     $('map-stat').textContent = L(st.total + ' гарячих точок · ' + st.hot + ' — загострення та нові конфлікти', st.total + ' hotspots · ' + st.hot + ' escalations and new conflicts');
     if (cmap) { cmap.refresh(); return; }
     cmap = ConflictMap.mount($('map-root'), {
-      countNews: function (c) { var q = c.q.toLowerCase(); return visible().filter(function (a) { return (a.t + ' ' + a.s).toLowerCase().indexOf(q) >= 0; }).length; },
-      onNews: function (c) { state.query = c.q; $('feed-q').value = c.q; setTab('feed'); },
+      countNews: function (c) { return regionNews(c.id).length; },
+      newsFor: function (c) { return regionNews(c.id).map(function (a) { return { id: a.id, title: title(a), src: src(a.src), ago: ago(a) }; }); },
+      onArticle: function (id) { openArticle(id); },
+      onNews: function (c) { state.region = c.id; state.query = ''; $('feed-q').value = ''; setTab('feed'); },
       scrollTo: function (el) { if (el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
     });
   }
@@ -2890,6 +3123,7 @@ return mountHero; })()
     var a = state.open && BY_ID[state.open];
     if (!a) { box.hidden = true; box.innerHTML = ''; return; }
     var isSaved = state.saved.indexOf(a.id) >= 0;
+    var cl = state.cardLang || (EN() ? 'en' : 'uk'), ct = cl === 'en' ? a.t : (a.tr || a.t), cs = cl === 'en' ? a.s : (a.sr || a.s);
     box.innerHTML =
       '<div class="navbar">' +
         '<button class="icon-btn" data-back><svg width="13" height="22" viewBox="0 0 13 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 2L2 11l9 9"/></svg>' + tabTitle(state.tab) + '</button>' +
@@ -2902,20 +3136,21 @@ return mountHero; })()
           '<span class="hero-cat">' + cat(a.cats[0]) + '</span><span class="hero-src">' + esc(src(a.src)) + ' · ' + esc(D(a.date)) + '</span>' +
           photoHTML(a, true) + '</div>' +
         '<div class="tags">' + a.cats.map(tagHTML).join('') + '</div>' +
-        '<h2>' + esc(title(a)) + '</h2>' +
+        '<div class="detail-row"><div class="lang-card" role="radiogroup" aria-label="' + L('Мова картки', 'Card language') + '">' +
+          [['uk', 'UA'], ['en', 'EN']].map(function (o) { return '<button role="radio" data-card-lang="' + o[0] + '" aria-checked="' + (cl === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div>' +
+          (a.region || []).map(function (r) { return '<button class="region-chip" data-region-go="' + r + '"><i></i>' + esc(ConflictMap.regionName(r)) + ' · ' + L('на карті', 'on the map') + '</button>'; }).join('') + '</div>' +
+        '<h2>' + esc(ct) + '</h2>' +
         '<div class="byline"><b>' + esc(src(a.src)) + '</b>' + (a.author ? '<span>' + esc(a.author) + '</span>' : '') + '<span>' + esc(D(a.date)) + '</span></div>' +
         (a.sponsored ? '<span class="sponsor">' + L('Спонсорський матеріал', 'Sponsored') + '</span>' : '') +
-        '<p class="summary">' + esc(summary(a)) + '</p>' +
-        (!EN() && state.translated
-          ? '<div class="tr"><small>Оригінал англійською</small><h3>' + esc(a.t) + '</h3><p class="summary">' + esc(a.s) + '</p></div>'
-          : '') +
+        '<p class="summary">' + esc(cs) + '</p>' +
+        (a.also && a.also.length ? '<div class="also"><small>' + L('Про це також пишуть', 'Also reported by') + '</small>' + a.also.map(function (id) { var b = BY_ID[id]; return b ? '<a href="' + esc(safeUrl(b.link)) + '" target="_blank" rel="noopener noreferrer">' + esc(src(b.src)) + ' ↗</a>' : ''; }).join('') + '</div>' : '') +
         '<div class="actions">' +
           '<a class="btn primary" href="' + esc(safeUrl(a.link)) + '" target="_blank" rel="noopener noreferrer">' +
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>' +
             L('Читати на ', 'Read on ') + esc(src(a.src)) + '</a>' +
-          (EN() ? '' : '<button class="btn secondary" data-translate aria-pressed="' + state.translated + '">' +
-            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c1 3 3 5.5 6 7M11 5c-1 3.5-3.5 6.5-7 8"/><path d="M13 21l4-9 4 9M14.5 18h5"/></svg>' +
-            (state.translated ? 'Сховати оригінал' : 'Показати оригінал англійською') + '</button>') +
+          '<button class="btn secondary" data-share>' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>' +
+            L('Поділитися', 'Share') + '</button>' +
         '</div>' +
         '<p class="foot">' + L('Матеріал належить виданню ' + esc(src(a.src)) + '. У застосунку показано лише заголовок і короткий анонс із відкритої RSS-стрічки.', 'The article belongs to ' + esc(src(a.src)) + '. The app shows only the headline and a short summary from the open RSS feed.') + '</p>' +
       '</div>';
@@ -2928,7 +3163,7 @@ return mountHero; })()
 
   function setTab(tab) {
     state.tab = tab; state.open = null;
-    ['today', 'feed', 'map', 'innov', 'saved', 'settings'].forEach(function (t) {
+    ['today', 'feed', 'map', 'innov', 'settings'].forEach(function (t) {
       $('screen-' + t).hidden = t !== tab;
     });
     document.querySelectorAll('.tab').forEach(function (b) {
@@ -2940,7 +3175,7 @@ return mountHero; })()
   }
 
   function openArticle(id) {
-    state.open = id; state.translated = false;
+    state.open = id; state.cardLang = null;
     if (state.read.indexOf(id) < 0) { state.read.push(id); save(); }
     renderDetail();
     var box = $('detail');
@@ -2965,7 +3200,11 @@ return mountHero; })()
       if (i >= 0) state.saved.splice(i, 1); else state.saved.unshift(state.open);
       save(); renderAll(); return;
     }
-    if (e.target.closest('[data-translate]')) { state.translated = !state.translated; renderDetail(); return; }
+    if ((el = e.target.closest('[data-card-lang]'))) { state.cardLang = el.dataset.cardLang; renderDetail(); return; }
+    if (e.target.closest('[data-share]')) { var sa = BY_ID[state.open]; if (sa) Extras.share({ title: (state.cardLang || (EN() ? 'en' : 'uk')) === 'en' ? sa.t : (sa.tr || sa.t), url: sa.link, source: src(sa.src), when: D(sa.date) }); return; }
+    if ((el = e.target.closest('[data-region-go]'))) { var rg = el.dataset.regionGo; setTab('map'); if (cmap) cmap.select(rg); return; }
+    if (e.target.closest('[data-region-clear]')) { state.region = null; renderFeed(); return; }
+    if (e.target.closest('#brief-open')) { openBrief(); return; }
     if ((el = e.target.closest('[data-hero-set]'))) {
       state.hero = el.dataset.heroSet; save(); mountHeroBg(); renderSettings(); return;
     }
@@ -3006,6 +3245,14 @@ return mountHero; })()
     if (state.tab === 'map') mountMap();
     if (state.tab === 'innov') mountInnov();
   }
+
+  function openBrief() {
+    var list = todays(), withImg = list.filter(function (a) { return a.img; });
+    var pick = withImg.slice(0, 6); if (pick.length < 6) pick = pick.concat(list.filter(function (a) { return !a.img; }).slice(0, 6 - pick.length));
+    pick.sort(function (x, y) { return list.indexOf(x) - list.indexOf(y); });
+    Extras.openBrief({ items: pick.map(function (a) { return { id: a.id, title: title(a), summary: summary(a), src: src(a.src), ago: ago(a), img: a.img, cat: cat(a.cats[0]), icon: icon(a.cats[0], 96) }; }), onRead: openArticle });
+  }
+  setInterval(function () { var el = $('asof-updated'); if (el) el.textContent = Extras.liveUpdated(NEWS_AS_OF) || updated(); }, 30000);
 
   applyStatic();
   renderAll();
