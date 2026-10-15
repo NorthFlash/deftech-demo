@@ -1791,7 +1791,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-10-14', label: '14 жовтня 2026' };
+  var INNOV_AS_OF = { date: '2026-10-15', label: '15 жовтня 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -2954,7 +2954,33 @@ return mountHero; })()
       blurb_en: 'A fully digital, software-defined C-band AESA radar for integrated air and missile defence: four panels, IFF and command-and-control packed in a single ISO container. It tracks ballistic and cruise missiles, rockets and drones simultaneously; unveiled at AUSA in October 2026, it has already entered initial production.',
       specs: [['Діапазон', 'C, АФАР, 4 панелі'], ['Огляд', '360°, напівсферичний'], ['Дальність виявлення', 'понад 90 км (БпЛА), понад 330 км (транспортні літаки)']],
       specs_en: [['Band', 'C-band AESA, 4 panels'], ['Coverage', '360°, hemispheric'], ['Detection range', 'over 90 km (UAS), over 330 km (transport aircraft)']],
-      links: [['Джерело: Finviz', 'https://finviz.com/news/401224/leonardo-drs-launches-cxmhr-a-fully-digital-c-band-radar-for-integrated-air-and-missile-defense'], ['Джерело: Mezha', 'https://mezha.net/eng/news/mezha-07e08f6b512a85741aae2946_defense_firms_unveil/']] }
+      links: [['Джерело: Finviz', 'https://finviz.com/news/401224/leonardo-drs-launches-cxmhr-a-fully-digital-c-band-radar-for-integrated-air-and-missile-defense'], ['Джерело: Mezha', 'https://mezha.net/eng/news/mezha-07e08f6b512a85741aae2946_defense_firms_unveil/']] },
+    { id: 'fwd-supreme', name: 'FWD Supreme', maker: 'Flying Wedge Defence & Aerospace', country: 'Індія', type: 'unmanned', stage: 'dev', upd: '2026-10-15', q: 'FWD Supreme',
+      blurb: 'Індійський реактивний ударний безпілотник-«ведений» типу «літаюче крило» з внутрішнім відсіком озброєння, який має супроводжувати пілотовані винищувачі групами по 15–20 машин. Повнорозмірний статичний макет важкої версії показали в Нью-Делі 13 жовтня 2026 р.; менший демонстратор Supreme Lite пройшов руліжні випробування й готується до першого польоту, державного контракту поки немає.',
+      blurb_en: 'An Indian jet-powered flying-wing loyal-wingman drone with an internal weapons bay, meant to escort crewed fighters in groups of 15 to 20. A full-scale static mock-up of the heavy version was shown in New Delhi on 13 October 2026; the smaller Supreme Lite demonstrator has completed taxi trials and is being prepared for its first flight, with no government contract yet.',
+      specs: [['Дальність', 'понад 1500 км (заявлено)'], ['Корисне навантаження', 'близько 350 кг'], ['Швидкість', 'до 0,8–0,85 М']],
+      specs_en: [['Range', 'over 1,500 km (claimed)'], ['Payload', 'about 350 kg'], ['Speed', 'up to Mach 0.8–0.85']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/aerospace-news/2026/india-unveils-first-ai-driven-fighter-drone-fwd-supreme-for-long-range-strikes-and-fighter-escort'], ['Джерело: Raksha Anirveda', 'https://raksha-anirveda.com/flying-wedge-defence-unveils-indias-first-ai-piloted-fighter-jet-full-scale-prototype/']] },
+    { id: 'nomad-fastpack', name: 'Nomad 100 Fast Pack', maker: 'Sikorsky (Lockheed Martin)', country: 'США', type: 'unmanned', stage: 'dev', upd: '2026-10-15', q: 'Nomad',
+      blurb: 'Комплект із чотирьох безпілотників вертикального злету Nomad 100 та обладнання для їх застосування в одному 20-футовому контейнері, який можна швидко перевезти й розгорнути без злітної смуги — на кораблі, біля техніки чи на імпровізованому майданчику. Апарати з автономією MATRIX створено за фінансування DARPA (програма EVADE); комплект представили на AUSA у жовтні 2026 р.',
+      blurb_en: 'A kit packing four Nomad 100 VTOL drones and their support equipment into a single 20-foot container that can be moved and set up quickly without a runway, on ships, vehicle staging areas or improvised landing zones. The aircraft use MATRIX autonomy and were developed with DARPA funding under the EVADE programme; the kit was introduced at AUSA in October 2026.',
+      specs: [['Склад', '4 БпЛА у 20-футовому ISO-контейнері'], ['Готовність', '2 апарати менш ніж за 15 хв'], ['Завдання', 'розвідка, легкі удари, логістика']],
+      specs_en: [['Composition', '4 UAS in a 20-ft ISO container'], ['Readiness', '2 aircraft in under 15 min'], ['Missions', 'ISR, light attack, logistics']],
+      links: [['Сайт виробника', 'https://news.lockheedmartin.com/2026-10-12-Sikorsky-Introduces-Nomad-TM-100-Fast-Pack,-a-Containerized-VTOL-UAS-Kit-for-Rapid-Deployment-in-Austere-Environments']] },
+    { id: 'guardian3', name: 'Guardian 3', maker: 'Powerus', country: 'США', type: 'unmanned', stage: 'dev', upd: '2026-10-15', q: 'Powerus',
+      img: 'https://archetype-military-times-prod.web.arc-cdn.net/resizer/v2/UJSJELF5GBF2ZLVQWIDMTMT2IM.jpeg?width=1200&auth=9bdb5788395b4ecd84b2ee657c45bc97e0b50707fe7fa6616f8c2c367fa5cfd5',
+      blurb: 'Повністю автономний дрон-перехоплювач: отримує цілевказання від радара, злітає назустріч загрозі й завдяки бортовому ШІ сам знаходить та уражає ворожий безпілотник. Це третя модель лінійки після керованого вручну Guardian 1 і напівавтономного Guardian 2; представлена на AUSA 12 жовтня 2026 р.',
+      blurb_en: 'A fully autonomous drone interceptor: cued by radar, it launches towards the threat and uses onboard AI and navigation to find and strike the hostile drone on its own. It is the third model in the line after the manually flown Guardian 1 and semi-autonomous Guardian 2, unveiled at AUSA on 12 October 2026.',
+      specs: [['Тип', 'автономний дрон-перехоплювач'], ['Наведення', 'радарне цілевказання, бортовий ШІ'], ['Лінійка', 'Guardian 1 / 2 / 3']],
+      specs_en: [['Type', 'autonomous drone interceptor'], ['Guidance', 'radar cueing, onboard AI'], ['Family', 'Guardian 1 / 2 / 3']],
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/10/12/newly-public-company-unveils-fully-autonomous-drone-interceptors/']] },
+    { id: 'astore-levante', name: 'Astore Levante', maker: 'LBA Systems (Leonardo та Baykar)', country: 'Італія та Туреччина', type: 'unmanned', stage: 'test', upd: '2026-10-15', q: 'Astore',
+      img: 'https://archetype-military-times-prod.web.arc-cdn.net/resizer/v2/2H24OFYONRH4LJAZO66FPW7EAY.jpg?width=1200&auth=647e116a1fffec3ba221cd8235477cdc2e315e6ace8f6fdb4e32d07a70c25387',
+      blurb: 'Італійська версія ударного безпілотника Bayraktar TB3 із сенсорами Leonardo, яку збирає в Італії спільне підприємство LBA Systems; має замінити MQ-1 Predator у ВПС Італії для розвідки, вогневої підтримки та навчання операторів. У жовтні 2026 р. Італія випробовує на ньому озброєння MBDA, сертифікацію очікують наприкінці 2026 — на початку 2027 р.',
+      blurb_en: 'An Italian version of the Bayraktar TB3 strike drone with Leonardo sensors, assembled in Italy by the LBA Systems joint venture; it is set to replace the MQ-1 Predator in the Italian Air Force for ISR, fire support and pilot training. In October 2026 Italy was testing MBDA weapons on it, with certification expected in late 2026 or early 2027.',
+      specs: [['Основа', 'Bayraktar TB3'], ['Замовлення Італії', '6 БпЛА (3 системи)'], ['Озброєння', 'MAM, KEMANKEŞ-1; тестується MBDA']],
+      specs_en: [['Base design', 'Bayraktar TB3'], ['Italian order', '6 UAVs (3 systems)'], ['Weapons', 'MAM, KEMANKEŞ-1; MBDA under test']],
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/global/europe/2026/10/12/italy-eyes-mbda-armaments-for-new-italo-turkish-drone/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
