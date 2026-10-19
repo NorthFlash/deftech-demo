@@ -876,10 +876,10 @@ dialog::backdrop { background: rgba(10, 12, 8, .55); }
   // hot: 'new' — новий конфлікт, 'escalating' — різке загострення за останні місяці (точка пульсує); без hot — затяжний конфлікт.
   // start: 'РРРР', 'РРРР-ММ' або 'РРРР-ММ-ДД'. q — англійське слово для пошуку пов’язаних новин у стрічці.
   var CONFLICTS_AS_OF = {
-    date: '2026-10-15',
-    label: '15 жовтня 2026',
-    sources: 'International Crisis Group (CrisisWatch), перелік збройних конфліктів Вікіпедії (дані ACLED/UCDP за 2025–2026 роки), Just Security, FDD Overnight Brief, Reuters, AP, Al Jazeera, Sudans Post',
-    sources_en: 'International Crisis Group (CrisisWatch), Wikipedia list of ongoing armed conflicts (ACLED/UCDP data for 2025–2026), Just Security, FDD Overnight Brief, Reuters, AP, Al Jazeera, Sudans Post'
+    date: '2026-10-19',
+    label: '19 жовтня 2026',
+    sources: 'International Crisis Group (CrisisWatch), перелік збройних конфліктів Вікіпедії (дані ACLED/UCDP за 2025–2026 роки), Just Security, FDD Overnight Brief, Reuters, AP, Al Jazeera, CBS News, ООН, Sudans Post',
+    sources_en: 'International Crisis Group (CrisisWatch), Wikipedia list of ongoing armed conflicts (ACLED/UCDP data for 2025–2026), Just Security, FDD Overnight Brief, Reuters, AP, Al Jazeera, CBS News, UN News, Sudans Post'
   };
   var CONFLICTS = [
     { id: 'ua', name: 'Війна Росії проти України', parties: 'Росія — Україна', start: '2022-02-24', level: 3, region: 'europe', lat: 48.3, lon: 36.6, q: 'Ukrain',
@@ -890,8 +890,8 @@ dialog::backdrop { background: rgba(10, 12, 8, .55); }
       cause_en: 'Russia’s full-scale invasion of Ukraine. The largest war in Europe since 1945.' },
     { id: 'ir', name: 'Війна навколо Ірану', parties: 'США та Ізраїль — Іран', start: '2026-02-28', level: 3, hot: 'escalating', region: 'mideast', lat: 32.6, lon: 53.8, q: 'Iran',
       name_en: 'War over Iran', parties_en: 'US and Israel — Iran',
-      cause: 'Почалася з ударів США та Ізраїлю по Ірану під час ядерних переговорів. Іран відповів ударами ракет і дронів та перекрив Ормузьку протоку. Перемир’я зривалися, на початку вересня — нові обміни ударами.',
-      cause_en: 'Began with US and Israeli strikes on Iran during nuclear talks. Iran retaliated with missile and drone strikes and closed the Strait of Hormuz. Ceasefires have broken down; new exchanges of strikes in early September.' },
+      cause: 'Почалася з ударів США та Ізраїлю по Ірану під час ядерних переговорів. Іран відповів ударами ракет і дронів та перекрив Ормузьку протоку. Перемир’я зривалися, на початку вересня — нові обміни ударами. Зараз удари призупинені, тривають непрямі переговори щодо перемир’я, але в жовтні почастішали атаки на судна в Ормузькій протоці.',
+      cause_en: 'Began with US and Israeli strikes on Iran during nuclear talks. Iran retaliated with missile and drone strikes and closed the Strait of Hormuz. Ceasefires have broken down; new exchanges of strikes in early September. Strikes are now paused and indirect ceasefire talks continue, but attacks on ships in the Strait of Hormuz increased in October.' },
     { id: 'lb', name: 'Ізраїль — «Хезболла»', parties: 'Ізраїль — «Хезболла» (Ліван)', start: '2026-03-02', level: 2, region: 'mideast', lat: 33.9, lon: 36.2, q: 'Lebanon',
       name_en: 'Israel — Hezbollah', parties_en: 'Israel — Hezbollah (Lebanon)',
       cause: 'Нова війна на тлі конфлікту з Іраном: обстріли з Лівану та ізраїльська наземна операція на півдні країни. Перемир’я з квітня 2026 року часто порушується.',
@@ -902,16 +902,16 @@ dialog::backdrop { background: rgba(10, 12, 8, .55); }
       cause_en: 'Began with Hamas’s attack on Israel. A fragile ceasefire has been in place since October 2025, but strikes and casualties continue.' },
     { id: 'ye', name: 'Війна в Ємені', parties: 'Хусити — уряд Ємену та Саудівська Аравія', start: '2014-09', level: 2, hot: 'escalating', region: 'mideast', lat: 14.6, lon: 44.0, q: 'Yemen',
       name_en: 'War in Yemen', parties_en: 'Houthis — Yemeni government and Saudi Arabia',
-      cause: 'Громадянська війна різко загострилася з серпня 2026 року: хусити наступають на узбережжі Червоного моря та б’ють по Саудівській Аравії, зокрема по аеропорту Ер-Ріяда (10 жовтня загинули щонайменше 18 людей) та об’єкти Saudi Aramco у Дахрані. Коаліція на чолі із Саудівською Аравією відповідає авіаударами, зокрема по Сані.',
-      cause_en: 'The civil war escalated sharply in August 2026: the Houthis are advancing along the Red Sea coast and striking Saudi Arabia, including Riyadh’s airport (at least 18 people were killed on 10 October) and Saudi Aramco facilities in Dhahran. The Saudi-led coalition is responding with airstrikes, including on Sanaa.' },
+      cause: 'Громадянська війна різко загострилася влітку 2026 року: хусити захопили частину узбережжя Червоного моря та б’ють по Саудівській Аравії, зокрема по аеропорту Ер-Ріяда та об’єктах Saudi Aramco. Уряд Ємену веде контрнаступ у провінціях Таїз, Мариб і Ель-Джауф, коаліція на чолі із Саудівською Аравією завдає авіаударів; понад 230 тисяч людей стали переселенцями.',
+      cause_en: 'The civil war escalated sharply in summer 2026: the Houthis seized parts of the Red Sea coast and are striking Saudi Arabia, including Riyadh’s airport and Saudi Aramco facilities. Yemen’s government is counterattacking in Taiz, Marib and al-Jawf, and the Saudi-led coalition is carrying out airstrikes; more than 230,000 people have been displaced.' },
     { id: 'sd', name: 'Війна в Судані', parties: 'Армія Судану — Сили швидкого реагування (RSF)', start: '2023-04-15', level: 3, region: 'africa', lat: 13.2, lon: 30.2, q: 'Sudan',
       name_en: 'War in Sudan', parties_en: 'Sudanese Armed Forces — Rapid Support Forces (RSF)',
       cause: 'Боротьба двох військових угруповань за владу. Одна з найбільших гуманітарних катастроф у світі.',
       cause_en: 'A power struggle between two military factions. One of the world’s largest humanitarian disasters.' },
     { id: 'et', name: 'Війна в Ефіопії', parties: 'Уряд Ефіопії — сили Тиграю (ТНФВТ) та союзні угруповання; напруга з Еритреєю', start: '2026-09-23', level: 2, hot: 'new', region: 'africa', lat: 13.4, lon: 39.2, q: 'Ethiopia',
       name_en: 'War in Ethiopia', parties_en: 'Ethiopian government — Tigrayan forces (TPLF) and allied groups; tensions with Eritrea',
-      cause: 'Тиграйські сили й союзні угруповання почали наступ проти уряду Абія Ахмеда; у жовтні федеральна армія взяла Мекеле, а 13 жовтня увійшла в прикордонне місто Заламбесса. Ефіопія звинувачує Еритрею у вторгненні на підтримку повстанців, Асмара це заперечує; дипломати намагаються запобігти війні між двома державами.',
-      cause_en: 'Tigrayan forces and allied groups launched an offensive against Abiy Ahmed’s government; in October the federal army took Mekelle and on 13 October entered the border town of Zalambessa. Ethiopia accuses Eritrea of invading in support of the rebels, which Asmara denies; diplomats are trying to avert a war between the two states.' },
+      cause: 'Тиграйські сили й союзні угруповання почали наступ проти уряду Абія Ахмеда; у жовтні федеральна армія повернула Мекеле, Адіграт і прикордонну Заламбессу, а 16 жовтня Абій оголосив тимчасовий уряд Тиграю. Ефіопія звинувачує Еритрею у вторгненні на підтримку повстанців, Асмара це заперечує; США та ООН закликають обидві держави до деескалації.',
+      cause_en: 'Tigrayan forces and allied groups launched an offensive against Abiy Ahmed’s government; in October the federal army retook Mekelle, Adigrat and the border town of Zalambessa, and on 16 October Abiy announced an interim government for Tigray. Ethiopia accuses Eritrea of invading in support of the rebels, which Asmara denies; the US and the UN are urging both states to de-escalate.' },
     { id: 'pk', name: 'Пакистан — Афганістан', parties: 'Пакистан — уряд талібів в Афганістані', start: '2026-09-18', level: 2, hot: 'new', region: 'asia', lat: 33.8, lon: 70.2, q: 'Pakistan',
       name_en: 'Pakistan — Afghanistan', parties_en: 'Pakistan — Taliban government of Afghanistan',
       cause: 'Після теракту угруповання, пов’язаного з «Техрік-е-Талібан Пакистан», Пакистан завдає авіаударів по Афганістану. Тривають сутички на кордоні; у провінції Хайбер-Пахтунхва запроваджено надзвичайний стан.',
