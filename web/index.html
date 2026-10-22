@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-10-21', label: '21 жовтня 2026' };
+  var INNOV_AS_OF = { date: '2026-10-22', label: '22 жовтня 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3151,7 +3151,44 @@ return mountHero; })()
       blurb_en: 'A Ukrainian VTOL reconnaissance drone system with a daylight camera and thermal imager that operates from a 5×5 m pad. The baseline version was unveiled in June 2025, combat-tested and codified by the Ministry of Defence. In October 2026 the developer unveiled an upgraded version with greater range, endurance and resistance to electronic warfare.',
       specs: [['Дальність', 'до 250 км (до 300 км в операційних умовах)'], ['Тривалість польоту', '4 год'], ['Максимальна висота', '4000 м']],
       specs_en: [['Range', 'up to 250 km (up to 300 km in operational conditions)'], ['Endurance', '4 h'], ['Maximum altitude', '4,000 m']],
-      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/upgraded-ukrainian-mercury-uas-gains-extended-range-and-improved-ew-resistance/']] }
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/upgraded-ukrainian-mercury-uas-gains-extended-range-and-improved-ew-resistance/']] },
+    { id: 'challenger3', name: 'Challenger 3', maker: 'Rheinmetall BAE Systems Land (RBSL)', country: 'Велика Британія', type: 'land', stage: 'test', upd: '2026-10-22', q: 'Challenger 3',
+      img: 'https://ukdj.ams3.digitaloceanspaces.com/2024/12/CHALLENGER3.webp',
+      blurb: 'Глибока модернізація британського основного бойового танка: корпус Challenger 2 отримує нову башту з гладкоствольною гарматою під стандартні боєприпаси НАТО, модульну броню, комплекс активного захисту та нову систему керування вогнем. Це головний танк Британської армії на 2030-ті роки. У жовтні 2026 р. на випробування демонстраційного етапу передано сім прототипів, восьмий добудовується; початкова боєготовність запланована на 2027 р.',
+      blurb_en: 'A deep upgrade of the British main battle tank: the Challenger 2 hull receives a new turret with a smoothbore gun firing NATO-standard ammunition, modular armour, an active protection system and new sights and fire control. It will be the British Army’s main tank into the 2030s. In October 2026 seven prototypes had been delivered for Demonstration Phase trials, with an eighth nearing completion; initial operating capability is planned for 2027.',
+      specs: [['Замовлення', '148 танків'], ['Гармата', 'гладкоствольна, боєприпаси НАТО'], ['Боєготовність', 'IOC 2027 р., FOC 2030 р.']],
+      specs_en: [['Order', '148 tanks'], ['Gun', 'smoothbore, NATO-standard ammunition'], ['Readiness', 'IOC 2027, FOC 2030']],
+      links: [['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/seven-challenger-3-tank-prototypes-delivered-for-trials/']] },
+    { id: 'skythunder', name: 'Skythunder (20-мм версія)', maker: 'Valhalla Turrets', country: 'Словенія', type: 'missiles', stage: 'dev', upd: '2026-10-22', q: 'Skythunder',
+      name_en: 'Skythunder (20 mm version)', maker_en: 'Valhalla Turrets',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/Sloveniya-PPO-Skythunder-scaled-1-1024x640.jpg',
+      blurb: 'Словенський зенітний комплекс ближньої дії проти дронів та інших низьколітних цілей, що поєднує триствольну 20-мм гармату M197 із 70-мм керованими ракетами та круговим радарним оглядом. Призначений для захисту критичної інфраструктури від масованих атак. У жовтні 2026 р. виробник представив нову 20-мм версію; дані про замовлення та характеристики дальності поки не оприлюднено.',
+      blurb_en: 'A Slovenian short-range air defence system against drones and other low-flying targets, combining a three-barrel 20 mm M197 cannon with 70 mm guided rockets and 360-degree radar coverage. It is meant to protect critical infrastructure against massed attacks. In October 2026 the manufacturer unveiled the new 20 mm version; orders and range figures have not yet been published.',
+      specs: [['Гармата', '20-мм M197, до 1500 постр./хв'], ['Ракети', '70-мм, лазерне наведення'], ['Сенсори', 'радар із круговим оглядом']],
+      specs_en: [['Gun', '20 mm M197, up to 1,500 rds/min'], ['Missiles', '70 mm, laser-guided'], ['Sensors', '360-degree radar']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/three-barrel-gatling-gun-and-guided-missiles-slovenia-unveils-new-skythunder-air-defense-system/']] },
+    { id: 'gurzuf-medevac', name: 'Важкий гексакоптер для евакуації поранених', maker: 'Gurzuf Defence', country: 'Україна', type: 'unmanned', stage: 'test', upd: '2026-10-22', q: 'Gurzuf',
+      name_en: 'Heavy hexacopter for casualty evacuation', maker_en: 'Gurzuf Defence',
+      img: 'https://thedefensepost.com/wp-content/uploads/2026/10/6ba2d9136989074204b663c529b44b10.jpg',
+      blurb: 'Важкий шестироторний дрон української компанії Gurzuf Defence, пристосований для перевезення пораненого бійця. Він дає змогу евакуювати людей там, де наземну евакуацію унеможливлюють ворожі дрони та міни. У жовтні 2026 р. разом із 30-ю механізованою бригадою дроном уперше евакуювали пораненого піхотинця; компанія назвала це історичною подією.',
+      blurb_en: 'A heavy six-rotor drone from the Ukrainian company Gurzuf Defence adapted to carry a wounded soldier. It allows evacuation where enemy drones and landmines make ground evacuation too dangerous. In October 2026, working with the 30th Mechanized Brigade, the drone evacuated a wounded infantryman for the first time; the company called it a historic event.',
+      specs: [['Тип', 'важкий гексакоптер'], ['Призначення', 'медична евакуація'], ['Перше застосування', 'жовтень 2026 р., 30-та ОМБр']],
+      specs_en: [['Type', 'heavy hexacopter'], ['Role', 'casualty evacuation'], ['First use', 'October 2026, 30th Mechanized Brigade']],
+      links: [['Джерело: The Defense Post', 'https://thedefensepost.com/2026/10/21/wounded-soldier-evacuate-aerial-drone/']] },
+    { id: 'ru-2s38', name: '2S38 «Деривація-ППО»', maker: 'Ростех', country: 'Росія', type: 'missiles', stage: 'test', upd: '2026-10-22', q: '2S38',
+      name_en: '2S38 Derivatsiya-PVO', maker_en: 'Rostec',
+      blurb: 'Російська самохідна зенітна установка на шасі БМП-3 з дистанційно керованою баштою та 57-мм автоматичною гарматою під боєприпаси з керованим підривом. Її позиціонують як засіб проти дронів і низьколітних цілей; опублікована конфігурація має лише оптико-електронні сенсори без власного радара пошуку. У жовтні 2026 р. машину, ймовірно, сфотографували під час навчань «Центр-2026»; масштаб постачання не підтверджено.',
+      blurb_en: 'A Russian self-propelled anti-aircraft gun on a BMP-3 chassis with a remotely operated turret and a 57 mm automatic cannon firing programmable-fuze ammunition. It is pitched against drones and low-flying targets; the published configuration relies on electro-optical sensors without its own search radar. In October 2026 the vehicle was reportedly photographed during the Center-2026 exercise; the scale of deliveries is unconfirmed.',
+      specs: [['Гармата', '57 мм, до 120 постр./хв'], ['Дальність / висота', 'до 6 км / до 4,5 км (заявлено)'], ['Маса', 'близько 21,5 т, плавуча']],
+      specs_en: [['Gun', '57 mm, up to 120 rds/min'], ['Range / altitude', 'up to 6 km / up to 4.5 km (claimed)'], ['Weight', 'about 21.5 t, amphibious']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/russias-new-2s38-57mm-air-defense-gun-appears-as-u-s-sgt-stout-and-german-skyranger-advance']] },
+    { id: 'bae-mdacs', name: 'MDACS (Multi-Domain Artillery Cannon System)', maker: 'BAE Systems', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-22', q: 'MDACS',
+      img: 'https://archetype-military-times-prod.web.arc-cdn.net/resizer/v2/YYR7TTLIFVFZXPB2JHZ2GHB5YU.jpg?width=1200&auth=90364bf82c1141dbd9e87780465c61ec401efa46b34093c604c836f4401cd953',
+      blurb: '155-мм артилерійська система, яка гіперзвуковими снарядами HVP уражає повітряні цілі, ракети та дрони, а снарядами Scorpio-XR — наземні цілі. Дешевші за ракети снаряди дають змогу мати в боєкомплекті від десятків до сотень пострілів. У жовтні 2026 р. BAE Systems представила прототип разом із мікрохвильовою системою HPM як шарову ППО; угоду на прототип армія США уклала в січні 2025 р.',
+      blurb_en: 'A 155 mm artillery system that uses Hypervelocity Projectiles (HVP) against aircraft, missiles and drones and Scorpio-XR rounds against ground targets. Rounds cheaper than missiles allow magazines of tens to hundreds of shots. In October 2026 BAE Systems unveiled the prototype together with its high-power microwave (HPM) system as a layered air defence; the US Army awarded the prototype agreement in January 2025.',
+      specs: [['Калібр', '155 мм'], ['Транспортування', 'літаком C-130'], ['Бюджет армії', 'близько $646 млн до 2027 ф. р.']],
+      specs_en: [['Calibre', '155 mm'], ['Transport', 'C-130 transportable'], ['Army budget', 'about $646 million through FY2027']],
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/10/13/bae-systems-unveils-new-layered-air-defense-system/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
