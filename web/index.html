@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-10-22', label: '22 жовтня 2026' };
+  var INNOV_AS_OF = { date: '2026-10-26', label: '26 жовтня 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3188,7 +3188,56 @@ return mountHero; })()
       blurb_en: 'A 155 mm artillery system that uses Hypervelocity Projectiles (HVP) against aircraft, missiles and drones and Scorpio-XR rounds against ground targets. Rounds cheaper than missiles allow magazines of tens to hundreds of shots. In October 2026 BAE Systems unveiled the prototype together with its high-power microwave (HPM) system as a layered air defence; the US Army awarded the prototype agreement in January 2025.',
       specs: [['Калібр', '155 мм'], ['Транспортування', 'літаком C-130'], ['Бюджет армії', 'близько $646 млн до 2027 ф. р.']],
       specs_en: [['Calibre', '155 mm'], ['Transport', 'C-130 transportable'], ['Army budget', 'about $646 million through FY2027']],
-      links: [['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/10/13/bae-systems-unveils-new-layered-air-defense-system/']] }
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/10/13/bae-systems-unveils-new-layered-air-defense-system/']] },
+    { id: 'helsing-ad2', name: 'AD-2 Ambush', maker: 'Helsing', country: 'Німеччина', type: 'missiles', stage: 'dev', upd: '2026-10-26', q: 'Ambush',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/ad-2-scaled-1-1024x657.jpg',
+      blurb: 'Ракета-перехоплювач проти дронів від німецької компанії Helsing, призначена для швидкісних і малопомітних повітряних цілей, з якими не справляються звичайні засоби протидії БпЛА. Має бортову радарну головку самонаведення з підтримкою ШІ, а на середній ділянці польоту курс коригують наземні радари. Представлена в Берліні в жовтні 2026 року, виробляти її планують на заводах Helsing Resilience Factories.',
+      blurb_en: 'A counter-drone interceptor missile from Germany’s Helsing, designed for fast and low-observable aerial targets that standard counter-UAS systems cannot handle. It has an onboard AI-capable radar seeker, with ground radars providing midcourse updates. Unveiled in Berlin in October 2026, it is to be built at Helsing’s Resilience Factories.',
+      specs: [['Швидкість', 'понад 2,5 Маха'], ['Радіус дії', 'понад 20 км'], ['Висота ураження', 'понад 9 км']],
+      specs_en: [['Speed', 'over Mach 2.5'], ['Combat radius', 'over 20 km'], ['Engagement altitude', 'over 9 km']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/helsing-unveils-ad-2-ambush-counter-uas-interceptor-with-engagement-altitude-of-up-to-9-km/']] },
+    { id: 'kbp-gryf', name: 'Gryf', maker: 'KBP International', country: 'Чехія', type: 'unmanned', stage: 'dev', upd: '2026-10-26', q: 'Gryf',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/october/Czech%20Republics%20new%20Gryf%20drone%20carrier%20combines%20airborne%20interceptors%20and%20missiles%20for%20extended%20air%20defense%20patrols%20925%20001.jpg',
+      blurb: 'Багаторазовий дрон-носій для протидії БпЛА: тривалий час патрулює в повітрі й несе кілька одноразових дронів-перехоплювачів або легких ракет. Це дає змогу проводити кілька перехоплень поспіль без повернення на базу. Чеська KBP представила його 21 жовтня 2026 року на Future Forces Forum у Празі, замовлень поки не оголошено.',
+      blurb_en: 'A reusable counter-UAS drone carrier that patrols for long periods while carrying several expendable interceptor drones or lightweight missiles. This allows successive engagements without returning to base. Czech company KBP presented it on 21 October 2026 at the Future Forces Forum in Prague; no orders have been announced yet.',
+      specs: [['Тривалість польоту', 'до 12 год (заявлено)'], ['Корисне навантаження', '50 кг, 4 точки підвіски'], ['Злітна маса', '200 кг']],
+      specs_en: [['Endurance', 'up to 12 h (claimed)'], ['Payload', '50 kg, 4 hardpoints'], ['Takeoff weight', '200 kg']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/aerospace-news/2026/czech-republics-new-gryf-drone-carrier-combines-airborne-interceptors-and-missiles-for-extended-air-defense-patrols']] },
+    { id: 'csg-chaser', name: 'Chaser LM', maker: 'CSG (Excalibur International)', country: 'Чехія', type: 'unmanned', stage: 'dev', upd: '2026-10-26', q: 'Chaser',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/october/CSG%20Chaser%20LM%20Smart%20Loitering%20Munition%20Combines%2040%20km%20Reach%20with%20Armor%20Piercing%20Capability.jpg',
+      blurb: 'Компактний барражуючий боєприпас чеської групи CSG, що поєднує оптико-електронне спостереження, супровід цілі та точний удар. Його може розгорнути один оператор менш ніж за дві хвилини, а пускові касети сумісні з наземними, морськими й повітряними платформами. Представлений у жовтні 2026 року на Future Forces Forum у Празі.',
+      blurb_en: 'A compact loitering munition from Czech group CSG that combines electro-optical surveillance, target tracking and precision strike. A single operator can deploy it in under two minutes, and its launch cartridges fit ground, naval and air platforms. Presented in October 2026 at the Future Forces Forum in Prague.',
+      specs: [['Дальність барражування', 'понад 40 км'], ['Тривалість польоту', 'понад 20 хв'], ['Бронепробиття', '180 мм (заявлено)']],
+      specs_en: [['Loiter range', 'over 40 km'], ['Endurance', 'over 20 min'], ['Armour penetration', '180 mm RHA (claimed)']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/aerospace-news/2026/csg-chaser-lm-smart-loitering-munition-combines-40-km-reach-with-armor-piercing-capability']] },
+    { id: 'l3h-xrc', name: 'XRC (Xtended Range Counter-sUAS Missile)', maker: 'L3Harris Technologies', country: 'США', type: 'missiles', stage: 'test', upd: '2026-10-26', q: 'L3Harris',
+      img: 'https://www.l3harris.com/sites/default/files/2026-10/L3Harris-LRMC-Interceptor.jpg',
+      blurb: 'Маневрений перехоплювач великої дальності з прямоточним повітряно-реактивним двигуном для боротьби з малими й середніми БпЛА та загрозами ближнього радіуса ППО. Має модульну конструкцію і запускатиметься з наявних пускових установок. У жовтні 2026 року L3Harris отримала від армії США контракт до 60 млн доларів і перейшла до другого етапу — льотних випробувань повністю інтегрованої ракети.',
+      blurb_en: 'A long-range, manoeuvrable ramjet-powered interceptor for small to medium drones and short-range air defence threats. It is modular and designed to launch from existing platforms. In October 2026 L3Harris won a US Army contract worth up to $60 million and moved to the second phase, flight testing a fully integrated interceptor.',
+      specs: [['Двигун', 'прямоточний повітряно-реактивний'], ['Контракт', 'до 60 млн дол. на 3 роки'], ['Замовник', 'армія США (DEVCOM AvMC)']],
+      specs_en: [['Propulsion', 'air-breathing ramjet'], ['Contract', 'up to $60 million over 3 years'], ['Customer', 'US Army (DEVCOM AvMC)']],
+      links: [['Сайт виробника', 'https://www.l3harris.com/newsroom/press-release/2026/10/l3harris-receives-contract-develop-long-range-drone-interceptor']] },
+    { id: 'kor-cheongwang', name: 'Cheongwang (Block-I)', maker: 'Hanwha Systems та ADD', country: 'Південна Корея', type: 'missiles', stage: 'service', upd: '2026-10-26', q: 'Cheongwang',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/october/South%20Koreas%20new%20laser%20weapons%20intercept%20three%20drones%20during%20integrated%20combat%20exercise%20925%20001.jpg',
+      blurb: 'Південнокорейська лазерна зброя ППО класу 20 кВт для ураження малих дронів, FPV і безпілотників літакового типу. На озброєнні з грудня 2024 року, до червня 2026-го розгорнуто п’ять установок і заплановано ще десять. У жовтні 2026 року на навчаннях армії разом із дослідним 30-кВт лазером знищила три дрони.',
+      blurb_en: 'A South Korean 20 kW-class laser air defence weapon for small multicopters, FPV drones and fixed-wing UAVs. In service since December 2024, with five installations deployed by June 2026 and ten more planned. In October 2026, during an army exercise, it destroyed three drones together with a 30 kW prototype laser.',
+      specs: [['Потужність', 'клас 20 кВт'], ['Дальність ураження', '2–3 км'], ['Розгорнуто', '5 установок (червень 2026)']],
+      specs_en: [['Power', '20 kW class'], ['Engagement range', '2–3 km'], ['Deployed', '5 installations (June 2026)']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/south-koreas-new-laser-weapons-intercept-three-drones-during-integrated-combat-exercise']] },
+    { id: 'rusty-dagger-b40', name: 'Rusty Dagger Block 40', maker: 'Zone 5 Technologies (Kongsberg)', country: 'США', type: 'missiles', stage: 'test', upd: '2026-10-26', q: 'Rusty Dagger',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/RUSTY_DAGGER_9-Firefly-Upscaler-2x-scale-copy.jpg?w=1200',
+      blurb: 'Наземна й корабельна версія недорогої крилатої ракети Rusty Dagger (AGM-188A) зі стартовим твердопаливним прискорювачем. Ракета розрахована на масове виробництво: кожен із заводів Zone 5 має випускати понад 2 500 ракет на рік до кінця 2027 року. У жовтні 2026 року компанія вперше показала фото пусків Block 40.',
+      blurb_en: 'A ground- and ship-launched version of the Rusty Dagger (AGM-188A) low-cost cruise missile, fitted with a solid-fuel booster. It is built for mass production, with each Zone 5 plant designed to exceed 2,500 missiles a year by the end of 2027. In October 2026 the company released the first photos of Block 40 launches.',
+      specs: [['Бойова частина', '45–113 кг (клас 100–250 фунтів)'], ['Дальність (авіаційна версія)', 'до ~900 км (за попередніми даними)'], ['Виробництво', 'понад 2 500 на рік на завод (план)']],
+      specs_en: [['Warhead', '100–250 lb class'], ['Range (air-launched)', 'up to ~500 nmi (earlier reports)'], ['Production', 'over 2,500 per year per plant (planned)']],
+      links: [['Джерело: The War Zone', 'https://www.twz.com/sea/ground-launched-rusty-dagger-low-cost-cruise-missile-seen-for-the-first-time']] },
+    { id: 'cn-kj3000', name: 'KJ-3000', maker: 'Xi’an Aircraft Company (AVIC)', country: 'Китай', type: 'air', stage: 'test', upd: '2026-10-26', q: 'KJ-3000',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/03_closer-view-of-KJ_3000-AEC-aircraft_Shaanxi-China_05oct2026_wv3-1.webp',
+      blurb: 'Новий китайський літак дальнього радіолокаційного виявлення на базі важкого транспортника Y-20B з великим обертовим обтічником радара. Замінить KJ-2000 на базі російського Іл-76 і вважається засобом пошуку малопомітних літаків. У жовтні 2026 року супутникові знімки показали чотири літаки на заводі в Сіані, що може свідчити про початок серійного виробництва.',
+      blurb_en: 'A new Chinese airborne early warning aircraft based on the Y-20B heavy transport, with a large rotating radar dome. It succeeds the Il-76-based KJ-2000 and is seen as a tool for detecting stealth aircraft. In October 2026 satellite imagery showed four aircraft at the Xi’an plant, which may indicate the start of serial production.',
+      specs: [['Платформа', 'Y-20B'], ['Двигуни', '4 × WS-20'], ['Помічено', '4 літаки (жовтень 2026)']],
+      specs_en: [['Platform', 'Y-20B'], ['Engines', '4 × WS-20'], ['Spotted', '4 aircraft (October 2026)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/china-reportedly-begins-serial-production-of-new-kj-3000-aew-c-aircraft-based-on-y-20b/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
