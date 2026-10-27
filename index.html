@@ -1805,7 +1805,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-10-26', label: '26 жовтня 2026' };
+  var INNOV_AS_OF = { date: '2026-10-27', label: '27 жовтня 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3208,7 +3208,58 @@ return mountHero; })()
       blurb_en: 'A new Chinese airborne early warning aircraft based on the Y-20B heavy transport, with a large rotating radar dome. It succeeds the Il-76-based KJ-2000 and is seen as a tool for detecting stealth aircraft. In October 2026 satellite imagery showed four aircraft at the Xi’an plant, which may indicate the start of serial production.',
       specs: [['Платформа', 'Y-20B'], ['Двигуни', '4 × WS-20'], ['Помічено', '4 літаки (жовтень 2026)']],
       specs_en: [['Platform', 'Y-20B'], ['Engines', '4 × WS-20'], ['Spotted', '4 aircraft (October 2026)']],
-      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/china-reportedly-begins-serial-production-of-new-kj-3000-aew-c-aircraft-based-on-y-20b/']] }
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/china-reportedly-begins-serial-production-of-new-kj-3000-aew-c-aircraft-based-on-y-20b/']] },
+    { id: 'arrw', name: 'AGM-183A ARRW', maker: 'Lockheed Martin', country: 'США', type: 'missiles', stage: 'prod', upd: '2026-10-27', q: 'ARRW',
+      img: 'https://www.twz.com/wp-content/uploads/2026/10/air-force-orders-arrw-hypersonic-missile-into-production.jpg?w=1200',
+      blurb: 'Гіперзвукова планувальна ракета повітряного базування ВПС США, яку у 2023 році збиралися скасувати після серії невдалих випробувань. Програму відновили, і 26 жовтня 2026 року стало відомо про контракт на 694 млн доларів на серійне виробництво — це перша гіперзвукова зброя ВПС США, що йде в серію. Ракету планують інтегрувати на бомбардувальники B-52 і B-1.',
+      blurb_en: 'An air-launched hypersonic boost-glide missile that the US Air Force moved to cancel in 2023 after a string of failed tests. The programme was revived, and on 26 October 2026 a $694 million production contract was announced, making it the first USAF hypersonic weapon to enter production. It is to be integrated on the B-52 and B-1 bombers.',
+      specs: [['Тип', 'гіперзвукова планувальна ракета (понад 5 М)'], ['Контракт', '694 млн дол. (29 вересня 2026)'], ['Носії', 'B-52, B-1']],
+      specs_en: [['Type', 'hypersonic boost-glide missile (Mach 5+)'], ['Contract', '$694 million (29 September 2026)'], ['Carriers', 'B-52, B-1']],
+      links: [['Джерело: The War Zone', 'https://www.twz.com/air/usaf-orders-arrw-hypersonic-missile-into-production-the-same-weapon-it-nearly-cancelled']] },
+    { id: 'fr-smokers', name: 'SMOKERS', maker: 'DGA', country: 'Франція', type: 'unmanned', stage: 'test', upd: '2026-10-27', q: 'SMOKERS',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/10/SMOKERS-Kamikaze-USV.jpg',
+      blurb: 'Дешевий безекіпажний катер-камікадзе, створений французьким агентством DGA для ВМС Франції всього за шість місяців від концепції. Має композитний корпус, серійні підвісні мотори та 3D-друковану піротехнічну систему, а заряд, за даними DGA, здатен серйозно пошкодити великий корабель. У жовтні 2026 року завершено чотири кампанії морських випробувань, катери застосовували на навчаннях WildFire 2026.',
+      blurb_en: 'A low-cost kamikaze uncrewed surface vessel developed by France’s DGA procurement agency for the French Navy in just six months from concept. It uses a composite hull, off-the-shelf outboard motors and a 3D-printed pyrotechnic system, with a charge the DGA says can seriously damage a major warship. By October 2026 four sea-trial campaigns had been completed and the boats were used in the WildFire 2026 exercise.',
+      specs: [['Швидкість', 'близько 40 вузлів'], ['Вартість', 'кілька десятків тисяч євро (ціль)'], ['Розробка', '6 місяців від концепції']],
+      specs_en: [['Speed', 'about 40 knots'], ['Cost', 'a few tens of thousands of euros (target)'], ['Development', '6 months from concept']],
+      links: [['Джерело: Naval News', 'https://www.navalnews.com/naval-news/2026/10/france-smokers-kamikaze-usv/']] },
+    { id: 'sea-giraffe-ambd', name: 'Sea Giraffe AMB D', maker: 'Saab', country: 'Швеція', type: 'electronic', stage: 'dev', upd: '2026-10-27', q: 'Sea Giraffe',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/10/Saab-introduces-Sea-Giraffe-AMB-D-naval-radar-with-air-target-range-of-up-to-250-km.jpg',
+      blurb: 'Нова корабельна РЛС Saab з активною фазованою решіткою (AESA) для тривимірного огляду повітряного й надводного простору. Виявляє та класифікує літаки, дрони, ракети й безекіпажні катери, має захист від завад і програмно оновлювані функції. Представлена 27 жовтня 2026 року; замовників поки не оголошено.',
+      blurb_en: 'A new Saab naval AESA radar for 3D surveillance of the air and surface picture. It detects and classifies aircraft, drones, missiles and uncrewed boats, has anti-jamming features and software-upgradable functions. It was introduced on 27 October 2026; no customers have been announced yet.',
+      specs: [['Дальність (повітряні цілі)', 'до 250 км'], ['Дальність (надводні цілі)', 'до 50 км'], ['Тип', 'AESA, 3D']],
+      specs_en: [['Range (air targets)', 'up to 250 km'], ['Range (surface targets)', 'up to 50 km'], ['Type', 'AESA, 3D']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/saab-introduces-sea-giraffe-amb-d-naval-radar-with-air-target-range-of-up-to-250-km']] },
+    { id: 'ua-fjet80', name: 'F-Jet 80', maker: 'F-Drones', country: 'Україна', type: 'unmanned', stage: 'test', upd: '2026-10-27', q: 'F-Jet 80',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/F-Jet-1.jpg',
+      blurb: 'Український дешевий реактивний дрон-перехоплювач, створений для боротьби з російськими реактивними ударними дронами типу «Герань». Компанія F-Drones планує додати ШІ для виявлення й переслідування цілей і масове виробництво за низькою ціною. У жовтні 2026 року розробник заявив про кілька успішних перехоплень, хоча незалежного підтвердження немає.',
+      blurb_en: 'A low-cost Ukrainian jet-powered interceptor drone designed to counter Russian jet-powered Geran-type strike drones. F-Drones plans to add AI for target detection and pursuit and to mass-produce it at a low price. In October 2026 the developer said it had already destroyed several targets, though this has not been independently verified.',
+      specs: [['Двигун', 'реактивний, тяга 8–10 кгс'], ['Цільова вартість', '5–7 тис. дол.'], ['Наведення', 'з елементами ШІ (план)']],
+      specs_en: [['Engine', 'jet, 8–10 kgf thrust'], ['Target cost', '$5,000–7,000'], ['Guidance', 'AI-assisted (planned)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/ukrainian-company-f-drones-develops-low-cost-f-jet-80-interceptor-to-counter-shaheds/']] },
+    { id: 'blackbeard', name: 'Blackbeard', maker: 'Castelion', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-27', q: 'Blackbeard',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/Screenshot_1-79.jpg',
+      blurb: 'Відносно дешева гіперзвукова ракета стартапу Castelion, розрахована на масове виробництво. Раніше її розглядали для F/A-18E/F і пускової установки HIMARS, а ВМС США планують закупити понад 4 000 ракет у 2028–2031 фінансових роках. У жовтні 2026 року AFRL доручила Castelion оцінити інтеграцію Blackbeard на винищувач F-16.',
+      blurb_en: 'A relatively low-cost hypersonic missile from start-up Castelion, designed for high-volume production. It has previously been considered for the F/A-18E/F and the HIMARS launcher, and the US Navy plans to buy more than 4,000 missiles in fiscal years 2028–2031. In October 2026 AFRL tasked Castelion with assessing Blackbeard integration on the F-16.',
+      specs: [['Контракт AFRL', '37,2 млн дол. (до червня 2028)'], ['Носії', 'F/A-18E/F (до 4), HIMARS, F-16 (оцінка)'], ['План закупівель ВМС', 'понад 4 000 (2028–2031)']],
+      specs_en: [['AFRL contract', '$37.2 million (through June 2028)'], ['Carriers', 'F/A-18E/F (up to 4), HIMARS, F-16 (assessment)'], ['Navy procurement plan', 'over 4,000 (FY2028–2031)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/blackbeard-hypersonic-missile-to-be-integrated-on-f-16-fighters/']] },
+    { id: 'ir-arash3', name: 'Arash-3', maker: 'Армія Ірану', country: 'Іран', type: 'unmanned', stage: 'prod', upd: '2026-10-27', q: 'Arash-3',
+      maker_en: 'Iranian Army',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/Arash-3-2-1-1.jpg',
+      blurb: 'Новий іранський ударний дрон далекої дії, наступник Arash-2 з поршневим двигуном і твердопаливними прискорювачами для зльоту. За заявами Ірану, отримав удвічі-втричі важчу бойову частину, наведення з елементами ШІ та навігацію без GPS. Представлений у жовтні 2026 року, Іран оголосив про його виробництво; характеристики незалежно не підтверджені.',
+      blurb_en: 'A new Iranian long-range strike drone, successor to the Arash-2, with a piston engine and solid-fuel take-off boosters. Iran claims it carries a much heavier warhead, AI-assisted guidance and GPS-independent navigation. It was presented in October 2026 and Iran announced production; the figures have not been independently verified.',
+      specs: [['Бойова частина', '100–150 кг (за заявами)'], ['Двигун', 'поршневий + стартові прискорювачі'], ['Дальність попередника', 'близько 2 000 км (Arash-2)']],
+      specs_en: [['Warhead', '100–150 kg (claimed)'], ['Engine', 'piston + booster rockets'], ['Predecessor range', 'about 2,000 km (Arash-2)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/iran-new-arash-3-drone-payload-up-to-150-kg/']] },
+    { id: 'dpropulse-rde', name: 'Протидронова мікроракета з RDE', maker: 'D-Propulse Aerospace', country: 'Індія', type: 'missiles', stage: 'dev', upd: '2026-10-27', q: 'D-Propulse',
+      name_en: 'RDE-powered counter-drone micro missile',
+      img: 'https://idrw.org/wp-content/uploads/2026/10/Rocket-Ascending-Above-the-Clouds-1.png',
+      blurb: 'Концепт індійської малогабаритної зенітної ракети для боротьби з дронами з ротаційним детонаційним двигуном (RDE) — технологією, що обіцяє вищу ефективність за звичайні ракетні двигуни. Показаний на виставці Swavlamban 2026 у Нью-Делі наприкінці жовтня 2026 року. Льотних і перехоплювальних випробувань ще не було.',
+      blurb_en: 'An Indian concept for a compact counter-drone surface-to-air missile powered by a rotating detonation engine (RDE), a technology promising higher efficiency than conventional rocket motors. It was shown at Swavlamban 2026 in New Delhi in late October 2026. No flight or interception tests have been carried out yet.',
+      specs: [['Двигун', 'ротаційний детонаційний (RDE)'], ['Призначення', 'протидія БпЛА'], ['Статус', 'концепт (жовтень 2026)']],
+      specs_en: [['Engine', 'rotating detonation engine (RDE)'], ['Role', 'counter-UAS'], ['Status', 'concept (October 2026)']],
+      links: [['Джерело: IDRW', 'https://idrw.org/d-propulse-unveils-rde-powered-counter-drone-missile/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
