@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-10-28', label: '28 жовтня 2026' };
+  var INNOV_AS_OF = { date: '2026-10-29', label: '29 жовтня 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3331,7 +3331,43 @@ return mountHero; })()
       blurb_en: 'Helsing’s low-cost jet-powered interceptor and the main effector of its Contra air defence system against fast strike drones such as the Geran-4/5. It launches from a container once a target is detected, takes guidance from ground radars, can loiter on standby, operate in swarms and re-engage. Unveiled in Berlin in October 2026, it is in testing, with market readiness expected in the second half of 2027.',
       specs: [['Двигун', 'реактивний'], ['Швидкість', 'близько 700 км/год'], ['Дальність', 'близько 20 км']],
       specs_en: [['Engine', 'jet'], ['Speed', 'about 700 km/h'], ['Range', 'about 20 km']],
-      links: [['Джерело: Defense News', 'https://www.defensenews.com/global/europe/2026/10/26/helsing-unveils-interceptor-missiles-designed-to-chase-russias-fast-flying-geran-drones/'], ['Джерело: Militarnyi', 'https://militarnyi.com/en/news/helsing-contra-autonomous-ai-controlled-air-defense-system/']] }
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/global/europe/2026/10/26/helsing-unveils-interceptor-missiles-designed-to-chase-russias-fast-flying-geran-drones/'], ['Джерело: Militarnyi', 'https://militarnyi.com/en/news/helsing-contra-autonomous-ai-controlled-air-defense-system/']] },
+    { id: 'artec-schakal', name: 'Schakal', maker: 'ARTEC (Rheinmetall та KNDS Deutschland)', country: 'Німеччина', type: 'land', stage: 'prod', upd: '2026-10-29', q: 'Schakal',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/10/Germany-and-Netherlands-order-69-more-Schakal-vehicles-bringing-total-to-291.jpg',
+      blurb: 'Колісна бойова машина піхоти, що поєднує шасі Boxer із баштою гусеничної БМП Puma і перевозить повне піхотне відділення. Наприкінці жовтня 2026 року Німеччина та Нідерланди через OCCAR замовили ще 69 машин (35 для Бундесверу, 34 для армії Нідерландів), довівши загальну кількість до 291. Постачання цієї партії заплановане на травень 2032 — листопад 2033 року.',
+      blurb_en: 'A wheeled infantry fighting vehicle that combines the Boxer chassis with the turret of the tracked Puma IFV and carries a full infantry squad. In late October 2026 Germany and the Netherlands, via OCCAR, ordered 69 more vehicles (35 for the Bundeswehr, 34 for the Royal Netherlands Army), bringing the programme total to 291. This batch is due for delivery between May 2032 and November 2033.',
+      specs: [['Озброєння', '30-мм гармата MK 30-2/ABM, ПТКР MELLS'], ['Платформа', 'Boxer з баштою Puma'], ['Замовлено', '291 машина']],
+      specs_en: [['Armament', 'MK 30-2/ABM 30 mm cannon, MELLS ATGM'], ['Platform', 'Boxer with Puma turret'], ['Ordered', '291 vehicles']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/germany-and-netherlands-order-69-more-schakal-vehicles-bringing-total-to-291/']] },
+    { id: 'nsm-container', name: 'NSM Mission Module', maker: 'Kongsberg', country: 'Норвегія', type: 'missiles', stage: 'test', upd: '2026-10-29', q: 'NSM',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/Puskova-ustanovka-PKR-NSM-na-bazi-20-futovogo-kontejnera.Stop-kadr-z-video-KONGSBERG-1.jpg',
+      blurb: 'Контейнерна пускова установка для крилатої ракети Naval Strike Missile: стандартний 20-футовий контейнер вміщує до чотирьох ракет і може розгортатися на кораблях, вантажівках або на землі без доопрацювань. Такий модуль можна заздалегідь розмістити й непомітно задіяти вздовж протяжного узбережжя. У жовтні 2026 року Kongsberg повідомила про успішні пускові випробування в Норвегії.',
+      blurb_en: 'A containerised launcher for the Naval Strike Missile: a standard 20-foot container holds up to four missiles and can be deployed on ships, trucks or on the ground without modification. Such a module can be pre-positioned and used discreetly along long coastlines. In October 2026 Kongsberg announced successful launch tests in Norway.',
+      specs: [['Ракет у контейнері', 'до 4'], ['Дальність NSM', 'понад 185 км'], ['Бойова частина', '120 кг']],
+      specs_en: [['Missiles per container', 'up to 4'], ['NSM range', 'over 185 km'], ['Warhead', '120 kg']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/nsm-missile-system-evolves-with-container-based-launcher/']] },
+    { id: 'ua-murakha-caseevac', name: 'Модуль CASEEVAK для НРК «Мураха»', maker: 'Роботизовані комплекси', country: 'Україна', type: 'unmanned', stage: 'dev', upd: '2026-10-29', q: 'Murakha',
+      name_en: 'CASEEVAK module for the Murakha UGV', maker_en: 'Robotic Complexes',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/10/muraha-scaled-1.jpg',
+      blurb: 'Броньована евакуаційна капсула для українського наземного роботизованого комплексу «Мураха», призначена для захищеного вивезення поранених із передової. Капсула має вентиляцію, обігрів, освітлення, аптечку, камеру та двосторонній аудіозв’язок, а платформа — пасивний протидроновий захист і засоби РЕБ. У жовтні 2026 року модуль перебуває в розробці: балістичні випробування броні проведено, інтеграція моніторингу життєвих показників триває.',
+      blurb_en: 'An armoured evacuation capsule for Ukraine’s Murakha unmanned ground vehicle, designed to carry wounded soldiers out of frontline areas under protection. The capsule has ventilation, heating, lighting, a first-aid kit, a camera and two-way audio, while the platform adds passive counter-drone protection and electronic warfare equipment. As of October 2026 the module is in development: ballistic tests of the armour are done and vital-sign monitoring integration is under way.',
+      specs: [['Броня капсули', 'сталь Armox 500T 3,5 мм'], ['Батарея', '35 кВт·год'], ['Запас ходу', 'до 80 км']],
+      specs_en: [['Capsule armour', '3.5 mm Armox 500T steel'], ['Battery', '35 kWh'], ['Range', 'up to 80 km']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/ukraine-develops-armored-evacuation-module-for-murakha-ugv/']] },
+    { id: 'saab-ams', name: 'Allied Mission System (AMS)', maker: 'Saab', country: 'Австралія', type: 'space', stage: 'prod', upd: '2026-10-29', q: 'Saab',
+      blurb: 'Хмарна платформа Saab, що поєднує спостереження за космічною обстановкою, керування місіями та командування і управління. Вона зводить дані власних і сторонніх сенсорів, автоматично аналізує їх для підтримки рішень і дозволяє ставити завдання засобам. Розроблена в Австралії для використання по всьому світу й запущена як сервіс за підпискою в жовтні 2026 року; замовників поки не названо.',
+      blurb_en: 'A Saab cloud-based platform combining space domain awareness, mission management and command and control. It fuses data from its own and third-party sensors, runs automated analysis to support decisions and lets operators task assets. Designed and built in Australia for worldwide deployment, it was launched as software as a service in October 2026; no customers have been named yet.',
+      specs: [['Тип', 'хмарна платформа C2 і космічної обізнаності'], ['Модель постачання', 'програмне забезпечення як сервіс'], ['Архітектура', 'модульна']],
+      specs_en: [['Type', 'cloud C2 and space domain awareness platform'], ['Delivery model', 'software as a service'], ['Architecture', 'modular']],
+      links: [['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/saab-launches-space-command-and-control-platform']] },
+    { id: 'silynxcom-acoustic', name: 'Носимий акустичний детектор дронів', maker: 'Silynxcom', country: 'Ізраїль', type: 'electronic', stage: 'dev', upd: '2026-10-29', q: 'Silynxcom',
+      name_en: 'Wearable acoustic drone detector',
+      img: 'https://thedefensepost.com/wp-content/uploads/2026/10/3665088-scaled.jpg',
+      blurb: 'Носимий солдатом пристрій із штучним інтелектом, який виявляє дрони за їхнім акустичним «підписом», а не за радіосигналами, і в реальному часі попереджає бійців. Пасивний акустичний підхід важливий проти дронів, що летять без радіозв’язку, зокрема на оптоволокні. Ізраїльська Silynxcom оголосила про розробку в жовтні 2026 року; пристрій перебуває на стадії прототипу.',
+      blurb_en: 'A soldier-worn AI-powered device that detects drones by their acoustic signature rather than radio signals and alerts troops in real time. A passive acoustic approach matters against drones flying without radio links, such as fibre-optic ones. Israel’s Silynxcom announced it in October 2026; the device is at prototype stage.',
+      specs: [['Тип', 'носимий детектор дронів'], ['Метод виявлення', 'акустичний, з ШІ'], ['Стадія', 'прототип']],
+      specs_en: [['Type', 'wearable drone detector'], ['Detection method', 'acoustic, AI-based'], ['Stage', 'prototype']],
+      links: [['Джерело: The Defense Post', 'https://thedefensepost.com/2026/10/28/silynxcom-wearable-hears-drones/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
