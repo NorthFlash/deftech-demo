@@ -1805,7 +1805,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-05', label: '5 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-06', label: '6 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3557,7 +3557,49 @@ return mountHero; })()
       blurb_en: 'Mine-hunting modules for crewed and uncrewed surface vessels: a multiview towed synthetic aperture sonar, AI-assisted target recognition and mission-management software. In early November 2026 the US Navy ordered two modules for $53.9 million, with options worth up to $196.2 million, as part of replacing its retired Avenger-class minehunters.',
       specs: [['Сенсор', 'буксирований ГСА'], ['Контракт', '$53,9 млн (2 модулі)'], ['З опціями', 'до $196,2 млн']],
       specs_en: [['Sensor', 'towed synthetic aperture sonar'], ['Contract', '$53.9 million (2 modules)'], ['With options', 'up to $196.2 million']],
-      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/u-s-navy-selects-thales-subsidiary-for-53-9-million-remote-mine-hunting-systems-contract/']] }
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/u-s-navy-selects-thales-subsidiary-for-53-9-million-remote-mine-hunting-systems-contract/']] },
+    { id: 'fincantieri-mmmv', name: 'Multi-Mission Modular Vessel (MMMV)', maker: 'Fincantieri', country: 'Італія', type: 'naval', stage: 'dev', upd: '2026-11-06', q: 'Fincantieri',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/11/MMMV.jpeg',
+      blurb: 'Модульний 50-метровий корабель за принципом «один корпус — багато місій»: контейнерні модулі на 10 чи 20 футів дають змогу прямо біля причалу перетворювати його на патрульний, розвідувальний, протимінний або ударний корабель із баражувальними боєприпасами та дронами. Fincantieri представила концепт і шість варіантів (Interdictor, Vanguard, Gatekeeper, Warden, Hunter, Keeper) 5 листопада 2026 року на Euronaval у Парижі.',
+      blurb_en: 'A modular 50-metre vessel built on a “one hull, many missions” concept: 10- or 20-foot containerised modules let it be reconfigured quayside for patrol, intelligence, underwater, infrastructure-protection or combat roles with loitering munitions and drones. Fincantieri unveiled the concept and six variants (Interdictor, Vanguard, Gatekeeper, Warden, Hunter, Keeper) on 5 November 2026 at Euronaval in Paris.',
+      specs: [['Довжина', '50 м'], ['Водотоннажність', '500 т'], ['Базовий екіпаж', '6 осіб']],
+      specs_en: [['Length', '50 m'], ['Displacement', '500 t'], ['Core crew', '6']],
+      links: [['Джерело: Naval News', 'https://www.navalnews.com/event-news/euronaval-2026/2026/11/fincantieri-unveils-new-multi-mission-modular-vessel-at-euronaval-2026']] },
+    { id: 'pk-faaz', name: 'Fa’az', maker: 'ВПС Пакистану (NESCOM)', country: 'Пакистан', type: 'missiles', stage: 'test', upd: '2026-11-06', q: 'Fa’az',
+      maker_en: 'Pakistan Air Force (NESCOM)',
+      blurb: 'Перша ракета «повітря–повітря» власної розробки Пакистану; сімейство включає Fa’az-IIR з тепловізійною ГСН і Fa’az-RF з активною радіолокаційною ГСН, а довша Fa’az-2 перебуває в розробці. Ракета має зменшити залежність ВПС від AIM-120 і китайської PL-15. На початку листопада 2026 року ВПС Пакистану провели перше льотне випробування — імовірно, з винищувача JF-17.',
+      blurb_en: 'Pakistan’s first domestically developed air-to-air missile; the family includes the imaging-infrared Fa’az-IIR and the active radar-guided Fa’az-RF, with a longer-range Fa’az-2 reportedly in development. It is meant to reduce the air force’s reliance on the AIM-120 and China’s PL-15. In early November 2026 the Pakistan Air Force carried out the first flight test, reportedly from a JF-17 fighter.',
+      specs: [['Клас', 'ракета «повітря–повітря»'], ['Дальність (сімейство)', 'понад 100 км (прогноз)'], ['ГСН', 'тепловізійна (IIR) або активна РЛ (RF)']],
+      specs_en: [['Class', 'air-to-air missile'], ['Range (family)', 'over 100 km (projected)'], ['Seeker', 'imaging infrared (IIR) or active radar (RF)']],
+      links: [['Джерело: The Diplomatic Insight', 'https://thediplomaticinsight.com/pakistan-tests-1st-home-built-missile-faaz/']] },
+    { id: 'rhm-kraken-k3', name: 'Kraken K3 Scout', maker: 'Rheinmetall (Kraken Technology Group)', country: 'Німеччина', type: 'naval', stage: 'prod', upd: '2026-11-06', q: 'Kraken',
+      img: 'https://envantermedya.com/wp-content/uploads/2026/07/a400m_usv_havadan_indirme_kraken.webp',
+      blurb: 'Безекіпажний надводний катер для розвідки й спостереження, що розширює зону огляду пілотованих кораблів без ризику для моряків; раніше його демонстрували скиданням із транспортника A400M. За даними Rheinmetall, катер уже серійно виробляється на верфі Blohm+Voss у Гамбурзі, а на початку листопада 2026 року його вперше показали міжнародній аудиторії на Euronaval.',
+      blurb_en: 'An uncrewed surface vessel for reconnaissance and surveillance that extends the sensor reach of crewed warships without putting sailors at risk; it was earlier shown being air-dropped from an A400M transport. According to Rheinmetall it is already in series production at Blohm+Voss in Hamburg, and in early November 2026 it was shown to an international audience for the first time at Euronaval.',
+      specs: [['Виробництво', 'Blohm+Voss, Гамбург'], ['Потужність', 'бл. 200 од./рік (до 1000)'], ['Особливість', 'десантування з A400M']],
+      specs_en: [['Production', 'Blohm+Voss, Hamburg'], ['Capacity', 'about 200 units/year (up to 1,000)'], ['Feature', 'air-droppable from A400M']],
+      links: [['Джерело: Envanter Medya', 'https://envantermedya.com/en/en-rheinmetall-kraken-k3-mass-nova-euronaval-2026/']] },
+    { id: 'ng-ucuv', name: 'Демонстратор бойового підводного дрона UCUV', maker: 'Naval Group', country: 'Франція', type: 'naval', stage: 'dev', upd: '2026-11-06', q: 'UCUV',
+      name_en: 'UCUV combat underwater drone demonstrator',
+      blurb: 'Демонстратор безекіпажного бойового підводного апарата для ВМС Франції: має показати тривалу автономність і самостійне ухвалення рішень у місіях від розвідки до нейтралізації цілей. Ґрунтується на 10-тонному океанському прототипі, який Naval Group розробляє власним коштом з 2016 року. Контракт із DGA та Агенцією оборонних інновацій оголосили на Euronaval у листопаді 2026 року; морські випробування заплановано на 2028 рік.',
+      blurb_en: 'A demonstrator of an uncrewed combat underwater vehicle for the French Navy, meant to prove long endurance and autonomous decision-making in missions ranging from reconnaissance to neutralising targets. It builds on a 10-tonne ocean-going prototype Naval Group has self-funded since 2016. The contract with the DGA and the Defence Innovation Agency was announced at Euronaval in November 2026; sea trials are planned for 2028.',
+      specs: [['Основа', '10-тонний прототип (з 2016 р.)'], ['Бюджет 2026', '30 млн € зобов’язань, 17 млн € виплат'], ['Морські випробування', '2028']],
+      specs_en: [['Basis', '10-tonne prototype (since 2016)'], ['2026 budget', '€30M commitments, €17M payments'], ['Sea trials', '2028']],
+      links: [['Джерело: SOFX', 'https://www.sofx.com/naval-group-unveils-scx-26-drone-carrier-as-france-funds-combat-underwater-drone/'], ['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/11/naval-group-unveils-new-drone-carrier-concept/']] },
+    { id: 'tb2-dagger-pod', name: 'Bayraktar TB2 з DAGGER POD', maker: 'Baykar та Skydagger', country: 'Туреччина', type: 'unmanned', stage: 'test', upd: '2026-11-06', q: 'Bayraktar TB2',
+      name_en: 'Bayraktar TB2 with DAGGER POD',
+      img: 'https://en.defence-ua.com/media/illustration/articles/d836aec21dfaf12e.jpg',
+      blurb: 'Bayraktar TB2 у ролі повітряного носія FPV-дронів: два підкрильні контейнери DAGGER POD вміщують по вісім ударних FPV Skydagger RTF7X, а сам БПЛА слугує ретранслятором зв’язку для операторів. 4 листопада 2026 року на полігоні в Кешані (провінція Едірне) з TB2 скинули два FPV-дрони, обидва уразили цілі.',
+      blurb_en: 'The Bayraktar TB2 as an airborne carrier for FPV drones: two underwing DAGGER POD containers hold eight Skydagger RTF7X strike FPVs each, while the UAV itself serves as a communications relay for the operators. On 4 November 2026, at the Keşan test centre in Edirne province, two FPV drones were released from a TB2 and both hit their targets.',
+      specs: [['Навантаження', '16 FPV Skydagger (2 × 8)'], ['Ретрансляція', 'до 300 км'], ['Тривалість польоту TB2', 'понад 20 год']],
+      specs_en: [['Payload', '16 Skydagger FPVs (2 × 8)'], ['Relay link', 'up to 300 km'], ['TB2 endurance', 'over 20 h']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/aerospace-news/2026/tuerkiye-tests-bayraktar-tb2-as-flying-drone-carrier-for-16-skydagger-fpv-kamikaze-drones'], ['Джерело: Defense Express', 'https://en.defence-ua.com/news/bayraktar_tb2_becomes_fpv_mothership_16_skydagger_drones_under_wings_plus_27_hour_loiter_300km_relay_link-20324.html']] },
+    { id: 'kahe-k600', name: 'K600', maker: 'Kahe Nautic (Motion Concept Group)', country: 'Франція', type: 'naval', stage: 'dev', upd: '2026-11-06', q: 'Kahe Nautic',
+      blurb: 'Дешевий напівзанурюваний морський дрон розміром 0,8 × 0,8 × 0,8 м, що може йти з корпусом під ватерлінією або повністю під водою на глибині до 10 м; розробник заявляє понад 65 можливих застосувань — від спостереження до доставки вантажів. Представлений 3 листопада 2026 року на Euronaval; заплановано передсерійну партію з 300 одиниць і кваліфікацію рівня TRL 7 до вересня 2027 року.',
+      blurb_en: 'A low-cost semi-submersible maritime drone measuring 0.8 × 0.8 × 0.8 m that can run with its hull below the waterline or fully submerged down to 10 m; the developer claims more than 65 possible uses, from surveillance to payload delivery. Unveiled on 3 November 2026 at Euronaval, with a 300-unit pre-series planned and TRL 7 qualification targeted for September 2027.',
+      specs: [['Ціна', '5 900 € без ПДВ'], ['Маса / вантаж', '15 кг / до 100 кг'], ['Автономність', 'до 10 год']],
+      specs_en: [['Price', '€5,900 excl. VAT'], ['Mass / payload', '15 kg / up to 100 kg'], ['Endurance', 'up to 10 h']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/navy-news/2026/french-company-kahe-nautic-launches-low-cost-k600-semi-submersible-drone-for-more-than-65-maritime-missions']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
