@@ -1805,7 +1805,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-08', label: '8 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-09', label: '9 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3690,7 +3690,52 @@ return mountHero; })()
       blurb_en: 'The UK’s second military Earth-observation satellite after Tyche, built by Dstl and BAE Systems under a £9.5 million contract. It reached orbit in November 2026 and will be operated by UK Space Command under the ISTARI programme. It gives the armed forces another means of watching military activity from space.',
       specs: [['Маса', '~100 кг'], ['Оберт навколо Землі', '~90 хв'], ['Контракт', '9,5 млн фунтів']],
       specs_en: [['Mass', '~100 kg'], ['Orbital period', '~90 min'], ['Contract', '£9.5 million']],
-      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/britains-titania-military-satellite-reaches-orbit-to-support-earth-observation/']] }
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/britains-titania-military-satellite-reaches-orbit-to-support-earth-observation/']] },
+    { id: 'mke-tolga-naval', name: 'TOLGA (морська версія)', maker: 'MKE', country: 'Туреччина', type: 'naval', stage: 'test', upd: '2026-11-09', q: 'TOLGA',
+      name_en: 'TOLGA (naval version)',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/TOLGA-20-mm-1.jpg',
+      blurb: 'Корабельна протидронова башта з двома 20-мм гарматами револьверного типу, що можуть стріляти окремо або одночасно, та незалежною електронно-оптичною системою стеження. Це дешевий засіб ближнього захисту кораблів від роїв дронів. Наприкінці жовтня 2026 року її випробували на корветі TCG Beykoz під час навчань TURNAs-2026, а в листопаді 2026 року показали на Euronaval у Парижі.',
+      blurb_en: 'A shipborne counter-drone turret with two 20 mm revolver-type guns that can fire separately or together, plus an independent electro-optical tracking system. It offers a low-cost close-in defence for ships against drone swarms. It was tested aboard the corvette TCG Beykoz during the TURNAs-2026 exercise in late October 2026 and shown at Euronaval in Paris in November 2026.',
+      specs: [['Озброєння', '2 × 20-мм револьверні гармати'], ['Темп стрільби', 'до 3200 постр./хв'], ['Дальність ураження дронів', 'до 1000 м']],
+      specs_en: [['Armament', '2 × 20 mm revolver guns'], ['Rate of fire', 'up to 3,200 rds/min'], ['Counter-drone range', 'up to 1,000 m']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/3-200-rounds-per-minute-turkish-mke-shows-naval-tolga-turret-with-two-20mm-guns/']] },
+    { id: 'ru-geran5-mod', name: 'Нова модифікація «Герань-5»', maker: 'Алабуга (Росія)', country: 'Росія', type: 'unmanned', stage: 'service', upd: '2026-11-09', q: 'Geran-5',
+      name_en: 'New Geran-5 modification', maker_en: 'Alabuga (Russia)',
+      img: 'https://unn.ua/img/2026/11/09/1794218931-2437-large.webp',
+      blurb: 'Укорочена реактивна версія російського ударного дрона «Герань-5», яку ГУР вивчило за майже неушкодженим зразком, що впав в Україні. Розвідка вважає його фактично малою крилатою ракетою: турбореактивний двигун ТРД-200, термобарична БЧ 90 кг і система «Сусанін», що звіряє зображення камери з картою місцевості. У листопаді 2026 року ГУР оприлюднило характеристики й виявило 93 іноземні компоненти, зокрема 52 від компаній США.',
+      blurb_en: 'A shortened jet-powered version of Russia’s Geran-5 strike drone, examined by Ukraine’s Defence Intelligence (HUR) from an almost intact example that came down in Ukraine. Intelligence regards it as effectively a small cruise missile: a TRD-200 turbojet, a 90 kg thermobaric warhead and the Susanin system, which matches camera images against terrain data. In November 2026 HUR published its specifications and found 93 foreign components, 52 of them from US companies.',
+      specs: [['Дальність', '1000 км'], ['Швидкість', '450+ км/год, до 1000 км/год у маневрі'], ['Довжина', '4 м (раніше 6,5 м)']],
+      specs_en: [['Range', '1,000 km'], ['Speed', '450+ km/h, up to 1,000 km/h in manoeuvres'], ['Length', '4 m (previously 6.5 m)']],
+      links: [['Джерело: UNN', 'https://unn.ua/en/news/the-defence-intelligence-of-ukraine-revealed-the-specifications-of-a-new-modification-of-the-geran-5']] },
+    { id: 'stark-vanta24', name: 'Vanta 24', maker: 'Stark Defence', country: 'Німеччина', type: 'naval', stage: 'dev', upd: '2026-11-09', q: 'Vanta',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/november/Germanys%20Armed%20Vanta%2024%20Drone%20Ship%20Aims%20to%20Track%20Russian%20Shadow%20Fleet%20Tankers%20in%20Baltic%20Waters.jpg',
+      blurb: '24-метровий озброєний безекіпажний катер німецької компанії Stark, який розробляють у Німеччині та Великій Британії, зокрема для стеження за танкерами російського «тіньового флоту» на Балтиці. Планують протикорабельні ракети, 30-мм гармату й радар великої дальності, а один оператор через систему Minerva зможе керувати трьома такими катерами. Анонс — листопад 2026 року, перший спуск на воду очікують у 2027 році.',
+      blurb_en: 'A 24-metre armed uncrewed vessel from Germany’s Stark, developed in Germany and the UK, partly to shadow Russian shadow-fleet tankers in the Baltic. Planned armament includes anti-ship missiles, a 30 mm gun and a long-range radar, and via the Minerva software one operator can supervise three such vessels. It was announced in November 2026, with the first launch expected in 2027.',
+      specs: [['Довжина', '~24 м'], ['Корисне навантаження', 'до 50 т'], ['Швидкість', 'понад 35 вузлів']],
+      specs_en: [['Length', '~24 m'], ['Payload', 'up to 50 t'], ['Speed', 'over 35 knots']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/navy-news/2026/germanys-armed-vanta-24-drone-ship-aims-to-track-russian-shadow-fleet-tankers-in-baltic-waters']] },
+    { id: 'ng-fdi-xl', name: 'Фрегат FDI XL', maker: 'Naval Group', country: 'Франція', type: 'naval', stage: 'dev', upd: '2026-11-09', q: 'FDI XL',
+      name_en: 'FDI XL frigate',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/november/Naval%20Group%20unveils%20enlarged%20FDI%20XL%20frigate%20with%20more%20missile%20cells%20and%20drone%20launchers%20to%20counter%20saturation%20attacks%20925%20001.jpg',
+      blurb: 'Збільшена версія фрегата FDI з подовженим на 10 м корпусом, додатковими 18 вертикальними пусковими комірками та контейнерними пусковими для сотень баражувальних боєприпасів або дронів-перехоплювачів. Вона розрахована на відбиття масованих ракетно-дронових атак. Концепт показали на Euronaval у листопаді 2026 року; замовника поки немає.',
+      blurb_en: 'An enlarged version of the FDI frigate with a hull stretched by 10 m, 18 extra vertical launch cells and containerised launchers for hundreds of loitering munitions or interceptor drones. It is designed to withstand saturation missile and drone attacks. The concept was unveiled at Euronaval in November 2026 and has no customer yet.',
+      specs: [['Довжина', '132 м'], ['Водотоннажність', '~5300–5500 т'], ['Дрони', 'до 336 у двох контейнерних пускових']],
+      specs_en: [['Length', '132 m'], ['Displacement', '~5,300–5,500 t'], ['Drones', 'up to 336 in two container launchers']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/navy-news/2026/naval-group-unveils-enlarged-fdi-xl-frigate-with-more-missile-cells-and-drone-launchers-to-counter-saturation-attacks']] },
+    { id: 'vigil-aircover', name: 'Air Cover', maker: 'Vigil Autonomy', country: 'США', type: 'unmanned', stage: 'dev', upd: '2026-11-09', q: 'Vigil Autonomy',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/november/US%20company%20develops%20autonomous%20flying%20camouflage%20that%20can%20follow%20military%20vehicles%20and%20deploy%20decoys%20925%20001.jpg',
+      blurb: 'Автономний «літаючий камуфляж» техаського стартапу: чотири підйомні дрони тримають маскувальну мембрану над людиною, підрозділом або технікою й супроводжують її в русі. Система має приховувати цілі від тепловізорів і радарів із синтезованою апертурою та може ставити хибні цілі. Її представили наприкінці жовтня — на початку листопада 2026 року; контрактів поки немає.',
+      blurb_en: 'Autonomous “flying camouflage” from a Texas start-up: four lift drones hold a camouflage membrane over a soldier, a unit or a vehicle and follow it on the move. It is meant to hide targets from thermal cameras and synthetic aperture radar and can also deploy decoys. It was unveiled in late October–early November 2026; no contracts have been announced yet.',
+      specs: [['Розміри мембрани', '2×2 м, 3×3 м, 10×10 м'], ['Тривалість польоту', '~2–4 год'], ['Висота', 'до 10 м']],
+      specs_en: [['Membrane sizes', '2×2 m, 3×3 m, 10×10 m'], ['Flight endurance', '~2–4 h'], ['Altitude', 'up to 10 m']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/us-company-develops-autonomous-flying-camouflage-that-can-follow-military-vehicles-and-deploy-decoys']] },
+    { id: 'neros-archer', name: 'Archer', maker: 'Neros', country: 'США', type: 'unmanned', stage: 'prod', upd: '2026-11-09', q: 'Neros',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/november/U.S.%20Backs%20450M%20Financing%20Plan%20to%20Expand%20Neros%20Combat%20Drone%20Production%20and%20Cut%20Reliance%20on%20Foreign%20Components.jpeg',
+      blurb: 'Сімейство дешевих американських ударних FPV-дронів (10- та 5-дюймові версії, зокрема з автономним наведенням на кінцевій ділянці), які виробляє каліфорнійська Neros. У вересні 2026 року компанія отримала замовлення на 14 тис. дронів у межах програми Drone Dominance. У листопаді 2026 року Офіс стратегічного капіталу Пентагону погодив умовний кредит до 450 млн доларів на розширення виробництва без іноземних комплектуючих.',
+      blurb_en: 'A family of low-cost US FPV strike drones (10-inch and 5-inch versions, including one with autonomous terminal guidance) built by California-based Neros. In September 2026 the company received an order for 14,000 drones under the Drone Dominance programme. In November 2026 the Pentagon’s Office of Strategic Capital agreed a conditional loan of up to $450 million to expand production free of foreign components.',
+      specs: [['Версії', '10″ (ШІ-наведення), 5″'], ['Замовлення', '14 000 дронів (вер. 2026)'], ['Фінансування', 'до 450 млн дол. (умовно) + 165 млн власних']],
+      specs_en: [['Variants', '10″ (AI guidance), 5″'], ['Order', '14,000 drones (Sep 2026)'], ['Financing', 'up to $450M (conditional) + $165M equity']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/u-s-backs-450m-financing-plan-to-expand-neros-combat-drone-production-and-cut-reliance-on-foreign-components']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
