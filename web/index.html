@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-09', label: '9 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-10', label: '10 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -2058,13 +2058,13 @@ return mountHero; })()
       specs: [['Дальність', 'до 60 км'], ['Висота ураження', 'до 20 км'], ['Рамкова угода ФРН', 'понад 1200 ракет IRIS-T до 2030 р.']],
       specs_en: [['Range', 'up to 60 km'], ['Engagement altitude', 'up to 20 km'], ['German framework agreement', 'over 1,200 IRIS-T missiles by 2030']],
       links: [['Джерело: ESUT', 'https://esut.de/2026/10/meldungen/see/75495/diehl-defence-iris-t-slm/'], ['Джерело: The Defense Post', 'https://thedefensepost.com/2026/02/09/germany-iris-t-missile/amp/']] },
-    { id: 'ad-skyranger30', name: 'Skyranger 30', maker: 'Rheinmetall', country: 'Німеччина', type: 'missiles', stage: 'prod', q: 'Skyranger',
+    { id: 'ad-skyranger30', name: 'Skyranger 30', maker: 'Rheinmetall', country: 'Німеччина', type: 'missiles', stage: 'prod', upd: '2026-11-10', q: 'Skyranger',
       img: 'https://thedefensepost.com/wp-content/uploads/2026/08/Skyranger_30_ACSV_-_Netherlands.jpg',
-      blurb: 'Мобільна баштова система ППО ближньої дії з 30-мм гарматою, яка стріляє програмованими боєприпасами. Розрахована передусім на боротьбу з дронами. Її замовили або обрали Німеччина (на Boxer), Австрія, Угорщина, Данія й Нідерланди, а Бельгія планує купити 20 систем. Серійні поставки Бундесверу затрималися щонайменше до 2027 року.',
-      blurb_en: 'A mobile turreted short-range air defence system with a 30 mm cannon firing programmable ammunition. Designed primarily to counter drones. It has been ordered or selected by Germany (on Boxer), Austria, Hungary, Denmark and the Netherlands, and Belgium plans to buy 20 systems. Series deliveries to the Bundeswehr have been delayed until at least 2027.',
-      specs: [['Гармата', '30 мм KCE-ABM, до 1250 пострілів/хв'], ['Дальність гармати', 'до 3 км'], ['Радар', 'Hensoldt Spexer 2000M']],
-      specs_en: [['Cannon', '30 mm KCE-ABM, up to 1,250 rounds/min'], ['Cannon range', 'up to 3 km'], ['Radar', 'Hensoldt Spexer 2000M']],
-      links: [['Сайт виробника', 'https://www.rheinmetall.com/en/media/news-watch/news/2024/02/2024-02-27-bundeswehr-ordered-skyranger-30-mobile-air-defence-system'], ['Джерело: The Defense Post', 'https://thedefensepost.com/2026/08/10/skyranger-30-guide/'], ['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/skyranger-30-air-defense-system-belgium']] },
+      blurb: 'Мобільна баштова система ППО ближньої дії з 30-мм гарматою, яка стріляє програмованими боєприпасами. Розрахована передусім на боротьбу з дронами. Її замовили або обрали Німеччина (на Boxer), Австрія, Угорщина, Данія й Нідерланди. 9 листопада 2026 року Бельгія підписала контракт на 20 систем на гаковій (hooklift) платформі для захисту критичної інфраструктури, поставки почнуться наприкінці 2028 року.',
+      blurb_en: 'A mobile turreted short-range air defence system with a 30 mm cannon firing programmable ammunition. Designed primarily to counter drones. It has been ordered or selected by Germany (on Boxer), Austria, Hungary, Denmark and the Netherlands. On 9 November 2026 Belgium signed a contract for 20 systems on a hooklift platform to protect critical infrastructure, with deliveries starting at the end of 2028.',
+      specs: [['Гармата', '30 мм KCE-ABM, до 1250 пострілів/хв'], ['Дальність гармати', 'до 3 км'], ['Бельгія', '20 систем, поставки з кінця 2028']],
+      specs_en: [['Cannon', '30 mm KCE-ABM, up to 1,250 rounds/min'], ['Cannon range', 'up to 3 km'], ['Belgium', '20 systems, deliveries from end-2028']],
+      links: [['Сайт виробника', 'https://www.rheinmetall.com/en/media/news-watch/news/2026/11/2026-11-09-rheinmetall-strengthens-belgian-air-defence'], ['Джерело: The Defense Post', 'https://thedefensepost.com/2026/08/10/skyranger-30-guide/'], ['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/skyranger-30-air-defense-system-belgium']] },
     { id: 'ad-leonidas', name: 'Leonidas HPM', maker: 'Epirus', country: 'США', type: 'missiles', stage: 'prod', q: 'Leonidas',
       img: 'https://www.twz.com/wp-content/uploads/2025/07/Epirus-HPM-Leonidas.jpg?w=1200',
       blurb: 'Твердотільна надпотужна мікрохвильова зброя на нітриді галію, яка виводить з ладу цілі рої дронів одним імпульсом. На демонстрації 2025 року система знешкодила всі 61 дрон, зокрема рій із 49 апаратів. Армія США закупила прототипи другого покоління за програмою IFPC-HPM. У серпні 2026 року Корпус морської піхоти замовив автомобільну версію HAVOC.',
@@ -3764,7 +3764,37 @@ return mountHero; })()
       blurb_en: 'A family of low-cost US FPV strike drones (10-inch and 5-inch versions, including one with autonomous terminal guidance) built by California-based Neros. In September 2026 the company received an order for 14,000 drones under the Drone Dominance programme. In November 2026 the Pentagon’s Office of Strategic Capital agreed a conditional loan of up to $450 million to expand production free of foreign components.',
       specs: [['Версії', '10″ (ШІ-наведення), 5″'], ['Замовлення', '14 000 дронів (вер. 2026)'], ['Фінансування', 'до 450 млн дол. (умовно) + 165 млн власних']],
       specs_en: [['Variants', '10″ (AI guidance), 5″'], ['Order', '14,000 drones (Sep 2026)'], ['Financing', 'up to $450M (conditional) + $165M equity']],
-      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/u-s-backs-450m-financing-plan-to-expand-neros-combat-drone-production-and-cut-reliance-on-foreign-components']] }
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/u-s-backs-450m-financing-plan-to-expand-neros-combat-drone-production-and-cut-reliance-on-foreign-components']] },
+    { id: 'tytan-knds-ddv', name: 'Drone Defense Vehicle (на базі Dingo 2)', maker: 'TYTAN Technologies та KNDS', country: 'Німеччина', type: 'unmanned', stage: 'dev', upd: '2026-11-10', q: 'TYTAN',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/dingo-puskova-1.jpg',
+      blurb: 'Мобільний протидроновий комплекс на шасі броньованого Dingo 2: у кузові контейнер із трубами для дронів-перехоплювачів TYTAN, на щоглі радар та оптико-електронні сенсори, на даху кабіни дистанційний модуль із великокаліберним кулеметом. Систему показали в листопаді 2026 року на відкритті нового заводу TYTAN у Мюнхені, де компанія розгортає серійний випуск перехоплювачів (до 3000 на місяць).',
+      blurb_en: 'A mobile counter-drone system on the armoured Dingo 2 chassis: a rear container with launch tubes for TYTAN interceptor drones, a mast with radar and electro-optical sensors, and a remote weapon station with a heavy machine gun on the cab roof. It was shown in November 2026 at the opening of TYTAN’s new plant in Munich, where the company is ramping up serial interceptor production (up to 3,000 a month).',
+      specs: [['Шасі', 'Dingo 2 Pick-Up 4×4'], ['Перехоплювачі', 'EOS (мультиротор), METIS (крило, до 15 км, 250 км/год)'], ['Виробництво перехоплювачів', 'до 3000 на місяць (план)']],
+      specs_en: [['Chassis', 'Dingo 2 Pick-Up 4×4'], ['Interceptors', 'EOS (multirotor), METIS (fixed-wing, up to 15 km, 250 km/h)'], ['Interceptor output', 'up to 3,000 per month (planned)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/tytan-and-knds-unveil-dingo-2-based-launcher-for-interceptor-drones/']] },
+    { id: 'kongsberg-arctic-hunter', name: 'Arctic Hunter', maker: 'Kongsberg Maritime (з Thales UK та Balaena Maritime)', country: 'Норвегія та Велика Британія', type: 'naval', stage: 'dev', upd: '2026-11-10', q: 'Arctic Hunter',
+      img: 'https://www.navalnews.com/wp-content/uploads/2026/11/Kongsberg-Maritime-launches-Arctic-Hunter-USV.jpg',
+      blurb: 'Безекіпажний надводний корабель для тривалого протичовнового спостереження в Арктиці, який Kongsberg Maritime пропонує Королівському флоту Великої Британії за вимогою Type 92. Створений на основі перевіреного цивільного арктичного судна, несе гідролокатор Thales UK. Проєкт представили в листопаді 2026 року; будувати кораблі планують на верфі Balaena у Беркенгеді, готовність — до кінця десятиліття.',
+      blurb_en: 'An uncrewed surface vessel for persistent anti-submarine surveillance in the Arctic, offered by Kongsberg Maritime to the UK Royal Navy for its Type 92 requirement. Based on a proven commercial Arctic vessel design, it carries a Thales UK submarine-hunting sonar. Unveiled in November 2026, the ships would be built at Balaena’s Birkenhead yard and be ready for deployment by the end of the decade.',
+      specs: [['Роль', 'протичовнове спостереження (ASW)'], ['Сонар', 'Thales UK'], ['Програма', 'Type 92 (Королівський флот)']],
+      specs_en: [['Role', 'anti-submarine surveillance (ASW)'], ['Sonar', 'Thales UK'], ['Programme', 'Type 92 (Royal Navy)']],
+      links: [['Джерело: Naval News', 'https://www.navalnews.com/naval-news/2026/11/kongsberg-maritime-launches-arctic-hunter-usv-for-the-hybrid-navy/']] },
+    { id: 'us-malet', name: 'MALET', maker: 'Армія США (Picatinny Arsenal)', country: 'США', type: 'land', stage: 'test', upd: '2026-11-10', q: 'MALET',
+      name_en: 'MALET', maker_en: 'US Army (Picatinny Arsenal)',
+      img: 'https://www.twz.com/wp-content/uploads/2026/11/Bomblet-drone-drop-US-ARmy.jpg?w=1200',
+      blurb: 'Знімний комплект (Munitions Air-dropped Lethal Effects Tool), що перетворює штатні 60- та 81-мм мінометні міни на боєприпаси для скидання з дронів: додає підривник і стабілізатори, не пошкоджуючи міну. Входить до набору CLIK арсеналу Пікатінні разом із системою скидання AUDIBLE. Представлений у листопаді 2026 року, проходить випробування, далі комплект передадуть на навчання для відгуків військових.',
+      blurb_en: 'A clip-on kit (Munitions Air-dropped Lethal Effects Tool) that turns standard 60 mm and 81 mm mortar rounds into drone-dropped munitions by adding a fuze function and fins without damaging the round. It is part of Picatinny’s CLIK set alongside the AUDIBLE release system. Unveiled in November 2026, it is in testing and will next go to exercises for soldier feedback.',
+      specs: [['Сумісні міни', '60 мм та 81 мм'], ['Склад', 'підривник + стабілізатори'], ['Набір', 'CLIK (з AUDIBLE та Gunslinger)']],
+      specs_en: [['Compatible rounds', '60 mm and 81 mm'], ['Components', 'fuze function + fins'], ['Kit family', 'CLIK (with AUDIBLE and Gunslinger)']],
+      links: [['Джерело: The War Zone', 'https://www.twz.com/land/this-is-the-armys-new-malet-kit-that-turns-mortars-into-drone-dropped-weapons']] },
+    { id: 'cn-guangjian', name: 'Лазерна протидронова система Guangjian', maker: 'Інститут технологій виробництва AVIC', country: 'Китай', type: 'missiles', stage: 'test', upd: '2026-11-10', q: 'Guangjian',
+      name_en: 'Guangjian counter-drone laser', maker_en: 'AVIC Manufacturing Technology Institute',
+      img: 'https://www.globaltimes.cn/Portals/0/attachment/2026/2026-11-04/2c567d22-b192-4cc5-a41f-fdcfd45c1b9b.jpeg',
+      blurb: 'Серія китайських лазерних систем протидії дронам (зокрема машинна Guangjian-21A), яку розробляє AVIC. За даними державних ЗМІ від листопада 2026 року, під час польових випробувань у пустелі на північному заході Китаю лазер уражав кілька хвиль низьколітних дронів-камікадзе. Заявлено 30 хвилин безперервної роботи завдяки охолодженню на фазоперехідному матеріалі; незалежного підтвердження немає.',
+      blurb_en: 'A series of Chinese counter-drone laser systems (including the vehicle-mounted Guangjian-21A) developed by AVIC. According to state media in November 2026, a field test in a desert in northwest China saw the laser defeat several waves of low-flying one-way attack drones. It is claimed to run continuously for 30 minutes thanks to phase-change cooling; there is no independent verification.',
+      specs: [['Безперервна робота', '30 хв (заявлено)'], ['Охолодження', 'фазоперехідний матеріал (парафін)'], ['Цілі', 'низьколітні дрони, баражуючі боєприпаси']],
+      specs_en: [['Continuous operation', '30 min (claimed)'], ['Cooling', 'phase-change material (paraffin)'], ['Targets', 'low-flying drones, loitering munitions']],
+      links: [['Джерело: Global Times', 'https://www.globaltimes.cn/page/202611/1373649.shtml'], ['Джерело: Army Recognition', 'https://armyrecognition.com/news/army-news/2026/china-reveals-two-new-laser-weapons-targeting-low-altitude-drones-and-loitering-munitions']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
