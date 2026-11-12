@@ -1805,7 +1805,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-11', label: '11 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-12', label: '12 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3801,7 +3801,44 @@ return mountHero; })()
       blurb_en: 'A network of autonomous surface and underwater platforms with sensors to detect submarines and watch over undersea cables and energy infrastructure in the North Atlantic; the first operational element of the Atlantic Bastion programme. In November 2026 the UK Ministry of Defence announced a £90 million investment and picked Ocean Infinity Solutions as commercial partner, with AI analysing the platforms’ data. The system is due to be operational in 2027.',
       specs: [['Фінансування', '90 млн фунтів'], ['Склад', 'автономні надводні й підводні платформи, ШІ-аналітика'], ['Готовність', '2027']],
       specs_en: [['Funding', '£90 million'], ['Components', 'autonomous surface and underwater platforms, AI analytics'], ['Operational', '2027']],
-      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/britain-90-million-atlantic-net-submarines/']] }
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/britain-90-million-atlantic-net-submarines/']] },
+    { id: 'usmc-alpv', name: 'Autonomous Low Profile Vessel (ALPV)', maker: 'Saronic, Sea Machines Robotics та Rudder Industries (для DIU)', country: 'США', type: 'naval', stage: 'dev', upd: '2026-11-12', q: 'ALPV',
+      name_en: 'Autonomous Low Profile Vessel (ALPV)', maker_en: 'Saronic, Sea Machines Robotics and Rudder Industries (for DIU)',
+      img: 'https://www.defensedaily.com/wp-content/uploads/2024/09/alpv-2024-testing-marine-corps-scaled.jpg',
+      blurb: 'Безекіпажні напівзанурені судна з низьким силуетом для автономного постачання розосереджених підрозділів морської піхоти США. 9 листопада 2026 року Оборонний інноваційний підрозділ (DIU) уклав прототипні контракти з трьома компаніями; вимоги передбачають перевезення близько 8 т вантажу на відстань до 2000 морських миль і самозатоплення за командою.',
+      blurb_en: 'Low-profile, semi-submersible uncrewed vessels designed to autonomously resupply dispersed US Marine Corps units. On 9 November 2026 the Defense Innovation Unit (DIU) awarded prototype contracts to three companies; requirements call for about 18,000 lb of cargo over up to 2,000 nautical miles and scuttling on command.',
+      specs: [['Вантаж', 'близько 18 000 фунтів (~8 т)'], ['Дальність', 'до 2000 морських миль'], ['Етап', 'прототипи (листопад 2026)']],
+      specs_en: [['Payload', 'about 18,000 lb'], ['Range', 'up to 2,000 nmi'], ['Stage', 'prototypes (November 2026)']],
+      links: [['Джерело: Defense Daily', 'https://www.defensedaily.com/diu-awards-three-prototype-contracts-for-marine-corps-alpv/navy-usmc/']] },
+    { id: 'merlin-c130j', name: 'Merlin Pilot для C-130J', maker: 'Merlin', country: 'США', type: 'ai', stage: 'dev', upd: '2026-11-12', q: 'Merlin',
+      name_en: 'Merlin Pilot for C-130J',
+      img: 'https://www.flightglobal.com/wp-content/uploads/2026/11/Merlin-scaled-e1794332336417.jpg',
+      blurb: 'Система автономного пілотування, яка має автоматизувати частину завдань екіпажу військово-транспортного C-130J сил спеціальних операцій США і дозволити літати з меншим екіпажем. 10 листопада 2026 року Merlin отримала від USSOCOM замовлення на 8,9 млн доларів для переходу програми від проєктування до системної інтеграції; автономний політ C-130J поки не оголошено.',
+      blurb_en: 'An autonomous flight system meant to automate part of the crew workload on US Special Operations Command C-130J transports and allow flying with fewer crew. On 10 November 2026 Merlin received an $8.9 million USSOCOM task order to move the programme from design into system integration; no autonomous C-130J flight has been announced yet.',
+      specs: [['Платформа', 'Lockheed Martin C-130J'], ['Замовлення', '8,9 млн доларів (USSOCOM)'], ['Етап', 'системна інтеграція']],
+      specs_en: [['Platform', 'Lockheed Martin C-130J'], ['Task order', '$8.9 million (USSOCOM)'], ['Stage', 'system integration']],
+      links: [['Джерело: FlightGlobal', 'https://www.flightglobal.com/defence/2026/11/merlin-secures-8-9m-to-advance-c-130j-autonomous-flight-technology/'], ['Джерело: GlobeNewswire', 'https://www.globenewswire.com/news-release/2026/11/11/3400616/0/en/merlin-awarded-contract-for-u-s-africa-command-autonomous-casualty-evacuation-technology-challenge.html']] },
+    { id: 'aselsan-tolun-p', name: 'TOLUN-P на AKINCI', maker: 'ASELSAN та Baykar', country: 'Туреччина', type: 'missiles', stage: 'test', upd: '2026-11-12', q: 'TOLUN',
+      img: 'https://ssbulten.com.tr/gundem/kart/29254.jpg',
+      blurb: 'Крилата планувальна бомба ASELSAN з інерціально-супутниковим наведенням і термінальним наведенням за обробкою зображення, інтегрована на ударний БпЛА Bayraktar AKINCI. 12 листопада 2026 року повідомлено про бойові пуски в умовах радіоелектронної боротьби та глушіння сигналів: обидва боєприпаси влучили в цілі, що підтверджує точні удари без надійної супутникової навігації.',
+      blurb_en: 'An ASELSAN winged glide bomb with GPS/INS guidance and image-processing terminal guidance, integrated on the Bayraktar AKINCI strike drone. On 12 November 2026 live-fire tests under electronic warfare and signal jamming were reported: both munitions hit their targets, showing precision strike capability when satellite navigation is degraded.',
+      specs: [['Тип', 'крилата планувальна бомба'], ['Наведення', 'GPS/INS + обробка зображення'], ['Носій', 'Bayraktar AKINCI']],
+      specs_en: [['Type', 'winged glide bomb'], ['Guidance', 'GPS/INS + image processing'], ['Carrier', 'Bayraktar AKINCI']],
+      links: [['Джерело: SavunmaSanayiST', 'https://ssbulten.com.tr/en/gundem/detay/baykar-and-aselsan-complete-akinci-drone-test-with-tolun-p-munitions-under-electronic-warfare-conditions--29254']] },
+    { id: 'xer-x12', name: 'X12', maker: 'Xer Technologies', country: 'Швейцарія', type: 'unmanned', stage: 'test', upd: '2026-11-12', q: 'Xer',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/november/Swiss%20company%20Xer%20Technologies%20launches%20X12%20hybrid%20naval%20drone%20for%20naval%20surveillance%20and%20tactical%20resupply%20925%20001.jpg',
+      blurb: 'Гібридно-електричний мультикоптер вертикального зльоту з дванадцятьма гвинтами для корабельної розвідки, пошуку мін і тактичного постачання; розгортається з палуби менш ніж за три хвилини. Представлений на Euronaval у листопаді 2026 року; постачання вже продемонстровано, а запуск менших БпЛА та взаємодія з пілотованими платформами ще проходять перевірку.',
+      blurb_en: 'A twelve-rotor hybrid-electric VTOL multicopter for shipborne surveillance, mine detection and tactical resupply, deployable from a deck in under three minutes. Unveiled at Euronaval in November 2026; resupply has been demonstrated, while launching smaller UAVs and manned-unmanned teaming are still being validated.',
+      specs: [['Корисне навантаження', 'до 30 кг'], ['Тривалість польоту', 'понад 7 год'], ['Дальність', 'до 200 км']],
+      specs_en: [['Payload', 'up to 30 kg'], ['Endurance', '7+ hours'], ['Range', 'up to 200 km']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/swiss-company-xer-technologies-launches-x12-hybrid-naval-drone-for-naval-surveillance-and-tactical-resupply']] },
+    { id: 'powertech-pj120', name: 'Турбореактивний двигун PJ120', maker: 'Powertech (EDGE Group)', country: 'ОАЕ', type: 'industry', stage: 'test', upd: '2026-11-12', q: 'Powertech',
+      name_en: 'PJ120 turbojet engine',
+      blurb: 'Малий турбореактивний двигун для ракет і безпілотників від Powertech, пропульсійного підрозділу еміратської EDGE Group. У листопаді 2026 року компанія готується до перших льотних випробувань, паралельно інтегрує двигун на кілька платформ і нарощує виробництво, що зменшує залежність ОАЕ від іноземних двигунів.',
+      blurb_en: 'A small turbojet engine for missiles and drones from Powertech, the propulsion unit of the UAE’s EDGE Group. In November 2026 the company was preparing for first flight trials while integrating the engine on several platforms and scaling up production, reducing the UAE’s reliance on foreign engines.',
+      specs: [['Тип', 'турбореактивний двигун'], ['Застосування', 'ракети та БпЛА'], ['Етап', 'підготовка до льотних випробувань']],
+      specs_en: [['Type', 'turbojet engine'], ['Use', 'missiles and drones'], ['Stage', 'preparing flight trials']],
+      links: [['Джерело: Aviation Week', 'https://aviationweek.com/defense/missile-defense-weapons/powertech-nears-pj120-turbojet-first-flight']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
