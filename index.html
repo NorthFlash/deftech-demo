@@ -1805,7 +1805,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-13', label: '13 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-14', label: '14 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3883,7 +3883,49 @@ return mountHero; })()
       blurb_en: 'Blended-wing, buoyancy-driven underwater gliders aimed at missions lasting months or even years: GRay is a development vehicle, while the extra-large Ranger is a proposed design able to carry cargo and launch smaller underwater and aerial drones. Both were shown at Euronaval in November 2026; the longest submerged test so far lasted 70 days.',
       specs: [['Довжина GRay', 'бл. 6,7 м'], ['Цільова дальність', '10–20 тис. морських миль'], ['Рекорд занурення', '70 діб']],
       specs_en: [['GRay length', 'about 6.7 m'], ['Target range', '10,000–20,000 nmi'], ['Longest dive', '70 days']],
-      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/navy-news/2026/general-atomics-new-underwater-drones-target-multi-year-missions-to-support-us-submarine-surveillance-operations']] }
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/navy-news/2026/general-atomics-new-underwater-drones-target-multi-year-missions-to-support-us-submarine-surveillance-operations']] },
+    { id: 'ru-dan-t', name: 'Крилата ракета «Дань-Т»', maker: 'Росія (виробника не названо)', country: 'Росія', type: 'missiles', stage: 'test', upd: '2026-11-14', q: 'Dan-T',
+      name_en: 'Dan-T cruise missile', maker_en: 'Russia (manufacturer not named)',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/Zapusk-malogabarytnoyi-krylatoyi-rakety-Dan-T-z-nazemnoyi-puskovoyi-ustanovky.Stop-kadr-z-video-Status-6-1.jpg',
+      blurb: 'Дешева малогабаритна крилата ракета з реактивним двигуном, яку раніше показували з пусками з ударних гелікоптерів Мі-28. У листопаді 2026 року російські канали оприлюднили перше відео наземного пуску з легкої напрямної з твердопаливним прискорювачем; таку пускову вперше показали на навчаннях «Центр-2026». За оцінками, Росія планує випустити близько 10 тисяч таких ракет у 2027 році.',
+      blurb_en: 'A cheap, compact jet-powered cruise missile previously shown being launched from Mi-28 attack helicopters. In November 2026 Russian channels released the first video of a ground launch from a light rail with a solid-fuel booster; the launcher was first shown at the Tsentr-2026 exercise. Estimates suggest Russia plans to build about 10,000 of these missiles in 2027.',
+      specs: [['Дальність', 'до 450 км (з повітря)'], ['Бойова частина', 'до 130 кг'], ['Стартова маса', 'до 268 кг']],
+      specs_en: [['Range', 'up to 450 km (air-launched)'], ['Warhead', 'up to 130 kg'], ['Launch weight', 'up to 268 kg']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/russia-adapts-dan-t-missile-ground-launch/']] },
+    { id: 'tr-merkut', name: 'MERKÜT', maker: 'Pasifik Teknoloji (Titra)', country: 'Туреччина', type: 'unmanned', stage: 'prod', upd: '2026-11-14', q: 'Merkut',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/Turetskyj-FPV-dron-MERKUT-1.jpg',
+      blurb: 'Турецький ударний FPV-дрон з осколковою бойовою частиною. У листопаді 2026 року стало відомо про трирічний контракт із пакистанською NRTC на 100 тисяч MERKÜT разом з іншими безпілотними системами Pasifik Teknoloji, з локальним складанням і виробництвом у Пакистані. Це одна з найбільших відомих експортних угод на FPV-дрони.',
+      blurb_en: 'A Turkish FPV strike drone with a fragmentation warhead. In November 2026 a three-year contract with Pakistan’s NRTC was reported for 100,000 MERKÜT drones alongside other Pasifik Teknoloji unmanned systems, with local assembly and production in Pakistan. It is one of the largest known export deals for FPV drones.',
+      specs: [['Час польоту', '20–30 хв'], ['Дальність', 'до 8 км'], ['Бойова частина', '1000 сталевих кульок, радіус ураження до 20 м']],
+      specs_en: [['Flight time', '20–30 min'], ['Range', 'up to 8 km'], ['Warhead', '1,000 steel balls, up to 20 m lethal radius']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/turkey-supply-pakistan-100000-merkut-fpv/']] },
+    { id: 'ua-mdp-cuas-missile', name: 'Протидронова ракета Mission Defense Partners', maker: 'Mission Defense Partners', country: 'Україна', type: 'missiles', stage: 'dev', upd: '2026-11-14', q: 'Mission Defense Partners',
+      name_en: 'Mission Defense Partners counter-drone missile',
+      blurb: 'Нова українська компанія колишнього міністра оборони Михайла Федорова та засновника Lasar’s Group Павла Єлізарова, створена в листопаді 2026 року. Пріоритет — дешева ракета проти російських ударних дронів, а також дрони-перехоплювачі й технології наведення; випробовувати розробки мають військові Lasar’s Group. Першим великим інвестором, за повідомленнями, має стати глава Palantir Алекс Карп.',
+      blurb_en: 'A new Ukrainian company founded in November 2026 by former defence minister Mykhailo Fedorov and Lasar’s Group founder Pavlo Yelizarov. Its priority is a low-cost missile against Russian strike drones, alongside interceptor drones and guidance technology; Lasar’s Group troops are to test the systems. Palantir CEO Alex Karp is reportedly set to become the first major investor.',
+      specs: [['Дальність', 'до 15 км (ракета малої дальності)'], ['Наведення', 'радіолокаційна головка самонаведення'], ['Статус', 'розробка, листопад 2026']],
+      specs_en: [['Range', 'up to 15 km (short-range missile)'], ['Guidance', 'radar seeker'], ['Status', 'in development, November 2026']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/former-defense-minister-fedorov-and-lasar-s-group-founder-launch-company-to-develop-anti-drone-missiles/']] },
+    { id: 'cn-pla-support-ugv', name: 'НРК НВАК для димових завіс і розмінування', maker: 'Народно-визвольна армія Китаю', country: 'Китай', type: 'land', stage: 'test', upd: '2026-11-14', q: 'UGV',
+      name_en: 'PLA smoke-screen and mine-clearing UGVs', maker_en: 'People’s Liberation Army of China',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/NRK-KNR-1.jpg',
+      blurb: 'Китайські наземні роботизовані комплекси для підтримки наступу без ризику для екіпажів: шестиколісна машина з генератором димової завіси та гусенична платформа, що вистрілює ракету з подовженим зарядом розмінування для пророблення проходів у мінних полях. Відео випробувань показали CGTN і CCTV у листопаді 2026 року; про прийняття на озброєння не повідомлялося.',
+      blurb_en: 'Chinese uncrewed ground vehicles to support assaults without risking crews: a six-wheeled smoke-screen generator vehicle and a tracked platform that fires a rocket-towed line charge to breach minefields. Test footage was aired by CGTN and CCTV in November 2026; no entry into service has been reported.',
+      specs: [['Димовий НРК', 'шестиколісне шасі'], ['НРК розмінування', 'гусеничний, подовжений заряд'], ['Статус', 'демонстрація та випробування']],
+      specs_en: [['Smoke UGV', 'six-wheeled chassis'], ['Mine-clearing UGV', 'tracked, line charge'], ['Status', 'demonstrations and tests']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/china-ugv-risk-free-offensive-support-smoke-screens-demining/']] },
+    { id: 'safepro-ghostx-abrams', name: 'Ground Truth Air на Ghost-X для M1A2 Abrams', maker: 'Safe Pro Group та Anduril', country: 'США', type: 'ai', stage: 'dev', upd: '2026-11-14', q: 'Safe Pro',
+      blurb: 'Армія США профінансувала інтеграцію ШІ-програми Ground Truth Air у розвідувальний дрон Anduril Ghost-X, щоб танкові екіпажі M1A2 Abrams могли виявляти міни, касетні боєприпаси та FPV-дрони в засідці. Алгоритми обробляють зображення просто на борту й передають координати загроз в ATAK і Lattice. Контракт оголошено в листопаді 2026 року; ефективність на Ghost-X ще має бути продемонстрована.',
+      blurb_en: 'The US Army has funded integration of the Ground Truth Air AI software into Anduril’s Ghost-X reconnaissance drone so M1A2 Abrams tank crews can spot landmines, cluster munitions and FPV drones lying in ambush. The algorithms process imagery on board and push threat locations to ATAK and Lattice. The contract was announced in November 2026; performance on Ghost-X has yet to be demonstrated.',
+      specs: [['Контракт', '2,5 млн доларів'], ['Типи загроз', 'понад 150 (за даними компанії)'], ['Інтеграція', 'ATAK та Lattice']],
+      specs_en: [['Contract', '$2.5 million'], ['Threat types', 'over 150 (company claim)'], ['Integration', 'ATAK and Lattice']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/army-news/2026/u-s-army-funds-new-drone-based-protection-for-m1a2-abrams-against-mines-and-aerial-drone-threats']] },
+    { id: 'nxt-u15', name: 'NXT U15', maker: 'NXT LVL Naval', country: 'Франція', type: 'naval', stage: 'dev', upd: '2026-11-14', q: 'NXT U15',
+      blurb: 'Французький 15-метровий океанський безекіпажний катер для логістики та протимінної боротьби зі змінним корисним навантаженням — від картографування дна до підводного спостереження. Резервована енергетика й рушій мають забезпечити тривалу автономність. Проєкт представлено в листопаді 2026 року; компанія ще добирає партнерів, демонстратора чи контракту поки немає.',
+      blurb_en: 'A French 15-metre oceangoing uncrewed surface vessel for logistics and mine warfare with interchangeable payloads, from seabed mapping to underwater surveillance. Redundant power and propulsion are meant to support long endurance. Unveiled in November 2026; the company is still selecting partners and there is no demonstrator or contract yet.',
+      specs: [['Довжина', '15 м'], ['Завдання', 'логістика, протимінна боротьба, спостереження'], ['Статус', 'концепт, листопад 2026']],
+      specs_en: [['Length', '15 m'], ['Roles', 'logistics, mine warfare, surveillance'], ['Status', 'concept, November 2026']],
+      links: [['Джерело: Baird Maritime', 'https://www.bairdmaritime.com/security/naval/unmanned-naval-systems/nxt-u15-unmanned-surface-vessel']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
