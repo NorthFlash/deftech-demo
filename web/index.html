@@ -1813,7 +1813,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-16', label: '16 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-17', label: '17 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -3995,7 +3995,51 @@ return mountHero; })()
       blurb_en: 'A liquid rocket engine using propellants storable at room temperature (hydrogen peroxide and kerosene), intended for hypersonic demonstrators and future tactical missiles. It is throttleable and can be restarted several times; in 2026 it flew twice on the ARMD demonstrator, reaching supersonic speed. In November 2026 the Air Force Research Laboratory exercised a further $10.9 million in options to mature it.',
       specs: [['Тяга', 'близько 4000 фунтів (≈18 кН, дані виробника)'], ['Паливо', 'перекис водню та гас'], ['Льотні випробування', '2 польоти на ARMD у 2026 році']],
       specs_en: [['Thrust', 'about 4,000 lbf (≈18 kN, company figure)'], ['Propellants', 'hydrogen peroxide and kerosene'], ['Flight tests', '2 flights on ARMD in 2026']],
-      links: [['Джерело: Interesting Engineering', 'https://interestingengineering.com/military/ursa-major-air-force-hypersonic-engine']] }
+      links: [['Джерело: Interesting Engineering', 'https://interestingengineering.com/military/ursa-major-air-force-hypersonic-engine']] },
+    { id: 'tiberius-sceptre', name: 'Sceptre', maker: 'Tiberius Aerospace', country: 'США', type: 'missiles', stage: 'test', upd: '2026-11-17', q: 'Sceptre',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/11/Tiberius-Aerospace-raises-85-million-to-add-manufacturing-partners-for-its-Sceptre-artillery-round.jpeg',
+      blurb: '155-мм керований артилерійський снаряд із прямоточним повітряно-реактивним двигуном на рідкому паливі, який можна вистрілювати зі штатних гаубиць НАТО. У квітні 2026 року компанія повідомила про перше займання такого двигуна в польоті після пострілу з гаубиці, а першим замовником стало Міноборони Великої Британії. У листопаді 2026 року Tiberius залучила 85 млн доларів, щоб додати виробничих партнерів і пройти сертифікацію.',
+      blurb_en: 'A 155 mm guided artillery round powered by a liquid-fuelled ramjet that can be fired from standard NATO howitzers. In April 2026 the company reported the first in-flight ramjet ignition after firing from a howitzer, and the UK Ministry of Defence became its first customer. In November 2026 Tiberius raised $85 million to add manufacturing partners and pursue certification.',
+      specs: [['Калібр', '155 мм (сумісний із гарматами НАТО)'], ['Дальність', 'до 140 км (за заявою інвестора)'], ['Двигун', 'прямоточний ПРД на рідкому паливі']],
+      specs_en: [['Caliber', '155 mm (NATO-standard guns)'], ['Range', 'up to 140 km (investor claim)'], ['Propulsion', 'liquid-fuelled ramjet']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/tiberius-aerospace-raises-85-million-to-add-manufacturing-partners-for-its-sceptre-artillery-round/']] },
+    { id: 'ua-spys-upgrade', name: 'SPYS (модернізований)', maker: 'Quantum Wiy Industries', country: 'Україна', type: 'unmanned', stage: 'prod', upd: '2026-11-17', q: 'SPYS',
+      name_en: 'SPYS (upgraded)',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/SPYS-2-1-1.jpg',
+      blurb: 'Український швидкісний дрон-перехоплювач для боротьби з «Шахедами», зокрема реактивними. Оновлена версія отримала нову аеродинаміку, білий корпус, заводську 500-грамову бойову частину, автоматичний зліт і виведення в район цілі за даними радара та системи «Небо». У листопаді 2026 року розробник підготував її до промислового виробництва.',
+      blurb_en: 'A Ukrainian high-speed interceptor drone designed to hunt Shahed-type drones, including jet-powered ones. The upgraded version has revised aerodynamics, a white airframe, a factory-made 500 g warhead, automatic take-off and radar-cued guidance to the target area. In November 2026 the developer finalised it for industrial-scale production.',
+      specs: [['Швидкість', 'понад 450 км/год (до 500 км/год на випробуваннях)'], ['Дальність дії', '45 км'], ['Бойова частина', '500 г ВР']],
+      specs_en: [['Speed', 'over 450 km/h (up to 500 km/h in tests)'], ['Operational range', '45 km'], ['Warhead', '500 g HE']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/spys-shahed-hunter-upgrade-speed-500-km-h/']] },
+    { id: 'ua-sargan3000', name: 'Sargan-3000', maker: 'ВМС України (оператор; виробника не названо)', country: 'Україна', type: 'naval', stage: 'service', upd: '2026-11-17', q: 'Sargan',
+      maker_en: 'Ukrainian Navy (operator; manufacturer not disclosed)',
+      blurb: 'Український безекіпажний катер з дистанційно керованим бойовим модулем Protector, що застосовується для полювання на ворожі морські дрони. Вперше знищив російський безекіпажний катер на початку вересня 2026 року. У листопаді 2026 року ВМС України оприлюднили відео, як Sargan-3000 вночі переслідував, зупинив і знищив другий російський морський дрон.',
+      blurb_en: 'A Ukrainian uncrewed surface vessel fitted with a Protector remote weapon station and used to hunt enemy naval drones. It destroyed its first Russian uncrewed boat in early September 2026. In November 2026 the Ukrainian Navy released footage of a Sargan-3000 pursuing, disabling and destroying a second Russian naval drone at night.',
+      specs: [['Тип', 'безекіпажний надводний катер'], ['Озброєння', 'бойовий модуль Protector RWS'], ['Бойовий результат', '2 знищені російські БЕК (станом на листопад 2026)']],
+      specs_en: [['Type', 'uncrewed surface vessel'], ['Armament', 'Protector remote weapon station'], ['Combat record', '2 Russian USVs destroyed (as of November 2026)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/sargan-3000-naval-drone-destroys-second-russian-usv-using-rws/']] },
+    { id: 'hermeus-quarterhorse', name: 'Quarterhorse', maker: 'Hermeus (з Northrop Grumman)', country: 'США', type: 'air', stage: 'test', upd: '2026-11-17', q: 'Quarterhorse',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/05/Hermeus-mk-2.1-scaled.jpg',
+      blurb: 'Високошвидкісний безпілотник стартапу Hermeus, розроблюваний за фінансування Оборонного інноваційного підрозділу (DIU) з метою досягти швидкості до 3 Махів. У 2026 році апарат з двигуном Pratt & Whitney F100 уже вийшов на надзвукову швидкість, а автономне ПЗ для льотних випробувань постачає Anduril. У листопаді 2026 року Northrop Grumman долучилася до програми як інтегратор місійних систем (РЕБ, зв’язок, сенсори, навігація).',
+      blurb_en: 'A high-speed uncrewed aircraft from start-up Hermeus, funded by the Defense Innovation Unit, with the goal of reaching up to Mach 3. Powered by a Pratt & Whitney F100 engine, it flew supersonic in 2026, and Anduril supplies autonomy software for flight tests. In November 2026 Northrop Grumman joined the programme as mission systems integrator (electronic warfare, communications, sensing and navigation).',
+      specs: [['Цільова швидкість', 'до 3 Махів'], ['Двигун', 'Pratt & Whitney F100'], ['Досягнуто', 'надзвуковий політ у 2026 році']],
+      specs_en: [['Target speed', 'up to Mach 3'], ['Engine', 'Pratt & Whitney F100'], ['Achieved', 'supersonic flight in 2026']],
+      links: [['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/11/hermeus-recruits-northrop-grumman-to-quarterhorse-drone-program/']] },
+    { id: 'it-naval-vls', name: 'Італійська корабельна установка вертикального пуску', maker: 'Міністерство оборони Італії', country: 'Італія', type: 'naval', stage: 'dev', upd: '2026-11-17', q: 'vertical launch',
+      name_en: 'Italian naval vertical launch system', maker_en: 'Italian Ministry of Defence',
+      img: 'https://breakingdefense.com/wp-content/uploads/sites/13/2026/11/7797356-e1794847247350.jpg',
+      blurb: 'Власна італійська система вертикального пуску ракет для майбутніх фрегатів FREMM EVO та есмінців DDX. Вона має запускати малопомітну крилату ракету Stratus LO, яку MBDA створює для Франції, Великої Британії та Італії, що зменшить залежність від іноземних пускових установок. Програму внесено до багаторічного оборонного плану Італії на 2026–2028 роки, оприлюдненого в листопаді 2026 року.',
+      blurb_en: 'A domestically developed Italian vertical launch system for the future FREMM EVO frigates and DDX destroyers. It must be able to fire the stealthy Stratus LO cruise missile that MBDA is developing for France, the UK and Italy, reducing reliance on foreign launchers. The programme appears in Italy’s 2026–2028 multi-year defence plan, published in November 2026.',
+      specs: [['Носії', 'фрегати FREMM EVO, есмінці DDX'], ['Озброєння', 'крилата ракета Stratus LO'], ['Конфігурація', 'імовірно модульна, 8 комірок (неофіційно)']],
+      specs_en: [['Platforms', 'FREMM EVO frigates, DDX destroyers'], ['Weapons', 'Stratus LO cruise missile'], ['Configuration', 'likely modular, 8 cells (unconfirmed)']],
+      links: [['Джерело: Breaking Defense', 'https://breakingdefense.com/2026/11/italy-unveils-plans-to-develop-a-new-naval-missile-launcher/']] },
+    { id: 'iceye-gen5', name: 'ICEYE Gen5', maker: 'ICEYE', country: 'Фінляндія', type: 'space', stage: 'dev', upd: '2026-11-17', q: 'ICEYE',
+      img: 'https://balticnews.com/wp-content/uploads/2026/11/balticnews-a-1794895349488.png',
+      blurb: 'П’яте покоління радарних супутників із синтезованою апертурою (SAR) фінської компанії ICEYE, яка постачає знімки оборонним і розвідувальним відомствам. Державні замовники зможуть отримувати зображення з роздільною здатністю до 11 см, а бортовий ШІ-процесор попередньо обробляє дані та видає цілевказання прямо на орбіті. Систему представили в листопаді 2026 року; суверенне угруповання обіцяють розгортати протягом 12 місяців після контракту.',
+      blurb_en: 'The fifth generation of synthetic aperture radar (SAR) satellites from Finland’s ICEYE, which supplies imagery to defence and intelligence customers. Government users can get imagery at up to 11 cm resolution, and an on-board AI processor screens data and performs tip-and-cue in orbit. The system was unveiled in November 2026, with sovereign constellations offered within 12 months of contract.',
+      specs: [['Роздільна здатність', 'до 11 см (держзамовники), 16 см для інших'], ['Смуга', 'до 1800 МГц'], ['Обробка', 'бортовий ШІ-процесор']],
+      specs_en: [['Resolution', 'up to 11 cm (government), 16 cm for others'], ['Bandwidth', 'up to 1,800 MHz'], ['Processing', 'on-board AI processor']],
+      links: [['Джерело: Baltic News', 'https://balticnews.com/iceye-launches-gen5-sar-satellite-with-11-cm-resolution-and-on-board-ai/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
