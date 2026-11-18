@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-17', label: '17 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-18', label: '18 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -4024,14 +4024,14 @@ return mountHero; })()
       specs: [['Калібр', '155 мм (сумісний із гарматами НАТО)'], ['Дальність', 'до 140 км (за заявою інвестора)'], ['Двигун', 'прямоточний ПРД на рідкому паливі']],
       specs_en: [['Caliber', '155 mm (NATO-standard guns)'], ['Range', 'up to 140 km (investor claim)'], ['Propulsion', 'liquid-fuelled ramjet']],
       links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/tiberius-aerospace-raises-85-million-to-add-manufacturing-partners-for-its-sceptre-artillery-round/']] },
-    { id: 'ua-spys-upgrade', name: 'SPYS (модернізований)', maker: 'Quantum Wiy Industries', country: 'Україна', type: 'unmanned', stage: 'prod', upd: '2026-11-17', q: 'SPYS',
+    { id: 'ua-spys-upgrade', name: 'SPYS (модернізований)', maker: 'Quantum Wiy Industries', country: 'Україна', type: 'unmanned', stage: 'prod', upd: '2026-11-18', q: 'SPYS',
       name_en: 'SPYS (upgraded)',
       img: 'https://militarnyi.com/wp-content/uploads/2026/11/SPYS-2-1-1.jpg',
-      blurb: 'Український швидкісний дрон-перехоплювач для боротьби з «Шахедами», зокрема реактивними. Оновлена версія отримала нову аеродинаміку, білий корпус, заводську 500-грамову бойову частину, автоматичний зліт і виведення в район цілі за даними радара та системи «Небо». У листопаді 2026 року розробник підготував її до промислового виробництва.',
-      blurb_en: 'A Ukrainian high-speed interceptor drone designed to hunt Shahed-type drones, including jet-powered ones. The upgraded version has revised aerodynamics, a white airframe, a factory-made 500 g warhead, automatic take-off and radar-cued guidance to the target area. In November 2026 the developer finalised it for industrial-scale production.',
+      blurb: 'Український швидкісний дрон-перехоплювач для боротьби з «Шахедами», зокрема реактивними. Оновлена версія отримала нову аеродинаміку, білий корпус, заводську 500-грамову бойову частину, автоматичний зліт і виведення в район цілі за даними радара та системи «Небо». У листопаді 2026 року розробник підготував її до промислового виробництва, а також адаптував SPYS для запуску з дронів-носіїв на висоті 3–4 км, що економить заряд батареї для перехоплення.',
+      blurb_en: 'A Ukrainian high-speed interceptor drone designed to hunt Shahed-type drones, including jet-powered ones. The upgraded version has revised aerodynamics, a white airframe, a factory-made 500 g warhead, automatic take-off and radar-cued guidance to the target area. In November 2026 the developer finalised it for industrial-scale production and adapted SPYS for air launch from carrier drones at 3–4 km altitude, saving battery power for the intercept.',
       specs: [['Швидкість', 'понад 450 км/год (до 500 км/год на випробуваннях)'], ['Дальність дії', '45 км'], ['Бойова частина', '500 г ВР']],
       specs_en: [['Speed', 'over 450 km/h (up to 500 km/h in tests)'], ['Operational range', '45 km'], ['Warhead', '500 g HE']],
-      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/spys-shahed-hunter-upgrade-speed-500-km-h/']] },
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/spys-shahed-hunter-upgrade-speed-500-km-h/'], ['Джерело: Militarnyi', 'https://militarnyi.com/en/news/ukraine-s-spys-interceptor-drone-adapted-for-uav-launch/']] },
     { id: 'ua-sargan3000', name: 'Sargan-3000', maker: 'ВМС України (оператор; виробника не названо)', country: 'Україна', type: 'naval', stage: 'service', upd: '2026-11-17', q: 'Sargan',
       maker_en: 'Ukrainian Navy (operator; manufacturer not disclosed)',
       blurb: 'Український безекіпажний катер з дистанційно керованим бойовим модулем Protector, що застосовується для полювання на ворожі морські дрони. Вперше знищив російський безекіпажний катер на початку вересня 2026 року. У листопаді 2026 року ВМС України оприлюднили відео, як Sargan-3000 вночі переслідував, зупинив і знищив другий російський морський дрон.',
@@ -4060,7 +4060,44 @@ return mountHero; })()
       blurb_en: 'The fifth generation of synthetic aperture radar (SAR) satellites from Finland’s ICEYE, which supplies imagery to defence and intelligence customers. Government users can get imagery at up to 11 cm resolution, and an on-board AI processor screens data and performs tip-and-cue in orbit. The system was unveiled in November 2026, with sovereign constellations offered within 12 months of contract.',
       specs: [['Роздільна здатність', 'до 11 см (держзамовники), 16 см для інших'], ['Смуга', 'до 1800 МГц'], ['Обробка', 'бортовий ШІ-процесор']],
       specs_en: [['Resolution', 'up to 11 cm (government), 16 cm for others'], ['Bandwidth', 'up to 1,800 MHz'], ['Processing', 'on-board AI processor']],
-      links: [['Джерело: Baltic News', 'https://balticnews.com/iceye-launches-gen5-sar-satellite-with-11-cm-resolution-and-on-board-ai/']] }
+      links: [['Джерело: Baltic News', 'https://balticnews.com/iceye-launches-gen5-sar-satellite-with-11-cm-resolution-and-on-board-ai/']] },
+    { id: 'hii-lionfish', name: 'Lionfish', maker: 'HII (Huntington Ingalls Industries)', country: 'США', type: 'naval', stage: 'prod', upd: '2026-11-18', q: 'Lionfish',
+      img: 'https://data.militaryembedded.com/uploads/resize/1256/756/external/data.militaryembedded.com/uploads/articles/primary_images/1794937638.jpg',
+      blurb: 'Малий безекіпажний підводний апарат ВМС США на базі платформи REMUS 300 для протимінної боротьби, розвідки, протичовнових завдань і радіоелектронної боротьби. Модульна архітектура дає змогу швидко інтегрувати нові корисні навантаження. У листопаді 2026 року флот замовив ще 82 апарати, довівши загальне замовлення до 175; станом на 21 жовтня HII поставила 50.',
+      blurb_en: 'A small uncrewed undersea vehicle for the US Navy, based on the REMUS 300 platform, for mine countermeasures, ISR, anti-submarine and electronic warfare missions. Its modular architecture allows new payloads to be integrated quickly. In November 2026 the Navy ordered 82 more vehicles, bringing the total to 175; HII had delivered 50 as of 21 October.',
+      specs: [['Платформа', 'REMUS 300'], ['Замовлено', '175 апаратів (можливо до 200)'], ['Вартість програми', 'понад 347 млн дол. за 5 років']],
+      specs_en: [['Platform', 'REMUS 300'], ['Ordered', '175 vehicles (up to 200 possible)'], ['Programme value', 'over $347 million over 5 years']],
+      links: [['Джерело: Military Embedded Systems', 'https://militaryembedded.com/unmanned/isr/lionfish-uncrewed-undersea-vehicles-ordered-by-us-navy']] },
+    { id: 'devdroid-shumer', name: 'Shumer', maker: 'DevDroid', country: 'Україна', type: 'land', stage: 'prod', upd: '2026-11-18', q: 'Shumer',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/NRK-Shumer-1-1-1.jpg',
+      blurb: 'Український малий наземний роботизований комплекс із бойовим модулем на дві автоматичні гвинтівки (АК-74 або AR-15) для засідок, протидії інфільтрації піхоти та знищення дронів. Система ШІ виявляє піхоту на відстані до 300 м і супроводжує ціль, а вартість комплекту близька до ціни якісного оптоволоконного FPV-дрона. У листопаді 2026 року DevDroid запустила серійне виробництво.',
+      blurb_en: 'A small Ukrainian uncrewed ground vehicle with a turret carrying two rifles (AK-74 or AR-15), intended for ambushes, countering infantry infiltration and shooting down drones. Its AI detects personnel at up to 300 m and tracks targets, and a full set costs about as much as a high-quality fibre-optic FPV drone. DevDroid launched mass production in November 2026.',
+      specs: [['Дальність ходу', 'до 30 км на одному заряді'], ['Озброєння', '2 гвинтівки АК-74 або AR-15'], ['Вартість', 'близько 390 тис. грн (НРК + модуль)']],
+      specs_en: [['Range', 'up to 30 km per charge'], ['Armament', '2 AK-74 or AR-15 rifles'], ['Cost', 'about UAH 390,000 (UGV + turret)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/devdroid-mass-production-shumer-ugv-two-rifle-turret/']] },
+    { id: 'anduril-camp-launcher', name: 'Контейнерна пускова установка CAMP', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-11-18', q: 'Counter-Air Missile',
+      name_en: 'CAMP containerized launcher',
+      img: 'https://defence-industry.eu/wp-content/uploads/2026/11/Anduril-Industries-says-it-will-develop-a-containerized-launcher-for-the-U.S.-Air-Forces-Counter-Air-Missile-Program.jpeg',
+      blurb: 'Універсальна контейнерна пускова установка для програми Counter-Air Missile Program ВПС США, що має наростити запаси недорогих ракет класу «земля–повітря» і «повітря–повітря». Вона надає спільне живлення, обчислення, охолодження та зв’язок, тож ракети різних виробників можна інтегрувати без окремої пускової. У листопаді 2026 року Anduril отримала контракт на прототип; перші 10 місяців піде на ескізне проєктування.',
+      blurb_en: 'A universal containerized launcher for the US Air Force’s Counter-Air Missile Program, which aims to build up stocks of low-cost counter-air missiles. It provides shared power, computing, cooling and communications so that missiles from different manufacturers can be integrated without a dedicated launcher. Anduril received a prototype contract in November 2026, with the first 10 months devoted to preliminary design.',
+      specs: [['Основа', 'обчислювальна система Menace-I'], ['Ракети', 'різних виробників (Ground Launched Counter Air)'], ['Етап', 'прототип, 10 місяців проєктування']],
+      specs_en: [['Basis', 'Menace-I computing system'], ['Missiles', 'multi-vendor (Ground Launched Counter Air)'], ['Phase', 'prototype, 10-month design phase']],
+      links: [['Джерело: Defence Industry Europe', 'https://defence-industry.eu/anduril-industries-says-it-will-develop-a-containerized-launcher-for-the-u-s-air-forces-counter-air-missile-program/']] },
+    { id: 'cn-w5000', name: 'W5000', maker: 'Air White Whale', country: 'Китай', type: 'unmanned', stage: 'test', upd: '2026-11-18', q: 'W5000',
+      img: 'https://cdn.dronexl.co/wp-content/uploads/2026/11/air-white-whale-w5000-cargo-drone-render.webp',
+      blurb: 'Найбільший у світі безпілотний вантажний літак — двомоторний турбогвинтовий апарат китайського стартапу Air White Whale. Формально це цивільна логістична програма, але аналітики вказують на очевидне військове застосування, зокрема постачання віддалених острівних баз. 14 листопада 2026 року W5000 здійснив перший 30-хвилинний політ у Внутрішній Монголії; введення в експлуатацію заплановано на 2027 рік.',
+      blurb_en: 'The world’s largest uncrewed cargo aircraft, a twin-turboprop design from Chinese start-up Air White Whale. It is formally a civil logistics programme, but analysts point to obvious military uses such as resupplying remote island outposts. The W5000 made its 30-minute first flight in Inner Mongolia on 14 November 2026, with service entry planned for 2027.',
+      specs: [['Вантаж', 'до 5 т'], ['Дальність', 'до 2600 км'], ['Злітна маса', '10,8 т']],
+      specs_en: [['Payload', 'up to 5 t'], ['Range', 'up to 2,600 km'], ['Max take-off weight', '10.8 t']],
+      links: [['Джерело: DroneXL', 'https://dronexl.co/2026/11/16/china-w5000-cargo-drone-first-flight-air-force-cessna-caravans/']] },
+    { id: 'bae-passive-radar', name: 'Пасивний радар BAE Systems', maker: 'BAE Systems', country: 'Велика Британія', type: 'electronic', stage: 'dev', upd: '2026-11-18', q: 'passive radar',
+      name_en: 'BAE Systems passive radar',
+      img: 'https://ukdj.ams3.digitaloceanspaces.com/2026/11/PassiveRadarProduct2026_MagnoliaImage.webp',
+      blurb: 'Прихований («пасивний») радар, що виявляє дрони й літаки за відбитими сигналами наявних теле-, радіо- та мобільних мереж, нічого не випромінюючи сам і не видаючи свого розташування. Він будує тривимірну картину повітряної обстановки й може розгортатися на позашляховиках у містах, а коштує, за даними BAE, до десяти разів дешевше за аналоги. Систему представили в листопаді 2026 року; натурні випробування заплановано протягом 2027 року.',
+      blurb_en: 'A covert passive radar that detects drones and aircraft using reflections of existing TV, radio and mobile network signals, transmitting nothing itself and so not revealing its position. It builds a 3D air picture, can be deployed from SUVs in urban areas and, according to BAE, costs up to a tenth of many current passive radars. It was unveiled in November 2026, with live trials planned throughout 2027.',
+      specs: [['Принцип', 'пасивна локація за сигналами ТБ, радіо та мобільного зв’язку'], ['Цілі', 'від малих дронів до літаків'], ['Платформа', 'позашляховик']],
+      specs_en: [['Principle', 'passive detection using TV, radio and mobile signals'], ['Targets', 'from small drones to aircraft'], ['Platform', 'SUV']],
+      links: [['Джерело: UK Defence Journal', 'https://ukdefencejournal.org.uk/bae-ghost-radar-uses-tv-signals-to-track-drones-unseen/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
