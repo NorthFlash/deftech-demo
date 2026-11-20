@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-19', label: '19 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-20', label: '20 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -4133,7 +4133,37 @@ return mountHero; })()
       blurb_en: 'A palletized multi-pod version of South Korea’s Chunmoo (K239) rocket launcher that can be installed on ships, including uncrewed ones, as the launcher fits within shipping-container dimensions. In mid-November 2026 two Chunmoo missiles were fired from a test range vessel off the coast of Mississippi. The test fits the US Navy’s push for containerized, modular weapons; no contract has been announced.',
       specs: [['Носій', 'кораблі з екіпажем і безекіпажні'], ['Габарити', 'у межах морського контейнера'], ['Випробування', '2 пуски з судна (листопад 2026)']],
       specs_en: [['Carrier', 'crewed and uncrewed vessels'], ['Dimensions', 'within shipping-container size'], ['Test', '2 launches from a vessel (November 2026)']],
-      links: [['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/11/17/hanwha-transforms-ship-into-floating-multi-rocket-launcher/']] }
+      links: [['Джерело: Defense News', 'https://www.defensenews.com/industry/techwatch/2026/11/17/hanwha-transforms-ship-into-floating-multi-rocket-launcher/']] },
+    { id: 'aerodata-aeroforce-x', name: 'AeroForce X', maker: 'Aerodata AG', country: 'Німеччина', type: 'unmanned', stage: 'test', upd: '2026-11-20', q: 'AeroForce',
+      img: 'https://www.c4defence.com/wp-content/uploads/2026/11/AeroForce-X-ing.webp',
+      blurb: 'Опціонально пілотований безпілотник класу MALE від німецької компанії Aerodata, який розробник називає першою німецькою системою такого класу; його показали публічно в серпні 2026 року. Апарат призначений для спостереження, зокрема для охорони морської інфраструктури. У листопаді 2026 року AeroForce X виконав перший політ із пілотом з аеродрому Штраусберг (Бранденбург); далі заплановано випробування автопілота і перший безпілотний політ.',
+      blurb_en: 'An optionally piloted MALE-class drone from Germany’s Aerodata, which the company calls the first German system of its class; it was unveiled publicly in August 2026. It is intended for surveillance missions, including protection of maritime infrastructure. In November 2026 AeroForce X made its first crewed flight from Strausberg airfield in Brandenburg; autopilot trials and a first uncrewed flight are next.',
+      specs: [['Клас', 'MALE (середня висота, велика тривалість)'], ['Тривалість польоту', 'до 40 год (план)'], ['Корисне навантаження', 'до 1,3 т (план)']],
+      specs_en: [['Class', 'MALE (medium altitude, long endurance)'], ['Endurance', 'up to 40 h (planned)'], ['Payload', 'up to 1.3 t (planned)']],
+      links: [['Джерело: C4Defence', 'https://www.c4defence.com/en/aeroforce-x-first-manned-test-flight/']] },
+    { id: 'bwb-euroguard', name: 'EUROGUARD', maker: 'Baltic Workboats (консорціум EDF)', country: 'Естонія', type: 'naval', stage: 'test', upd: '2026-11-20', q: 'EUROGUARD',
+      maker_en: 'Baltic Workboats (EDF consortium)',
+      img: 'https://media.assettype.com/bairdmaritime%2F2026-11-19%2F7s8podiv%2F6370eade_a72a_4618_8ac9_93c594e54de7.jpg?w=1200&ar=40%3A21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100',
+      blurb: 'Повнорозмірний 45-метровий прототип модульного напівавтономного військового корабля, створений за кошти Європейського оборонного фонду консорціумом із 27 компаній з 10 країн (серед них Thales, Leonardo, Naval Group, Navantia і Kongsberg). Змінні модулі дають змогу виконувати морський моніторинг, протимінні завдання, захист підводної інфраструктури та керування безекіпажними системами. 19 листопада 2026 року корабель спустили на воду на верфі в Насві; морські випробування з ВМС Естонії заплановано на 2027 рік.',
+      blurb_en: 'A full-scale 45-metre prototype of a modular, semi-autonomous naval vessel funded by the European Defence Fund and built by a consortium of 27 companies from 10 countries, including Thales, Leonardo, Naval Group, Navantia and Kongsberg. Swappable mission modules cover maritime monitoring, mine warfare, seabed infrastructure protection and control of uncrewed systems. The vessel was launched at the Nasva shipyard on 19 November 2026; sea trials with the Estonian Navy are planned for 2027.',
+      specs: [['Довжина', '45 м'], ['Швидкість', 'щонайменше 20 вузлів'], ['Дальність / автономність', 'близько 2000 морських миль / 10 діб']],
+      specs_en: [['Length', '45 m'], ['Speed', 'at least 20 knots'], ['Range / endurance', 'about 2,000 nautical miles / 10 days']],
+      links: [['Джерело: Baird Maritime', 'https://bairdmaritime.com/security/naval/naval-ships/baltic-workboats-launches-euroguard-demonstrator']] },
+    { id: 'ru-zastupnik', name: 'Заступник', maker: 'Росія (виробника не названо)', country: 'Росія', type: 'unmanned', stage: 'test', upd: '2026-11-20', q: 'Zastupnik',
+      name_en: 'Zastupnik', maker_en: 'Russia (manufacturer not named)',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/image-6-1-1.jpg',
+      blurb: 'Російський дрон-перехоплювач із запуском із контейнера та тепловізійним супроводом цілі, розрахований на відносно повільні безпілотники літакового типу. 19 листопада 2026 року російські медіа показали відео з перехопленнями українських БпЛА. Заявлені характеристики не підтверджені незалежно; виробника та обсяги виробництва не названо.',
+      blurb_en: 'A Russian interceptor drone launched from a container and guided with thermal tracking, aimed at relatively slow fixed-wing drones. On 19 November 2026 Russian media released footage showing intercepts of Ukrainian UAVs. The claimed figures are not independently verified; the manufacturer and production volumes were not disclosed.',
+      specs: [['Бойова частина', '0,8 кг, осколково-фугасна (заявлено)'], ['Швидкість', 'до 300 км/год (заявлено)'], ['Дальність / час польоту', 'до 20 км / до 25 хв (заявлено)']],
+      specs_en: [['Warhead', '0.8 kg, high-explosive fragmentation (claimed)'], ['Speed', 'up to 300 km/h (claimed)'], ['Range / flight time', 'up to 20 km / up to 25 min (claimed)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/russians-new-zastupnik-interceptor-drone/']] },
+    { id: 'ua-carmine-blysk', name: 'Лазер «Блиск»', maker: 'Carmine Sky', country: 'Україна', type: 'missiles', stage: 'test', upd: '2026-11-20', q: 'laser',
+      name_en: 'Blysk laser',
+      blurb: 'Експериментальна лазерна система протиповітряної оборони української приватної компанії Carmine Sky, призначена для ураження дронів типу «Шахед». На початку листопада 2026 року її розгорнули в системі ППО Києва в межах експериментальної програми приватної ППО. Станом на 19 листопада 2026 року лазер ще не уразив жодної цілі: заважають хмарність і туман.',
+      blurb_en: 'An experimental laser air-defence system from Ukrainian private company Carmine Sky, designed to defeat Shahed-type drones. In early November 2026 it was deployed as part of Kyiv’s air defences under Ukraine’s experimental private air-defence programme. As of 19 November 2026 the laser had not yet engaged a target, with cloud cover and fog cited as obstacles.',
+      specs: [['Потужність', '4 кВт'], ['Ефективна дальність', 'до 1 км'], ['Ціль', 'дрони типу «Шахед»']],
+      specs_en: [['Power', '4 kW'], ['Effective range', 'up to 1 km'], ['Target', 'Shahed-type drones']],
+      links: [['Джерело: The Kyiv Independent', 'https://kyivindependent.com/ukraine-deploys-experimental-laser-air-defense-system-in-kyiv/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
