@@ -1834,7 +1834,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-24', label: '24 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-25', label: '25 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -4279,7 +4279,43 @@ return mountHero; })()
       blurb_en: 'A nine-seat hybrid-electric ultra-short take-off and landing aircraft that the US Air Force is exploring for quiet transport and special operations. It builds on the two-seat EL2 prototype, with Lockheed Martin Skunk Works as a partner. In November 2026 AFWERX awarded Electra a $4.7 million agreement for testing; a prototype is expected to fly by early 2029.',
       specs: [['Місткість', '9 місць'], ['Зліт / посадка', 'близько 45 м (150 футів)'], ['Контракт', '4,7 млн дол. (AFWERX)']],
       specs_en: [['Capacity', '9 seats'], ['Take-off / landing', 'about 150 ft'], ['Contract', '$4.7 million (AFWERX)']],
-      links: [['Джерело: Defense One', 'https://www.defenseone.com/business/2026/11/air-force-bets-hybrid-electric-aircraft-transport/417268/']] }
+      links: [['Джерело: Defense One', 'https://www.defenseone.com/business/2026/11/air-force-bets-hybrid-electric-aircraft-transport/417268/']] },
+    { id: 'rtx-slcm-n', name: 'SLCM-N', maker: 'Raytheon (RTX)', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-11-25', q: 'SLCM-N',
+      img: 'https://www.armyrecognition.com/images/stories/news/2026/november/U.S.%20Navy%20Taps%20Raytheon%20to%20Advance%20New%20Submarine-Launched%20Nuclear%20Missile%20Toward%20Prototype%20Demonstrations.jpg',
+      blurb: 'Нова крилата ракета морського базування з ядерною бойовою частиною (Sea-Launched Cruise Missile–Nuclear) для підводних човнів ВМС США. У листопаді 2026 року ВМС обрали Raytheon головним виконавцем за угодою OTA: програма переходить від концепції до доопрацювання конструкції та інтеграції підсистем із подальшою демонстрацією прототипів. Партнерами названо Anduril Rocket Motor Systems, Divergent і Williams International.',
+      blurb_en: 'A new nuclear-armed sea-launched cruise missile (Sea-Launched Cruise Missile–Nuclear) for US Navy submarines. In November 2026 the Navy picked Raytheon as prime under an OTA agreement, moving the programme from concept into design maturation and subsystem integration ahead of prototype demonstrations. Named partners include Anduril Rocket Motor Systems, Divergent and Williams International.',
+      specs: [['Тип', 'Крилата ракета з ядерною БЧ'], ['Носій', 'Підводні човни ВМС США'], ['Етап', 'Доопрацювання конструкції, до демонстрації прототипів']],
+      specs_en: [['Type', 'Nuclear-armed cruise missile'], ['Platform', 'US Navy submarines'], ['Phase', 'Design maturation toward prototype demos']],
+      links: [['Джерело: Army Recognition', 'https://www.armyrecognition.com/news/navy-news/2026/u-s-navy-taps-raytheon-to-advance-new-submarine-launched-nuclear-missile-toward-prototype-demonstrations']] },
+    { id: 'norinco-cuas-24', name: 'Протидронова система на 24 ракети', maker: 'Norinco', country: 'Китай', type: 'missiles', stage: 'dev', upd: '2026-11-25', q: 'Norinco',
+      name_en: '24-missile counter-drone system',
+      img: 'https://storage.liga.net/images/general/social/social-4650060-en.png?v=1795538279',
+      blurb: 'Мобільний зенітний комплекс Norinco для перехоплення груп дронів, який через вигляд пускової установки вже прозвали китайським аналогом Iron Dome. На одному шасі розміщено 24 ракети. Станом на листопад 2026 року систему готують до першого публічного показу — імовірно на Airshow China у Чжухаї.',
+      blurb_en: 'A mobile Norinco air-defence system designed to intercept groups of drones, already nicknamed a Chinese Iron Dome because of its launcher’s look. A single vehicle carries 24 missiles. As of November 2026 it is being prepared for its first public showing, likely at Airshow China in Zhuhai.',
+      specs: [['Боєкомплект', '24 ракети на одній машині'], ['Призначення', 'Перехоплення груп дронів'], ['Дебют', 'Очікується на Airshow China']],
+      specs_en: [['Load', '24 missiles per vehicle'], ['Role', 'Intercepting drone groups'], ['Debut', 'Expected at Airshow China']],
+      links: [['Джерело: LIGA.net', 'https://tech.liga.net/en/military-tech/news/the-chinese-equivalent-of-the-iron-dome-will-be-unveiled-for-the-first-time-at-an-exhibition']] },
+    { id: 'ua-black-betty', name: 'Black Betty', maker: 'Ukrspecsystems', country: 'Україна', type: 'unmanned', stage: 'service', upd: '2026-11-25', q: 'Black Betty',
+      img: 'https://storage.united24media.com/og/1/ec/6c3573c6fc4e372192d7a846ae88bec1.jpg',
+      blurb: 'Барражуючий боєприпас з X-подібним крилом — дешевша й простіша альтернатива RAM-2X. Має денну та тепловізійну камери, автоматичне виявлення, захоплення й супровід цілі зі ШІ-наведенням на кінцевій ділянці та стійкість до РЕБ. Представлений у листопаді 2026 року; за словами виробника, вже застосовується, зокрема проти ЗРК «Бук-М3».',
+      blurb_en: 'An X-wing loitering munition positioned as a cheaper, simpler alternative to the RAM-2X. It carries day and thermal cameras, automatic target detection, lock-on and tracking with AI-assisted terminal guidance, and is built to resist jamming. Unveiled in November 2026; the maker says it is already in combat use, including against a Russian Buk-M3 SAM system.',
+      specs: [['Тип', 'Барражуючий боєприпас'], ['Наведення', 'ШІ на кінцевій ділянці'], ['Сенсори', 'Денна й тепловізійна камери']],
+      specs_en: [['Type', 'Loitering munition'], ['Guidance', 'AI-assisted terminal'], ['Sensors', 'Day and thermal cameras']],
+      links: [['Джерело: United24 Media', 'https://united24media.com/defense-tech/ukraine-unveils-black-betty-a-cheaper-ai-guided-strike-drone-that-has-already-targeted-russias-buk-m3-24626']] },
+    { id: 'hensoldt-knifefish', name: 'Knifefish', maker: 'Hensoldt', country: 'Німеччина', type: 'electronic', stage: 'prod', upd: '2026-11-25', q: 'Knifefish',
+      img: 'https://thedefensepost.com/wp-content/uploads/2026/11/PIRANHA_6x6_620dd68956-1.jpeg',
+      blurb: 'Мобільна система радіоелектронного подавлення, що глушить радіозв’язок противника, зокрема канали керування дронами та мережі управління. Доповнює розвідувальну систему Sawfish і встановлюється на 6x6 Piranha 5. У листопаді 2026 року Hensoldt отримала замовлення для Нідерландів і Німеччини; поставки нідерландським військам мають початися у 2028 році.',
+      blurb_en: 'A mobile electronic-attack system that jams enemy radio links, including drone control links and command networks. It complements the Sawfish reconnaissance system and is integrated on the Piranha 5 6x6. In November 2026 Hensoldt received an order for the Netherlands and Germany; deliveries to Dutch forces are due to start in 2028.',
+      specs: [['Тип', 'Мобільна станція РЕБ'], ['Шасі', 'Piranha 5 6x6'], ['Поставки', 'З 2028 року']],
+      specs_en: [['Type', 'Mobile jamming system'], ['Chassis', 'Piranha 5 6x6'], ['Deliveries', 'From 2028']],
+      links: [['Джерело: The Defense Post', 'https://thedefensepost.com/2026/11/23/hensoldt-knifefish-jamming-systems/']] },
+    { id: 'patria-cavs', name: 'CAVS (Common Armoured Vehicle System)', maker: 'Patria', country: 'Фінляндія', type: 'land', stage: 'prod', upd: '2026-11-25', q: 'CAVS',
+      img: 'https://thedefensepost.com/wp-content/uploads/2025/09/CAVS.jpg',
+      blurb: 'Спільна європейська програма бронемашин на базі Patria 6x6, до якої входять Фінляндія, Латвія, Швеція, Німеччина, Данія, Норвегія та Велика Британія. Замовлено близько 2000 машин з опціями, поставлено майже 500. У листопаді 2026 року Нідерланди підписали технічну угоду про приєднання й мають стати восьмим учасником.',
+      blurb_en: 'A joint European armoured-vehicle programme based on the Patria 6x6, with Finland, Latvia, Sweden, Germany, Denmark, Norway and the UK taking part. Nearly 2,000 vehicles are on order including options and almost 500 have been delivered. In November 2026 the Netherlands signed a Technical Arrangement to join as the eighth member.',
+      specs: [['Двигун', 'Scania 394 к. с.'], ['Швидкість / запас ходу', 'До 100 км/год / 700 км'], ['Десант', 'До 10 осіб']],
+      specs_en: [['Engine', 'Scania 394 hp'], ['Speed / range', 'Up to 100 km/h / 700 km'], ['Troops', 'Up to 10']],
+      links: [['Джерело: The Defense Post', 'https://thedefensepost.com/2026/11/23/netherlands-cavs-program/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
