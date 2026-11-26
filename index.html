@@ -1805,7 +1805,7 @@ return mountHero; })()
   // === INNOVATIONS DATA START ===
   // Інновації в оборонному секторі (світ). stage: dev — розробка, test — випробування, prod — серійне виробництво / замовлено, service — на озброєнні.
   // upd — дата останньої новини про проєкт (для блоку «Нове цього тижня»). Лише публічна інформація, з посиланнями на джерела.
-  var INNOV_AS_OF = { date: '2026-11-25', label: '25 листопада 2026' };
+  var INNOV_AS_OF = { date: '2026-11-26', label: '26 листопада 2026' };
   var INNOVATIONS = [
     { id: 'steelfin', name: 'Steelfin', maker: 'Anduril Industries', country: 'США', type: 'missiles', stage: 'dev', upd: '2026-10-12', q: 'Steelfin',
       img: 'https://www.twz.com/wp-content/uploads/2026/10/Steelfin-anduril.jpg?quality=85',
@@ -4128,13 +4128,14 @@ return mountHero; })()
       specs: [['Бойова частина', '0,8 кг, осколково-фугасна (заявлено)'], ['Швидкість', 'до 300 км/год (заявлено)'], ['Дальність / час польоту', 'до 20 км / до 25 хв (заявлено)']],
       specs_en: [['Warhead', '0.8 kg, high-explosive fragmentation (claimed)'], ['Speed', 'up to 300 km/h (claimed)'], ['Range / flight time', 'up to 20 km / up to 25 min (claimed)']],
       links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/russians-new-zastupnik-interceptor-drone/']] },
-    { id: 'ua-carmine-blysk', name: 'Лазер «Блиск»', maker: 'Carmine Sky', country: 'Україна', type: 'missiles', stage: 'test', upd: '2026-11-20', q: 'laser',
+    { id: 'ua-carmine-blysk', name: 'Лазер «Блиск»', maker: 'Carmine Sky', country: 'Україна', type: 'missiles', stage: 'test', upd: '2026-11-26', q: 'laser',
       name_en: 'Blysk laser',
-      blurb: 'Експериментальна лазерна система протиповітряної оборони української приватної компанії Carmine Sky, призначена для ураження дронів типу «Шахед». На початку листопада 2026 року її розгорнули в системі ППО Києва в межах експериментальної програми приватної ППО. Станом на 19 листопада 2026 року лазер ще не уразив жодної цілі: заважають хмарність і туман.',
-      blurb_en: 'An experimental laser air-defence system from Ukrainian private company Carmine Sky, designed to defeat Shahed-type drones. In early November 2026 it was deployed as part of Kyiv’s air defences under Ukraine’s experimental private air-defence programme. As of 19 November 2026 the laser had not yet engaged a target, with cloud cover and fog cited as obstacles.',
-      specs: [['Потужність', '4 кВт'], ['Ефективна дальність', 'до 1 км'], ['Ціль', 'дрони типу «Шахед»']],
-      specs_en: [['Power', '4 kW'], ['Effective range', 'up to 1 km'], ['Target', 'Shahed-type drones']],
-      links: [['Джерело: The Kyiv Independent', 'https://kyivindependent.com/ukraine-deploys-experimental-laser-air-defense-system-in-kyiv/']] },
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/lazer-Blysk-1.jpg',
+      blurb: 'Експериментальна лазерна система протиповітряної оборони української компанії Carmine Sky, що розробляється в межах державної програми приватної ППО за підтримки Brave1. На початку листопада 2026 року її поставили на бойове чергування в Києві. 25 листопада 2026 року, за словами радника з оборонних технологій Сергія «Флеша» Бескрестнова, «Блиск» уперше збив реактивний дрон типу «Герань»; про серійне виробництво говорити зарано, бойові випробування тривають.',
+      blurb_en: 'An experimental laser air-defence system from Ukrainian company Carmine Sky, developed under Ukraine’s state private air-defence programme with Brave1 support. It was placed on combat duty in Kyiv in early November 2026. On 25 November 2026 defence-technology adviser Serhii “Flash” Beskrestnov said Blysk had shot down a jet-powered Geran-type drone for the first time; serial production is not yet on the table and combat trials continue.',
+      specs: [['Потужність', '4 кВт'], ['Ефективна дальність', 'до 1 км'], ['Ціль', 'дрони типу «Шахед», зокрема реактивні']],
+      specs_en: [['Power', '4 kW'], ['Effective range', 'up to 1 km'], ['Target', 'Shahed-type drones, including jet-powered']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/ukrainian-blysk-laser-system-shoots-down-geran-jet-powered-drone-for-the-first-time/'], ['Джерело: RBC-Ukraine', 'https://newsukraine.rbc.ua/news/ukraine-downs-russian-jet-powered-drone-with-1795628793.html'], ['Джерело: The Kyiv Independent', 'https://kyivindependent.com/ukraine-deploys-experimental-laser-air-defense-system-in-kyiv/']] },
     { id: 'vector-bombard', name: 'BOMBARD', maker: 'Vector', country: 'США', type: 'unmanned', stage: 'test', upd: '2026-11-21', q: 'BOMBARD',
       img: 'https://www.armyrecognition.com/images/stories/news/2026/november/U.S.%20Company%20Vector%20Introduces%20BOMBARD%20Long-Range%20Strike%20Drone%20with%201100-km%20Range%20for%20Deep-Strike%20Missions.jpeg',
       blurb: 'Далекобійний ударний дрон одноразового застосування американської компанії Vector із Юти з пульсуючим повітряно-реактивним двигуном, наземним запуском і навігацією без GPS. Він потрібен як недорогий засіб глибоких ударів, який можна виробляти масово. Компанія представила BOMBARD 19 листопада 2026 року; за її словами, одна з версій уже літала, але система ще в розробці й випробуваннях, контрактів не оголошено.',
@@ -4286,7 +4287,39 @@ return mountHero; })()
       blurb_en: 'A joint European armoured-vehicle programme based on the Patria 6x6, with Finland, Latvia, Sweden, Germany, Denmark, Norway and the UK taking part. Nearly 2,000 vehicles are on order including options and almost 500 have been delivered. In November 2026 the Netherlands signed a Technical Arrangement to join as the eighth member.',
       specs: [['Двигун', 'Scania 394 к. с.'], ['Швидкість / запас ходу', 'До 100 км/год / 700 км'], ['Десант', 'До 10 осіб']],
       specs_en: [['Engine', 'Scania 394 hp'], ['Speed / range', 'Up to 100 km/h / 700 km'], ['Troops', 'Up to 10']],
-      links: [['Джерело: The Defense Post', 'https://thedefensepost.com/2026/11/23/netherlands-cavs-program/']] }
+      links: [['Джерело: The Defense Post', 'https://thedefensepost.com/2026/11/23/netherlands-cavs-program/']] },
+    { id: 'tr-orka-akinci', name: 'ORKA на Bayraktar AKINCI', maker: 'Roketsan та Baykar', country: 'Туреччина', type: 'naval', stage: 'test', upd: '2026-11-26', q: 'ORKA',
+      blurb: 'Легка торпеда ORKA компанії Roketsan з активним і пасивним сонарним наведенням, інтегрована на ударний безпілотник Bayraktar AKINCI. 23 листопада 2026 року AKINCI вперше скинув торпеду над затокою Сарос — це перше застосування ORKA з безекіпажного літака. Разом із випробуваннями гідроакустичних буїв на TB3 це формує турецьку безпілотну протичовнову зв’язку «виявлення — ураження».',
+      blurb_en: 'Roketsan’s ORKA lightweight torpedo, with active and passive sonar guidance, integrated on Baykar’s Bayraktar AKINCI combat drone. On 23 November 2026 an AKINCI released the torpedo over the Gulf of Saros, the first drop of ORKA from an uncrewed aircraft. Together with sonobuoy trials on the TB3, it forms a Turkish uncrewed anti-submarine detect-and-strike chain.',
+      specs: [['Тип', 'Легка протичовнова торпеда'], ['Носій', 'БпЛА Bayraktar AKINCI'], ['Наведення', 'Активний і пасивний сонар']],
+      specs_en: [['Type', 'Lightweight anti-submarine torpedo'], ['Carrier', 'Bayraktar AKINCI UAV'], ['Guidance', 'Active and passive sonar']],
+      links: [['Джерело: Anadolu Agency', 'https://www.aa.com.tr/en/economy/turkiyes-bayraktar-akinci-drone-carries-out-first-airborne-drop-of-orka-torpedo-from-unmanned-aircraft/4134545']] },
+    { id: 'ua-no-desna', name: 'DESNA', maker: 'Kongsberg та українська промисловість', country: 'Норвегія та Україна', type: 'missiles', stage: 'service', upd: '2026-11-26', q: 'Desna',
+      blurb: 'Норвезько-українська система ППО проти дронів та інших повітряних загроз: українські зенітні ракети й пускові установки поєднано з центром управління вогнем Kongsberg. Система доповнює NASAMS, що діють в Україні з 2022 року. У листопаді 2026 року Kongsberg повідомив, що DESNA вже перебуває в експлуатації; кілька комплексів Норвегія придбала й передала Україні.',
+      blurb_en: 'A Norwegian-Ukrainian air-defence system against drones and other aerial threats, pairing Ukrainian-made air-defence missiles and launchers with Kongsberg’s fire distribution centre. It complements the NASAMS systems in Ukrainian service since 2022. In November 2026 Kongsberg said DESNA was already operational, with several systems bought and donated to Ukraine by Norway.',
+      specs: [['Ракети', 'Українського виробництва'], ['Управління вогнем', 'Центр Kongsberg'], ['Цілі', 'Дрони та інші повітряні загрози']],
+      specs_en: [['Missiles', 'Ukrainian-made'], ['Fire control', 'Kongsberg fire distribution centre'], ['Targets', 'Drones and other aerial threats']],
+      links: [['Сайт виробника', 'https://www.kongsberg.com/news/news-archive/2026/kongsberg-delivers-the-desna-air-defence-system-to-ukraine/']] },
+    { id: 'cn-w8000', name: 'W8000', maker: 'Air White Whale', country: 'Китай', type: 'unmanned', stage: 'dev', upd: '2026-11-26', q: 'W8000',
+      blurb: 'Ще більший безпілотний вантажний літак китайського стартапу Air White Whale — двомоторний турбогвинтовий апарат із заднім вантажним трапом. Макет показали в Чжухаї в листопаді 2026 року напередодні авіасалону Airshow China. Розрахункова вантажопідйомність — до 8 т; молодший W5000 уже здійснив перший політ 14 листопада 2026 року.',
+      blurb_en: 'An even larger uncrewed cargo aircraft from Chinese start-up Air White Whale, a twin-turboprop design with a rear loading ramp. A mock-up was shown at Zhuhai in November 2026 ahead of Airshow China. Its design payload is up to 8 tonnes, while the smaller W5000 made its first flight on 14 November 2026.',
+      specs: [['Вантаж', 'до 8 т (розрахунково)'], ['Двигуни', '2 турбогвинтові'], ['Статус', 'Макет']],
+      specs_en: [['Payload', 'up to 8 t (design target)'], ['Engines', '2 turboprops'], ['Status', 'Mock-up']],
+      links: [['Джерело: The War Zone', 'https://www.twz.com/air/chinas-cargo-drones-keep-getting-bigger-with-new-w8000']] },
+    { id: 'ua-babka', name: 'Babka', maker: 'TAF Industries (СП з Wingcopter)', country: 'Україна та Німеччина', type: 'unmanned', stage: 'prod', upd: '2026-11-26', q: 'Babka',
+      img: 'https://cdn.dronexl.co/wp-content/uploads/2026/11/babka-reconnaissance-drone-taf-industries.webp',
+      blurb: 'Український розвідувальний безпілотник літакового типу від TAF Industries. 23 листопада 2026 року Німеччина виділила близько 34 млн євро на його виробництво в Німеччині через спільне підприємство з Wingcopter. У 2027 році СП планує випустити кілька тисяч дронів для України; також вироблятиметься Wingcopter 262.',
+      blurb_en: 'A Ukrainian fixed-wing reconnaissance drone from TAF Industries. On 23 November 2026 Germany committed about €34 million to build it in Germany through a joint venture with Wingcopter. The venture plans several thousand drones for Ukraine in 2027 and will also build the Wingcopter 262.',
+      specs: [['Маса', '3 кг'], ['Розмах крила', '130 см'], ['Тривалість / дальність', 'близько 3 год / 50 км']],
+      specs_en: [['Weight', '3 kg'], ['Wingspan', '130 cm'], ['Endurance / range', 'about 3 h / 50 km']],
+      links: [['Джерело: DroneXL', 'https://dronexl.co/2026/11/24/germany-34-million-babka-reconnaissance-drone-wingcopter-taf-industries/']] },
+    { id: 'ua-air3f-tbone', name: 'T-Bone Digital', maker: 'Air3F', country: 'Україна', type: 'electronic', stage: 'dev', upd: '2026-11-26', q: 'T-Bone',
+      img: 'https://militarnyi.com/wp-content/uploads/2026/11/T-Bone-Digital-ground-control-station-for-FPV-drones-1024x683.jpg',
+      blurb: 'Цифрова наземна станція керування FPV-дронами української компанії Air3F на базі цифрової відеосистеми Walksnail Ascent. Складається з кейса оператора з 19-дюймовим монітором і винесеного антенного блока Viper, що підвищує стабільність зв’язку й безпеку оператора. Представлена 25 листопада 2026 року.',
+      blurb_en: 'A digital ground control station for FPV drones from Ukrainian company Air3F, built around the Walksnail Ascent digital video system. It consists of an operator case with a 19-inch monitor and a remote Viper antenna unit, improving link stability and operator safety. It was unveiled on 25 November 2026.',
+      specs: [['Відеосистема', 'Walksnail Ascent (цифрова)'], ['Монітор', '19 дюймів'], ['Антенний блок', 'Viper (винесений)']],
+      specs_en: [['Video system', 'Walksnail Ascent (digital)'], ['Monitor', '19-inch'], ['Antenna unit', 'Viper (remote)']],
+      links: [['Джерело: Militarnyi', 'https://militarnyi.com/en/news/ukrainian-air3f-unveils-t-bone-digital-ground-control-station-for-fpv-drones/']] }
   ];
   // === INNOVATIONS DATA END ===
   // === INNOVATIONS JS START ===
